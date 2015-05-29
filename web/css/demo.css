@@ -1,0 +1,41 @@
+#demo_info {
+    width: 90%;
+    margin-bottom: 40px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.demo_img {
+    width: 300px;
+    float: left;
+    margin-right: 10px;
+}
+
+#comment {
+    width: 90%;
+}
+
+#comment_tb {
+    width: 100%;
+}
+
+.td_attr_title {
+    font-size: 14px;
+    color: #033d61;
+    text-align: right;
+    width: 110px;
+}
+
+.td_attr_value {
+    width: 800px;
+}
+
+.custom_comment {
+    font-size: 20px;
+    padding: 5px;
+    border-bottom: 2px solid #2C9DC8;
+    width: 100%;
+    font-weight: bold;
+    color: #2C9DC8;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,677 @@
+::-moz-selection {
+    color: #ffffff;
+    background: #3d95ea;
+}
+
+::-webkit-selection {
+    color: #ffffff;
+    background: #3d95ea;
+}
+
+::-o-selection {
+    color: #ffffff;
+    background: #3d95ea;
+}
+
+::-ms-selection {
+    color: #ffffff;
+    background: #3d95ea;
+}
+
+::selection {
+    color: #ffffff;
+    background: #3d95ea;
+}
+
+.demoHeaders {
+    margin-top: 2em;
+}
+
+#dialog-link {
+    padding: .4em 1em .4em 20px;
+    text-decoration: none;
+    position: relative;
+}
+
+#dialog-link span.ui-icon {
+    margin: 0 5px 0 0;
+    position: absolute;
+    left: .2em;
+    top: 50%;
+    margin-top: -8px;
+}
+
+#icons {
+    margin: 0;
+    padding: 0;
+}
+
+#icons li {
+    margin: 2px;
+    position: relative;
+    padding: 4px 0;
+    cursor: pointer;
+    float: left;
+    list-style: none;
+}
+
+#icons span.ui-icon {
+    float: left;
+    margin: 0 4px;
+}
+
+.fakewindowcontain .ui-widget-overlay {
+    position: absolute;
+}
+
+.ui-datepicker .ui-state-default {
+    background: #ffffff url(../images/jquery/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+}
+
+.ui-datepicker {
+    border-radius: 0px;
+    padding: 0;
+    width: 210px;
+    border: 1px solid #658c9d;
+    z-index: 999 !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    border-radius: 0px;
+    background: #69A5EC;
+    height: 27px;
+    padding: 0;
+    border: none;
+}
+
+.ui-datepicker th {
+    color: #a1a4a4;
+    font-weight: normal;
+
+    padding: 0;
+    text-align: center;
+    height: 22px;
+    background: #eef3f4;
+}
+
+.ui-datepicker td, .ui-datepicker th {
+    border-right: 1px solid #dadbdb;
+    border-top: 1px solid #dadbdb;
+    padding: 0px;
+    width: 29px;
+}
+
+.ui-datepicker td {
+    background: #ededed;
+}
+
+.ui-datepicker table {
+    border: none;
+    margin: 0;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+    display: block;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    height: 27px;
+    line-height: 27px;
+    color: #000;
+    font-size: 9px;
+}
+
+.ui-widget-content .ui-datepicker-calendar .ui-state-default,
+.ui-widget-header .ui-datepicker-calendar .ui-state-default {
+    border: none;
+    font-size: 11px;
+}
+
+.ui-datepicker .ui-state-active, .ui-datepicker .ui-widget-content .ui-state-active, .ui-datepicker .ui-widget-header .ui-state-active {
+    background: #4f97eb;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    background: #7eb1ed;
+    border-left: 3px solid #ffffff;
+    color: #fff;
+}
+
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+    background-image: none;
+    opacity: 1;
+}
+
+.ui-datepicker-title .ui-datepicker-month, .ui-datepicker-title .ui-datepicker-year {
+    background: #ffffff;
+    color: #75838a;
+}
+
+.ui-datepicker .ui-datepicker-title {
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.ui-widget-header .ui-datepicker-prev .ui-icon {
+    background-image: url("../images/jquery/date-left.png");
+}
+
+.ui-widget-header .ui-datepicker-next .ui-icon {
+    background-image: url("../images/jquery/date-right.png");
+}
+
+.ui-icon-circle-triangle-w {
+    background-position: 8px 3px;
+}
+
+.ui-icon-circle-triangle-e {
+    background-position: 2px 3px;
+}
+
+.ui-widget-content .ui-datepicker-next-hover,
+.ui-widget-header .ui-datepicker-prev-hover {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+    left: 1px;
+}
+
+.ui-datepicker .ui-datepicker-next {
+    right: 2px;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover {
+    left: 1px;
+}
+
+.ui-datepicker .ui-datepicker-next-hover {
+    right: 2px;
+}
+
+.ui-timepicker-div {
+    border-top: 1px solid #DADBDB;
+    color: #666666;
+    padding: 2px 8px 0;
+    opacity: 0.8;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane {
+    border-color: #DADBDB;
+}
+
+.ui-datepicker .ui-datepicker-buttonpane button {
+    border-radius: 0;
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.ui-dialog {
+    border: 2px solid #5bbae2;
+    padding: 0;
+    -webkit-box-shadow: 4px 4px 4px #666, -4px -4px 4px #666;
+    -moz-box-shadow: 4px 4px 4px #666, -4px -4px 4px #666;
+    -o-box-shadow: 4px 4px 4px #666, -4px -4px 4px #666;
+    -ms-box-shadow: 4px 4px 4px #666, -4px -4px 4px #666;
+    box-shadow: 4px 4px 4px #666, -4px -4px 4px #666;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    position: relative;
+    height: 24px;
+    border-radius: 0;
+    padding: 0.2em 1em;
+    line-height: 24px;
+    text-indent: 15px;
+
+}
+
+.ui-dialog .ui-widget-header {
+    background: #5bbae2;
+    border: medium none;
+    color: #f3f7f9;
+    font-size: 13px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
+    border: none;
+    width: 16px;
+    height: 16px;
+    background: url("../images/jquery/close.png");
+}
+
+.ui-dialog .ui-state-default .ui-icon {
+    background-image: none;
+}
+
+.ui-dialog .ui-dialog-content {
+    clear: both;
+    padding: 0;
+
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+    cursor: pointer;
+    margin: 0.5em 0.4em 0.5em 0;
+    width: 80px;
+    height: 26px;
+    line-height: 26px;
+    color: #41788d;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-color: #8dc6da;
+    font-family: '微软雅黑';
+    -webkit-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    -moz-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    -o-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    -ms-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    background: -moz-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -webkit-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -o-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -ms-linear-gradient(top, #abe4f8, #71cdf2);
+    background: linear-gradient(top, #abe4f8, #71cdf2);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = #abe4f8, endColorstr = #71cdf2); /*IE<9>*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#abe4f8, endColorstr=#71cdf2)"; /*IE8+*/
+}
+
+.ui-dialog .ui-dialog-buttonpane button:hover {
+    color: #41788d;
+    border-color: #94d1e3;
+    background: -moz-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: -webkit-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: -o-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: -ms-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: linear-gradient(top, #b3ebfa, #73d8f6);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = #b3ebfa, endColorstr = #73d8f6); /*IE<9>*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#b3ebfa, endColorstr=#73d8f6)"; /*IE8+*/
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 0;
+}
+
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+    background: url("../images/jquery/acc_tit.png") no-repeat;
+    float: left;
+    height: 10px;
+    margin-top: -5px;
+    width: 14px;
+}
+
+.ui-accordion-header.ui-state-active, .ui-accordion-header.ui-state-hover {
+    background: #f4f8ff !important;
+}
+
+.ui-accordion .ui-accordion-content {
+    border-radius: 0;
+    border-top: none;
+    border-color: #D6D6D6;
+    background: #ffffff;
+    padding: 5px;
+}
+
+.ui-accordion .ui-accordion-header {
+    border: 1px solid #d6d6d6;
+    border-radius: 0;
+}
+
+.ui-accordion .ui-accordion-header {
+    padding: 0;
+    height: 27px;
+    line-height: 27px;
+    color: #73859a;
+    font-size: 12px;
+}
+
+.ui-accordion-header span.acc-header-left,
+.ui-state-default span.acc-header-img,
+.ui-accordion-header .ui-accordion-header-icon,
+.ui-accordion-header .acc-close,
+.ui-accordion-header .acc-r-btn {
+    float: left;
+    text-align: center;
+    padding-right: 12px;
+    height: 27px;
+    line-height: 27px;
+    text-indent: 0;
+}
+
+.ui-accordion-header .acc-r-btn:hover {
+    background: #ffffff;
+    border-top: 1px solid #73859a;
+}
+
+.ui-accordion-header span.acc-header-left {
+    float: left;
+}
+
+.ui-state-default span.acc-header-img {
+    background: url("../images/jquery/acc_fold.png") no-repeat scroll center center transparent;
+    height: 27px;
+    margin-right: 10px;
+    float: right;
+}
+
+.ui-state-active span.acc-header-img {
+    background: url("../images/jquery/acc_unfold.png") no-repeat scroll center center transparent;
+    height: 27px;
+    margin-right: 10px;
+    float: right;
+}
+
+.ui-tabs {
+    padding: 0;
+    position: relative;
+    border-radius: 0;
+    border: 1px solid #4babe5;
+}
+
+.ui-tabs .ui-tabs-nav {
+    background: #63B5D7;
+    border-radius: 0;
+    border: none;
+
+}
+
+.ui-tabs .ui-tabs-nav li {
+    margin: 0 3px;
+    border: 0;
+    background: none;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    float: left;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 12px;
+}
+
+.layout_header {
+    background: none repeat scroll 0 0 #5CBCE4;
+}
+
+.left-con .layout-edit-title:hover {
+    color: #5CBCE4;
+}
+
+.left-con .x-panel:hover {
+    border-left-color: #5CBCE4;
+}
+
+.layout-btn-w:hover {
+    background: none repeat scroll 0 0 #5591D7;
+}
+
+.postion_state_kw {
+    color: #5CBCE4;
+}
+
+.ui-tabs .ui-tabs-nav li a:hover {
+    background: #ffffff;
+    color: #3f76c3;
+}
+
+.ui-tabs .ui-tabs-nav li.tabs-change a:hover, .ui-tabs .ui-tabs-nav li.tabs-set a:hover {
+    background: none;
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-active a {
+    background: #ffffff;
+    color: #3f76c3;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: 5px;
+    background: #ffffff;
+}
+
+.ui-widget .ui-widget {
+    font-size: 12px;
+}
+
+.contentButton {
+    width: 80px;
+    height: 26px;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+    color: #41788D;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    margin-left: 10px;
+    display: inline;
+    background: -moz-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -webkit-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -o-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -ms-linear-gradient(top, #abe4f8, #71cdf2);
+    background: linear-gradient(top, #abe4f8, #71cdf2);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = #abe4f8, endColorstr = #71cdf2); /*IE<9>*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#abe4f8, endColorstr=#71cdf2)"; /*IE8+*/
+}
+
+.contentButton:hover {
+    background: -moz-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: -webkit-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: -o-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: -ms-linear-gradient(top, #b3ebfa, #73d8f6);
+    background: linear-gradient(top, #b3ebfa, #73d8f6);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = #b3ebfa, endColorstr = #73d8f6); /*IE<9>*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#b3ebfa, endColorstr=#73d8f6)"; /*IE8+*/
+}
+
+.ui-button-text-only .ui-button-text {
+    padding: 0.35em 0.8em;
+}
+
+.leftsort-w, .rightsort-w, .allsort-w {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0;
+    float: left;
+    background: #eee;
+    width: 226px;
+    height: 388px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.rightsort-w {
+    border-color: #5591d7;
+}
+
+.leftsort-w li, .rightsort-w li, .allsort-w li {
+    border-color: #eeeeee;
+    font-size: 12px;
+    width: 203px;
+    margin-left: 5px;
+    height: 37px;
+    line-height: 37px;
+    color: #666;
+    float: left;
+    border-style: none none solid none;
+    background: #fff;
+    text-indent: 17px;
+}
+
+.drop-title {
+    background: #5cbce4;
+    color: #FFF;
+    width: 100%;
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 15px;
+    font-size: 12px;
+}
+
+.droptrue-wrap {
+    border: 1px solid #5cbce4;
+    width: 228px;
+    height: 430px;
+    margin-right: 15px;
+    float: left;
+}
+
+.dropfalse-title {
+    background: #5591d7;
+}
+
+.leftsort-w li:hover, .rightsort-w li:hover {
+    border-left: 3px solid #5cbce4;
+    text-indent: 14px;
+    width: 200px;
+}
+
+.allsort-wrap {
+    width: 800px;
+    height: 430px;
+    float: left;
+    border: 1px solid #5cbce4;
+}
+
+.allsort-w {
+    width: 100%;
+}
+
+.allsort-w li {
+    width: 790px;
+}
+
+.allsort-w li:hover {
+    text-indent: 14px;
+    border-left: 3px solid #5cbce4;
+    width: 787px;
+}
+
+.acc-close {
+    background: url(../images/jquery/acc_close.png) no-repeat center center;
+    margin-right: 25px;
+}
+
+span.acc-close:hover {
+    background: url(../images/jquery/acc_close.png) no-repeat center center #f9f9f9;
+}
+
+.ui-tooltip {
+    box-shadow: 0 0 5px #AAAAAA;
+    color: #666666;
+    padding: 8px;
+}
+
+body .ui-tooltip {
+    border-width: 1px;
+}
+
+.ui-multiselect {
+    background: #ffffff;
+}
+
+button.ui-multiselect:hover {
+    border-color: #979797;
+}
+
+button.ui-multiselect:focus {
+    outline: medium none;
+    border-color: rgb(50, 102, 203);
+}
+
+.ui-multiselect-checkboxes .ui-state-hover {
+    background: none repeat scroll 0% 0% rgb(243, 251, 254);
+    border-color: rgb(154, 210, 245);
+    color: rgb(30, 103, 136);
+}
+
+.ui-widget-overlay {
+    background: #000000;
+    opacity: 0.4;
+    filter: alpha(opacity = 40);
+}
+
+.ui-icon-triangle-1-s, .ui-icon-triangle-1-e {
+    float: left;
+}
+
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+    left: 0.8em;
+}
+
+.submit-btn {
+    background: -moz-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -webkit-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -o-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -ms-linear-gradient(top, #abe4f8, #71cdf2);
+    background: linear-gradient(top, #abe4f8, #71cdf2);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = #abe4f8, endColorstr = #71cdf2); /*IE<9>*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#abe4f8, endColorstr=#71cdf2)"; /*IE8+*/
+    border-color: #94D1E3;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #56bf6c;
+    -moz-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #56bf6c;
+    -o-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #56bf6c;
+    -ms-box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #56bf6c;
+    box-shadow: 0px 2px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    color: #41788D;
+    cursor: pointer;
+    font-family: '微软雅黑';
+    font-size: 12px;
+    height: 26px;
+    letter-spacing: 3px;
+    line-height: 26px;
+    margin: 0.5em 0.4em 0.5em 0;
+    width: 80px;
+}
+
+.lifecycle-wrap {
+    border: 1px solid #5CBCE4;
+}
+
+.dialog-btn button.flexigrid-dialog-buttonpane {
+    background: -moz-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -webkit-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -o-linear-gradient(top, #abe4f8, #71cdf2);
+    background: -ms-linear-gradient(top, #abe4f8, #71cdf2);
+    background: linear-gradient(top, #abe4f8, #71cdf2);
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    -moz-box-shadow: 0px 1px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    -o-box-shadow: 0px 1px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    -ms-box-shadow: 0px 1px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    box-shadow: 0px 1px 1px #cfd4da, inset 0 1px 0 #c0ebfb;
+    cursor: pointer;
+    color: #41788d;
+    font-family: '微软雅黑';
+    font-size: 12px;
+    height: 22px;
+    *height: 25px;
+    letter-spacing: 1px;
+    line-height: 22px;
+    margin: 2px 5px;
+    width: 70px;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = #abe4f8, endColorstr = #71cdf2); /*IE<9>*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#abe4f8, endColorstr=#71cdf2)"; /*IE8+*/
+}

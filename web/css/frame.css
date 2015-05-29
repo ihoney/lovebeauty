@@ -1,0 +1,43 @@
+body {
+    margin: 0px;
+    overflow-y: auto;
+}
+
+.STYLE1 {
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+.STYLE2 {
+    font-size: 9px
+}
+
+.STYLE3 {
+    font-size: 12px;
+    color: #033d61;
+    text-decoration: none;
+    display: block;
+}
+
+.STYLE4 {
+    color: #03515d;
+    font-size: 12px;
+}
+
+.STYLE5 {
+    font-size: 12px
+}
+
+.STYLE6 {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.STYLE7 {
+    font-size: 15px;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    color: #ff0000;
+    display: block;
+}

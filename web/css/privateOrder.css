@@ -1,0 +1,27 @@
+#demo_info {
+    width: 100%;
+}
+
+.demo_img {
+    width: 200px;
+}
+
+#comment {
+    width: 100%;
+}
+
+#comment_tb {
+    width: 100%;
+    border: 1px solid #1873AA;
+}
+
+.td_attr_title {
+    font-size: 14px;
+    color: #033d61;
+    text-align: right;
+    width: 110px;
+}
+
+.td_attr_value {
+    width: 200px;
+}

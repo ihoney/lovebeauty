@@ -1,0 +1,30 @@
+#add_tab {
+    border-left: 1px solid #44C8E6;
+    border-top: 1px solid #44C8E6;
+    color: #033D61;
+}
+
+#add_tab td {
+    border-right: 1px solid #44C8E6;
+    border-bottom: 1px solid #44C8E6;
+}
+
+.td_att_name {
+    text-align: right;
+    font-size: 12px;
+}
+
+input {
+    border: 0;
+}
+
+.input_btn {
+    width: 90px;
+    border: 1px solid #44C8E6;
+    cursor: pointer;
+}
+
+.td_att_title {
+    text-align: right;
+    width: 50px;
+}
