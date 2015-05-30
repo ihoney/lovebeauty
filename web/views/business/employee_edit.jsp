@@ -171,7 +171,7 @@
         <tr>
             <td class="td_att_name">服务范围:</td>
             <td>
-                <textarea name="serverScope" placeholder="不能为空" id="serverScope" rows="6" cols="60">${employee.serverScope}</textarea>
+                <textarea style="border: none;" name="serverScope" placeholder="不能为空" id="serverScope" rows="6" cols="60">${employee.serverScope}</textarea>
             </td>
         </tr>
         <tr>

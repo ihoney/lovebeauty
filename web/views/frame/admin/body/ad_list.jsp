@@ -23,69 +23,38 @@
         })
     });
 
-    function city_add() {
-        $("#add_city_div").dialog({
-            modal: true,
-            width: '200',
-            height: '160',
-            title: '添加城市',
-            zIndex: 5,
-            buttons: {
-                "添 加": function () {
-                    addCity();
-                    $(this).dialog("close");
-                },
-                "取 消": function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
+    function ad_add() {
+        location.href = getRootPath() + "admin/addAdInit.do";
     }
 
-    function addCity() {
-        var url = getRootPath() + "admin/addCity.do";
-        var cityName = $("#city").val();
+    function ad_reuse(node) {
+        var adId = $(node).attr("adId");
+        var url = getRootPath() + "admin/changeAdState.do";
         $.ajax({
             url: url,
             type: "POST",
-            data: {"cityName": cityName},
-            success: function (data) {
-                location.reload();
-            },
-            error: function () {
-                alert("error");
-            }
-        })
-    }
-
-    function city_reuse(node) {
-        var cityId = $(node).attr("cityId");
-        var url = getRootPath() + "admin/changeCityState.do";
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: {"cityId": cityId, "state": "开通"},
+            data: {"adId": adId, "state": "启用"},
             success: function () {
-                $(node).parent("td").prev("td").text("开通");
+                $(node).parent("td").prev("td").text("使用中");
                 $(node).parent("td").prev("td").prev("td").prev("td").text(curDateTime);
                 $(node).parent("td").prev("td").prev("td").text("");
-                $(node).attr("onclick", "city_stop(this);").text("停用");
+                $(node).attr("onclick", "ad_stop(this);").text("停用");
             }
         })
     }
 
-    function city_stop(node) {
-        var cityId = $(node).attr("cityId");
-        var url = getRootPath() + "admin/changeCityState.do";
+    function ad_stop(node) {
+        var adId = $(node).attr("adId");
+        var url = getRootPath() + "admin/changeAdState.do";
         $.ajax({
             url: url,
             type: "POST",
-            data: {"cityId": cityId, "state": "停用"},
+            data: {"adId": adId, "state": "停用"},
             success: function () {
                 $(node).parent("td").prev("td").text("停用");
                 $(node).parent("td").prev("td").prev("td").text(curDateTime);
                 $(node).parent("td").prev("td").prev("td").prev("td").text("");
-                $(node).attr("onclick", "city_reuse(this);").text("启用");
+                $(node).attr("onclick", "ad_reuse(this);").text("启用");
             }
         })
     }
@@ -93,7 +62,7 @@
     //第一页
     function firstPage() {
         if ($("#currentPage").text() != "1") {
-            var url = "queryCityByPage.do";
+            var url = "queryAdByPage.do";
             pageing(1, url, page_callback);
         }
     }
@@ -102,7 +71,7 @@
     function prePage() {
         if ($("#currentPage").text() != "1") {
             var curPage = parseInt($("#currentPage").text()) - 1;
-            var url = "queryCityByPage.do";
+            var url = "queryAdByPage.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -110,7 +79,7 @@
     function nextPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var curPage = parseInt($("#currentPage").text()) + 1;
-            var url = "queryCityByPage.do";
+            var url = "queryAdByPage.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -119,7 +88,7 @@
     function lastPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var lastPage = $("#totalPage").text();
-            var url = "queryCityByPage.do";
+            var url = "queryAdByPage.do";
             pageing(lastPage, url, page_callback);
         }
     }
@@ -130,7 +99,7 @@
         var totalPage = $("#totalPage").text();
         if (go_page != undefined && $.trim(go_page) != "" && totalPage != "") {
             if ((parseInt(go_page) <= parseInt(totalPage)) && parseInt(go_page) > 0) {
-                var url = "queryCityByPage.do";
+                var url = "queryAdByPage.do";
                 pageing(go_page, url, page_callback);
             }
         }
@@ -139,20 +108,19 @@
     function page_callback(data) {
         $(".frame_table tr:gt(0)").remove();
         var tabTag = $(".frame_table");
-        var cities = data.cities;
+        var ads = data.ads;
         var trTag;
-        for (var i = 0, j = cities.length; i < j; i++) {
+        for (var i = 0, j = ads.length; i < j; i++) {
             trTag = ' <tr class="tr_header">'
-                    + '<td><input class="select_inp2" type="checkbox" cityId="' + cities[i].id + '"/></td>'
+                    + '<td><input class="select_inp2" type="checkbox" adId="' + ads[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
-                    + '<td>' + cities[i].name + '</td>'
-                    + '<td>' + cities[i].opentime + '</td>'
-                    + '<td>' + cities[i].stoptime + '</td>'
-                    + '<td>' + cities[i].state + '</td>';
-            if (cities[i].state == '停用') {
-                trTag += ' <td> <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_reuse(this);">开通</a></td>';
+                    + '<td>' + ads[i].type + '</td>'
+                    + '<td>' + ads[i].url + '</td>'
+                    + '<td>' + ads[i].state + '</td>';
+            if (ads[i].state == '停用') {
+                trTag += ' <td> <a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_reuse(this);">启用</a></td>';
             } else {
-                trTag += '<td>  <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_stop(this);">停用</a></td>'
+                trTag += '<td>  <a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_stop(this);">停用</a></td>'
             }
             trTag += '</tr>';
             $(trTag).appendTo(tabTag);
@@ -163,7 +131,7 @@
 <div class="tab_header">
     <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[开通城市列表]
       <span class="btn_pos">
-        <span class="btn_bg_img btn_add_img" onclick="city_add();">添加</span>
+        <span class="btn_bg_img btn_add_img" onclick="ad_add();">添加</span>
     </span>
 </div>
 <div id="tb_body">
@@ -171,26 +139,26 @@
         <tr class="tr_header">
             <td><input class="select_inp" type="checkbox"/></td>
             <td>序号</td>
-            <td>城市</td>
-            <td>开通时间</td>
-            <td>停用时间</td>
-            <td>状态</td>
+            <td>广告类型</td>
+            <td>链接地址</td>
+            <td>广告状态</td>
+            <td>备注</td>
             <td>操作</td>
         </tr>
-        <c:forEach var="city" items="${cities}" varStatus="vst">
+        <c:forEach var="ad" items="${ads}" varStatus="vst">
             <tr class="tr_body">
-                <td><input class="select_inp2" type="checkbox" cityId="${city.id}"/></td>
+                <td><input class="select_inp2" type="checkbox" adId="${ad.id}"/></td>
                 <td>${vst.index}</td>
-                <td>${city.name}</td>
-                <td>${city.opentime}</td>
-                <td>${city.stoptime}</td>
-                <td>${city.state}</td>
+                <td>${ad.type}</td>
+                <td>${ad.url}</td>
+                <td>${ad.state}</td>
+                <td>${ad.backup}</td>
                 <td>
-                    <c:if test="${city.state == '停用'}">
-                        <a href="javascript:void(0);" cityId="${city.id}" onclick="city_reuse(this);">启用</a>
+                    <c:if test="${ad.state == '停用'}">
+                        <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_reuse(this);">启用</a>
                     </c:if>
-                    <c:if test="${city.state == '开通'}">
-                        <a href="javascript:void(0);" cityId="${city.id}" onclick="city_stop(this);">停用</a>
+                    <c:if test="${ad.state == '使用中'}">
+                        <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_stop(this);">停用</a>
                     </c:if>
                 </td>
             </tr>
@@ -200,26 +168,14 @@
 
 <div id="tb_body_footer">
         <span class="footer_text footer_text_align_one">
-            <span>共有 ${cityCount} 条记录，当前第 <span id="currentPage">${curPage}</span>/<span id="totalPage">${totalPage}</span> 页</span>
+            <span>共有 ${adCount} 条记录，当前第 <span id="currentPage">${curPage}</span>/<span id="totalPage">${totalPage}</span> 页</span>
         </span>
         <span class="footer_text_align_two">
             <button class="footer_text_two" onclick="firstPage();">首页</button>
             <button class="footer_text_two" onclick="prePage();">上一页</button>
             <button class="footer_text_two" onclick="nextPage();">下一页</button>
             <button class="footer_text_two" onclick="lastPage();">尾页</button>
-
             转到第<input id="go_page" type="text" size="8"/>页
             <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>
-</div>
-<div id="add_city_div">
-    <div style="margin-top: 20px; margin-left: 20px;">
-        <select id="city" style="width: 120px;">
-            <option>北京</option>
-            <option>上海</option>
-            <option>天津</option>
-            <option>重庆</option>
-            <option>青岛</option>
-        </select>
-    </div>
 </div>

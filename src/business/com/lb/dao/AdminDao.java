@@ -42,11 +42,30 @@ public class AdminDao {
 
     public void changeCityState(String cityId, String state) {
         String sql;
-        if ("0".equals(state)) {
-            sql = "update city set state = 0, opentime='',stoptime = '" + DateUtil.cruTimeStr() + "' where id=" + cityId;
+        if ("停用".equals(state)) {
+            sql = "update city set state = '停用', opentime='',stoptime = '" + DateUtil.cruTimeStr() + "' where id=" + cityId;
         } else {
-            sql = "update city set state = 1,opentime = '" + DateUtil.cruTimeStr() + "', stoptime='' where id=" + cityId;
+            sql = "update city set state = '开通', opentime = '" + DateUtil.cruTimeStr() + "', stoptime='' where id=" + cityId;
         }
         jdbcTemplate.update(sql);
+    }
+
+    public int getAdCount() {
+        String sql = "select count(*) from advertisement";
+        return jdbcTemplate.queryForInt(sql);
+    }
+
+    public List<Map<String, Object>> getAdByPage(int pageIndex, int pageSize) {
+        String sql = "select * from advertisement order by state desc limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public void changeAdState(String adId, String state) {
+        String sql = " update advertisement set state = '" + state + "' where id = " + adId;
+        jdbcTemplate.update(sql);
+    }
+
+    public void addAd(String type, String adUrl, String backup) {
+        String sql = "insert into advertisement () values "
     }
 }

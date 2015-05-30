@@ -36,6 +36,22 @@ public class AdminService {
     }
 
     public void changeCityState(String cityId, String state) {
-        adminDao.changeCityState(cityId,state);
+        adminDao.changeCityState(cityId, state);
+    }
+
+    public int getAdCount() {
+        return adminDao.getAdCount();
+    }
+
+    public List<Map<String, Object>> getAdByPage(int pageIndex, int pageSize) {
+        return adminDao.getAdByPage(pageIndex, pageSize);
+    }
+
+    public void changeAdState(String adId, String state) {
+        adminDao.changeAdState(adId, state);
+    }
+
+    public void addAd(String type, String adUrl, String backup) {
+        adminDao.addAd(type, adUrl, backup);
     }
 }

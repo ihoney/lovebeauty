@@ -127,7 +127,7 @@
         <tr>
             <td class="td_att_name">作品描述:</td>
             <td>
-                <textarea name="description" id="description" rows="6" cols="60">${demo.description}</textarea>
+                <textarea style="border: none;" name="description" id="description" rows="6" cols="60">${demo.description}</textarea>
             </td>
         </tr>
         <tr>

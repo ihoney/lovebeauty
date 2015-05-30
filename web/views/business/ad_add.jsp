@@ -72,71 +72,50 @@
                 $(node).val("");
             }
         }
-
-        function cancel() {
-            location.href = getRootPath() + "demo/queryAllDemos.do?showType=1";
-        }
     </script>
+    <style type="text/css">
+        .ad_table {
+            font-size: 12px;
+            border-top: 1px solid #b5d6e6;
+            border-left: 1px solid #b5d6e6;
+        }
+
+        .ad_table td {
+            padding: 3px;
+            border-right: 1px solid #b5d6e6;
+            border-bottom: 1px solid #b5d6e6;
+        }
+    </style>
 </head>
 <body>
-<form id="form_custom" action="${rootPath}/demo/addDemo.do" enctype="multipart/form-data" method="post">
-    <table id="add_tab" cellspacing=0 cellpadding=5>
+<form id="form_custom" action="${rootPath}/admin/addAd.do" enctype="multipart/form-data" method="post">
+    <table class="ad_table" cellspadding=0 cellspacing=0>
         <tr>
-            <td class="td_att_name">名称:</td>
-            <td>
-                <input type="text" name="name" id="name" size="65"/>
-            </td>
-        </tr>
-        <tr>
-            <td class="td_att_name">作品类型:</td>
-            <td>
-                <select id="demoType" name="demoType">
-                    <option>美甲</option>
-                    <option>美睫</option>
-                    <option>美容</option>
-                    <option>美足</option>
-                    <option>化妆造型</option>
+            <td class="ad_td_att_name">广告类型：</td>
+            <td class="ad_td_attr_value">
+                <select name="type" style="border: none; width: 100px;">
+                    <option>内部链接</option>
+                    <option>外部链接</option>
                 </select>
             </td>
-        </tr>
-        <tr>
-            <td class="td_att_name">价格:</td>
 
-            <td>
-                <input type="text" name="price" onchange="valueChange(this);" id="price" size="65"/>
-            </td>
         </tr>
-
         <tr>
-            <td class="td_att_name">首次优惠价格:</td>
-            <td>
-                <input type="text" name="preferentialPrice" onchange="valueChange(this);" id="preferentialPrice" size="65"/>
+            <td class="ad_td_att_name">链接地址：</td>
+            <td class="ad_td_attr_value">
+                <input name="adUrl" type="text"/>
             </td>
         </tr>
         <tr>
-            <td class="td_att_name">
-                可预约时间:
-            </td>
-            <td>
-                <input type="text" name="bookTime" id="bookTime" size="65"/>
-            </td>
-        </tr>
-        <tr>
-            <td class="td_att_name">文件:</td>
-            <td>
-                <input type="file" name="file" id="file" onchange="fileChange(this);"/>
-            </td>
-        </tr>
-        <tr>
-            <td class="td_att_name">作品描述:</td>
-            <td>
-                <textarea style="border: none;" name="description" id="description" rows="6" cols="60"></textarea>
+            <td class="ad_td_att_name">备注：</td>
+            <td class="ad_td_attr_value">
+                <textarea style="border: none;" style="border: none;" name="backup" rows="5" cols="35"></textarea>
             </td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center">
                 <input type="button" class="input_btn" onclick="btn_submit();" value="添加"/> &nbsp;&nbsp;&nbsp;
-                <input type="button" class="input_btn" onclick="cancel();" value="取消"/>
+                <input type="reset" class="input_btn" value="取消"/>
             </td>
         </tr>
     </table>

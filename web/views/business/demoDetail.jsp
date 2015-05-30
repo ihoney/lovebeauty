@@ -62,7 +62,7 @@
 </head>
 <body>
 <div id="jubao_div" style="display: none;">
-    <textarea id="yuanyin" cols="50" rows="4"></textarea>
+    <textarea style="border: none;" id="yuanyin" cols="50" rows="4"></textarea>
 </div>
 <div id="demo_info">
     <img src="${rootPath}/fileUpload/${demo.fileEName}" class="demo_img"/>

@@ -107,6 +107,10 @@
                 return false;
             }
         }
+
+        function cancel() {
+            window.parent.location.reload();
+        }
     </script>
 </head>
 <body>
@@ -185,13 +189,13 @@
         <tr>
             <td class="td_att_name">服务范围:</td>
             <td colspan="3">
-                <textarea name="serviceScope" id="serviceScope" rows="6" cols="60"></textarea>
+                <textarea style="border: none;" name="serviceScope" id="serviceScope" rows="6" cols="60"></textarea>
             </td>
         </tr>
         <tr>
             <td colspan="4" style="text-align: center">
                 <input type="button" class="input_btn" onclick="btn_submit();" value="提交"/> &nbsp;&nbsp;&nbsp;
-                <input type="reset" class="input_btn" value="取消"/>
+                <input type="button" class="input_btn" onclick="cancel();" value="取消"/>
             </td>
         </tr>
     </table>
