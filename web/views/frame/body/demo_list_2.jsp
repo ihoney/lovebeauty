@@ -104,7 +104,7 @@
         var tabTag = $("#tb_body");
         var demos = data.demos;
         var demoTmp;
-        var demoType;
+
         var divTag;
         for (var i = 0, j = demos.length; i < j; i++) {
             demoTmp = demos[i];
@@ -116,21 +116,10 @@
                     + '</div>'
                     + '<div class="desc_ps">'
                     + '<div>'
-                    + '<span class="attr_value">';
-            if (demoTmp.demoType == 0) {
-                demoType = '美甲';
-            } else if (demoTmp.demoType == 1) {
-                demoType = '美睫';
-            } else if (demoTmp.demoType == 2) {
-                demoType = '美容';
-            } else if (demoTmp.demoType == 3) {
-                demoType = '美足';
-            } else if (demoTmp.demoType == 4) {
-                demoType = '化妆造型';
-            }
-            divTag += demoType;
-            divTag += '：' + demoTmp.name;
-            divTag += '</span>'
+                    + '<span class="attr_value">'
+                    + demoTmp.demoType
+                    + '：' + demoTmp.name
+                    + '</span>'
                     + '</div>'
                     + '<div class="school_attr">'
                     + '<span class="attr_title">价格</span> <span class="attr_value">' + demoTmp.price + '</span>'
@@ -208,13 +197,7 @@
             </div>
             <div class="desc_ps">
                 <div>
-                    <span class="attr_value">
-                        <c:if test="${demo.demoType == 0}">美甲</c:if>
-                        <c:if test="${demo.demoType == 1}">美睫</c:if>
-                        <c:if test="${demo.demoType == 2}">美容</c:if>
-                        <c:if test="${demo.demoType == 3}">美足</c:if>
-                        <c:if test="${demo.demoType == 4}">化妆造型</c:if>：${demo.name}
-                    </span>
+                    <span class="attr_value">${demo.demoType}</span>
                 </div>
                 <div class="school_attr">
                     <span class="attr_title">价格</span> <span class="attr_value">${demo.price}</span>

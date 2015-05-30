@@ -81,7 +81,7 @@
     //删除作品
     function demo_delete(node) {
         var demoId = $(node).attr("demoId");
-        var url = getRootPath() + "demo/deleteDemo.do?demoId=" + demoId;
+        var url = getRootPath() + "demo/deleteDemo.do?demoId=" + demoId + "&fileName" + $(node).attr("fileName");
         deleteRecord(node, url);
     }
 
@@ -95,23 +95,16 @@
                     + '<td><input class="select_inp2" type="checkbox" demoId="' + demos[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + demos[i].sellerName + '</td>'
-                    + '<td>' + demos[i].NAME + '</td>';
-            if (demos[i].demoType == 0) {
-                trTag += '<td>美甲</td>';
-            } else if (demos[i].demoType == 1) {
-                trTag += '<td>美睫</td>';
-            } else if (demos[i].demoType == 2) {
-                trTag += '<td>美容</td>';
-            } else if (demos[i].demoType == 3) {
-                trTag += '<td>美足</td>';
-            } else if (demos[i].demoType == 4) {
-                trTag += '<td>化妆造型</td>';
-            }
-            trTag += '<td>' + demos[i].price + '</td>'
+                    + '<td>' + demos[i].NAME + '</td>'
+                    + '<td>' + demos[i].demoType + '</td>'
+                    + '<td>' + demos[i].price + '</td>'
                     + '<td>' + demos[i].PreferentialPrice + '</td>'
                     + '<td>' + demos[i].booktime + '</td>'
                     + '<td>'
                     + ' <a href="${rootPath}/fileUpload/' + demos[i].fileEName + '" class="img_class_a">预览</a>'
+                    + ' <a href="javascript:void(0);" demoId="' + demos[i].id + '" onclick="demo_edit(this);">编辑</a> '
+                    + ' <a href="${rootPath}/demo/getDemoDetail.do?demoId=' + demos[i].id + '">详情</a> '
+                    + '  <a href="javascript:void(0);" demoId="' + demos[i].id + '" fileName="' + demos[i].fileEName + '" onclick="demo_delete(this);">删除</a> '
                     + ' </td>'
                     + '</tr>';
             tabTag.append($(trTag));
@@ -146,13 +139,7 @@
                 <td><input class="select_inp2" type="checkbox" demoId="${demo.id}"/></td>
                 <td>${vst.index}</td>
                 <td>${demo.NAME}</td>
-                <td>
-                    <c:if test="${demo.demoType == 0}">美甲</c:if>
-                    <c:if test="${demo.demoType == 1}">美睫</c:if>
-                    <c:if test="${demo.demoType == 2}">美容</c:if>
-                    <c:if test="${demo.demoType == 3}">美足</c:if>
-                    <c:if test="${demo.demoType == 4}">化妆造型</c:if>
-                </td>
+                <td>${demo.demoType}</td>
                 <td>${demo.price}</td>
                 <td>${demo.PreferentialPrice}</td>
                 <td>${demo.booktime}</td>
@@ -160,7 +147,7 @@
                     <a href="${rootPath}/fileUpload/${demo.fileEName}" class="img_class_a">预览</a>
                     <a href="javascript:void(0);" demoId="${demo.id}" onclick="demo_edit(this);">编辑</a>
                     <a href="${rootPath}/demo/getDemoDetail.do?demoId=${demo.id}">详情</a>
-                    <a href="javascript:void(0);" demoId="${demo.id}" onclick="demo_delete(this);">删除</a>
+                    <a href="javascript:void(0);" demoId="${demo.id}" fileName="${demo.fileEName}" onclick="demo_delete(this);">删除</a>
                 </td>
             </tr>
         </c:forEach>

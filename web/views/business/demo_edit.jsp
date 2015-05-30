@@ -67,6 +67,10 @@
                 $(node).val("");
             }
         }
+
+        function cancel(){
+            location.href = getRootPath() + "demo/queryAllDemos.do?showType=1";
+        }
     </script>
 </head>
 <body>
@@ -84,11 +88,11 @@
             <td class="td_att_name">作品类型:</td>
             <td>
                 <select id="demoType" name="demoType">
-                    <option value="0" <c:if test="${demo.demoType == 0}">selected="true"</c:if>>美甲</option>
-                    <option value="1" <c:if test="${demo.demoType == 1}">selected="true"</c:if>>美睫</option>
-                    <option value="2" <c:if test="${demo.demoType == 2}">selected="true"</c:if>>美容</option>
-                    <option value="3" <c:if test="${demo.demoType == 3}">selected="true"</c:if>>美足</option>
-                    <option value="3" <c:if test="${demo.demoType == 4}">selected="true"</c:if>>化妆造型</option>
+                    <option <c:if test="${demo.demoType == '美甲'}">selected="true"</c:if>>美甲</option>
+                    <option <c:if test="${demo.demoType == '美睫'}">selected="true"</c:if>>美睫</option>
+                    <option <c:if test="${demo.demoType == '美容'}">selected="true"</c:if>>美容</option>
+                    <option <c:if test="${demo.demoType == '美足'}">selected="true"</c:if>>美足</option>
+                    <option <c:if test="${demo.demoType == '化妆造型'}">selected="true"</c:if>>化妆造型</option>
                 </select>
             </td>
         </tr>
@@ -129,7 +133,7 @@
         <tr>
             <td colspan="2" style="text-align: center">
                 <input type="button" class="input_btn" onclick="btn_submit();" value="保存"/> &nbsp;&nbsp;&nbsp;
-                <input type="reset" class="input_btn" value="取消"/>
+                <input type="button" class="input_btn" onclick="cancel()" value="取消"/>
             </td>
         </tr>
     </table>

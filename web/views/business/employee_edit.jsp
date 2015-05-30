@@ -97,6 +97,10 @@
                 $(node).val("");
             }
         }
+
+        function cancel() {
+            location.href = getRootPath() + "employee/queryAllEmployees.do";
+        }
     </script>
 </head>
 <body>
@@ -173,7 +177,7 @@
         <tr>
             <td colspan="2" style="text-align: center">
                 <input type="button" class="input_btn" onclick="btn_submit();" value="保存"/> &nbsp;&nbsp;&nbsp;
-                <input type="reset" class="input_btn" value="取消"/>
+                <input type="button" class="input_btn" onclick="cancel();" value="取消"/>
             </td>
         </tr>
     </table>

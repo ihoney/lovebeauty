@@ -87,11 +87,11 @@
             <td class="td_att_name">作品类型:</td>
             <td>
                 <select id="demoType" name="demoType">
-                    <option value="0">美甲</option>
-                    <option value="1">美睫</option>
-                    <option value="2">美容</option>
-                    <option value="3">美足</option>
-                    <option value="4">化妆造型</option>
+                    <option>美甲</option>
+                    <option>美睫</option>
+                    <option>美容</option>
+                    <option>美足</option>
+                    <option>化妆造型</option>
                 </select>
             </td>
         </tr>

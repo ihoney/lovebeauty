@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -163,10 +164,16 @@ public class DemoController {
      */
     @RequestMapping(value = "deleteDemo")
     @ResponseBody
-    public JSONObject deleteDemo(HttpServletRequest request, String demoId) throws JSONException {
+    public JSONObject deleteDemo(HttpServletRequest request, String demoId, String fileName) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         try {
             demoService.deleteDemo(demoId);
+            if (fileName != null && !"".equals(fileName)) {
+                String filePath = request.getRealPath("/fileUpload");
+                String fileTmp = filePath + "/" + fileName;
+                File file = new File(fileTmp);
+                file.delete();
+            }
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
