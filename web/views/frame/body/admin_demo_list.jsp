@@ -74,7 +74,7 @@
             trTag = ' <tr class="tr_header">'
                     + '<td><input class="select_inp2" type="checkbox" demoId="' + demos[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
-                    + '<td>' + demos[i].sellerName + '</td>'
+                    + '<td><a href="${rootPath}/seller/getSellerDetail.do?sellerId=' + demos[i].sellerId + '">' + demos[i].sellerName + '</a></td>'
                     + '<td><a href="${rootPath}/demo/getDemoDetail.do?demoId=' + demos[i].id + '">' + demos[i].NAME + '</a></td>'
                     + '<td>' + demos[i].demoType + '</td>'
                     + '<td>' + demos[i].price + '</td>'
@@ -111,7 +111,7 @@
             <tr class="tr_body">
                 <td><input class="select_inp2" type="checkbox" demoId="${demo.id}"/></td>
                 <td>${vst.index}</td>
-                <td>${demo.sellerName}</td>
+                <td><a href="${rootPath}/seller/getSellerDetail.do?sellerId=${demo.sellerId}">${demo.sellerName}</a></td>
                 <td>
                     <a href="${rootPath}/demo/getDemoDetail.do?demoId=${demo.id}">${demo.NAME}</a>
                 <td>${demo.demoType}</td>

@@ -131,8 +131,8 @@
             <td class="td_att_name">性别:</td>
             <td>
                 <select id="sex" name="sex">
-                    <option value="0" <c:if test="${sellerAuthInfo.sex == 0}">selected="selected" </c:if>>男</option>
-                    <option value="1" <c:if test="${sellerAuthInfo.sex == 1}">selected="selected" </c:if>>女</option>
+                    <option <c:if test="${sellerAuthInfo.sex == '男'}">selected="selected" </c:if>>男</option>
+                    <option <c:if test="${sellerAuthInfo.sex == '女'}">selected="selected" </c:if>>女</option>
                 </select>
             </td>
         </tr>

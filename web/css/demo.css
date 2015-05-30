@@ -15,6 +15,12 @@ a {
     margin-right: 10px;
 }
 
+.seller_head_img {
+    max-width: 200px;
+    display: block;
+    margin-bottom: 20px;
+}
+
 #comment {
     width: 90%;
 }

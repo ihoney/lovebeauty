@@ -190,7 +190,8 @@
                 forbiddenTmp = '<a href="javascript:void(0);" sellerId="' + sellers[i].id + '" onclick="seller_reUse(this);">启用</a>';
             }
             trTag += forbiddenTmp;
-            trTag += '  <a href="javascript:void(0);" sellerId="' + sellers[i].id + '" onclick="seller_delete(this);">删除</a>'
+            trTag += '<a href="javascript:void(0);" sellerId="' + sellers[i].id + '" onclick="seller_delete(this);">删除</a>';
+            trTag += '<a href="${rootPath}/seller/getSellerDetail.do?sellerId=' + sellers[i].id + '">详情</a>'
                     + ' </td>'
                     + '</tr>';
 
@@ -241,6 +242,8 @@
                     <c:if test="${seller.forbidden == '是'}">
                         <a href="javascript:void(0);" sellerId="${seller.id}" onclick="seller_reUse(this);">启用</a>
                     </c:if>
+
+                    <a href="${rootPath}/seller/getSellerDetail.do?sellerId=${seller.id}">详情</a>
                     <a href="javascript:void(0);" sellerId="${seller.id}" onclick="seller_delete(this);">删除</a>
                 </td>
             </tr>

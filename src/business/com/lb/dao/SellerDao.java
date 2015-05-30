@@ -109,4 +109,28 @@ public class SellerDao {
         String sql = "update seller set forbidden = '否' where id = '" + sellerId + "'";
         jdbcTemplate.update(sql);
     }
+
+    public List<Map<String, Object>> getSingleSellerById(String sellerId) {
+        String sql = "SELECT " +
+                " s.account, " +
+                " s.`password`, " +
+                " sv.`name`, " +
+                " sv.identify, " +
+                " sv.shopname, " +
+                " sv.address, " +
+                " sv.payaccount, " +
+                " sv.servicescope, " +
+                " sv.telephone, " +
+                " sv.sex, " +
+                " sv.birthday, " +
+                " sv.email, " +
+                " sv.head_img, " +
+                " sv.identify_img, " +
+                " sv.alipay_key, " +
+                " sv.alipay_pid " +
+                "FROM " +
+                " seller s " +
+                "LEFT JOIN seller_validate_info sv ON sv.sellerid = s.id and s.id = " + sellerId;
+        return jdbcTemplate.queryForList(sql);
+    }
 }

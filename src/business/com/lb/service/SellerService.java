@@ -97,4 +97,8 @@ public class SellerService {
     public void reUseSeller(String sellerId) {
         sellerDao.reUseSeller(sellerId);
     }
+
+    public List<Map<String,Object>> getSingleSellerById(String sellerId) {
+        return sellerDao.getSingleSellerById(sellerId);
+    }
 }

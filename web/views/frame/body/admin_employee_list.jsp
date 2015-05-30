@@ -74,7 +74,7 @@
             trTag = ' <tr class="tr_body">'
                     + '<td><input class="select_inp2" type="checkbox" employeeId="' + employees[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
-                    + '<td>' + employees[i].account + '</td>'
+                    + '<td><a href="${rootPath}/seller/getSellerDetail.do?sellerId=' + employees[i].sellerId + '">' + employees[i].account + '</a></td>'
                     + '<td>' + employees[i].nickname + '</td>'
                     + '<td>' + employees[i].sex + '</td>'
                     + '<td>' + employees[i].majorScore + '</td>'
@@ -116,7 +116,7 @@
             <tr class="tr_body">
                 <td><input class="select_inp2" type="checkbox" employeeId="${employee.id}"/></td>
                 <td>${vst.index}</td>
-                <td>${employee.account}</td>
+                <td><a href="${rootPath}/seller/getSellerDetail.do?sellerId=${employee.sellerId}">${employee.account}</a></td>
                 <td>${employee.nickname}</td>
                 <td>${employee.sex}</td>
                 <td>${employee.majorScore}</td>

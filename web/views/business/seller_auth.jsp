@@ -125,8 +125,8 @@
             <td class="td_att_name">性别:</td>
             <td>
                 <select id="sex" name="sex">
-                    <option value="0">男</option>
-                    <option value="1">女</option>
+                    <option>男</option>
+                    <option>女</option>
                 </select>
             </td>
         </tr>

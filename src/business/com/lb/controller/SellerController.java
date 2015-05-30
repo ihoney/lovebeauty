@@ -537,4 +537,15 @@ public class SellerController {
         map.put("rows", list);
         return map;
     }
+
+    @RequestMapping("getSellerDetail")
+    public ModelAndView getSellerDetail(String sellerId) {
+        ModelAndView modelAndView = new ModelAndView();
+        Map<String, Object> seller = sellerService.getSingleSellerById(sellerId).get(0);
+        modelAndView.addObject("seller", seller);
+        modelAndView.setViewName("business/sellerDetail");
+        return modelAndView;
+    }
 }
+
+
