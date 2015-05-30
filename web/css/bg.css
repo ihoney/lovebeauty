@@ -1,3 +1,7 @@
-body{
+body {
     background: url("../images/bg.png") repeat;
+}
+
+a {
+    text-decoration: none;
 }

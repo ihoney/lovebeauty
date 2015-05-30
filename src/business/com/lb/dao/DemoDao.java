@@ -79,13 +79,14 @@ public class DemoDao {
 
     public Map<String, Object> getSingleDemoById(String demoId) {
         String sql = "SELECT " +
-                " demo.*, AVG(`comment`.score) AS avgScore " +
+                " d.*,e.nickName, AVG(c.score) AS avgScore " +
                 " FROM " +
-                " demo, " +
-                " `comment` " +
+                " demo d,employee e, " +
+                " `comment` c " +
                 " WHERE " +
-                " demo.id = " + demoId +
-                " AND `comment`.demoid = demo.id";
+                " d.id = " + demoId +
+                " and e.id = d.employeeId " +
+                " AND c.demoid = d.id";
         return jdbcTemplate.queryForMap(sql);
     }
 

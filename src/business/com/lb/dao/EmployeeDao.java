@@ -69,35 +69,21 @@ public class EmployeeDao {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public Map<String, Object> getSingleEmployeeById(String employeeId) {
-        String sql = "SELECT " +
-                " employee.*, AVG(`comment`.score) AS avgScore " +
-                " FROM " +
-                " employee, " +
-                " `comment` " +
-                " WHERE " +
-                " employee.id = " + employeeId +
-                " AND `comment`.employeeid = employee.id";
-        return jdbcTemplate.queryForMap(sql);
+    public List<Map<String, Object>> getSingleEmployeeById(String employeeId) {
+        String sql = "SELECT * FROM employee WHERE id = " + employeeId;
+        return jdbcTemplate.queryForList(sql);
     }
 
     public List<Map<String, Object>> getEmployeeComment(String employeeId) {
-        String sql = "SELECT " +
-                " b.id as customerid, " +
-                " b.account, " +
-                " a.score, " +
-                " a. comment " +
-                " FROM " +
-                " `comment` a, " +
-                " customer b " +
-                " WHERE " +
-                " b.id = a.customerid " +
-                " AND a.employeeid = " + employeeId;
+        String sql = "SELECT ec.*, c.account FROM emp_comment ec LEFT JOIN customer c ON c.id = ec.customerId WHERE ec.empId = " + employeeId;
         return jdbcTemplate.queryForList(sql);
     }
 
     public List<Map<String, Object>> getEmployeeByPageAdmin(int pageIndex, int pageSize) {
-        String sql = "SELECT d.*,s.name as sellerName from employee d, seller_validate_info s where d.sellerid = s.sellerid limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+        String sql = "SELECT e.*,s.account " +
+                " FROM " +
+                " employee e ,seller s  where s.id = e.sellerId " +
+                " order by state  limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 }

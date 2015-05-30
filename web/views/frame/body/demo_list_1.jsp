@@ -141,7 +141,7 @@
                 <td><input class="select_inp2" type="checkbox" demoId="${demo.id}"/></td>
                 <td>${vst.index}</td>
                 <td>${demo.NAME}</td>
-                <td>${demo.empName}</td>
+                <td><a href="${rootPath}/employee/getEmployeeDetail.do?employeeId=${demo.employeeId}">${demo.empName}</a></td>
                 <td>${demo.demoType}</td>
                 <td>${demo.price}</td>
                 <td>${demo.PreferentialPrice}</td>

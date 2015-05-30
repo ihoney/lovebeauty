@@ -66,7 +66,8 @@
 </div>
 <div id="demo_info">
     <img src="${rootPath}/fileUpload/${demo.fileEName}" class="demo_img"/>
-    <span>作品名称：</span>${demo.name} <br/>
+    <span>名称：</span>${demo.name} <br/>
+    <span>作品师：</span><a href="${rootPath}/employee/getEmployeeDetail.do?employeeId=${demo.employeeId}">${demo.nickName}</a> <br/>
     <span>作品类型：</span>${demo.demoType} <br/>
     <span>得分：</span>${demo.avgScore} <br/>
     <span> 价格：</span>${demo.price} <br/>

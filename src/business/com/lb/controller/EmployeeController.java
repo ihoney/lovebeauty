@@ -212,8 +212,10 @@ public class EmployeeController {
     @RequestMapping("getEmployeeDetail")
     public ModelAndView getEmployeeDetail(String employeeId) {
         ModelAndView modelAndView = new ModelAndView();
-        Map<String, Object> employee = employeeService.getSingleEmployeeById(employeeId);
+        Map<String, Object> employee = employeeService.getSingleEmployeeById(employeeId).get(0);
+        List<Map<String, Object>> comments = employeeService.getEmployeeComment(employeeId);
         modelAndView.addObject("employee", employee);
+        modelAndView.addObject("comments", comments);
         modelAndView.setViewName("business/employeeDetail");
         return modelAndView;
     }

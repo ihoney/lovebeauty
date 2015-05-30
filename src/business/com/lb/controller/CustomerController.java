@@ -47,8 +47,8 @@ public class CustomerController {
         String loginIp = request.getRemoteAddr();
         List<Map<String, Object>> customers = customerService.existsCustomer(account, password);
         if (customers != null && customers.size() > 0) {
-            boolean forbidden = Boolean.parseBoolean(customers.get(0).get("forbidden").toString());
-            if (forbidden) {
+            String forbidden = customers.get(0).get("forbidden").toString();
+            if ("是".equals(forbidden)) {
                 jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
                 jsonObject.put(Constant.TIPMESSAGE, "账号已禁用，请联系管理员!");
             } else {

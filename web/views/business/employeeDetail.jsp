@@ -14,35 +14,6 @@
 
 
     <script type="text/javascript">
-        function jubaoCustomer(customerId) {
-            $("#jubao_div").dialog({
-                modal: true,
-                width: '500',
-                height: '200',
-                title: '填写举报原因',
-                buttons: {
-                    "确认举报": function () {
-                        if ($.trim($("#yuanyin").val()) == '') {
-                            alert("原因不能为空！");
-                            return;
-                        }
-                        $.ajax({
-                            url: getRootPath() + 'customer/jbCustomer.do',
-                            type: 'POST',
-                            data: {"customerId": customerId, "reason": $.trim($("#yuanyin").val())},
-                            success: function (data) {
-                                $("#yuanyin").val("");
-                                $("#jubao_div").dialog("close");
-                            }
-                        })
-                    },
-                    "取 消": function () {
-                        $("#yuanyin").val("");
-                        $("#jubao_div").dialog("close");
-                    }
-                }
-            });
-        }
 
         function imgLoadError(node) {
             $(node).attr("src", "${rootPath}/images/default.jpg");
@@ -54,24 +25,21 @@
             word-break: break-all;
             border-bottom: 1px solid #1873AA;
         }
-
-        .attr_title {
-            color: #033D61;
-        }
     </style>
 </head>
 <body>
-<div id="jubao_div" style="display: none;">
-    <textarea style="border: none;" id="yuanyin" cols="50" rows="4"></textarea>
-</div>
+
 <div id="demo_info">
-    <img src="${rootPath}/fileUpload/${demo.fileEName}" class="demo_img"/>
-    <span>作品名称：</span>${demo.name} <br/>
-    <span>得分：</span>${demo.avgScore} <br/>
-    <span> 价格：</span>${demo.price} <br/>
-    <span>首次优惠价格：</span>${demo.PreferentialPrice} <br/>
-    <span>可预约时间：</span>${demo.booktime} <br/>
-    <span>作品简介：</span>${demo.description}
+    <img src="${rootPath}/fileUpload/${employee.headImg}" class="demo_img"/>
+    <span>名称：</span>${employee.name} <br/>
+    <span>性别：</span>${employee.sex} <br/>
+    <span>专业得分：</span>${employee.majorScore} <br/>
+    <span>沟通得分：</span>${employee.comScore} <br/>
+    <span>守时得分：</span>${employee.punctualScore} <br/>
+    <span>均价得分：</span>${employee.avgPrice} <br/>
+    <span>在职状态：</span>${employee.state} <br/>
+    <span>服务范围：</span><span class="comment">${employee.serverScope}</span> <br/>
+
 </div>
 <div id="comment">
     <div class="custom_comment" style="">客户评论</div>
@@ -80,8 +48,7 @@
             <tr>
                 <td>
                     <div>
-                        <span>客户：${comment.account} 评分：${comment.score}</span>
-                        <span style="float: right;margin-right: 10px;"><a href="javascript:void(0);" style="font-size: 12px;" onclick="jubaoCustomer(${comment.customerid})">举报买家</a></span>
+                        <span>客户：${comment.account}</span>
                     </div>
                     <div class="comment">
                         评论：${comment.comment}

@@ -60,7 +60,7 @@ public class EmployeeService {
         return employeeDao.getEmployeeById(employeeId);
     }
 
-    public Map<String, Object> getSingleEmployeeById(String employeeId) {
+    public List<Map<String, Object>> getSingleEmployeeById(String employeeId) {
         return employeeDao.getSingleEmployeeById(employeeId);
     }
 
