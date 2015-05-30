@@ -39,7 +39,7 @@
             <ul>
                 <li><a href="${rootPath}/seller/changePwdInit.do" target="rightFrame" class="STYLE3">修改密码</a></li>
                 <li><a href="${rootPath}/seller/authInit.do" target="rightFrame" class="STYLE3">个人信息认证</a></li>
-                <li><a href="${rootPath}/seller/flexTest.do" target="rightFrame" class="STYLE3">flexTest</a></li>
+                <%--<li><a href="${rootPath}/seller/flexTest.do" target="rightFrame" class="STYLE3">flexTest</a></li>--%>
             </ul>
         </div>
     </div>
