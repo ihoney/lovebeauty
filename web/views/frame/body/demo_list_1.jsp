@@ -96,6 +96,7 @@
                     + ' <td>' + i + '</td>'
                     + '<td>' + demos[i].sellerName + '</td>'
                     + '<td>' + demos[i].NAME + '</td>'
+                    + '<td>' + demos[i].empName + '</td>'
                     + '<td>' + demos[i].demoType + '</td>'
                     + '<td>' + demos[i].price + '</td>'
                     + '<td>' + demos[i].PreferentialPrice + '</td>'
@@ -128,6 +129,7 @@
             <td><input class="select_inp" type="checkbox"/></td>
             <td>序号</td>
             <td>名称</td>
+            <td>作品师</td>
             <td>作品类型</td>
             <td>价格</td>
             <td>首次优惠价格</td>
@@ -139,6 +141,7 @@
                 <td><input class="select_inp2" type="checkbox" demoId="${demo.id}"/></td>
                 <td>${vst.index}</td>
                 <td>${demo.NAME}</td>
+                <td>${demo.empName}</td>
                 <td>${demo.demoType}</td>
                 <td>${demo.price}</td>
                 <td>${demo.PreferentialPrice}</td>

@@ -68,7 +68,7 @@
             }
         }
 
-        function cancel(){
+        function cancel() {
             location.href = getRootPath() + "demo/queryAllDemos.do?showType=1";
         }
     </script>
@@ -82,6 +82,17 @@
             <td class="td_att_name">名称:</td>
             <td>
                 <input type="text" name="name" id="name" size="65" value="${demo.name}"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td_att_name">作品师:</td>
+            <td>
+                <select id="empId" name="empId" style="width: 120px;">
+                    <c:forEach items="${employees}" var="employee">
+                        <option value="${employee.id}" <c:if test="${employee.id == demo.employeeId}">selected="true"</c:if>>${employee.nickName}</option>
+                    </c:forEach>
+                </select>
             </td>
         </tr>
         <tr>

@@ -18,6 +18,7 @@ public class Demo implements Serializable {
     private int id;
     private int sellerId;
     private String name;
+    private String empId;
     private String description;
     private BigDecimal price;
     private BigDecimal preferentialPrice;
@@ -29,8 +30,9 @@ public class Demo implements Serializable {
     public Demo() {
     }
 
-    public Demo(String name, String description, BigDecimal price, BigDecimal preferentialPrice, String bookTime, String demoType) {
+    public Demo(String name, String empId, String description, BigDecimal price, BigDecimal preferentialPrice, String bookTime, String demoType) {
         this.name = name;
+        this.empId = empId;
         this.description = description;
         this.price = price;
         this.preferentialPrice = preferentialPrice;
@@ -38,10 +40,11 @@ public class Demo implements Serializable {
         this.demoType = demoType;
     }
 
-    public Demo(int id, int sellerId, String name, String description, BigDecimal price, BigDecimal preferentialPrice, String bookTime, String demoType) {
+    public Demo(int id, int sellerId, String name, String empId, String description, BigDecimal price, BigDecimal preferentialPrice, String bookTime, String demoType) {
         this.id = id;
         this.sellerId = sellerId;
         this.name = name;
+        this.empId = empId;
         this.description = description;
         this.price = price;
         this.preferentialPrice = preferentialPrice;
@@ -63,6 +66,14 @@ public class Demo implements Serializable {
 
     public void setSellerId(int sellerId) {
         this.sellerId = sellerId;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public String getName() {

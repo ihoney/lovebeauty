@@ -39,9 +39,45 @@ public class DemoController {
     @Resource
     private DemoService demoService;
 
+    @RequestMapping("queryAllDemos")
+    public ModelAndView queryAllDemos(HttpServletRequest request, HttpSession session, String showType) {
+        ModelAndView modelAndView = new ModelAndView();
+        int demoCount = demoService.getDemoCount();
+        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        List<Map<String, Object>> demos = demoService.getDemoByPage(seller.get("id").toString(), 1, Constant.PAGENUM);
+        modelAndView.addObject("demos", demos);
+        int totalPage = demoCount / Constant.PAGENUM + (demoCount % Constant.PAGENUM == 0 ? 0 : 1);
+        modelAndView.addObject("demoCount", demoCount);
+        modelAndView.addObject("totalPage", totalPage);
+        modelAndView.addObject("curPage", 1);
+        modelAndView.setViewName("frame/body/demo_list_" + showType);
+        return modelAndView;
+    }
+
+    /**
+     * 调到指定页
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryDemoByPage")
+    @ResponseBody
+    public Map<String, Object> queryDemoByPage(HttpServletRequest request, HttpSession session) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        int pageIndex = Integer.parseInt(request.getParameter("curPage"));
+        List<Map<String, Object>> demos = demoService.getDemoByPage(seller.get("id").toString(), pageIndex, Constant.PAGENUM);
+        jsonObject.put("demos", demos);
+        return jsonObject;
+    }
+
     @RequestMapping("addInit")
     public ModelAndView addInit(HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
+        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        String sellerId = seller.get("id").toString();
+        List<Map<String, Object>> employees = demoService.getEmployeesBySellerId(sellerId);
+        modelAndView.addObject("employees", employees);
         modelAndView.setViewName("business/demo_add");
         return modelAndView;
     }
@@ -102,9 +138,15 @@ public class DemoController {
      * @return
      */
     @RequestMapping(value = "editDemo")
-    public ModelAndView editDemo(HttpServletRequest request, String demoId) {
+    public ModelAndView editDemo(HttpServletRequest request, HttpSession session, String demoId) {
         ModelAndView modelAndView = new ModelAndView();
         Map<String, Object> demo = demoService.getDemoById(demoId).get(0);
+
+        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        String sellerId = seller.get("id").toString();
+        List<Map<String, Object>> employees = demoService.getEmployeesBySellerId(sellerId);
+        modelAndView.addObject("employees", employees);
+
         modelAndView.addObject("demo", demo);
         modelAndView.setViewName("business/demo_edit");
         return modelAndView;
@@ -181,37 +223,6 @@ public class DemoController {
         return jsonObject;
     }
 
-    @RequestMapping("queryAllDemos")
-    public ModelAndView queryAllDemos(HttpServletRequest request, HttpSession session, String showType) {
-        ModelAndView modelAndView = new ModelAndView();
-        int demoCount = demoService.getDemoCount();
-        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
-        List<Map<String, Object>> demos = demoService.getDemoByPage(seller.get("id").toString(), 1, Constant.PAGENUM);
-        modelAndView.addObject("demos", demos);
-        int totalPage = demoCount / Constant.PAGENUM + (demoCount % Constant.PAGENUM == 0 ? 0 : 1);
-        modelAndView.addObject("demoCount", demoCount);
-        modelAndView.addObject("totalPage", totalPage);
-        modelAndView.addObject("curPage", 1);
-        modelAndView.setViewName("frame/body/demo_list_" + showType);
-        return modelAndView;
-    }
-
-    /**
-     * 调到指定页
-     *
-     * @param request
-     * @return
-     */
-    @RequestMapping(value = "queryDemoByPage")
-    @ResponseBody
-    public Map<String, Object> queryDemoByPage(HttpServletRequest request, HttpSession session) {
-        Map<String, Object> jsonObject = new HashMap<String, Object>();
-        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
-        int pageIndex = Integer.parseInt(request.getParameter("curPage"));
-        List<Map<String, Object>> demos = demoService.getDemoByPage(seller.get("id").toString(), pageIndex, Constant.PAGENUM);
-        jsonObject.put("demos", demos);
-        return jsonObject;
-    }
 
     @RequestMapping("getDemoDetail")
     public ModelAndView getDemoDetail(HttpSession session, String demoId) {

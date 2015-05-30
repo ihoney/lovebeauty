@@ -75,19 +75,9 @@
                     + '<td><input class="select_inp2" type="checkbox" demoId="' + demos[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + demos[i].sellerName + '</td>'
-                    + '<td><a href="${rootPath}/demo/getDemoDetail.do?demoId=' + demos[i].id + '">' + demos[i].NAME + '</a></td>';
-            if (demos[i].demoType == 0) {
-                trTag += '<td>美甲</td>';
-            } else if (demos[i].demoType == 1) {
-                trTag += '<td>美睫</td>';
-            } else if (demos[i].demoType == 2) {
-                trTag += '<td>美容</td>';
-            } else if (demos[i].demoType == 3) {
-                trTag += '<td>美足</td>';
-            } else if (demos[i].demoType == 4) {
-                trTag += '<td>化妆造型</td>';
-            }
-            trTag += '<td>' + demos[i].price + '</td>'
+                    + '<td><a href="${rootPath}/demo/getDemoDetail.do?demoId=' + demos[i].id + '">' + demos[i].NAME + '</a></td>'
+                    + '<td>' + demos[i].demoType + '</td>'
+                    + '<td>' + demos[i].price + '</td>'
                     + '<td>' + demos[i].PreferentialPrice + '</td>'
                     + '<td>' + demos[i].booktime + '</td>'
                     + '<td>'
@@ -96,6 +86,8 @@
                     + '</tr>';
             tabTag.append($(trTag));
         }
+
+        $(".img_class_a").colorbox({rel: 'img_class_a', photo: true});
     }
 </script>
 
@@ -122,13 +114,7 @@
                 <td>${demo.sellerName}</td>
                 <td>
                     <a href="${rootPath}/demo/getDemoDetail.do?demoId=${demo.id}">${demo.NAME}</a>
-                <td>
-                    <c:if test="${demo.demoType == 0}">美甲</c:if>
-                    <c:if test="${demo.demoType == 1}">美睫</c:if>
-                    <c:if test="${demo.demoType == 2}">美容</c:if>
-                    <c:if test="${demo.demoType == 3}">美足</c:if>
-                    <c:if test="${demo.demoType == 4}">化妆造型</c:if>
-                </td>
+                <td>${demo.demoType}</td>
                 <td>${demo.price}</td>
                 <td>${demo.PreferentialPrice}</td>
                 <td>${demo.booktime}</td>

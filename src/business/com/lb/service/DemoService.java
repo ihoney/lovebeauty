@@ -71,4 +71,8 @@ public class DemoService {
     public List<Map<String, Object>> getDemoByPageAdmin(int pageIndex, int pageSize) {
         return demoDao.getDemoByPageAdmin(pageIndex, pageSize);
     }
+
+    public List<Map<String, Object>> getEmployeesBySellerId(String sellerId) {
+        return demoDao.getEmployeesBySellerId(sellerId);
+    }
 }

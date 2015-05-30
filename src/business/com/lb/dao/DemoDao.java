@@ -23,25 +23,12 @@ public class DemoDao {
 
 
     public int getDemoCount() {
-        String sql = "select count(1) from demo";
+        String sql = "select count(*) from demo";
         return jdbcTemplate.queryForInt(sql);
     }
 
     public List<Map<String, Object>> getDemoByPage(String sellerId, int pageIndex, int pageSize) {
-        String sql = "SELECT " +
-                " d.id, " +
-                " d. NAME, " +
-                " d.demoType, " +
-                " d.picname, " +
-                " d.price, " +
-                " d.PreferentialPrice, " +
-                " d.booktime, " +
-                " d.description, " +
-                " d.fileEName " +
-                " FROM " +
-                " demo AS d " +
-                " WHERE " +
-                " sellerid = " + sellerId + " limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+        String sql = "SELECT d.*,e.nickName as empName   FROM   demo d left join employee e on e.id=d.employeeId  WHERE  d.sellerid = " + sellerId + " limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 
@@ -49,6 +36,7 @@ public class DemoDao {
         String sql = "INSERT INTO demo ( " +
                 " sellerid, " +
                 " NAME, " +
+                " employeeId, " +
                 " description, " +
                 " picname, " +
                 " fileEName, " +
@@ -58,23 +46,24 @@ public class DemoDao {
                 " demoType " +
                 ") " +
                 "VALUES " +
-                " (?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{demo.getSellerId(), demo.getName(), demo.getDescription(), demo.getPicName(), demo.getFileEName(), demo.getPrice(), demo.getPreferentialPrice(), demo.getBookTime(),
+                " (?,?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{demo.getSellerId(), demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPicName(), demo.getFileEName(), demo.getPrice(), demo.getPreferentialPrice(),
+                demo.getBookTime(),
                 demo.getDemoType()});
     }
 
     public void updateDemo(Demo demo) {
-        StringBuffer sb = new StringBuffer("UPDATE demo SET NAME = ?, description =?, price = ?, PreferentialPrice =?, booktime = ?, demoType = ? ");
+        StringBuffer sb = new StringBuffer("UPDATE demo SET NAME = ?,employeeId=?, description =?, price = ?, PreferentialPrice =?, booktime = ?, demoType = ? ");
         if (demo.getFileEName() != null) {
             sb.append(", picname = ?, fileEName = ? ");
         }
         sb.append(" where id = " + demo.getId());
 
         if (demo.getFileEName() != null) {
-            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getBookTime(), demo.getDemoType(), demo.getPicName(),
+            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getBookTime(), demo.getDemoType(), demo.getPicName(),
                     demo.getFileEName()});
         } else {
-            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getBookTime(), demo.getDemoType()});
+            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getBookTime(), demo.getDemoType()});
         }
     }
 
@@ -117,6 +106,11 @@ public class DemoDao {
 
     public List<Map<String, Object>> getDemoByPageAdmin(int pageIndex, int pageSize) {
         String sql = "SELECT d.*,s.name as sellerName from demo d, seller_validate_info s where d.sellerid = s.sellerid limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> getEmployeesBySellerId(String sellerId) {
+        String sql = "SELECT id, nickName FROM employee WHERE sellerId = " + sellerId;
         return jdbcTemplate.queryForList(sql);
     }
 }

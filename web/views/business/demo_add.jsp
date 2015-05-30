@@ -23,6 +23,13 @@
         }
 
         function validateMethod() {
+
+            var empId = $("#empId").val();
+            if (empId == "") {
+                alert("请先添加店面技师信息!");
+                return false;
+            }
+
             var price = parseFloat($("#price").val());
             if (isNaN(price)) {
                 $("#price").val(0)
@@ -88,9 +95,20 @@
             </td>
         </tr>
         <tr>
+            <td class="td_att_name">作品师:</td>
+            <td>
+                <select id="empId" name="empId" style="width: 120px;">
+                    <c:forEach items="${employees}" var="employee">
+                        <option value="${employee.id}">${employee.nickName}</option>
+                    </c:forEach>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
             <td class="td_att_name">作品类型:</td>
             <td>
-                <select id="demoType" name="demoType">
+                <select id="demoType" name="demoType" style="width: 120px;">
                     <option>美甲</option>
                     <option>美睫</option>
                     <option>美容</option>
