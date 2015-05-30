@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -204,7 +205,7 @@ public class SellerController {
             } else {
                 sellerValidateInfo.setHeadImgStr("");
             }
-               Thread.sleep(30);
+            Thread.sleep(30);
             if (identifyImg != null) {
                 identifyImgStr = identifyImg.getOriginalFilename();
                 String fileSuffix = identifyImgStr.substring(identifyImgStr.lastIndexOf("."));
@@ -447,5 +448,53 @@ public class SellerController {
             }
         }
         return jsonObject;
+    }
+
+    /**
+     * flexTest
+     *
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "flexTest")
+    public String flexTest(HttpSession session) throws JSONException {
+        return "frame/flexTest";
+    }
+
+
+    /**
+     * flex加载数据
+     *
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "flexLoadData")
+    @ResponseBody
+    public Map<String, Object> flexLoadData(HttpServletRequest request) throws JSONException {
+        Map<String, Object> map = new HashMap<String, Object>();
+        int pageIndex = Integer.parseInt(request.getParameter("page"));
+        String pageSize = request.getParameter("rp");
+        String qtype = request.getParameter("qtype");
+        String query = request.getParameter("query");
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        Map<String, Object> mapTmp;
+
+        if (query != null && !"".equals(query)) {
+            mapTmp = new HashMap<String, Object>();
+            mapTmp.put("id", 45);
+            mapTmp.put("cell", new Object[]{45,"job_name" + query, "work_address" + query, "salary" + query, "date" + query, "language" + query});
+            list.add(mapTmp);
+        } else {
+            for (int i = 1; i < 30; i++) {
+                mapTmp = new HashMap<String, Object>();
+                mapTmp.put("id", i * pageIndex);
+                mapTmp.put("cell", new Object[]{i,"job_name" + i * pageIndex, "work_address" + i * pageIndex, "salary" + i * pageIndex, "date" + i * pageIndex, "language" + i * pageIndex});
+                list.add(mapTmp);
+            }
+        }
+        map.put("page", pageIndex);
+        map.put("total", 1000);
+        map.put("rows", list);
+        return map;
     }
 }
