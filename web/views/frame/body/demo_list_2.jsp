@@ -221,6 +221,6 @@
             <button class="footer_text_two" id="nextPage">下一页</button>
             <button class="footer_text_two" id="lastPage">尾页</button>
             转到第<input id="go_page" type="text" size="8"/>页
-            <button class="footer_text_two btn_go">&nbsp;</button>
+            <button class="footer_text_two btn_go">跳转</button>
         </span>
 </div>

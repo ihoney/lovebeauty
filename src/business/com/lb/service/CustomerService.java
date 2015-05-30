@@ -58,4 +58,8 @@ public class CustomerService {
     public void loginInfo(String account, String loginIp) {
         customerDao.loginInfo(account, loginIp);
     }
+
+    public void reUseCustomer(String customerId) {
+        customerDao.reUseCustomer(customerId);
+    }
 }

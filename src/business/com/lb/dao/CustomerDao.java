@@ -53,7 +53,7 @@ public class CustomerDao {
     }
 
     public void forbiddenCustomer(String customerId) {
-        String sql = "update customer set forbidden = 1 where id = " + customerId;
+        String sql = "update customer set forbidden = '是' where id = " + customerId;
         jdbcTemplate.update(sql);
     }
 
@@ -66,6 +66,11 @@ public class CustomerDao {
 
     public void loginInfo(String account, String loginIp) {
         String sql = "update customer set loginip = '" + loginIp + "', logintime = now() where account ='" + account + "'";
+        jdbcTemplate.update(sql);
+    }
+
+    public void reUseCustomer(String customerId) {
+        String sql = "update customer set forbidden = '否' where id = " + customerId;
         jdbcTemplate.update(sql);
     }
 }

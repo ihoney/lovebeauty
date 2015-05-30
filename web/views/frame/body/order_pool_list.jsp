@@ -145,6 +145,6 @@
             <button class="footer_text_two" onclick="nextPage();">下一页</button>
             <button class="footer_text_two" onclick="lastPage();">尾页</button>
             转到第<input id="go_page" type="text" size="8"/>页
-            <button class="footer_text_two" onclick="btnGo();">&nbsp;</button>
+            <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>
 </div>

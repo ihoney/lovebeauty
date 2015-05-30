@@ -89,4 +89,12 @@ public class SellerService {
     public void changePwd(String sellerId, String newPassword) {
         sellerDao.changePwd(sellerId, newPassword);
     }
+
+    public void forbiddenSeller(String sellerId) {
+        sellerDao.forbiddenSeller(sellerId);
+    }
+
+    public void reUseSeller(String sellerId) {
+        sellerDao.reUseSeller(sellerId);
+    }
 }

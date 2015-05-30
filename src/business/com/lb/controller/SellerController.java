@@ -120,6 +120,46 @@ public class SellerController {
     }
 
     /**
+     * 禁用商铺
+     *
+     * @param request
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "forbiddenSeller")
+    @ResponseBody
+    public JSONObject forbiddenSeller(HttpServletRequest request, String sellerId) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            sellerService.forbiddenSeller(sellerId);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 启用商铺
+     *
+     * @param request
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "reUseSeller")
+    @ResponseBody
+    public JSONObject reUseSeller(HttpServletRequest request, String sellerId) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            sellerService.reUseSeller(sellerId);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+        }
+        return jsonObject;
+    }
+
+    /**
      * 调到指定页
      *
      * @param request
@@ -482,13 +522,13 @@ public class SellerController {
         if (query != null && !"".equals(query)) {
             mapTmp = new HashMap<String, Object>();
             mapTmp.put("id", 45);
-            mapTmp.put("cell", new Object[]{45,"job_name" + query, "work_address" + query, "salary" + query, "date" + query, "language" + query});
+            mapTmp.put("cell", new Object[]{45, "job_name" + query, "work_address" + query, "salary" + query, "date" + query, "language" + query});
             list.add(mapTmp);
         } else {
             for (int i = 1; i < 30; i++) {
                 mapTmp = new HashMap<String, Object>();
                 mapTmp.put("id", i * pageIndex);
-                mapTmp.put("cell", new Object[]{i,"job_name" + i * pageIndex, "work_address" + i * pageIndex, "salary" + i * pageIndex, "date" + i * pageIndex, "language" + i * pageIndex});
+                mapTmp.put("cell", new Object[]{i, "job_name" + i * pageIndex, "work_address" + i * pageIndex, "salary" + i * pageIndex, "date" + i * pageIndex, "language" + i * pageIndex});
                 list.add(mapTmp);
             }
         }

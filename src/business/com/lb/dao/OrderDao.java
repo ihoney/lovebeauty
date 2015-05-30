@@ -23,7 +23,7 @@ public class OrderDao {
     private JdbcTemplate jdbcTemplate;
 
     public int getOrderCount() {
-        String sql = "select count(1) from `order`";
+        String sql = "select count(*) from `order`";
         return jdbcTemplate.queryForInt(sql);
     }
 
@@ -53,12 +53,12 @@ public class OrderDao {
     }
 
     public void abortOrder(String orderId) {
-        String sql = "update `order` set state = 3 where id = '" + orderId + "'";
+        String sql = "update `order` set state = '取消订单' where id = '" + orderId + "'";
         jdbcTemplate.update(sql);
     }
 
     public void orderSure(String orderId) {
-        String sql = "update `order` set state = 2,paytime = '" + DateUtil.cruTimeStr() + "' where id = '" + orderId + "'";
+        String sql = "update `order` set state = '交易成功',paytime = '" + DateUtil.cruTimeStr() + "' where id = '" + orderId + "'";
         jdbcTemplate.update(sql);
     }
 }

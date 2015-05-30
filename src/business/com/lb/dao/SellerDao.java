@@ -37,28 +37,17 @@ public class SellerDao {
     }
 
     public int getSellerCount() {
-        String sql = "select count(1) from seller";
+        String sql = "select count(*) from seller";
         return jdbcTemplate.queryForInt(sql);
     }
 
     public List<Map<String, Object>> getSellerByPage(int pageIndex, int pageSize) {
-        String sql = "SELECT " +
-                " s.id, " +
-                " s.regip, " +
-                " s.loginip, " +
-                " s.regtime, " +
-                " s.logintime, " +
-                " s.account, " +
-                " s.checked, " +
-                " s.jubao, " +
-                " s.checkedtime " +
-                "FROM " +
-                " seller AS s limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+        String sql = "SELECT *  FROM  seller limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 
     public void checkSeller(String sellerId) {
-        String sql = "update seller set checked = 1,checkedtime = '" + DateUtil.cruTimeStr() + "' where id = " + sellerId;
+        String sql = "update seller set checked ='是', checkedtime = '" + DateUtil.cruTimeStr() + "' where id = " + sellerId;
         jdbcTemplate.update(sql);
     }
 
@@ -84,7 +73,7 @@ public class SellerDao {
     }
 
     public void setAuth(int sellerId) {
-        String sql = " update seller set authed = true where id = " + sellerId;
+        String sql = " update seller set authed = '是' where id = " + sellerId;
         jdbcTemplate.update(sql);
     }
 
@@ -109,5 +98,15 @@ public class SellerDao {
     public void changePwd(String sellerId, String newPassword) {
         String sql = "update seller set password = ? where id = ?";
         jdbcTemplate.update(sql, new Object[]{newPassword, sellerId});
+    }
+
+    public void forbiddenSeller(String sellerId) {
+        String sql = "update seller set forbidden = '是' where id = '" + sellerId + "'";
+        jdbcTemplate.update(sql);
+    }
+
+    public void reUseSeller(String sellerId) {
+        String sql = "update seller set forbidden = '否' where id = '" + sellerId + "'";
+        jdbcTemplate.update(sql);
     }
 }

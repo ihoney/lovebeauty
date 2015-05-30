@@ -40,9 +40,31 @@
             dataType: "json",
             success: function (data) {
                 if (data.reqResult) {
-                    alert("服务器出现故障！");
-                } else {
                     $(node).parent("td").siblings(".forbidden_cls").text("是");
+                    $(node).attr("onclick", "customer_reUse(this)").text("启用");
+                } else {
+                    alert("服务器出现故障！");
+                }
+            }
+        });
+    }
+
+    function customer_reUse(node) {
+        if (!window.confirm("确认启用！")) {
+            return;
+        }
+        var customerId = $(node).attr("customerId");
+        var url = getRootPath() + "customer/reUseCustomer.do?customerId=" + customerId;
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (data.reqResult) {
+                    $(node).parent("td").siblings(".forbidden_cls").text("否");
+                    $(node).attr("onclick", "customer_forbidden(this)").text("禁用");
+                } else {
+                    alert("服务器出现故障！");
                 }
             }
         });
@@ -105,6 +127,7 @@
         var tabTag = $(".frame_table");
         var customers = data.customers;
         var trTag;
+        var forbiddenTmp;
         for (var i = 0, j = customers.length; i < j; i++) {
             trTag = ' <tr class="tr_header">'
                     + '<td><input class="select_inp2" type="checkbox" customerId="' + customers[i].id + '"/></td>'
@@ -114,19 +137,16 @@
                     + '<td>' + customers[i].regtime + '</td>'
                     + '<td>' + customers[i].loginip + '</td>'
                     + '<td>' + customers[i].logintime + '</td>'
-                    + '<td>' + customers[i].city + '</td>';
-            if (customers[i].forbidden == 'true') {
-                trTag += '<td>是</td>';
+                    + '<td>' + customers[i].city + '</td>'
+                    + '<td class="forbidden_cls">' + customers[i].forbidden + '</td>'
+                    + '<td>' + customers[i].jubao + '</td>'
+                    + '<td>';
+            if (customers[i].forbidden == '否') {
+                forbiddenTmp = '<a href="javascript:void(0);" customerId="' + customers[i].id + '" onclick="customer_forbidden(this);">禁用</a>';
             } else {
-                trTag += '<td>否</td>';
+                forbiddenTmp = '<a href="javascript:void(0);" customerId="' + customers[i].id + '" onclick="customer_reUse(this);">启用</a>';
             }
-            trTag += '<td>' + customers[i].jubao + '</td>'
-                    + '<td>'
-                    + ' <a href="javascript:void(0);">预览</a>'
-                    + '  <a href="javascript:void(0);" customerId="' + customers[i].id + '" onclick="customer_forbidden(this);">编辑</a>'
-                    + '  <a href="javascript:void(0);" customerId="' + customers[i].id + '" onclick="customer_delete(this);">删除</a>'
-                    + ' </td>          '
-                    + '</tr>';
+            trTag += forbiddenTmp + '<a href="javascript:void(0);" customerId="' + customers[i].id + '" onclick="customer_delete(this);">删除</a></td></tr>';
             tabTag.append($(trTag));
         }
     }
@@ -162,13 +182,15 @@
                 <td>${customer.loginip}</td>
                 <td>${customer.logintime}</td>
                 <td>${customer.city}</td>
-                <td class="forbidden_cls">
-                    <c:if test="${customer.forbidden == 'true'}">是</c:if>
-                    <c:if test="${customer.forbidden == 'false'}">否</c:if>
-                </td>
+                <td class="forbidden_cls">${customer.forbidden}</td>
                 <td>${customer.jubao}</td>
                 <td>
-                    <a href="javascript:void(0);" customerId="${customer.id}" onclick="customer_forbidden(this);">禁用</a>
+                    <c:if test="${customer.forbidden == '否'}">
+                        <a href="javascript:void(0);" customerId="${customer.id}" onclick="customer_forbidden(this);">禁用</a>
+                    </c:if>
+                    <c:if test="${customer.forbidden == '是'}">
+                        <a href="javascript:void(0);" customerId="${customer.id}" onclick="customer_reUse(this);">启用</a>
+                    </c:if>
                     <a href="javascript:void(0);" customerId="${customer.id}" onclick="customer_delete(this);">删除</a>
                 </td>
             </tr>
@@ -187,6 +209,6 @@
             <button class="footer_text_two" onclick="lastPage();">尾页</button>
 
             转到第<input id="go_page" type="text" size="8"/>页
-            <button class="footer_text_two" onclick="btnGo();">&nbsp;</button>
+            <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>
 </div>

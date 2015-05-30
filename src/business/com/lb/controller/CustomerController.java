@@ -185,6 +185,26 @@ public class CustomerController {
     }
 
     /**
+     * 启用客户
+     *
+     * @param request
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "reUseCustomer")
+    @ResponseBody
+    public JSONObject reUseCustomer(HttpServletRequest request, String customerId) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            customerService.reUseCustomer(customerId);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+        }
+        return jsonObject;
+    }
+
+    /**
      * 举报客户
      *
      * @param request

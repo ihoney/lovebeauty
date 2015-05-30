@@ -66,6 +66,48 @@
         });
     }
 
+    function seller_forbidden(node) {
+        if (!window.confirm("确认禁用！")) {
+            return;
+        }
+        var sellerId = $(node).attr("sellerId");
+        var url = getRootPath() + "seller/forbiddenSeller.do?sellerId=" + sellerId;
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (data.reqResult) {
+                    $(node).parent("td").siblings(".forbidden_cls").text("是");
+                    $(node).attr("onclick", "seller_reUse(this)").text("启用");
+                } else {
+                    alert("服务器出现故障！");
+                }
+            }
+        });
+    }
+
+    function seller_reUse(node) {
+        if (!window.confirm("确认启用！")) {
+            return;
+        }
+        var sellerId = $(node).attr("sellerId");
+        var url = getRootPath() + "seller/reUseSeller.do?sellerId=" + sellerId;
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (data.reqResult) {
+                    $(node).parent("td").siblings(".forbidden_cls").text("否");
+                    $(node).attr("onclick", "seller_forbidden(this)").text("禁用");
+                } else {
+                    alert("服务器出现故障！");
+                }
+            }
+        });
+    }
+
     function seller_delete(node) {
         var sellerId = $(node).attr("sellerId");
         var url = getRootPath() + "seller/deleteSeller.do?sellerId=" + sellerId;
@@ -75,7 +117,7 @@
     //第一页
     function firstPage() {
         if ($("#currentPage").text() != "1") {
-            var url = "queryCustomerByPage.do";
+            var url = "querySellerByPage.do";
             pageing(1, url, page_callback);
         }
     }
@@ -124,6 +166,7 @@
         var sellers = data.sellers;
         var trTag;
         var checkTmp;
+        var forbiddenTmp;
         for (var i = 0, j = sellers.length; i < j; i++) {
             trTag = ' <tr class="tr_header">'
                     + '<td><input class="select_inp2" type="checkbox" sellerId="' + sellers[i].id + '"/></td>'
@@ -132,19 +175,21 @@
                     + '<td>' + sellers[i].regip + '</td>'
                     + '<td>' + sellers[i].regtime + '</td>'
                     + '<td>' + sellers[i].loginip + '</td>'
-                    + '<td>' + sellers[i].logintime + '</td>';
-            if (sellers[i].checked == 0) {
-                checkTmp = "<td>否</td>";
-            } else {
-                checkTmp = "<td>是</td>";
-            }
-            trTag += checkTmp;
-            trTag += '<td>' + sellers[i].checkedtime + '</td>'
+                    + '<td>' + sellers[i].logintime + '</td>'
+                    + '<td>' + sellers[i].checked + '</td>'
+                    + '<td>' + sellers[i].checkedtime + '</td>'
+                    + '<td class="forbidden_cls">' + sellers[i].forbidden + '</td>'
                     + '<td>' + sellers[i].jubao + '</td>'
                     + '<td>';
-            if (sellers[i].checked == 0) {
+            if (sellers[i].checked == '否') {
                 trTag += '  <a href="javascript:void(0);" sellerId="' + sellers[i].id + '" onclick="seller_check(this);">审核</a>';
             }
+            if (sellers[i].forbidden == '否') {
+                forbiddenTmp = '<a href="javascript:void(0);" sellerId="' + sellers[i].id + '" onclick="seller_forbidden(this);">禁用</a>';
+            } else {
+                forbiddenTmp = '<a href="javascript:void(0);" sellerId="' + sellers[i].id + '" onclick="seller_reUse(this);">启用</a>';
+            }
+            trTag += forbiddenTmp;
             trTag += '  <a href="javascript:void(0);" sellerId="' + sellers[i].id + '" onclick="seller_delete(this);">删除</a>'
                     + ' </td>'
                     + '</tr>';
@@ -169,6 +214,7 @@
             <td>登录时间</td>
             <td>是否审核</td>
             <td>审核时间</td>
+            <td>禁用</td>
             <td>举报次数</td>
             <td>操作</td>
         </tr>
@@ -181,15 +227,19 @@
                 <td>${seller.regTime}</td>
                 <td>${seller.loginIp}</td>
                 <td>${seller.loginTime}</td>
-                <td class="checked">
-                    <c:if test="${seller.checked == 0}">否</c:if>
-                    <c:if test="${seller.checked == 1}">是</c:if>
-                </td>
+                <td class="checked">${seller.checked}</td>
                 <td class="checkedTime">${seller.checkedTime}</td>
+                <td class="forbidden_cls">${seller.forbidden}</td>
                 <td>${seller.jubao}</td>
                 <td>
-                    <c:if test="${seller.checked == 0}">
+                    <c:if test="${seller.checked == '否'}">
                         <a href="javascript:void(0);" sellerId="${seller.id}" onclick="seller_check(this);">审核</a>
+                    </c:if>
+                    <c:if test="${seller.forbidden == '否'}">
+                        <a href="javascript:void(0);" sellerId="${seller.id}" onclick="seller_forbidden(this);">禁用</a>
+                    </c:if>
+                    <c:if test="${seller.forbidden == '是'}">
+                        <a href="javascript:void(0);" sellerId="${seller.id}" onclick="seller_reUse(this);">启用</a>
                     </c:if>
                     <a href="javascript:void(0);" sellerId="${seller.id}" onclick="seller_delete(this);">删除</a>
                 </td>
@@ -209,7 +259,7 @@
             <button class="footer_text_two" onclick="lastPage();">尾页</button>
 
             转到第<input id="go_page" type="text" size="8"/>页
-            <button class="footer_text_two" onclick="btnGo();">&nbsp;</button>
+            <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>
 </div>
 <div id="checkSeller_div">

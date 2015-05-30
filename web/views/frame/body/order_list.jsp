@@ -114,18 +114,10 @@
                     + '<td><a href="${rootPath}/demo/getDemoDetail.do?demoId=' + orders[i].demoId + '">' + orders[i].NAME + '</a></td>'
                     + '<td>' + orders[i].NAME + '</td>'
                     + '<td>' + orders[i].ordertime + '</td>'
-                    + '<td>' + orders[i].paytime + '</td>';
-
-            if (orders[i].state == 1) {
-                orderState = "<td>未付款</td>";
-            } else if (orders[i].state == 2) {
-                orderState = "<td>交易成功</td>";
-            } else if (orders[i].state == 3) {
-                orderState = "<td>取消订单</td>";
-            }
-            trTag += orderState;
-            if (orders[i].state == 2) {
-                trTag = trTag + '<td>' + ' <a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="order_sure(this);">确认</a>'
+                    + '<td>' + orders[i].paytime + '</td>'
+                    + '<td>' + orders[i].state + '</td>';
+            if (orders[i].state == '未付款') {
+                trTag = trTag + '<td><a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="order_sure(this);">确认</a>'
                         + '  <a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="order_abort(this);">取消订单</a>' + ' </td> ';
             }
             trTag += '</tr>';
@@ -161,13 +153,9 @@
                 </td>
                 <td>${order.ordertime}</td>
                 <td>${order.paytime}</td>
+                <td>${order.state}</td>
                 <td>
-                    <c:if test="${order.state == 1}">未付款</c:if>
-                    <c:if test="${order.state == 2}">交易成功</c:if>
-                    <c:if test="${order.state == 3}">取消订单</c:if>
-                </td>
-                <td>
-                    <c:if test="${order.state == 1}">
+                    <c:if test="${order.state == '未付款'}">
                         <a href="javascript:void(0);" orderId="${order.id}" onclick="order_sure(this);">确认</a>
                         <a href="javascript:void(0);" orderId="${order.id}" onclick="order_abort(this);">取消订单</a>
                     </c:if>
@@ -187,6 +175,6 @@
             <button class="footer_text_two" onclick="nextPage();">下一页</button>
             <button class="footer_text_two" onclick="lastPage();">尾页</button>
             转到第<input id="go_page" type="text" size="8"/>页
-            <button class="footer_text_two" onclick="btnGo();">&nbsp;</button>
+            <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>
 </div>

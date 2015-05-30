@@ -14,7 +14,7 @@
             业务中心
         </div>
         <div class="business_body div_show">
-            <c:if test="${checked == 1}">
+            <c:if test="${checked == '是'}">
                 <ul>
                     <li><a href="${rootPath}/order/queryAllOrders.do" target="rightFrame" class="STYLE3">订单列表</a></li>
                     <li><a href="${rootPath}/demo/queryAllDemos.do?showType=1" target="rightFrame" class="STYLE3">作品列表</a></li>
@@ -23,9 +23,9 @@
                     <li><a href="${rootPath}/privateOrder/queryPrivateOrderPool.do" target="rightFrame" class="STYLE3">私人订制池</a></li>
                 </ul>
             </c:if>
-            <c:if test="${checked == 0}">
+            <c:if test="${checked == '否'}">
                 <span class="STYLE7">还未通过审核</span>
-                <c:if test="${authed == 0}">
+                <c:if test="${authed == '否'}">
                     <span class="STYLE7">请先进行认证！</span>
                 </c:if>
             </c:if>
