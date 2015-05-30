@@ -20,7 +20,7 @@
                 <li><a href="${rootPath}/demo/queryAllDemosAdmin.do" target="rightFrame" class="STYLE3">所有订单</a></li>
                 <li><a href="${rootPath}/privateOrder/queryPrivateOrderAdmin.do" target="rightFrame" class="STYLE3">私人订制业务</a></li>
                 <li><a href="${rootPath}/admin/queryAllCities.do" target="rightFrame" class="STYLE3">开通城市管理</a></li>
-                <li><a href="${rootPath}/admin/queryAllAds.do" target="rightFrame" class="STYLE3">广告管理</a></li>
+                <li><a href="${rootPath}/ad/queryAllAds.do" target="rightFrame" class="STYLE3">广告管理</a></li>
             </ul>
         </div>
     </div>

@@ -81,7 +81,7 @@
     //删除作品
     function demo_delete(node) {
         var demoId = $(node).attr("demoId");
-        var url = getRootPath() + "demo/deleteDemo.do?demoId=" + demoId + "&fileName" + $(node).attr("fileName");
+        var url = getRootPath() + "demo/deleteDemo.do?demoId=" + demoId + "&fileName=" + $(node).attr("fileName");
         deleteRecord(node, url);
     }
 

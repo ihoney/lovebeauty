@@ -23,11 +23,7 @@
         }
 
         function validateMethod() {
-            var fileName = $("#file").val();
-            if (fileName == "") {
-                alert("文件不能为空！");
-                return false;
-            }
+
         }
 
         function fileChange(node) {
@@ -58,14 +54,15 @@
     </style>
 </head>
 <body>
-<form id="form_custom" action="${rootPath}/ad/addAd.do" enctype="multipart/form-data" method="post">
-    <table class="ad_table" cellspadding=0 cellspacing=0>
+<form id="form_custom" action="${rootPath}/ad/updateAd.do" enctype="multipart/form-data" method="post">
+    <input type="hidden" name="id" value="${ad.id}"/>
+    <table id="add_tab" cellspacing=0 cellpadding=5>
         <tr>
             <td class="ad_td_att_name">广告类型：</td>
             <td class="ad_td_attr_value">
                 <select name="type" style="border: none; width: 100px;">
-                    <option>内部链接</option>
-                    <option>外部链接</option>
+                    <option <c:if test="${ad.type =='内部链接'}">selected="true"</c:if>>内部链接</option>
+                    <option <c:if test="${ad.type =='外部链接'}">selected="true"</c:if>>外部链接</option>
                 </select>
             </td>
 
@@ -73,25 +70,26 @@
         <tr>
             <td class="ad_td_att_name">链接地址：</td>
             <td class="ad_td_attr_value">
-                <input name="url" type="text"/>
+                <input name="url" value="${ad.url}" type="text"/>
             </td>
         </tr>
         <tr>
             <td class="td_att_name">广告图片:</td>
             <td>
+                <input type="hidden" name="picName" value="${ad.picName}"/>
                 <input type="file" name="file" id="file" onchange="fileChange(this);"/>
             </td>
         </tr>
         <tr>
             <td class="ad_td_att_name">备注：</td>
             <td class="ad_td_attr_value">
-                <textarea style="border: none;" style="border: none;" name="backup" rows="5" cols="35"></textarea>
+                <textarea style="border: none;" style="border: none;" name="backup" rows="5" cols="35">${ad.backup}</textarea>
             </td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center">
-                <input type="button" class="input_btn" onclick="btn_submit();" value="添加"/> &nbsp;&nbsp;&nbsp;
-                <input type="button" class="input_btn" onclick="cancel();" value="取消"/>
+                <input type="button" class="input_btn" onclick="btn_submit();" value="保存"/> &nbsp;&nbsp;&nbsp;
+                <input type="button" class="input_btn" onclick="cancel()" value="取消"/>
             </td>
         </tr>
     </table>

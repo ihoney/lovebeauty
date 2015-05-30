@@ -24,39 +24,49 @@
     });
 
     function ad_add() {
-        location.href = getRootPath() + "admin/addAdInit.do";
+        location.href = getRootPath() + "ad/addAdInit.do";
     }
 
     function ad_reuse(node) {
         var adId = $(node).attr("adId");
-        var url = getRootPath() + "admin/changeAdState.do";
+        var url = getRootPath() + "ad/changeAdState.do";
         $.ajax({
             url: url,
             type: "POST",
             data: {"adId": adId, "state": "启用"},
             success: function () {
-                $(node).parent("td").prev("td").text("使用中");
-                $(node).parent("td").prev("td").prev("td").prev("td").text(curDateTime);
-                $(node).parent("td").prev("td").prev("td").text("");
-                $(node).attr("onclick", "ad_stop(this);").text("停用");
+                $(node).parent("td").prev("td").prev("td").text("使用中");
+                $(node).attr("onclick", "ad_stop(this)").text("停用");
             }
         })
     }
 
     function ad_stop(node) {
         var adId = $(node).attr("adId");
-        var url = getRootPath() + "admin/changeAdState.do";
+        var url = getRootPath() + "ad/changeAdState.do";
         $.ajax({
             url: url,
             type: "POST",
             data: {"adId": adId, "state": "停用"},
             success: function () {
-                $(node).parent("td").prev("td").text("停用");
-                $(node).parent("td").prev("td").prev("td").text(curDateTime);
-                $(node).parent("td").prev("td").prev("td").prev("td").text("");
-                $(node).attr("onclick", "ad_reuse(this);").text("启用");
+                $(node).parent("td").prev("td").prev("td").text("停用");
+                $(node).attr("onclick", "ad_reuse(this)").text("启用");
             }
         })
+    }
+
+
+    //编辑作品
+    function ad_edit(node) {
+        var adId = $(node).attr("adId");
+        location.href = getRootPath() + "ad/editAd.do?adId=" + adId;
+    }
+
+    //删除作品
+    function ad_delete(node) {
+        var adId = $(node).attr("adId");
+        var url = getRootPath() + "ad/deleteAd.do?adId=" + adId + "&fileName=" + $(node).attr("fileName");
+        deleteRecord(node, url);
     }
 
     //第一页
@@ -110,26 +120,30 @@
         var tabTag = $(".frame_table");
         var ads = data.ads;
         var trTag;
+        var stateTmp;
         for (var i = 0, j = ads.length; i < j; i++) {
             trTag = ' <tr class="tr_header">'
                     + '<td><input class="select_inp2" type="checkbox" adId="' + ads[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + ads[i].type + '</td>'
                     + '<td>' + ads[i].url + '</td>'
-                    + '<td>' + ads[i].state + '</td>';
+                    + '<td>' + ads[i].state + '</td><td>';
             if (ads[i].state == '停用') {
-                trTag += ' <td> <a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_reuse(this);">启用</a></td>';
+                stateTmp = '<a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_reuse(this);">启用</a>';
             } else {
-                trTag += '<td>  <a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_stop(this);">停用</a></td>'
+                stateTmp = '<a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_stop(this);">停用</a>';
             }
-            trTag += '</tr>';
+            trTag += stateTmp;
+            trTag += '<a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_edit(this);">编辑</a>';
+            trTag += '<a href="javascript:void(0);" adId="' + ads[i].id + '" fileName="' + ads[i].picName + '" onclick="ad_delete(this);">删除</a>';
+            trTag += '</td></tr>';
             $(trTag).appendTo(tabTag);
         }
     }
 </script>
 
 <div class="tab_header">
-    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[开通城市列表]
+    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[广告管理]
       <span class="btn_pos">
         <span class="btn_bg_img btn_add_img" onclick="ad_add();">添加</span>
     </span>
@@ -157,9 +171,11 @@
                     <c:if test="${ad.state == '停用'}">
                         <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_reuse(this);">启用</a>
                     </c:if>
-                    <c:if test="${ad.state == '使用中'}">
+                    <c:if test="${ad.state == '启用'}">
                         <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_stop(this);">停用</a>
                     </c:if>
+                    <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_edit(this);">编辑</a>
+                    <a href="javascript:void(0);" adId="${ad.id}" fileName="${ad.picName}" onclick="ad_delete(this);">删除</a>
                 </td>
             </tr>
         </c:forEach>

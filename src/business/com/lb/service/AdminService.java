@@ -1,5 +1,6 @@
 package com.lb.service;
 
+import com.lb.bean.Ad;
 import com.lb.dao.AdminDao;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +52,19 @@ public class AdminService {
         adminDao.changeAdState(adId, state);
     }
 
-    public void addAd(String type, String adUrl, String backup) {
-        adminDao.addAd(type, adUrl, backup);
+    public void addAd(Ad ad) {
+        adminDao.addAd(ad);
+    }
+
+    public List<Map<String, Object>> getAdById(String adId) {
+        return adminDao.getAdById(adId);
+    }
+
+    public void updateAd(Ad ad) {
+        adminDao.updateAd(ad);
+    }
+
+    public void deleteAd(String adId) {
+        adminDao.deleteAd(adId);
     }
 }
