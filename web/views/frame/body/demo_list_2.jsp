@@ -142,6 +142,7 @@
                     + '</div>';
             tabTag.append($(divTag));
         }
+        $(".img_class_a").colorbox({rel: 'img_class_a', photo: true});
     }
 </script>
 

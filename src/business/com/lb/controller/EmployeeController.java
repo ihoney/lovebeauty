@@ -1,14 +1,13 @@
 package com.lb.controller;
 
-import com.lb.bean.Demo;
-import com.lb.service.DemoService;
+import com.lb.bean.Employee;
+import com.lb.service.EmployeeService;
 import com.lb.utils.Constant;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -17,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,48 +32,49 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping(value = "demo")
-public class DemoController {
+@RequestMapping(value = "employee")
+public class EmployeeController {
 
     @Resource
-    private DemoService demoService;
+    private EmployeeService employeeService;
 
     @RequestMapping("addInit")
     public ModelAndView addInit(HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("business/demo_add");
+        modelAndView.setViewName("business/employee_add");
         return modelAndView;
     }
 
     /**
-     * 添加作品
+     * 添加员工
      *
      * @param request
      * @param session
      * @return
      * @throws net.sf.json.JSONException
      */
-    @RequestMapping(value = "addDemo", method = RequestMethod.POST)
+    @RequestMapping(value = "addEmployee", method = RequestMethod.POST)
     @ResponseBody
-    public String addDemo(HttpServletRequest request, HttpSession session, Demo demo, @RequestParam MultipartFile file) throws JSONException {
+    public String addEmployee(HttpServletRequest request, HttpSession session, Employee employee) throws JSONException {
         Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        MultipartFile file = multipartRequest.getFile("file");
         int sellerId = Integer.parseInt(seller.get("id").toString());
         JSONObject balkJson = new JSONObject();
-        demo.setSellerId(sellerId);
+        employee.setSellerId(sellerId);
         String fileEName = "";
-        String fileName = "";
+        String fileName;
         if (file != null) {
             fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."));
-            demo.setPicName(fileName);
-            fileEName = "pic_" + sellerId + "_" + System.currentTimeMillis() + fileSuffix;
-            demo.setFileEName(fileEName);
+            fileEName = "pic_" + sellerId + "_empHeadImg_" + System.currentTimeMillis() + fileSuffix;
+            employee.setHeadImg(fileEName);
         } else {
-            demo.setPicName("");
+            employee.setHeadImg("");
         }
 
         try {
-            demoService.addDemo(demo);
+            employeeService.addEmployee(employee);
             if (!file.isEmpty()) {
                 InputStream is = file.getInputStream();
                 String filePath = request.getRealPath("/fileUpload");
@@ -94,47 +95,43 @@ public class DemoController {
     }
 
     /**
-     * 编辑作品
+     * 编辑员工
      *
-     * @param request
-     * @param demoId
+     * @param employeeId
      * @return
      */
-    @RequestMapping(value = "editDemo")
-    public ModelAndView editDemo(HttpServletRequest request, String demoId) {
+    @RequestMapping(value = "editEmployee")
+    public ModelAndView editEmployee(String employeeId) {
         ModelAndView modelAndView = new ModelAndView();
-        Map<String, Object> demo = demoService.getDemoById(demoId).get(0);
-        modelAndView.addObject("demo", demo);
-        modelAndView.setViewName("business/demo_edit");
+        Map<String, Object> employee = employeeService.getEmployeeById(employeeId).get(0);
+        modelAndView.addObject("employee", employee);
+        modelAndView.setViewName("business/employee_edit");
         return modelAndView;
     }
 
     /**
-     * 更新作品
+     * 更新员工
      *
      * @param request
-     * @param session
      * @return
      * @throws net.sf.json.JSONException
      */
-    @RequestMapping(value = "updateDemo", method = RequestMethod.POST)
+    @RequestMapping(value = "updateEmployee", method = RequestMethod.POST)
     @ResponseBody
-    public String updateDemo(HttpServletRequest request, HttpSession session, Demo demo) throws JSONException {
+    public String updateEmployee(HttpServletRequest request, Employee employee) throws JSONException {
         JSONObject balkJson = new JSONObject();
         String fileEName = "";
-        String fileName = "";
+        String fileName;
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("file");
         if (file != null) {
             fileName = file.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."));
-            demo.setPicName(fileName);
-            fileEName = "pic_" + demo.getSellerId() + "_" + System.currentTimeMillis() + fileSuffix;
-            demo.setFileEName(fileEName);
+            fileEName = "pic_" + employee.getSellerId() + "_empHeadImg_" + System.currentTimeMillis() + fileSuffix;
+            employee.setHeadImg(fileEName);
         }
-
         try {
-            demoService.updateDemo(demo);
+            employeeService.updateEmployee(employee);
             if (file != null) {
                 InputStream is = file.getInputStream();
                 String filePath = request.getRealPath("/fileUpload");
@@ -155,18 +152,23 @@ public class DemoController {
     }
 
     /**
-     * 删除作品
+     * 删除员工
      *
-     * @param request
      * @return
      * @throws net.sf.json.JSONException
      */
-    @RequestMapping(value = "deleteDemo")
+    @RequestMapping(value = "deleteEmployee")
     @ResponseBody
-    public JSONObject deleteDemo(HttpServletRequest request, String demoId) throws JSONException {
+    public JSONObject deleteEmployee(HttpServletRequest request, String employeeId, String headImg) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         try {
-            demoService.deleteDemo(demoId);
+            employeeService.deleteEmployee(employeeId);
+            if (headImg != null && !"".equals(headImg)) {
+                String filePath = request.getRealPath("/fileUpload");
+                String fileName = filePath + "/" + headImg;
+                File file = new File(fileName);
+                file.delete();
+            }
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
@@ -174,18 +176,19 @@ public class DemoController {
         return jsonObject;
     }
 
-    @RequestMapping("queryAllDemos")
-    public ModelAndView queryAllDemos(HttpServletRequest request, HttpSession session, String showType) {
+    @RequestMapping("queryAllEmployees")
+    public ModelAndView queryAllEmployees(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
-        int demoCount = demoService.getDemoCount();
+        int employeeCount = employeeService.getEmployeeCount();
         Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
-        List<Map<String, Object>> demos = demoService.getDemoByPage(seller.get("id").toString(), 1, Constant.PAGENUM);
-        modelAndView.addObject("demos", demos);
-        int totalPage = demoCount / Constant.PAGENUM + (demoCount % Constant.PAGENUM == 0 ? 0 : 1);
-        modelAndView.addObject("demoCount", demoCount);
+        List<Map<String, Object>> employees = employeeService.getEmployeeByPage(seller.get("id").toString(), 1, Constant.PAGENUM);
+        modelAndView.addObject("employees", employees);
+        int totalPage = employeeCount / Constant.PAGENUM + (employeeCount % Constant.PAGENUM == 0 ? 0 : 1);
+        modelAndView.addObject("employeeCount", employeeCount);
         modelAndView.addObject("totalPage", totalPage);
         modelAndView.addObject("curPage", 1);
-        modelAndView.setViewName("frame/body/demo_list_" + showType);
+        modelAndView.setViewName("frame/body/employee_list");
+
         return modelAndView;
     }
 
@@ -195,40 +198,38 @@ public class DemoController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "queryDemoByPage")
+    @RequestMapping(value = "queryEmployeeByPage")
     @ResponseBody
-    public Map<String, Object> queryDemoByPage(HttpServletRequest request, HttpSession session) {
+    public Map<String, Object> queryEmployeeByPage(HttpServletRequest request, HttpSession session) {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
         int pageIndex = Integer.parseInt(request.getParameter("curPage"));
-        List<Map<String, Object>> demos = demoService.getDemoByPage(seller.get("id").toString(), pageIndex, Constant.PAGENUM);
-        jsonObject.put("demos", demos);
+        List<Map<String, Object>> employees = employeeService.getEmployeeByPage(seller.get("id").toString(), pageIndex, Constant.PAGENUM);
+        jsonObject.put("employees", employees);
         return jsonObject;
     }
 
-    @RequestMapping("getDemoDetail")
-    public ModelAndView getDemoDetail(HttpSession session, String demoId) {
+    @RequestMapping("getEmployeeDetail")
+    public ModelAndView getEmployeeDetail(String employeeId) {
         ModelAndView modelAndView = new ModelAndView();
-        Map<String, Object> demo = demoService.getSingleDemoById(demoId);
-        List<Map<String, Object>> comments = demoService.getDemoComment(demoId);
-        modelAndView.addObject("demo", demo);
-        modelAndView.addObject("comments", comments);
-        modelAndView.setViewName("business/demoDetail");
+        Map<String, Object> employee = employeeService.getSingleEmployeeById(employeeId);
+        modelAndView.addObject("employee", employee);
+        modelAndView.setViewName("business/employeeDetail");
         return modelAndView;
     }
 
 
-    @RequestMapping("queryAllDemosAdmin")
-    public ModelAndView queryAllDemosAdmin(HttpServletRequest request) {
+    @RequestMapping("queryAllEmployeesAdmin")
+    public ModelAndView queryAllEmployeesAdmin(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
-        int demoCount = demoService.getDemoCount();
-        List<Map<String, Object>> demos = demoService.getDemoByPageAdmin(1, Constant.PAGENUM);
-        modelAndView.addObject("demos", demos);
-        int totalPage = demoCount / Constant.PAGENUM + (demoCount % Constant.PAGENUM == 0 ? 0 : 1);
-        modelAndView.addObject("demoCount", demoCount);
+        int employeeCount = employeeService.getEmployeeCount();
+        List<Map<String, Object>> employees = employeeService.getEmployeeByPageAdmin(1, Constant.PAGENUM);
+        modelAndView.addObject("employees", employees);
+        int totalPage = employeeCount / Constant.PAGENUM + (employeeCount % Constant.PAGENUM == 0 ? 0 : 1);
+        modelAndView.addObject("employeeCount", employeeCount);
         modelAndView.addObject("totalPage", totalPage);
         modelAndView.addObject("curPage", 1);
-        modelAndView.setViewName("frame/body/admin_demo_list");
+        modelAndView.setViewName("frame/body/admin_employee_list");
         return modelAndView;
     }
 
@@ -238,13 +239,13 @@ public class DemoController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "queryDemoByPageAdmin")
+    @RequestMapping(value = "queryEmployeeByPageAdmin")
     @ResponseBody
-    public JSONObject queryDemoByPageAdmin(HttpServletRequest request, HttpSession session) {
+    public JSONObject queryEmployeeByPageAdmin(HttpServletRequest request) {
         JSONObject jsonObject = new JSONObject();
         int pageIndex = Integer.parseInt(request.getParameter("curPage"));
-        List<Map<String, Object>> demos = demoService.getDemoByPageAdmin(pageIndex, Constant.PAGENUM);
-        jsonObject.put("demos", demos);
+        List<Map<String, Object>> employees = employeeService.getEmployeeByPageAdmin(pageIndex, Constant.PAGENUM);
+        jsonObject.put("employees", employees);
         return jsonObject;
     }
 }

@@ -17,19 +17,16 @@
 <script type="text/javascript">
     $(function () {
         $(".btn_add_img").click(function () {
-            location.href = getRootPath() + "demo/addInit.do";
+            location.href = getRootPath() + "employee/addInit.do";
         });
 
-        $(".btn_list_mode_img").click(function () {
-            location.href = getRootPath() + "demo/queryAllDemos.do?showType=2";
-        });
         $(".img_class_a").colorbox({rel: 'img_class_a', photo: true});
     });
 
     //第一页
     function firstPage() {
         if ($("#currentPage").text() != "1") {
-            var url = "queryDemoByPage.do";
+            var url = "queryEmployeeByPage.do";
             pageing(1, url, page_callback);
         }
     }
@@ -38,7 +35,7 @@
     function prePage() {
         if ($("#currentPage").text() != "1") {
             var curPage = parseInt($("#currentPage").text()) - 1;
-            var url = "queryDemoByPage.do";
+            var url = "queryEmployeeByPage.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -46,7 +43,7 @@
     function nextPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var curPage = parseInt($("#currentPage").text()) + 1;
-            var url = "queryDemoByPage.do";
+            var url = "queryEmployeeByPage.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -55,7 +52,7 @@
     function lastPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var lastPage = $("#totalPage").text();
-            var url = "queryDemoByPage.do";
+            var url = "queryEmployeeByPage.do";
             pageing(lastPage, url, page_callback);
         }
     }
@@ -66,52 +63,47 @@
         var totalPage = $("#totalPage").text();
         if (go_page != undefined && $.trim(go_page) != "" && totalPage != "") {
             if ((parseInt(go_page) <= parseInt(totalPage)) && parseInt(go_page) > 0) {
-                var url = "queryDemoByPage.do";
+                var url = "queryEmployeeByPage.do";
                 pageing(go_page, url, page_callback);
             }
         }
     }
 
-    //编辑作品
-    function demo_edit(node) {
-        var demoId = $(node).attr("demoId");
-        location.href = getRootPath() + "demo/editDemo.do?demoId=" + demoId;
+    //编辑员工
+    function employee_edit(node) {
+        var employeeId = $(node).attr("employeeId");
+        location.href = getRootPath() + "employee/editEmployee.do?employeeId=" + employeeId;
     }
 
-    //删除作品
-    function demo_delete(node) {
-        var demoId = $(node).attr("demoId");
-        var url = getRootPath() + "demo/deleteDemo.do?demoId=" + demoId;
+    //删除员工
+    function employee_delete(node) {
+        var employeeId = $(node).attr("employeeId");
+        var url = getRootPath() + "employee/deleteEmployee.do?employeeId=" + employeeId + "&headImg=" + $(node).attr("headImg");
         deleteRecord(node, url);
     }
 
     function page_callback(data) {
         $(".frame_table tr:gt(0)").remove();
         var tabTag = $(".frame_table");
-        var demos = data.demos;
+        var employees = data.employees;
         var trTag;
-        for (var i = 0, j = demos.length; i < j; i++) {
-            trTag = ' <tr class="tr_header">'
-                    + '<td><input class="select_inp2" type="checkbox" demoId="' + demos[i].id + '"/></td>'
+        for (var i = 0, j = employees.length; i < j; i++) {
+            trTag = ' <tr class="tr_body">'
+                    + '<td><input class="select_inp2" type="checkbox" employeeId="' + employees[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
-                    + '<td>' + demos[i].sellerName + '</td>'
-                    + '<td>' + demos[i].NAME + '</td>';
-            if (demos[i].demoType == 0) {
-                trTag += '<td>美甲</td>';
-            } else if (demos[i].demoType == 1) {
-                trTag += '<td>美睫</td>';
-            } else if (demos[i].demoType == 2) {
-                trTag += '<td>美容</td>';
-            } else if (demos[i].demoType == 3) {
-                trTag += '<td>美足</td>';
-            } else if (demos[i].demoType == 4) {
-                trTag += '<td>化妆造型</td>';
-            }
-            trTag += '<td>' + demos[i].price + '</td>'
-                    + '<td>' + demos[i].PreferentialPrice + '</td>'
-                    + '<td>' + demos[i].booktime + '</td>'
+                    + '<td>' + employees[i].nickname + '</td>'
+                    + '<td>' + employees[i].sex + '</td>'
+                    + '<td>' + employees[i].majorScore + '</td>'
+                    + '<td>' + employees[i].comScore + '</td>'
+                    + '<td>' + employees[i].punctualScore + '</td>'
+                    + '<td>' + employees[i].avgPrice + '</td>'
+                    + '<td>' + employees[i].state + '</td>'
+                    + '<td>' + employees[i].serverScope + '</td>'
                     + '<td>'
-                    + ' <a href="${rootPath}/fileUpload/' + demos[i].fileEName + '" class="img_class_a">预览</a>'
+                    + ' <a href="${rootPath}/fileUpload/' + employees[i].headImg + '" class="img_class_a">预览</a> '
+                    + '<a href="javascript:void(0);" employeeId="' + employees[i].id + '" onclick="employee_edit(this);">编辑</a> '
+                    + '<a href="${rootPath}/employee/getEmployeeDetail.do?employeeId=' + employees[i].id + '">详情</a> '
+                    + '<a href="javascript:void(0);" employeeId="' + employees[i].id + '" headImg="' + employees[i].headImg + '" onclick="employee_delete(this);">删除</a> '
                     + ' </td>'
                     + '</tr>';
             tabTag.append($(trTag));
@@ -121,10 +113,8 @@
 </script>
 
 <div class="tab_header">
-    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[作品列表]
-
+    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[员工列表]
     <span class="btn_pos">
-        <span class="btn_bg_img_2 btn_list_mode_img">网格模式</span>
         <span class="btn_bg_img btn_add_img">添加</span>
     </span>
 
@@ -135,32 +125,32 @@
             <td><input class="select_inp" type="checkbox"/></td>
             <td>序号</td>
             <td>名称</td>
-            <td>作品类型</td>
-            <td>价格</td>
-            <td>首次优惠价格</td>
-            <td>可预约时间</td>
+            <td>性别</td>
+            <td>专业得分</td>
+            <td>沟通得分</td>
+            <td>守时得分</td>
+            <td>均价</td>
+            <td>在职状态</td>
+            <td>服务范围</td>
             <td>操作</td>
         </tr>
-        <c:forEach var="demo" items="${demos}" varStatus="vst">
+        <c:forEach var="employee" items="${employees}" varStatus="vst">
             <tr class="tr_body">
-                <td><input class="select_inp2" type="checkbox" demoId="${demo.id}"/></td>
+                <td><input class="select_inp2" type="checkbox" employeeId="${employee.id}"/></td>
                 <td>${vst.index}</td>
-                <td>${demo.NAME}</td>
+                <td>${employee.nickname}</td>
+                <td>${employee.sex}</td>
+                <td>${employee.majorScore}</td>
+                <td>${employee.comScore}</td>
+                <td>${employee.punctualScore}</td>
+                <td>${employee.avgPrice}</td>
+                <td>${employee.state}</td>
+                <td>${employee.serverScope}</td>
                 <td>
-                    <c:if test="${demo.demoType == 0}">美甲</c:if>
-                    <c:if test="${demo.demoType == 1}">美睫</c:if>
-                    <c:if test="${demo.demoType == 2}">美容</c:if>
-                    <c:if test="${demo.demoType == 3}">美足</c:if>
-                    <c:if test="${demo.demoType == 4}">化妆造型</c:if>
-                </td>
-                <td>${demo.price}</td>
-                <td>${demo.PreferentialPrice}</td>
-                <td>${demo.booktime}</td>
-                <td>
-                    <a href="${rootPath}/fileUpload/${demo.fileEName}" class="img_class_a">预览</a>
-                    <a href="javascript:void(0);" demoId="${demo.id}" onclick="demo_edit(this);">编辑</a>
-                    <a href="${rootPath}/demo/getDemoDetail.do?demoId=${demo.id}">详情</a>
-                    <a href="javascript:void(0);" demoId="${demo.id}" onclick="demo_delete(this);">删除</a>
+                    <a href="${rootPath}/fileUpload/${employee.headImg}" class="img_class_a">预览</a>
+                    <a href="javascript:void(0);" employeeId="${employee.id}" onclick="employee_edit(this);">编辑</a>
+                    <a href="${rootPath}/employee/getEmployeeDetail.do?employeeId=${employee.id}">详情</a>
+                    <a href="javascript:void(0);" employeeId="${employee.id}" headImg="${employee.headImg}" onclick="employee_delete(this);">删除</a>
                 </td>
             </tr>
         </c:forEach>
@@ -169,7 +159,7 @@
 
 <div id="tb_body_footer">
         <span class="footer_text footer_text_align_one">
-            <span>共有 ${demoCount} 条记录，当前第 <span id="currentPage">${curPage}</span>/<span id="totalPage">${totalPage}</span> 页</span>
+            <span>共有 ${employeeCount} 条记录，当前第 <span id="currentPage">${curPage}</span>/<span id="totalPage">${totalPage}</span> 页</span>
         </span>
         <span class="footer_text_align_two">
             <button class="footer_text_two" onclick="firstPage();">首页</button>

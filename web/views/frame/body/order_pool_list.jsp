@@ -12,8 +12,6 @@
 
 <script type="text/javascript">
     $(function () {
-        $(".tr_body:odd").css("background-color", "#D9EFFD");
-
         $(".tr_body").click(function () {
             if ($(this).find(".select_inp2").attr("checked") == undefined) {
                 $(this).find(".select_inp2").attr("checked", "checked");
@@ -90,7 +88,7 @@
         var orders = data.orders;
         var trTag;
         for (var i = 0, j = orders.length; i < j; i++) {
-            trTag = ' <tr>'
+            trTag = ' <tr class="tr_header">'
                     + '<td><input class="select_inp2" type="checkbox" orderId="' + orders[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + orders[i].account + '</td>'
@@ -98,7 +96,7 @@
                     + '<td>' + orders[i].ordertime + '</td>';
             trTag += "<td>" + orders[i].description + "</td>";
             trTag += '<td>' +
-                    '<a href="${rootPath}/privateOrder/privateOrderDetail.do?orderId='+orders[i].id+'" target="rightFrame">详情</a>' +
+                    '<a href="${rootPath}/privateOrder/privateOrderDetail.do?orderId=' + orders[i].id + '" target="rightFrame">详情</a>' +
                     '<a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="order_book(this);">抢单</a></td>';
             trTag += '</tr>';
             tabTag.append($(trTag));
@@ -112,13 +110,13 @@
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
         <tr class="tr_header">
-            <td class="td_class_1"><input class="select_inp" type="checkbox"/></td>
-            <td class="td_class_2">序号</td>
-            <td class="td_class_3">客户账号</td>
-            <td class="td_class_5">心理价格</td>
-            <td class="td_class_6">预定时间</td>
-            <td class="td_class_6">预定描述</td>
-            <td class="td_class_6">操作</td>
+            <td><input class="select_inp" type="checkbox"/></td>
+            <td>序号</td>
+            <td>客户账号</td>
+            <td>心理价格</td>
+            <td>预定时间</td>
+            <td>预定描述</td>
+            <td>操作</td>
         </tr>
         <c:forEach var="order" items="${orders}" varStatus="vst">
             <tr class="tr_body">

@@ -13,8 +13,6 @@
 
 <script type="text/javascript">
     $(function () {
-        $(".tr_body:odd").css("background-color", "#D9EFFD");
-
         $(".tr_body").click(function () {
             if ($(this).find(".select_inp2").attr("checked") == undefined) {
                 $(this).find(".select_inp2").attr("checked", "checked");
@@ -127,7 +125,7 @@
         var trTag;
         var checkTmp;
         for (var i = 0, j = sellers.length; i < j; i++) {
-            trTag = ' <tr>'
+            trTag = ' <tr class="tr_header">'
                     + '<td><input class="select_inp2" type="checkbox" sellerId="' + sellers[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + sellers[i].account + '</td>'
@@ -162,17 +160,17 @@
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
         <tr class="tr_header">
-            <td class="td_class_1"><input class="select_inp" type="checkbox"/></td>
-            <td class="td_class_2">序号</td>
-            <td class="td_class_3">账号</td>
-            <td class="td_class_5">注册IP</td>
-            <td class="td_class_6">注册时间</td>
-            <td class="td_class_5">登录IP</td>
-            <td class="td_class_6">登录时间</td>
-            <td class="td_class_7">是否审核</td>
-            <td class="td_class_6">审核时间</td>
-            <td class="td_class_7">举报次数</td>
-            <td class="td_class_150">操作</td>
+            <td><input class="select_inp" type="checkbox"/></td>
+            <td>序号</td>
+            <td>账号</td>
+            <td>注册IP</td>
+            <td>注册时间</td>
+            <td>登录IP</td>
+            <td>登录时间</td>
+            <td>是否审核</td>
+            <td>审核时间</td>
+            <td>举报次数</td>
+            <td>操作</td>
         </tr>
         <c:forEach var="seller" items="${sellers}" varStatus="vst">
             <tr class="tr_body">

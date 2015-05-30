@@ -14,8 +14,6 @@
 
 <script type="text/javascript">
     $(function () {
-        $(".tr_body:odd").css("background-color", "#D9EFFD");
-
         $(".tr_body").click(function () {
             if ($(this).find(".select_inp2").attr("checked") == undefined) {
                 $(this).find(".select_inp2").attr("checked", "checked");
@@ -149,7 +147,7 @@
             if (stoptime == null) {
                 stoptime = "";
             }
-            trTag = ' <tr>'
+            trTag = ' <tr class="tr_header">'
                     + '<td><input class="select_inp2" type="checkbox" cityId="' + cities[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + cities[i].name + '</td>'
@@ -181,13 +179,13 @@
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
         <tr class="tr_header">
-            <td class="td_class_1"><input class="select_inp" type="checkbox"/></td>
-            <td class="td_class_2">序号</td>
-            <td class="td_class_3">城市</td>
-            <td class="td_class_150">启用时间</td>
-            <td class="td_class_150">停用时间</td>
-            <td class="td_class_5">状态</td>
-            <td class="td_class_150">操作</td>
+            <td><input class="select_inp" type="checkbox"/></td>
+            <td>序号</td>
+            <td>城市</td>
+            <td>启用时间</td>
+            <td>停用时间</td>
+            <td>状态</td>
+            <td>操作</td>
         </tr>
         <c:forEach var="city" items="${cities}" varStatus="vst">
             <tr class="tr_body">

@@ -87,7 +87,7 @@
                 trTag += "<td>未付款</td>";
             } else if (orders[i].state == 2) {
                 trTag += "<td>交易成功</td>";
-            }else if(orders[i].state == 0){
+            } else if (orders[i].state == 0) {
                 trTag += "<td>私人订制池</td>";
             }
             trTag += "<td>" + orders[i].successtime + "</td><td>" + orders[i].description + "</td>";
@@ -106,16 +106,16 @@
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
         <tr class="tr_header">
-            <td class="td_class_1"><input class="select_inp" type="checkbox"/></td>
-            <td class="td_class_2">序号</td>
-            <td class="td_class_3">客户账号</td>
-            <td class="td_class_3">商铺账号</td>
-            <td class="td_class_5">心理价格</td>
-            <td class="td_class_6">预定时间</td>
-            <td class="td_class_4">订单状态</td>
-            <td class="td_class_6">成交时间</td>
-            <td class="td_class_6">预定描述</td>
-            <td class="td_class_6">操作</td>
+            <td><input class="select_inp" type="checkbox"/></td>
+            <td>序号</td>
+            <td>客户账号</td>
+            <td>商铺账号</td>
+            <td>心理价格</td>
+            <td>预定时间</td>
+            <td>订单状态</td>
+            <td>成交时间</td>
+            <td>预定描述</td>
+            <td>操作</td>
         </tr>
         <c:forEach var="order" items="${orders}" varStatus="vst">
             <tr class="tr_body">
