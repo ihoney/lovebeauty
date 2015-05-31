@@ -42,28 +42,31 @@ public class DemoDao {
                 " fileEName, " +
                 " price, " +
                 " preferentialPrice, " +
+                " shopPrice, " +
+                " timeConsuming, " +
+                " keepTime, " +
                 " booktime, " +
                 " demoType " +
                 ") " +
                 "VALUES " +
-                " (?,?,?,?,?,?,?,?,?,?)";
+                " (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, new Object[]{demo.getSellerId(), demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPicName(), demo.getFileEName(), demo.getPrice(), demo.getPreferentialPrice(),
-                demo.getBookTime(),
-                demo.getDemoType()});
+                demo.getShopPrice(), demo.getTimeConsuming(), demo.getKeepTime(), demo.getBookTime(), demo.getDemoType()});
     }
 
     public void updateDemo(Demo demo) {
-        StringBuffer sb = new StringBuffer("UPDATE demo SET NAME = ?,employeeId=?, description =?, price = ?, PreferentialPrice =?, booktime = ?, demoType = ? ");
+        StringBuffer sb = new StringBuffer("UPDATE demo SET NAME = ?,employeeId=?, description =?, price = ?, PreferentialPrice =?, shopPrice =?, timeConsuming=?,keepTime=?,booktime = ?, demoType = ? ");
         if (demo.getFileEName() != null) {
             sb.append(", picname = ?, fileEName = ? ");
         }
         sb.append(" where id = " + demo.getId());
 
         if (demo.getFileEName() != null) {
-            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getBookTime(), demo.getDemoType(), demo.getPicName(),
-                    demo.getFileEName()});
+            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getShopPrice(), demo.getTimeConsuming(),
+                    demo.getKeepTime(), demo.getBookTime(), demo.getDemoType(), demo.getPicName(), demo.getFileEName()});
         } else {
-            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getBookTime(), demo.getDemoType()});
+            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getShopPrice(), demo.getTimeConsuming(),
+                    demo.getKeepTime(), demo.getBookTime(), demo.getDemoType()});
         }
     }
 
@@ -112,6 +115,34 @@ public class DemoDao {
 
     public List<Map<String, Object>> getEmployeesBySellerId(String sellerId) {
         String sql = "SELECT id, nickName FROM employee WHERE sellerId = " + sellerId;
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> queryDemoByTypeMobile(String demoType, String orderType, String page, String pageSize) {
+        int pageIndex = Integer.parseInt(page);
+        int ps = Integer.parseInt(pageSize);
+        StringBuffer stringBuffer = new StringBuffer("SELECT d.id, d. NAME, d.price, COUNT(o.demoid) AS count, d.fileEName FROM demo d, `order` o where  d.demoType = '美甲' AND o.demoid = d.id GROUP BY d.id  order by ");
+        if ("1".equals(orderType)) {
+            stringBuffer.append(" COUNT(o.demoid),d.price");
+        } else if ("2".equals(orderType)) {
+            stringBuffer.append(" COUNT(o.demoid)");
+        } else if ("3".equals(orderType)) {
+            stringBuffer.append(" price");
+        } else if ("4".equals(orderType)) {
+            stringBuffer.append(" price desc");
+        }
+        stringBuffer.append(" limit " + (pageIndex - 1) * ps + "," + ps);
+        return jdbcTemplate.queryForList(stringBuffer.toString());
+    }
+
+    public List<Map<String, Object>> queryDemoDetailByIdMobile(String demoId) {
+        String sql = "SELECT d.id,d.name,d.fileEName, d.price, d.shopPrice, d.description, COUNT(o.id) AS demoCount, d.timeConsuming, d.keepTime FROM demo d, `order` o WHERE d.id = " + demoId + " AND o.demoid = d.id AND o.state = '交易成功'";
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String demoId) {
+        String sql = "SELECT e.id, e.nickName, e.avgPrice, e.serverScope, e.headImg, e.majorScore, e.comScore, e.punctualScore, COUNT(o.id) AS empCount FROM demo d, employee e, " +
+                "`order` o WHERE d.id = " + demoId + " AND e.id = d.employeeId AND o.demoid IN ( SELECT id FROM demo WHERE employeeId = e.id ) AND o.state = '交易成功'";
         return jdbcTemplate.queryForList(sql);
     }
 }

@@ -36,6 +36,7 @@ public class AdController {
 
     @Resource
     private AdService adService;
+
     /**
      * 查看所有广告
      *
@@ -218,6 +219,27 @@ public class AdController {
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 移动端获取广告
+     *
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "queryAdsMobile")
+    @ResponseBody
+    public Map<String, Object> queryAdsMobile(HttpServletRequest request) throws JSONException {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> ads = adService.queryAdsMobile();
+            jsonObject.put("ads", ads);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败!");
         }
         return jsonObject;
     }

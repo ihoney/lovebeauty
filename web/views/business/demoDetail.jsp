@@ -72,6 +72,9 @@
     <span>得分：</span>${demo.avgScore} <br/>
     <span> 价格：</span>${demo.price} <br/>
     <span>首次优惠价格：</span>${demo.PreferentialPrice} <br/>
+    <span>店面价格：</span>${demo.shopPrice} <br/>
+    <span>耗时(分钟)：</span>${demo.timeConsuming} <br/>
+    <span>保持(天)：</span>${demo.keepTime} <br/>
     <span>可预约时间：</span>${demo.booktime} <br/>
     <span>作品简介：</span>${demo.description}
 </div>

@@ -22,6 +22,9 @@ public class Demo implements Serializable {
     private String description;
     private BigDecimal price;
     private BigDecimal preferentialPrice;
+    private BigDecimal shopPrice;
+    private int timeConsuming;
+    private int keepTime;
     private String bookTime;
     private String picName;
     private String fileEName;
@@ -30,17 +33,21 @@ public class Demo implements Serializable {
     public Demo() {
     }
 
-    public Demo(String name, String empId, String description, BigDecimal price, BigDecimal preferentialPrice, String bookTime, String demoType) {
+    public Demo(String name, String empId, String description, BigDecimal price, BigDecimal preferentialPrice, BigDecimal shopPrice, int timeConsuming, int keepTime, String bookTime, String demoType) {
         this.name = name;
         this.empId = empId;
         this.description = description;
         this.price = price;
         this.preferentialPrice = preferentialPrice;
+        this.shopPrice = shopPrice;
+        this.timeConsuming = timeConsuming;
+        this.keepTime = keepTime;
         this.bookTime = bookTime;
         this.demoType = demoType;
     }
 
-    public Demo(int id, int sellerId, String name, String empId, String description, BigDecimal price, BigDecimal preferentialPrice, String bookTime, String demoType) {
+    public Demo(int id, int sellerId, String name, String empId, String description, BigDecimal price, BigDecimal preferentialPrice, BigDecimal shopPrice, int timeConsuming, int keepTime, String bookTime,
+                String demoType) {
         this.id = id;
         this.sellerId = sellerId;
         this.name = name;
@@ -48,6 +55,9 @@ public class Demo implements Serializable {
         this.description = description;
         this.price = price;
         this.preferentialPrice = preferentialPrice;
+        this.shopPrice = shopPrice;
+        this.timeConsuming = timeConsuming;
+        this.keepTime = keepTime;
         this.bookTime = bookTime;
         this.demoType = demoType;
     }
@@ -114,6 +124,30 @@ public class Demo implements Serializable {
 
     public void setPreferentialPrice(BigDecimal preferentialPrice) {
         this.preferentialPrice = preferentialPrice;
+    }
+
+    public int getTimeConsuming() {
+        return timeConsuming;
+    }
+
+    public void setTimeConsuming(int timeConsuming) {
+        this.timeConsuming = timeConsuming;
+    }
+
+    public int getKeepTime() {
+        return keepTime;
+    }
+
+    public void setKeepTime(int keepTime) {
+        this.keepTime = keepTime;
+    }
+
+    public BigDecimal getShopPrice() {
+        return shopPrice;
+    }
+
+    public void setShopPrice(BigDecimal shopPrice) {
+        this.shopPrice = shopPrice;
     }
 
     public String getBookTime() {

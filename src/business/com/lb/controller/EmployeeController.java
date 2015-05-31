@@ -250,4 +250,23 @@ public class EmployeeController {
         jsonObject.put("employees", employees);
         return jsonObject;
     }
+
+    /*
+    * 移动段请求
+    * */
+
+    /**
+     * 调到指定页
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryEmployeeMobile")
+    @ResponseBody
+    public Map<String, Object> queryEmployeeMobile(HttpServletRequest request, String page, String pageSize, String orderType) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        List<Map<String, Object>> employees = employeeService.queryEmployeeMobile(page,pageSize,orderType);
+        jsonObject.put("employees", employees);
+        return jsonObject;
+    }
 }

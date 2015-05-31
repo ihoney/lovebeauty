@@ -48,4 +48,8 @@ public class AdService {
     public void deleteAd(String adId) {
         adDao.deleteAd(adId);
     }
+
+    public List<Map<String, Object>> queryAdsMobile() {
+        return adDao.queryAdsMobile();
+    }
 }

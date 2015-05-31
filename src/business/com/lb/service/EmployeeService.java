@@ -71,4 +71,8 @@ public class EmployeeService {
     public List<Map<String, Object>> getEmployeeByPageAdmin(int pageIndex, int pageSize) {
         return employeeDao.getEmployeeByPageAdmin(pageIndex, pageSize);
     }
+
+    public List<Map<String, Object>> queryEmployeeMobile(String page, String pageSize, String orderType) {
+        return employeeDao.queryEmployeeMobile(page, pageSize, orderType);
+    }
 }

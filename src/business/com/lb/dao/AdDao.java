@@ -54,4 +54,9 @@ public class AdDao {
         String sql = "delete from advertisement where id = " + adId;
         jdbcTemplate.update(sql);
     }
+
+    public List<Map<String, Object>> queryAdsMobile() {
+        String sql = "SELECT * from advertisement a where a.state = '启用' and a.type = '内部链接' order by id desc limit 8 ";
+        return jdbcTemplate.queryForList(sql);
+    }
 }

@@ -63,7 +63,7 @@
         }
 
         function valueChange(node) {
-            var val = parseFloat($(node).val());
+            var val = parseInt($(node).val());
             if (isNaN(val)) {
                 $(node).val(0)
             } else {
@@ -129,6 +129,26 @@
             <td class="td_att_name">首次优惠价格:</td>
             <td>
                 <input type="text" name="preferentialPrice" onchange="valueChange(this);" id="preferentialPrice" size="65"/>
+            </td>
+        </tr>
+        <tr>
+
+        <tr>
+            <td class="td_att_name">店面价格:</td>
+            <td>
+                <input type="text" name="shopPrice" onchange="valueChange(this);" id="shopPrice" size="65"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_att_name">耗时(分钟):</td>
+            <td>
+                <input type="text" name="timeConsuming" onchange="valueChange(this);" id="timeConsuming" size="65"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_att_name">保持(天):</td>
+            <td>
+                <input type="text" name="keepTime" onchange="valueChange(this);" id="keepTime" size="65"/>
             </td>
         </tr>
         <tr>

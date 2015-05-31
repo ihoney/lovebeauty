@@ -121,6 +121,25 @@
                 <input type="text" name="preferentialPrice" onchange="valueChange(this);" value="${demo.PreferentialPrice}" id="preferentialPrice" size="65"/>
             </td>
         </tr>
+
+        <tr>
+            <td class="td_att_name">店面价格:</td>
+            <td>
+                <input type="text" name="shopPrice" onchange="valueChange(this);" value="${demo.shopPrice}" id="shopPrice" size="65"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_att_name">耗时(分钟):</td>
+            <td>
+                <input type="text" name="timeConsuming" onchange="valueChange(this);" value="${demo.timeConsuming}" id="timeConsuming" size="65"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="td_att_name">保持(天):</td>
+            <td>
+                <input type="text" name="keepTime" onchange="valueChange(this);" value="${demo.keepTime}" id="keepTime" size="65"/>
+            </td>
+        </tr>
         <tr>
             <td class="td_att_name">
                 可预约时间:

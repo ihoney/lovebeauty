@@ -75,4 +75,16 @@ public class DemoService {
     public List<Map<String, Object>> getEmployeesBySellerId(String sellerId) {
         return demoDao.getEmployeesBySellerId(sellerId);
     }
+
+    public List<Map<String, Object>> queryDemoByTypeMobile(String demoType, String orderType, String page, String pageSize) {
+        return demoDao.queryDemoByTypeMobile(demoType, orderType, page, pageSize);
+    }
+
+    public List<Map<String, Object>> queryDemoDetailByIdMobile(String demoId) {
+        return demoDao.queryDemoDetailByIdMobile(demoId);
+    }
+
+    public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String demoId) {
+        return demoDao.queryEmployeeDetailByIdMobile(demoId);
+    }
 }

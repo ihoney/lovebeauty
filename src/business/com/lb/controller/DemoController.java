@@ -265,4 +265,49 @@ public class DemoController {
         jsonObject.put("demos", demos);
         return jsonObject;
     }
+
+    /**************************线面是手机端请求地址******************************/
+    /**
+     * 根据类型 和排序类型查询作品 移动端
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryDemoByTypeMobile")
+    @ResponseBody
+    public Map<String, Object> queryDemoByTypeMobile(HttpServletRequest request, String demoType, String orderType, String page, String pageSize) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> demos = demoService.queryDemoByTypeMobile(demoType, orderType, page, pageSize);
+            jsonObject.put("demos", demos);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 获取作品详细信息包括 技师信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryDemoDetailByIdMobile")
+    @ResponseBody
+    public Map<String, Object> queryDemoDetailByIdMobile(HttpServletRequest request, String demoId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> demos = demoService.queryDemoDetailByIdMobile(demoId);
+            List<Map<String, Object>> employees = demoService.queryEmployeeDetailByIdMobile(demoId);
+            jsonObject.put("demo", demos.get(0));
+            jsonObject.put("employee", employees.get(0));
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

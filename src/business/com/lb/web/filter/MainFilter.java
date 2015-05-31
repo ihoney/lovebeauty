@@ -24,10 +24,10 @@ public class MainFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
         String reqUrl = request.getRequestURI();
-        if (!reqUrl.endsWith("checkLogin.do") && session.getAttribute("seller") == null) {
+        if (!reqUrl.contains("Mobile.do") && !reqUrl.endsWith("checkLogin.do") && session.getAttribute("seller") == null) {
             if (session.getAttribute("admin") != null) {
                 filterChain.doFilter(servletRequest, servletResponse);
-            }else {
+            } else {
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             }
         } else {

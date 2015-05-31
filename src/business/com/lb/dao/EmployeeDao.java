@@ -86,4 +86,21 @@ public class EmployeeDao {
                 " order by state  limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
+
+    public List<Map<String, Object>> queryEmployeeMobile(String page, String pageSize, String orderType) {
+        int pageTmp = Integer.parseInt(page);
+        int pageSizeTmp = Integer.parseInt(pageSize);
+        StringBuffer sb = new StringBuffer("SELECT e.id, e.nickName, e.headImg, e.avgPrice, COUNT(o.id) empCount FROM employee e LEFT JOIN `order` o ON o.demoid IN ( SELECT id FROM demo WHERE employeeId = e.id ) AND o.state = '交易成功' GROUP BY e.id ORDER BY ");
+        if ("1".equals(orderType)) {
+            sb.append(" empCount DESC, e.avgPrice");
+        } else if ("2".equals(orderType)) {
+            sb.append(" empCount DESC ");
+        } else if ("3".equals(orderType)) {
+            sb.append(" e.avgPrice");
+        } else if ("4".equals(orderType)) {
+            sb.append(" e.avgPrice desc");
+        }
+        sb.append(" limit " + (pageTmp - 1) * pageSizeTmp + " , " + pageSizeTmp);
+        return jdbcTemplate.queryForList(sb.toString());
+    }
 }
