@@ -75,6 +75,7 @@
     //编辑作品
     function demo_edit(node) {
         var demoId = $(node).attr("demoId");
+        console.log(getRootPath() + "demo/editDemo.do?demoId=" + demoId);
         location.href = getRootPath() + "demo/editDemo.do?demoId=" + demoId;
     }
 
