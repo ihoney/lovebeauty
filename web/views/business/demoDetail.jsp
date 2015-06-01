@@ -56,26 +56,77 @@
         }
 
         .attr_title {
-            color: #033D61;
+            text-align: right;
+        }
+
+        .dd_tb {
+            border-left: 1px solid #44c8e6;
+            border-top: 1px solid #44c8e6;
+            font-size: 12px;
+        }
+
+        .dd_tb td {
+            width: 120px;
+            padding: 2px;
+            border-right: 1px solid #44c8e6;
+            border-bottom: 1px solid #44c8e6;
         }
     </style>
 </head>
 <body>
-<div id="jubao_div" style="display: none;">
-    <textarea style="border: none;" id="yuanyin" cols="50" rows="4"></textarea>
-</div>
+
 <div id="demo_info">
-    <img src="${rootPath}/fileUpload/${demo.fileEName}" class="demo_img"/>
-    <span>名称：</span>${demo.name} <br/>
-    <span>作品师：</span><a href="${rootPath}/employee/getEmployeeDetail.do?employeeId=${demo.employeeId}">${demo.nickName}</a> <br/>
-    <span>作品类型：</span>${demo.demoType} <br/>
-    <span>得分：</span>${demo.avgScore} <br/>
-    <span> 价格：</span>${demo.price} <br/>
-    <span>首次优惠价格：</span>${demo.PreferentialPrice} <br/>
-    <span>店面价格：</span>${demo.shopPrice} <br/>
-    <span>耗时(分钟)：</span>${demo.timeConsuming} <br/>
-    <span>保持(天)：</span>${demo.keepTime} <br/>
-    <span>可预约时间：</span>${demo.booktime} <br/>
+    <div style="float: left; margin-right: 10px;">
+        <table class="dd_tb" cellspacing=0 cellpadding=0>
+            <tr>
+                <td class="attr_title">名称：</td>
+                <td>${demo.name}</td>
+            </tr>
+            <tr>
+                <td class="attr_title">作品师：</td>
+                <td><a href="${rootPath}/employee/getEmployeeDetail.do?employeeId=${demo.employeeId}">${demo.nickName}</a></td>
+            </tr>
+            <tr>
+                <td class="attr_title">作品类型：</td>
+                <td>${demo.demoType} </td>
+            </tr>
+            <tr>
+                <td class="attr_title">得分：</td>
+                <td>${demo.avgScore} </td>
+            </tr>
+            <tr>
+                <td class="attr_title">价格：</td>
+                <td>${demo.price}</td>
+            </tr>
+            <tr>
+                <td class="attr_title">首次优惠价格：</td>
+                <td>${demo.PreferentialPrice} </td>
+            </tr>
+            <tr>
+                <td class="attr_title">店面价格：</td>
+                <td>${demo.shopPrice} </td>
+            </tr>
+            <tr>
+                <td class="attr_title">耗时(分钟)：</td>
+                <td>${demo.timeConsuming}</td>
+            </tr>
+            <tr>
+                <td class="attr_title">保持(天)：</td>
+                <td>${demo.keepTime} </td>
+            </tr>
+            <tr>
+                <td class="attr_title">可预约时间：</td>
+                <td>${demo.booktime} </td>
+            </tr>
+        </table>
+
+    </div>
+    <div>
+        <img src="${rootPath}/fileUpload/${demo.fileEName}" class="demo_img"/>
+    </div>
+</div>
+<div style="clear: both;"></div>
+<div class="comment" style="width: 90%;">
     <span>作品简介：</span>${demo.description}
 </div>
 <div id="comment">
@@ -97,6 +148,9 @@
 
     </table>
 </div>
+</div>
+<div id="jubao_div" style="display: none;">
+    <textarea style="border: none;" id="yuanyin" cols="50" rows="4"></textarea>
 </div>
 </body>
 </html>
