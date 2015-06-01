@@ -207,3 +207,20 @@ body {
     background-color: #D9EFFD;
 }
 
+.city_tab {
+    font-size: 12px;
+    border-top: 1px solid #b5d6e6;
+    border-left: 1px solid #b5d6e6;
+}
+
+.city_tab td {
+    border-right: 1px solid #b5d6e6;
+    border-bottom: 1px solid #b5d6e6;
+    padding: 3px 5px 3px 5px;
+}
+
+.city_td_attr_title {
+    width: 120px;
+    text-align: right;
+}
+

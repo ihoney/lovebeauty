@@ -32,8 +32,8 @@ public class AdminService {
         return adminDao.getCityByPage(pageIndex, pageSize);
     }
 
-    public void addCity(String cityName) {
-        adminDao.addCity(cityName);
+    public void addCity(String cityName, String serviceScope) {
+        adminDao.addCity(cityName, serviceScope);
     }
 
     public void changeCityState(String cityId, String state) {
@@ -66,5 +66,13 @@ public class AdminService {
 
     public void deleteAd(String adId) {
         adminDao.deleteAd(adId);
+    }
+
+    public List<Map<String, Object>> queryCityServiceScopeMobile(String cityName) {
+        return adminDao.queryCityServiceScopeMobile(cityName);
+    }
+
+    public void updateCityServiceScope(String cityId, String serviceScope) {
+        adminDao.updateCityServiceScope(cityId, serviceScope);
     }
 }

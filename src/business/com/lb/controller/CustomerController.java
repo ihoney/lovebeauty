@@ -7,11 +7,15 @@ import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +38,6 @@ public class CustomerController {
      * 检查登录
      *
      * @param request
-     * @param session
      * @param account
      * @param password
      * @return
@@ -42,7 +45,7 @@ public class CustomerController {
      */
     @RequestMapping(value = "checkLogin")
     @ResponseBody
-    public JSONObject checkLogin(HttpServletRequest request, HttpSession session, String account, String password) throws JSONException {
+    public JSONObject checkLogin(HttpServletRequest request, String account, String password) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         String loginIp = request.getRemoteAddr();
         List<Map<String, Object>> customers = customerService.existsCustomer(account, password);
@@ -53,7 +56,6 @@ public class CustomerController {
                 jsonObject.put(Constant.TIPMESSAGE, "账号已禁用，请联系管理员!");
             } else {
                 customerService.loginInfo(account, loginIp);
-                session.setAttribute("customer", customers.get(0));
                 jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
             }
         } else {
@@ -71,9 +73,9 @@ public class CustomerController {
      * @param password
      * @return
      */
-    @RequestMapping(value = "register")
+    @RequestMapping(value = "registerMobile")
     @ResponseBody
-    public JSONObject register(HttpServletRequest request, String account, String password) {
+    public JSONObject registerMobile(HttpServletRequest request, String account, String password) {
         JSONObject jsonObject = new JSONObject();
         String regIp = request.getRemoteAddr();
         try {
@@ -97,22 +99,6 @@ public class CustomerController {
         return jsonObject;
     }
 
-    /**
-     * 退出系统
-     *
-     * @param request
-     * @param session
-     * @return
-     * @throws JSONException
-     */
-    @RequestMapping(value = "quitSys")
-    @ResponseBody
-    public JSONObject quitSys(HttpServletRequest request, HttpSession session) throws JSONException {
-        JSONObject jsonObject = new JSONObject();
-        session.removeAttribute("customer");
-        jsonObject.put(Constant.TIPMESSAGE, "exit success！");
-        return jsonObject;
-    }
 
     @RequestMapping("queryAllCustomers")
     public ModelAndView queryAllCustomers(HttpServletRequest request) {
@@ -221,4 +207,68 @@ public class CustomerController {
         return jsonObject;
     }
 
+    /**
+     * 更换头像
+     *
+     * @param request
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "changeHeadImgMobile")
+    @ResponseBody
+    public JSONObject changeHeadImgMobile(HttpServletRequest request, String userId) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        MultipartFile headImg = multipartRequest.getFile("headImg");
+        String fileEName = "";
+        String fileName;
+        if (headImg != null) {
+            fileName = headImg.getOriginalFilename();
+            String fileSuffix = fileName.substring(fileName.lastIndexOf("."));
+            fileEName = "pic_user_headImg_" + "_" + System.currentTimeMillis() + fileSuffix;
+        }
+
+        try {
+            customerService.changeHeadImgMobile(userId, fileEName);
+            if (headImg != null) {
+                InputStream is = headImg.getInputStream();
+                String filePath = request.getRealPath("/fileUpload");
+                FileOutputStream fos = new FileOutputStream(filePath + "/" + fileEName);
+                byte[] buf = new byte[1024];
+                int i;
+                while ((i = is.read(buf)) > 0) {
+                    fos.write(buf, 0, i);
+                }
+                fos.flush();
+                fos.close();
+            }
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.REQSUCCESS, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 更换头像
+     *
+     * @param request
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "changeNickNameMobile")
+    @ResponseBody
+    public JSONObject changeNickNameMobile(HttpServletRequest request, String userId, String nickName) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            customerService.changeNickNameMobile(userId, nickName);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.REQSUCCESS, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

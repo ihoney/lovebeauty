@@ -1,10 +1,10 @@
 package com.lb.dao;
 
+import com.lb.utils.DateUtil;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +29,7 @@ public class CustomerDao {
     public void register(String account, String password, String regIp) {
         String sql = "insert into customer (account,password,regip,regtime) values (?,?,?,?) ";
         try {
-            jdbcTemplate.update(sql, new Object[]{account, password, regIp, new Date()});
+            jdbcTemplate.update(sql, new Object[]{account, password, regIp, DateUtil.cruTimeStr()});
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -65,12 +65,22 @@ public class CustomerDao {
     }
 
     public void loginInfo(String account, String loginIp) {
-        String sql = "update customer set loginip = '" + loginIp + "', logintime = now() where account ='" + account + "'";
+        String sql = "update customer set loginip = '" + loginIp + "', logintime = '" + DateUtil.cruTimeStr() + "' where account ='" + account + "'";
         jdbcTemplate.update(sql);
     }
 
     public void reUseCustomer(String customerId) {
         String sql = "update customer set forbidden = '否' where id = " + customerId;
+        jdbcTemplate.update(sql);
+    }
+
+    public void changeHeadImgMobile(String userId, String fileEName) {
+        String sql = "update customer set headImg = '" + fileEName + "' where id = " + userId;
+        jdbcTemplate.update(sql);
+    }
+
+    public void changeNickNameMobile(String userId, String nickName) {
+        String sql = "update customer set nickName = '" + nickName + "' where id = " + userId;
         jdbcTemplate.update(sql);
     }
 }

@@ -115,9 +115,60 @@ public class AdminController {
      */
     @RequestMapping(value = "addCity")
     @ResponseBody
-    public JSONObject addCity(HttpServletRequest request, String cityName) {
+    public JSONObject addCity(HttpServletRequest request, String cityName, String serviceScope) {
         JSONObject jsonObject = new JSONObject();
-        adminService.addCity(cityName);
+        try {
+            adminService.addCity(cityName, serviceScope);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "城市已存在！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 编辑城市服务范围
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "updateCityServiceScope")
+    @ResponseBody
+    public Map<String, Object> updateCityServiceScope(HttpServletRequest request, String cityId, String serviceScope) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            adminService.updateCityServiceScope(cityId, serviceScope);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "服务请求失败！");
+        }
+
+        return jsonObject;
+    }
+
+    /**
+     * 获取城市服务范围
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryCityServiceScopeMobile")
+    @ResponseBody
+    public Map<String, Object> queryCityServiceScopeMobile(HttpServletRequest request, String cityName) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> serviceScopes = adminService.queryCityServiceScopeMobile(cityName);
+            if (serviceScopes != null && serviceScopes.size() > 0) {
+                jsonObject.put("serviceScope", serviceScopes.get(0));
+                jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+            }
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "服务请求失败！");
+        }
+
         return jsonObject;
     }
 

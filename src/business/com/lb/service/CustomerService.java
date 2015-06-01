@@ -62,4 +62,12 @@ public class CustomerService {
     public void reUseCustomer(String customerId) {
         customerDao.reUseCustomer(customerId);
     }
+
+    public void changeHeadImgMobile(String userId, String fileEName) {
+        customerDao.changeHeadImgMobile(userId, fileEName);
+    }
+
+    public void changeNickNameMobile(String userId, String nickName) {
+        customerDao.changeNickNameMobile(userId, nickName);
+    }
 }

@@ -36,9 +36,9 @@ public class AdminDao {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public void addCity(String cityName) {
-        String sql = "insert into city (name,opentime,state) values (?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{cityName, DateUtil.cruTimeStr(), 1});
+    public void addCity(String cityName, String serviceScope) {
+        String sql = "insert into city (name,opentime,state,serviceScope) values (?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{cityName, DateUtil.cruTimeStr(), "开通", serviceScope});
     }
 
     public void changeCityState(String cityId, String state) {
@@ -84,5 +84,15 @@ public class AdminDao {
     public void deleteAd(String adId) {
         String sql = "delete from advertisement where id = " + adId;
         jdbcTemplate.update(sql);
+    }
+
+    public List<Map<String, Object>> queryCityServiceScopeMobile(String cityName) {
+        String sql = "select serviceScope from city where name = '" + cityName + "'";
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public void updateCityServiceScope(String cityId, String serviceScope) {
+        String sql = "update city set serviceScope =? where id = " + cityId;
+        jdbcTemplate.update(sql, serviceScope);
     }
 }
