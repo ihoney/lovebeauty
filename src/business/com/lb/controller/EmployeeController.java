@@ -265,8 +265,15 @@ public class EmployeeController {
     @ResponseBody
     public Map<String, Object> queryEmployeeMobile(HttpServletRequest request, String page, String pageSize, String orderType) {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
-        List<Map<String, Object>> employees = employeeService.queryEmployeeMobile(page,pageSize,orderType);
-        jsonObject.put("employees", employees);
+        try {
+            List<Map<String, Object>> employees = employeeService.queryEmployeeMobile(page, pageSize, orderType);
+            jsonObject.put("employees", employees);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求服务失败！");
+        }
+
         return jsonObject;
     }
 }

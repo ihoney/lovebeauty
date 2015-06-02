@@ -45,8 +45,8 @@ public class CustomerController {
      */
     @RequestMapping(value = "checkLogin")
     @ResponseBody
-    public JSONObject checkLogin(HttpServletRequest request, String account, String password) throws JSONException {
-        JSONObject jsonObject = new JSONObject();
+    public Map<String,Object> checkLogin(HttpServletRequest request, String account, String password) throws JSONException {
+        Map<String,Object> jsonObject = new HashMap<String, Object>();
         String loginIp = request.getRemoteAddr();
         List<Map<String, Object>> customers = customerService.existsCustomer(account, password);
         if (customers != null && customers.size() > 0) {
@@ -56,6 +56,7 @@ public class CustomerController {
                 jsonObject.put(Constant.TIPMESSAGE, "账号已禁用，请联系管理员!");
             } else {
                 customerService.loginInfo(account, loginIp);
+                jsonObject.put("customer",customers.get(0));
                 jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
             }
         } else {
