@@ -121,7 +121,9 @@ public class DemoDao {
     public List<Map<String, Object>> queryDemoByTypeMobile(String demoType, String orderType, String page, String pageSize) {
         int pageIndex = Integer.parseInt(page);
         int ps = Integer.parseInt(pageSize);
-        StringBuffer stringBuffer = new StringBuffer("SELECT d.id, d. NAME, d.price, COUNT(o.demoid) AS count, d.fileEName FROM demo d left join `order` o on o.demoid = d.id where  d.demoType = '" + demoType + "' " +
+        StringBuffer stringBuffer = new StringBuffer("SELECT d.id, d. NAME, d.price, COUNT(o.demoid) AS count, d.fileEName FROM demo d left join `order` o on o.demoid = d.id and o.state = '交易成功' where  d.demoType = '"
+                +
+                demoType + "' " +
                 "GROUP BY d.id  order " +
                 "by ");
         if ("1".equals(orderType)) {

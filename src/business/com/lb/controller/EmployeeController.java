@@ -276,4 +276,48 @@ public class EmployeeController {
 
         return jsonObject;
     }
+
+    /**
+     * 获取手艺人详细信息包括
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryEmployeeDetailByIdMobile")
+    @ResponseBody
+    public Map<String, Object> queryEmployeeDetailByIdMobile(HttpServletRequest request, String empId, String userId, String page, String pageSize, String orderType) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> employees = employeeService.queryEmployeeDetailByIdMobile(empId, userId);
+            List<Map<String, Object>> demos = employeeService.queryDemosByIdMobile(empId, page, pageSize, orderType);
+            jsonObject.put("employee", employees.get(0));
+            jsonObject.put("demos", demos);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 获取手艺人下面的作品信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryEmployeeDemosByIdMobile")
+    @ResponseBody
+    public Map<String, Object> queryEmployeeDemosByIdMobile(HttpServletRequest request, String empId, String page, String pageSize, String orderType) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> demos = employeeService.queryDemosByIdMobile(empId, page, pageSize, orderType);
+            jsonObject.put("demos", demos);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

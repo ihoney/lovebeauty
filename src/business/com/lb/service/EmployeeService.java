@@ -75,4 +75,12 @@ public class EmployeeService {
     public List<Map<String, Object>> queryEmployeeMobile(String page, String pageSize, String orderType) {
         return employeeDao.queryEmployeeMobile(page, pageSize, orderType);
     }
+
+    public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String empId, String userId) {
+        return employeeDao.queryEmployeeDetailByIdMobile(empId, userId);
+    }
+
+    public List<Map<String, Object>> queryDemosByIdMobile(String empId, String page, String pageSize, String orderType) {
+        return employeeDao.queryDemosByIdMobile(empId, page, pageSize, orderType);
+    }
 }

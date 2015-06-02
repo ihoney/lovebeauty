@@ -103,4 +103,30 @@ public class EmployeeDao {
         sb.append(" limit " + (pageTmp - 1) * pageSizeTmp + " , " + pageSizeTmp);
         return jdbcTemplate.queryForList(sb.toString());
     }
+
+    public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String empId, String userId) {
+        String sql = "SELECT e.id, e.nickName, e.avgPrice, e.serverScope, e.headImg, e.majorScore, e.comScore, e.punctualScore, count(o.id) AS empCount, " +
+                "count(DISTINCT f.id) AS isFavorite FROM employee e LEFT JOIN `order` o ON o.demoid IN ( SELECT id FROM demo WHERE employeeId = e.id ) AND o.state = '交易成功' LEFT JOIN favorite f ON f.type = 1 AND f" +
+                ".userId = " + userId + " AND f.entityId = e.id WHERE e.id = " + empId;
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> queryDemosByIdMobile(String empId, String page, String pageSize, String orderType) {
+        int pageTmp = Integer.parseInt(page);
+        int pageSizeTpm = Integer.parseInt(pageSize);
+        StringBuffer sb = new StringBuffer("SELECT d.id, d. NAME, d.price, COUNT(o.demoid) AS demoCount, d.fileEName FROM demo d LEFT JOIN `order` o ON o.demoid = d.id AND o.state = '交易成功' WHERE d.employeeId = "
+                + empId + " GROUP BY d.id order by ");
+        if ("0".equals(orderType)) {
+            sb.append(" d.price DESC, demoCount DESC ");
+        } else if ("1".equals(orderType)) {
+            sb.append(" demoCount DESC ");
+        } else if ("2".equals(orderType)) {
+            sb.append(" d.price ");
+        } else if ("3".equals(orderType)) {
+            sb.append(" d.price DESC");
+        }
+
+        sb.append(" limit " + (pageTmp - 1) * pageSizeTpm + " , " + pageSizeTpm);
+        return jdbcTemplate.queryForList(sb.toString());
+    }
 }
