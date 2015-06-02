@@ -80,8 +80,8 @@ public class DemoService {
         return demoDao.queryDemoByTypeMobile(demoType, orderType, page, pageSize);
     }
 
-    public List<Map<String, Object>> queryDemoDetailByIdMobile(String demoId) {
-        return demoDao.queryDemoDetailByIdMobile(demoId);
+    public List<Map<String, Object>> queryDemoDetailByIdMobile(String demoId, String userId) {
+        return demoDao.queryDemoDetailByIdMobile(demoId, userId);
     }
 
     public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String demoId) {

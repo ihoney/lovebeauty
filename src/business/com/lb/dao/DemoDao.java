@@ -137,8 +137,9 @@ public class DemoDao {
         return jdbcTemplate.queryForList(stringBuffer.toString());
     }
 
-    public List<Map<String, Object>> queryDemoDetailByIdMobile(String demoId) {
-        String sql = "SELECT d.id,d.name,d.fileEName, d.price, d.shopPrice, d.description, COUNT(o.id) AS demoCount, d.timeConsuming, d.keepTime FROM demo d, `order` o WHERE d.id = " + demoId + " AND o.demoid = d.id AND o.state = '交易成功'";
+    public List<Map<String, Object>> queryDemoDetailByIdMobile(String demoId, String userId) {
+        String sql = "SELECT d.id, d. NAME, d.fileEName, d.price, d.shopPrice, d.description, COUNT(o.id) AS demoCount, d.timeConsuming, d.keepTime, count(DISTINCT f.id) AS isFavorite FROM demo d LEFT JOIN favorite f " +
+                "ON f.type = 0 AND f.userId = " + userId + " AND f.entityId = d.id LEFT JOIN `order` o ON o.demoid = d.id AND o.state = '交易成功' WHERE d.id = " + demoId;
         return jdbcTemplate.queryForList(sql);
     }
 

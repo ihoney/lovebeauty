@@ -296,10 +296,10 @@ public class DemoController {
      */
     @RequestMapping(value = "queryDemoDetailByIdMobile")
     @ResponseBody
-    public Map<String, Object> queryDemoDetailByIdMobile(HttpServletRequest request, String demoId) {
+    public Map<String, Object> queryDemoDetailByIdMobile(HttpServletRequest request, String demoId, String userId) {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         try {
-            List<Map<String, Object>> demos = demoService.queryDemoDetailByIdMobile(demoId);
+            List<Map<String, Object>> demos = demoService.queryDemoDetailByIdMobile(demoId, userId);
             List<Map<String, Object>> employees = demoService.queryEmployeeDetailByIdMobile(demoId);
             jsonObject.put("demo", demos.get(0));
             jsonObject.put("employee", employees.get(0));
