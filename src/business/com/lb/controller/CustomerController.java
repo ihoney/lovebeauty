@@ -268,7 +268,7 @@ public class CustomerController {
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
-            jsonObject.put(Constant.REQSUCCESS, "请求失败！");
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
         }
         return jsonObject;
     }
