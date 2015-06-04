@@ -23,6 +23,7 @@ public class SellerValidateInfo {
     private String identifyImgStr; //证件图片名称
     private String shopName;   //店铺名称
     private String address;    //店铺地址
+    private String cityId;    //所在城市
     private String payAccount; //支付宝账号
     private String alipayKey; //支付宝账号
     private String alipayPid; //支付宝账号
@@ -32,7 +33,7 @@ public class SellerValidateInfo {
     public SellerValidateInfo() {
     }
 
-    public SellerValidateInfo(int sellerId, String name, String sex, String birthday, String email, String identify, String shopName, String address, String payAccount, String alipayKey, String alipayPid,
+    public SellerValidateInfo(int sellerId, String name, String sex, String birthday, String email, String identify, String shopName, String address, String cityId, String payAccount, String alipayKey, String alipayPid,
                               String serviceScope, String telephone) {
         this.sellerId = sellerId;
         this.name = name;
@@ -42,6 +43,7 @@ public class SellerValidateInfo {
         this.identify = identify;
         this.shopName = shopName;
         this.address = address;
+        this.cityId = cityId;
         this.payAccount = payAccount;
         this.alipayKey = alipayKey;
         this.alipayPid = alipayPid;
@@ -49,7 +51,8 @@ public class SellerValidateInfo {
         this.telephone = telephone;
     }
 
-    public SellerValidateInfo(int id, int sellerId, String headImgStr, String identifyImgStr, String name, String sex, String birthday, String email, String identify, String shopName, String address, String payAccount,
+    public SellerValidateInfo(int id, int sellerId, String headImgStr, String identifyImgStr, String name, String sex, String birthday, String email, String identify, String shopName, String address,
+                              String cityId, String payAccount,
                               String alipayKey,
                               String alipayPid,
                               String serviceScope, String telephone) {
@@ -64,6 +67,7 @@ public class SellerValidateInfo {
         this.identify = identify;
         this.shopName = shopName;
         this.address = address;
+        this.cityId = cityId;
         this.payAccount = payAccount;
         this.alipayKey = alipayKey;
         this.alipayPid = alipayPid;
@@ -157,6 +161,14 @@ public class SellerValidateInfo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 
     public String getPayAccount() {
