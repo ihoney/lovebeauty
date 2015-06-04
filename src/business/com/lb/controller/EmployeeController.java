@@ -289,7 +289,9 @@ public class EmployeeController {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         try {
             List<Map<String, Object>> employees = employeeService.queryEmployeeDetailByIdMobile(empId, userId);
+            List<Map<String, Object>> XYlevel = employeeService.queryEmployeeXYLevelByIdMobile(empId);
             List<Map<String, Object>> demos = employeeService.queryDemosByIdMobile(empId, page, pageSize, orderType);
+            jsonObject.put("XYlevel", XYlevel);
             jsonObject.put("employee", employees.get(0));
             jsonObject.put("demos", demos);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
@@ -313,6 +315,49 @@ public class EmployeeController {
         try {
             List<Map<String, Object>> demos = employeeService.queryDemosByIdMobile(empId, page, pageSize, orderType);
             jsonObject.put("demos", demos);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 获取手艺人下面的评论信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryEmployeeCommentByIdMobile")
+    @ResponseBody
+    public Map<String, Object> queryEmployeeCommentByIdMobile(HttpServletRequest request, String empId, String page, String pageSize, String commentType) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> commentCounts = employeeService.queryCommentCountByType(empId);
+            List<Map<String, Object>> comments = employeeService.queryEmployeeCommentByIdMobile(empId, page, pageSize, commentType);
+            jsonObject.put("commentCounts", commentCounts);
+            jsonObject.put("comments", comments);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 评论订单信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "addEmployeeCommentByIdMobile")
+    @ResponseBody
+    public Map<String, Object> addEmployeeCommentByIdMobile(HttpServletRequest request, String empId, String userId, String commentType, String comment) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            employeeService.addEmployeeCommentByIdMobile(empId, userId, commentType, comment);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);

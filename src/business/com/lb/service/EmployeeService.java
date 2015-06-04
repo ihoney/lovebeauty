@@ -83,4 +83,20 @@ public class EmployeeService {
     public List<Map<String, Object>> queryDemosByIdMobile(String empId, String page, String pageSize, String orderType) {
         return employeeDao.queryDemosByIdMobile(empId, page, pageSize, orderType);
     }
+
+    public List<Map<String, Object>> queryCommentCountByType(String empId) {
+        return employeeDao.queryCommentCountByType(empId);
+    }
+
+    public List<Map<String, Object>> queryEmployeeCommentByIdMobile(String empId, String page, String pageSize, String commentType) {
+        return employeeDao.queryEmployeeCommentByIdMobile(empId, page, pageSize, commentType);
+    }
+
+    public void addEmployeeCommentByIdMobile(String empId, String userId, String commentType, String comment) {
+        employeeDao.addEmployeeCommentByIdMobile(empId, userId, commentType, comment);
+    }
+
+    public List<Map<String, Object>> queryEmployeeXYLevelByIdMobile(String empId) {
+        return employeeDao.queryEmployeeXYLevelByIdMobile(empId);
+    }
 }
