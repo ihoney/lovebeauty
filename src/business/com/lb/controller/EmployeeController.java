@@ -290,10 +290,8 @@ public class EmployeeController {
         try {
             List<Map<String, Object>> employees = employeeService.queryEmployeeDetailByIdMobile(empId, userId);
             List<Map<String, Object>> XYlevel = employeeService.queryEmployeeXYLevelByIdMobile(empId);
-            List<Map<String, Object>> demos = employeeService.queryDemosByIdMobile(empId, page, pageSize, orderType);
             jsonObject.put("XYlevel", XYlevel);
             jsonObject.put("employee", employees.get(0));
-            jsonObject.put("demos", demos);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
