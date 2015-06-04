@@ -87,8 +87,4 @@ public class DemoService {
     public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String demoId) {
         return demoDao.queryEmployeeDetailByIdMobile(demoId);
     }
-
-    public List<Map<String, Object>> queryDemoBookInfoByIdMobile(String demoId) {
-        return demoDao.queryDemoBookInfoByIdMobile(demoId);
-    }
 }

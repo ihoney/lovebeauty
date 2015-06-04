@@ -14,6 +14,7 @@ public class DateUtil {
 
     private static SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat mdFormat = new SimpleDateFormat("M.d");
 
     public static String cruDateStr() {
         return dateFormat.format(new Date());
@@ -21,5 +22,9 @@ public class DateUtil {
 
     public static String cruTimeStr() {
         return timeFormat.format(new Date());
+    }
+
+    public static String getMonthAndDateStr(Date date) {
+        return mdFormat.format(date);
     }
 }

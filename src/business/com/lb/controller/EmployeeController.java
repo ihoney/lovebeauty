@@ -3,6 +3,7 @@ package com.lb.controller;
 import com.lb.bean.Employee;
 import com.lb.service.EmployeeService;
 import com.lb.utils.Constant;
+import com.lb.utils.DateUtil;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -356,6 +358,32 @@ public class EmployeeController {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         try {
             employeeService.addEmployeeCommentByIdMobile(empId, userId, commentType, comment);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 获取手艺人的预约时间 闲忙信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryEmployeeBookInfoByIdMobile")
+    @ResponseBody
+    public Map<String, Object> queryEmployeeBookInfoByIdMobile(HttpServletRequest request, String empId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            Map<String, Object> bookInfo = employeeService.queryEmployeeBookInfoByIdMobile(empId).get(0);
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DATE, 3);
+            String bigDayAfterTomorrow = DateUtil.getMonthAndDateStr(calendar.getTime());
+            bookInfo.put(bigDayAfterTomorrow, bookInfo.get("bigDayAfterTomorrow"));
+            bookInfo.remove("bigDayAfterTomorrow");
+            jsonObject.put("bookInfo", bookInfo);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);

@@ -3,6 +3,7 @@ package com.lb.controller;
 import com.lb.bean.Demo;
 import com.lb.service.DemoService;
 import com.lb.utils.Constant;
+import com.lb.utils.DateUtil;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -303,27 +305,6 @@ public class DemoController {
             List<Map<String, Object>> employees = demoService.queryEmployeeDetailByIdMobile(demoId);
             jsonObject.put("demo", demos.get(0));
             jsonObject.put("employee", employees.get(0));
-            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
-        } catch (Exception e) {
-            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
-            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
-        }
-        return jsonObject;
-    }
-
-    /**
-     * 获取作品的预约时间 闲忙信息
-     *
-     * @param request
-     * @return
-     */
-    @RequestMapping(value = "queryDemoBookInfoByIdMobile")
-    @ResponseBody
-    public Map<String, Object> queryDemoBookInfoByIdMobile(HttpServletRequest request, String demoId) {
-        Map<String, Object> jsonObject = new HashMap<String, Object>();
-        try {
-            List<Map<String, Object>> bookInfo = demoService.queryDemoBookInfoByIdMobile(demoId);
-            jsonObject.put("bookInfo", bookInfo);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);

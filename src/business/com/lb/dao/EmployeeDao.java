@@ -231,4 +231,9 @@ public class EmployeeDao {
                 " e.id = " + empId;
         return jdbcTemplate.queryForList(sql);
     }
+
+    public List<Map<String, Object>> queryEmployeeBookInfoByIdMobile(String empId) {
+        String sql = "select * from book_time where empId = " + empId;
+        return jdbcTemplate.queryForList(sql);
+    }
 }

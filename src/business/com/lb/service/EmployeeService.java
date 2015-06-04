@@ -99,4 +99,8 @@ public class EmployeeService {
     public List<Map<String, Object>> queryEmployeeXYLevelByIdMobile(String empId) {
         return employeeDao.queryEmployeeXYLevelByIdMobile(empId);
     }
+
+    public List<Map<String, Object>> queryEmployeeBookInfoByIdMobile(String empId) {
+        return employeeDao.queryEmployeeBookInfoByIdMobile(empId);
+    }
 }
