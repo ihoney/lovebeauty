@@ -11,6 +11,8 @@
 <link href="${rootPath}/css/jquery-ui-1.10.2.custom.css" type="text/css" rel="stylesheet"/>
 <link href="${rootPath}/css/ui_skin.css" type="text/css" rel="stylesheet"/>
 <link href="${rootPath}/css/love.form.css" type="text/css" rel="stylesheet"/>
+<link type="text/css" rel="stylesheet" href="${rootPath}/css/colorbox.css"/>
+<script type="text/javascript" src="${rootPath}/js/jquery.colorbox.js"></script>
 
 <script type="text/javascript">
     $(function () {
@@ -21,6 +23,8 @@
                 $(this).find(".select_inp2").removeAttr("checked");
             }
         })
+
+        $(".img_class_a").colorbox({rel: 'img_class_a', photo: true});
     });
 
     function ad_add() {
@@ -133,12 +137,15 @@
             } else {
                 stateTmp = '<a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_stop(this);">停用</a>';
             }
+            trTag += '<a href="${rootPath}/fileUpload/' + ads[i].picName + '" class="img_class_a">预览</a>';
             trTag += stateTmp;
             trTag += '<a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_edit(this);">编辑</a>';
             trTag += '<a href="javascript:void(0);" adId="' + ads[i].id + '" fileName="' + ads[i].picName + '" onclick="ad_delete(this);">删除</a>';
             trTag += '</td></tr>';
             $(trTag).appendTo(tabTag);
         }
+
+        $(".img_class_a").colorbox({rel: 'img_class_a', photo: true});
     }
 </script>
 
@@ -168,6 +175,7 @@
                 <td>${ad.state}</td>
                 <td>${ad.backup}</td>
                 <td>
+                    <a href="${rootPath}/fileUpload/${ad.picName}" class="img_class_a">预览</a>
                     <c:if test="${ad.state == '停用'}">
                         <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_reuse(this);">启用</a>
                     </c:if>
