@@ -57,7 +57,7 @@ public class FavoriteDao {
     }
 
     public void deleteFavoriteMobile(String userId, String type, String entityId) {
-        String sql = "delete from favorite where type=?,userId = ?,entityId=?";
+        String sql = "delete from favorite where type=? and userId = ? and entityId=?";
         jdbcTemplate.update(sql, new Object[]{type, userId, entityId});
     }
 }
