@@ -66,9 +66,10 @@ public class SellerDao {
     }
 
     public void addAuth(SellerValidateInfo svi) {
-        String sql = "insert into seller_validate_info (sellerid,name,sex,birthday,email,identify,shopname,address,payaccount,telephone," +
+        String sql = "insert into seller_validate_info (sellerid,name,sex,birthday,email,identify,shopname,address,cityId,payaccount,telephone," +
                 "servicescope,head_img,identify_img,alipay_key,alipay_pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{svi.getSellerId(), svi.getName(), svi.getSex(), svi.getBirthday(), svi.getEmail(), svi.getIdentify(), svi.getShopName(), svi.getAddress(), svi.getPayAccount(),
+        jdbcTemplate.update(sql, new Object[]{svi.getSellerId(), svi.getName(), svi.getSex(), svi.getBirthday(), svi.getEmail(), svi.getIdentify(), svi.getShopName(), svi.getAddress(), svi.getCityId(),
+                svi.getPayAccount(),
                 svi.getTelephone(), svi.getServiceScope(), svi.getHeadImgStr(), svi.getIdentifyImgStr(), svi.getAlipayKey(), svi.getAlipayPid()});
     }
 
@@ -78,10 +79,11 @@ public class SellerDao {
     }
 
     public void updateAuth(SellerValidateInfo svi) {
-        String sql = "update seller_validate_info set name = ?,sex=?,birthday = ?,email = ?,identify = ?, shopname = ?, address = ? , payaccount = ?,telephone = ?, serviceScope = ?, " +
+        String sql = "update seller_validate_info set name = ?,sex=?,birthday = ?,email = ?,identify = ?, shopname = ?, address = ? ,cityId = ?, payaccount = ?,telephone = ?, serviceScope = ?, " +
                 "  alipay_key=?,alipay_pid=?,head_img=?,identify_img=? where id=?";
 
-        jdbcTemplate.update(sql, new Object[]{svi.getName(), svi.getSex(), svi.getBirthday(), svi.getEmail(), svi.getIdentify(), svi.getShopName(), svi.getAddress(), svi.getPayAccount(), svi.getTelephone(),
+        jdbcTemplate.update(sql, new Object[]{svi.getName(), svi.getSex(), svi.getBirthday(), svi.getEmail(), svi.getIdentify(), svi.getShopName(), svi.getAddress(), svi.getCityId(), svi.getPayAccount(),
+                svi.getTelephone(),
                 svi.getServiceScope(), svi.getAlipayKey(), svi.getAlipayPid(), svi.getHeadImgStr(), svi.getIdentifyImgStr(), svi.getId()});
     }
 

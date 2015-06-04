@@ -171,18 +171,28 @@
             </td>
         </tr>
         <tr>
+
+            <td class="td_att_name">所在城市:</td>
+            <td>
+                <select id="cityId" name="cityId">
+                    <c:forEach items="${cities}" var="city">
+                        <option value="${city.id}">${city.name}</option>
+                    </c:forEach>
+                </select>
+            </td>
             <td class="td_att_name">支付宝账号:</td>
             <td>
                 <input type="text" name="payAccount" id="payAccount"/>
             </td>
+
+        </tr>
+        <tr>
             <td class="td_att_name">支付宝秘钥:</td>
             <td>
                 <input type="text" name="alipayKey" id="alipayKey"/>
             </td>
-        </tr>
-        <tr>
             <td class="td_att_name">支付宝PID:</td>
-            <td colspan="3">
+            <td>
                 <input type="text" name="alipayPid" id="alipayPid" size="65"/>
             </td>
         </tr>

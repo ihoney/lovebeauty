@@ -1,6 +1,7 @@
 package com.lb.controller;
 
 import com.lb.bean.SellerValidateInfo;
+import com.lb.service.CityService;
 import com.lb.service.SellerService;
 import com.lb.utils.Constant;
 import com.lb.utils.DateUtil;
@@ -37,6 +38,9 @@ public class SellerController {
 
     @Resource
     private SellerService sellerService;
+
+    @Resource
+    private CityService cityService;
 
     /**
      * 检查登录
@@ -207,6 +211,8 @@ public class SellerController {
         ModelAndView modelAndView = new ModelAndView();
         Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
         modelAndView.addObject("seller", seller);
+        List<Map<String, Object>> cities = cityService.queryCitiesMobile();
+        modelAndView.addObject("cities", cities);
         if ("0".equals(seller.get("authed").toString())) {
             modelAndView.setViewName("business/seller_auth");
         } else {
