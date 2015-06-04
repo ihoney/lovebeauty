@@ -150,4 +150,9 @@ public class DemoDao {
                 "`order` o WHERE d.id = " + demoId + " AND e.id = d.employeeId AND o.demoid IN ( SELECT id FROM demo WHERE employeeId = e.id ) AND o.state = '交易成功'";
         return jdbcTemplate.queryForList(sql);
     }
+
+    public List<Map<String, Object>> queryDemoBookInfoByIdMobile(String demoId) {
+        String sql = "select * from bookTime where demoId = " + demoId;
+        return jdbcTemplate.queryForList(sql);
+    }
 }

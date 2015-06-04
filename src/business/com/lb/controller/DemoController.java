@@ -310,4 +310,25 @@ public class DemoController {
         }
         return jsonObject;
     }
+
+    /**
+     * 获取作品的预约时间 闲忙信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryDemoBookInfoByIdMobile")
+    @ResponseBody
+    public Map<String, Object> queryDemoBookInfoByIdMobile(HttpServletRequest request, String demoId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> bookInfo = demoService.queryDemoBookInfoByIdMobile(demoId);
+            jsonObject.put("bookInfo", bookInfo);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }
