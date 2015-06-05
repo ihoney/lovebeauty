@@ -146,8 +146,96 @@ public class DemoDao {
     }
 
     public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String demoId) {
-        String sql = "SELECT e.id, e.nickName, e.avgPrice, e.serverScope, e.headImg, e.majorScore, e.comScore, e.punctualScore, COUNT(o.id) AS empCount FROM demo d, employee e, " +
-                "`order` o WHERE d.id = " + demoId + " AND e.id = d.employeeId AND o.demoid IN ( SELECT id FROM demo WHERE employeeId = e.id ) AND o.state = '交易成功'";
+        String sql = "SELECT " +
+                " e.id, " +
+                " e.nickName, " +
+                " e.avgPrice, " +
+                " e.serverScope, " +
+                " e.headImg, " +
+                " e.majorScore, " +
+                " e.comScore, " +
+                " e.punctualScore, " +
+                " COUNT(o.id) AS empCount, " +
+                " CASE " +
+                "WHEN e.commentScore >= 1 && e.commentScore <= 30 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 31 && e.commentScore <= 285 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 286 && e.commentScore <= 1025 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 1026 && e.commentScore <= 2990 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 2991 && e.commentScore <= 7195 THEN " +
+                " 5 " +
+                "END AS picType, " +
+                " CASE " +
+                "WHEN e.commentScore = 1 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 2 && e.commentScore <= 3 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 4 && e.commentScore <= 8 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 9 && e.commentScore <= 14 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 15 && e.commentScore <= 30 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 31 && e.commentScore <= 57 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 58 && e.commentScore <= 93 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 94 && e.commentScore <= 146 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 147 && e.commentScore <= 210 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 211 && e.commentScore <= 285 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 286 && e.commentScore <= 384 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 385 && e.commentScore <= 507 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 508 && e.commentScore <= 655 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 656 && e.commentScore <= 828 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 829 && e.commentScore <= 1025 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 1026 && e.commentScore <= 1306 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 1307 && e.commentScore <= 1643 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 1644 && e.commentScore <= 2036 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 2037 && e.commentScore <= 2845 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 2846 && e.commentScore <= 2990 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 2991 && e.commentScore <= 3607 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 3608 && e.commentScore <= 4336 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 4337 && e.commentScore <= 5177 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 5178 && e.commentScore <= 6130 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 6131 && e.commentScore <= 7195 THEN " +
+                " 5 " +
+                "END AS picCount " +
+                "FROM " +
+                " demo d, " +
+                " employee e, " +
+                " `order` o " +
+                "WHERE " +
+                " d.id =  " + demoId +
+                " AND e.id = d.employeeId " +
+                "AND o.demoid IN ( " +
+                " SELECT " +
+                " id " +
+                " FROM " +
+                " demo " +
+                " WHERE " +
+                " employeeId = e.id " +
+                ") " +
+                "AND o.state = '交易成功'";
         return jdbcTemplate.queryForList(sql);
     }
 }
