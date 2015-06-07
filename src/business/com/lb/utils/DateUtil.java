@@ -17,6 +17,7 @@ public class DateUtil {
     private static SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private static SimpleDateFormat mdFormat = new SimpleDateFormat("M.d");
+    private static SimpleDateFormat ymdhmFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     public static Map<String, String> hourMap = new HashMap<String, String>();
 
     public static String cruDateStr() {
@@ -29,6 +30,10 @@ public class DateUtil {
 
     public static String getMonthAndDateStr(Date date) {
         return mdFormat.format(date);
+    }
+
+    public static String getYmdhmFormat(Date date) {
+        return ymdhmFormat.format(date);
     }
 
     static {

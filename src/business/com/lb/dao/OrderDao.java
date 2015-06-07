@@ -2,6 +2,7 @@ package com.lb.dao;
 
 import com.lb.bean.Order;
 import com.lb.utils.DateUtil;
+import com.lb.utils.MyStringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -59,6 +60,17 @@ public class OrderDao {
 
     public void orderSure(String orderId) {
         String sql = "update `order` set state = '交易成功',paytime = '" + DateUtil.cruTimeStr() + "' where id = '" + orderId + "'";
+        jdbcTemplate.update(sql);
+    }
+
+    public void submitOrderMobile(String orderId, String userId, String demoId, String price, String bookTime, String serverAddress) {
+        String sql = "INSERT INTO `order` ( id, userid, demoid, price, bookTime, serverAddress,ordertime ) VALUES (?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{orderId, userId, demoId, price, bookTime, serverAddress, DateUtil.cruTimeStr()});
+    }
+
+    public void changeBookInfo(String empId, String dateType, String hour) {
+        String sql = "UPDATE book_time SET " + dateType + " = CONCAT( LEFT (" + dateType + ", " + MyStringUtils.getLeftNumber(hour) + "), '1', RIGHT (" + dateType + ", " +
+                MyStringUtils.getRightNumber(hour) + ")) WHERE empId = '" + empId + "'";
         jdbcTemplate.update(sql);
     }
 }

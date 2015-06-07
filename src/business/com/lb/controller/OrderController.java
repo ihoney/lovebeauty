@@ -3,6 +3,7 @@ package com.lb.controller;
 import com.lb.bean.Order;
 import com.lb.service.OrderService;
 import com.lb.utils.Constant;
+import com.lb.utils.DateUtil;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -104,6 +106,39 @@ public class OrderController {
     public JSONObject orderSure(HttpServletRequest request, String orderId) {
         JSONObject jsonObject = new JSONObject();
         orderService.orderSure(orderId);
+        return jsonObject;
+    }
+
+
+    /**
+     * 客户端下订单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "submitOrderMobile")
+    @ResponseBody
+    public Map<String, Object> submitOrderMobile(HttpServletRequest request, String orderId, String userId, String demoId, String empId, String price, String dateType, String hour, String serverAddress) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            Calendar calendar = Calendar.getInstance();
+            if ("tomorrow".equals(dateType)) {
+                calendar.add(Calendar.DATE, 1);
+            } else if ("afterTomorrow".equals(dateType)) {
+                calendar.add(Calendar.DATE, 2);
+            } else if ("bigDayAfterTomorrow".equals(dateType)) {
+                calendar.add(Calendar.DATE, 3);
+            }
+            calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
+            calendar.set(Calendar.MINUTE, 0);
+            String bookTime = DateUtil.getYmdhmFormat(calendar.getTime());
+            orderService.submitOrderMobile(orderId, userId, demoId, price, bookTime, serverAddress);
+            orderService.changeBookInfo(empId, dateType, hour);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
         return jsonObject;
     }
 }

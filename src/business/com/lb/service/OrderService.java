@@ -49,4 +49,12 @@ public class OrderService {
     public void orderSure(String orderId) {
         orderDao.orderSure(orderId);
     }
+
+    public void submitOrderMobile(String orderId, String userId, String demoId, String price, String bookTime, String serverAddress) {
+        orderDao.submitOrderMobile(orderId, userId, demoId, price, bookTime, serverAddress);
+    }
+
+    public void changeBookInfo(String empId, String dateType, String hour) {
+        orderDao.changeBookInfo(empId, dateType, hour);
+    }
 }
