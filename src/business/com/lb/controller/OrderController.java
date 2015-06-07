@@ -225,4 +225,25 @@ public class OrderController {
         }
         return jsonObject;
     }
+
+    /**
+     * 验证订单有效性
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "validateOrderMobile")
+    @ResponseBody
+    public Map<String, Object> validateOrderMobile(HttpServletRequest request, String orderId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            String orderState = orderService.validateOrderMobile(orderId);
+            jsonObject.put("orderState", orderState);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

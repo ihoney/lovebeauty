@@ -73,4 +73,8 @@ public class OrderService {
     public List<Map<String, Object>> queryOrderDetailMobile(String orderId) {
         return orderDao.queryOrderDetailMobile(orderId);
     }
+
+    public String validateOrderMobile(String orderId) {
+        return orderDao.validateOrderMobile(orderId);
+    }
 }

@@ -154,4 +154,9 @@ public class OrderDao {
                 "AND c.id = o.userid ";
         return jdbcTemplate.queryForList(sql);
     }
+
+    public String validateOrderMobile(String orderId) {
+        String sql = "select state from `order` where id = " + orderId;
+        return jdbcTemplate.queryForObject(sql, String.class);
+    }
 }
