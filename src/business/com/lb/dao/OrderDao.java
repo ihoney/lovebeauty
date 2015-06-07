@@ -73,4 +73,14 @@ public class OrderDao {
                 MyStringUtils.getRightNumber(hour) + ")) WHERE empId = '" + empId + "'";
         jdbcTemplate.update(sql);
     }
+
+    public void changeOrderStateMobile(String orderId) {
+        String sql = "UPDATE `order` SET state = '交易成功', paytime = ? WHERE id = ?";
+        jdbcTemplate.update(sql, new Object[]{DateUtil.cruTimeStr(), orderId});
+    }
+
+    public void deleteOrderMobile(String orderId) {
+        String sql = "delete from `order` where id = " + orderId;
+        jdbcTemplate.update(sql);
+    }
 }

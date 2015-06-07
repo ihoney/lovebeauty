@@ -9,9 +9,9 @@
     </list>
     <ignored path="lovebeauty.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433682811811" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433683425749" ignored="false" />
     <file path="/left.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433010414709" ignored="false" />
-    <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433683290732" ignored="false" />
+    <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433684065024" ignored="false" />
     <file path="/DemoController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433672953727" ignored="false" />
     <file path="/flexTest.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1432982200024" ignored="false" />
     <file path="/fragment.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433436615482" ignored="false" />
@@ -29,7 +29,7 @@
     <file path="/demoDetail.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433172226396" ignored="false" />
     <file path="/demo_edit.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433045995367" ignored="false" />
     <file path="/order_list.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1432994754187" ignored="false" />
-    <file path="/OrderDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433683338140" ignored="false" />
+    <file path="/OrderDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433684260794" ignored="false" />
     <file path="/SellerDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433439031912" ignored="false" />
     <file path="/seller_list.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433011683316" ignored="false" />
     <file path="/customer_list.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1432996339015" ignored="false" />
@@ -74,7 +74,7 @@
     <file path="/CityController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433437029699" ignored="false" />
     <file path="/CityService.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433436666494" ignored="false" />
     <file path="/SellerValidateInfo.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433438662299" ignored="false" />
-    <file path="/OrderService.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433683312451" ignored="false" />
+    <file path="/OrderService.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433684228927" ignored="false" />
     <file path="/MD5Util.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433677413598" ignored="false" />
     <file path="/StringUtils.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433682064852" ignored="false" />
     <file path="/MyStringUtils.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433682065326" ignored="false" />
@@ -187,7 +187,7 @@
       <file leaf-file-name="OrderController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="36" selection-start="4582" selection-end="4582" vertical-scroll-proportion="0.62990195">
+            <state line="170" column="46" selection-start="5761" selection-end="5778" vertical-scroll-proportion="0.3045977">
               <folding />
             </state>
           </provider>
@@ -196,7 +196,7 @@
       <file leaf-file-name="OrderService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/OrderService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="27" selection-start="1262" selection-end="1262" vertical-scroll-proportion="0.0">
+            <state line="65" column="18" selection-start="1666" selection-end="1667" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -205,7 +205,7 @@
       <file leaf-file-name="OrderDao.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/OrderDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="0" selection-start="2419" selection-end="2419" vertical-scroll-proportion="0.0">
+            <state line="83" column="33" selection-start="3319" selection-end="3319" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -845,19 +845,23 @@
       <created>1433682828179</created>
       <updated>1433682828179</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="修改程序">
+      <created>1433683428362</created>
+      <updated>1433683428362</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23156089" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23156089" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33447686" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33447686" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -870,7 +874,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3030303" sideWeight="0.7684391" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3030303" sideWeight="0.6655232" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1141,21 +1145,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/OrderService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="27" selection-start="1262" selection-end="1262" vertical-scroll-proportion="0.0">
+        <state line="65" column="18" selection-start="1666" selection-end="1667" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/OrderDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="2419" selection-end="2419" vertical-scroll-proportion="0.0">
+        <state line="83" column="33" selection-start="3319" selection-end="3319" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="36" selection-start="4582" selection-end="4582" vertical-scroll-proportion="0.62990195">
+        <state line="170" column="46" selection-start="5761" selection-end="5778" vertical-scroll-proportion="0.3045977">
           <folding />
         </state>
       </provider>

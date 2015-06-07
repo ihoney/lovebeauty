@@ -141,4 +141,44 @@ public class OrderController {
         }
         return jsonObject;
     }
+
+    /**
+     * 订单支付成功状态修改
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "changeOrderStateMobile")
+    @ResponseBody
+    public Map<String, Object> changeOrderStateMobile(HttpServletRequest request, String orderId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            orderService.changeOrderStateMobile(orderId);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 订单支付成功状态修改
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "deleteOrderMobile")
+    @ResponseBody
+    public Map<String, Object> deleteOrderMobile(HttpServletRequest request, String orderId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            orderService.deleteOrderMobile(orderId);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

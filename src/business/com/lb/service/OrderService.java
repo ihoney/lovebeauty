@@ -57,4 +57,12 @@ public class OrderService {
     public void changeBookInfo(String empId, String dateType, String hour) {
         orderDao.changeBookInfo(empId, dateType, hour);
     }
+
+    public void changeOrderStateMobile(String orderId) {
+        orderDao.changeOrderStateMobile(orderId);
+    }
+
+    public void deleteOrderMobile(String orderId) {
+        orderDao.deleteOrderMobile(orderId);
+    }
 }
