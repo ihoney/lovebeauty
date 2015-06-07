@@ -63,9 +63,9 @@ public class OrderDao {
         jdbcTemplate.update(sql);
     }
 
-    public void submitOrderMobile(String orderId, String userId, String demoId, String price, String bookTime, String serverAddress) {
-        String sql = "INSERT INTO `order` ( id, userid, demoid, price, bookTime, serverAddress,ordertime ) VALUES (?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{orderId, userId, demoId, price, bookTime, serverAddress, DateUtil.cruTimeStr()});
+    public void submitOrderMobile(String orderId, String userId, String demoId, String empId, String price, String bookTime, String serverAddress) {
+        String sql = "INSERT INTO `order` ( id, userid, demoid,empId, price, bookTime, serverAddress,ordertime ) VALUES (?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{orderId, userId, demoId, empId, price, bookTime, serverAddress, DateUtil.cruTimeStr()});
     }
 
     public void changeBookInfo(String empId, String dateType, String hour) {

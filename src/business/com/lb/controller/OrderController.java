@@ -132,7 +132,7 @@ public class OrderController {
             calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
             calendar.set(Calendar.MINUTE, 0);
             String bookTime = DateUtil.getYmdhmFormat(calendar.getTime());
-            orderService.submitOrderMobile(orderId, userId, demoId, price, bookTime, serverAddress);
+            orderService.submitOrderMobile(orderId, userId, demoId, empId, price, bookTime, serverAddress);
             orderService.changeBookInfo(empId, dateType, hour);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
