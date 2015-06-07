@@ -111,6 +111,7 @@ public class OrderDao {
         } else if ("3".equals(orderState)) {
             sb.append(" and o.hasComment = 0 and o.state != '取消订单' ");
         }
+        sb.append(" ORDER BY o.state desc ");
         return jdbcTemplate.queryForList(sb.toString());
     }
 
