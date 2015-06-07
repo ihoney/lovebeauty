@@ -150,7 +150,7 @@ function page_callback(data) {
     var cities = data.cities;
     var trTag;
     for (var i = 0, j = cities.length; i < j; i++) {
-        trTag = ' <tr class="tr_header">'
+        trTag = ' <tr class="tr_body">'
                 + '<td><input class="select_inp2" type="checkbox" cityId="' + cities[i].id + '"/></td>'
                 + ' <td>' + i + '</td>'
                 + '<td>' + cities[i].name + '</td>'
@@ -159,9 +159,11 @@ function page_callback(data) {
                 + '<td>' + cities[i].state + '</td>'
                 + '<td>' + cities[i].serviceScope + '</td>';
         if (cities[i].state == '停用') {
-            trTag += ' <td> <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_reuse(this);">开通</a></td>';
+            trTag += ' <td> <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_reuse(this);">启用</a> <a href="javascript:void(0);" cityId="' + cities[i].id +
+                    '" onclick="change_city_serviceScope(this);">编辑</a></td>';
         } else {
-            trTag += '<td>  <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_stop(this);">停用</a></td>'
+            trTag += '<td>  <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_stop(this);">停用</a> <a href="javascript:void(0);" cityId="' + cities[i].id +
+                    '" onclick="change_city_serviceScope(this);">编辑</a></td>'
         }
         trTag += '</tr>';
         $(trTag).appendTo(tabTag);
