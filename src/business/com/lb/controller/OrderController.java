@@ -181,4 +181,46 @@ public class OrderController {
         }
         return jsonObject;
     }
+
+    /**
+     * 查看所有订单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryOrdersMobile")
+    @ResponseBody
+    public Map<String, Object> queryOrdersMobile(HttpServletRequest request, String userId, String orderState) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> orders = orderService.queryOrdersMobile(userId, orderState);
+            jsonObject.put("orders", orders);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 查看订单详情
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryOrderDetailMobile")
+    @ResponseBody
+    public Map<String, Object> queryOrderDetailMobile(HttpServletRequest request, String orderId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> orders = orderService.queryOrderDetailMobile(orderId);
+            jsonObject.put("order", orders.get(0));
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

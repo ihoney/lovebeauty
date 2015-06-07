@@ -65,4 +65,12 @@ public class OrderService {
     public void deleteOrderMobile(String orderId) {
         orderDao.deleteOrderMobile(orderId);
     }
+
+    public List<Map<String, Object>> queryOrdersMobile(String userId, String orderState) {
+        return orderDao.queryOrdersMobile(userId, orderState);
+    }
+
+    public List<Map<String, Object>> queryOrderDetailMobile(String orderId) {
+        return orderDao.queryOrderDetailMobile(orderId);
+    }
 }

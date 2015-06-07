@@ -80,7 +80,65 @@ public class OrderDao {
     }
 
     public void deleteOrderMobile(String orderId) {
-        String sql = "delete from `order` where id = " + orderId;
+        String sql = "update `order`set state = '取消订单' where id = " + orderId;
         jdbcTemplate.update(sql);
+    }
+
+    public List<Map<String, Object>> queryOrdersMobile(String userId, String orderState) {
+        StringBuffer sb = new StringBuffer("SELECT " +
+                " o.id AS orderId, " +
+                " o.state, " +
+                " o.price, " +
+                " o.bookTime, " +
+                " o.serverAddress, " +
+                " d.id AS demoId, " +
+                " d.`name` AS demoName, " +
+                " d.fileEName, " +
+                " e.id AS empId, " +
+                " e.nickName " +
+                "FROM " +
+                " `order` o, " +
+                " demo d, " +
+                " employee e " +
+                "WHERE " +
+                " e.id = o.empId " +
+                "AND d.id = o.demoid " +
+                "AND userid = " + userId);
+        if ("1".equals(orderState)) {
+            sb.append(" and o.state != '取消订单' ");
+        } else if ("2".equals(orderState)) {
+            sb.append(" and o.state = '未付款' ");
+        } else if ("3".equals(orderState)) {
+            sb.append(" and o.hasComment = 0 and o.state != '取消订单' ");
+        }
+        return jdbcTemplate.queryForList(sb.toString());
+    }
+
+    public List<Map<String, Object>> queryOrderDetailMobile(String orderId) {
+        String sql = "SELECT " +
+                " o.id AS orderId, " +
+                " o.state, " +
+                " o.price, " +
+                " o.bookTime, " +
+                " o.serverAddress, " +
+                " d.id AS demoId, " +
+                " d.`name` AS demoName, " +
+                " d.fileEName, " +
+                " e.id AS empId, " +
+                " e.nickName, " +
+                " c.id AS userId, " +
+                " c.account AS userAccount, " +
+                " c.nickName AS userNickName " +
+                "FROM " +
+                " `order` o, " +
+                " demo d, " +
+                " employee e, " +
+                " customer c " +
+                "WHERE " +
+                " e.id = o.empId " +
+                "AND d.id = o.demoid " +
+                "AND o.id = '" + orderId + "' " +
+                "AND c.id = o.userid ";
+        return jdbcTemplate.queryForList(sql);
     }
 }
