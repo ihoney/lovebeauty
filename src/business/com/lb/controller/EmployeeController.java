@@ -378,11 +378,6 @@ public class EmployeeController {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         try {
             Map<String, Object> bookInfo = employeeService.queryEmployeeBookInfoByIdMobile(empId).get(0);
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DATE, 3);
-            String bigDayAfterTomorrow = DateUtil.getMonthAndDateStr(calendar.getTime());
-            bookInfo.put(bigDayAfterTomorrow, bookInfo.get("bigDayAfterTomorrow"));
-            bookInfo.remove("bigDayAfterTomorrow");
             jsonObject.put("bookInfo", bookInfo);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
