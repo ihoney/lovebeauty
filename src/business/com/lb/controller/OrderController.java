@@ -110,7 +110,7 @@ public class OrderController {
         orderService.orderSure(orderId);
         return jsonObject;
     }
-
+  /*-------------------------------------移动端----------------------------------------------*/
 
     /**
      * 客户端下订单
