@@ -1,6 +1,7 @@
 package com.lb.dao;
 
 import com.lb.bean.Demo;
+import com.lb.utils.DateUtil;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -122,8 +123,7 @@ public class DemoDao {
         int pageIndex = Integer.parseInt(page);
         int ps = Integer.parseInt(pageSize);
         StringBuffer stringBuffer = new StringBuffer("SELECT d.id, d. NAME, d.price, COUNT(o.demoid) AS count, d.fileEName FROM demo d left join `order` o on o.demoid = d.id and o.state = '交易成功' where  d.demoType = '"
-                +
-                demoType + "' " +
+                + demoType + "' " +
                 "GROUP BY d.id  order " +
                 "by ");
         if ("1".equals(orderType)) {
@@ -237,5 +237,47 @@ public class DemoDao {
                 ") " +
                 "AND o.state = '交易成功'";
         return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> queryDemosByTimeMobile(String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
+        int pageIndex = Integer.parseInt(page);
+        int ps = Integer.parseInt(pageSize);
+        StringBuffer sb = new StringBuffer("SELECT " +
+                " d.id, " +
+                " d. NAME, " +
+                " d.price, " +
+                " COUNT(o.demoid) AS count, " +
+                " d.fileEName " +
+                "FROM " +
+                " demo d " +
+                "LEFT JOIN `order` o ON o.demoid = d.id " +
+                "AND o.state = '交易成功' " +
+                "WHERE " +
+                " d.employeeId IN ( " +
+                "  SELECT " +
+                "   e.id " +
+                "  FROM " +
+                "   employee e, " +
+                "   book_time bt, " +
+                "   seller_validate_info svi " +
+                "  WHERE " +
+                "   svi.sellerid = e.sellerId " +
+                "  AND svi.cityId =  " + cityId +
+                "  AND bt.empId = e.id " +
+                "  AND bt." + dateType + " LIKE '" + DateUtil.hourMap.get(hour) + "' " +
+                " ) " +
+                "GROUP BY " +
+                " d.id order by ");
+        if ("1".equals(orderType)) {
+            sb.append(" COUNT(o.demoid),d.price");
+        } else if ("2".equals(orderType)) {
+            sb.append(" COUNT(o.demoid)");
+        } else if ("3".equals(orderType)) {
+            sb.append(" price");
+        } else if ("4".equals(orderType)) {
+            sb.append(" price desc");
+        }
+        sb.append(" limit " + (pageIndex - 1) * ps + "," + ps);
+        return jdbcTemplate.queryForList(sb.toString());
     }
 }

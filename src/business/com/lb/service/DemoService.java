@@ -87,4 +87,8 @@ public class DemoService {
     public List<Map<String, Object>> queryEmployeeDetailByIdMobile(String demoId) {
         return demoDao.queryEmployeeDetailByIdMobile(demoId);
     }
+
+    public List<Map<String, Object>> queryDemosByTimeMobile(String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
+        return demoDao.queryDemosByTimeMobile(cityId, dateType, hour, orderType, page, pageSize);
+    }
 }

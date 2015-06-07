@@ -103,4 +103,8 @@ public class EmployeeService {
     public List<Map<String, Object>> queryEmployeeBookInfoByIdMobile(String empId) {
         return employeeDao.queryEmployeeBookInfoByIdMobile(empId);
     }
+
+    public List<Map<String, Object>> queryEmployeesByTimeMobile(String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
+        return employeeDao.queryEmployeesByTimeMobile(cityId, dateType, hour, orderType, page, pageSize);
+    }
 }

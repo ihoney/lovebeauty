@@ -2,6 +2,8 @@ package com.lb.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +17,7 @@ public class DateUtil {
     private static SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private static SimpleDateFormat mdFormat = new SimpleDateFormat("M.d");
+    public static Map<String, String> hourMap = new HashMap<String, String>();
 
     public static String cruDateStr() {
         return dateFormat.format(new Date());
@@ -27,4 +30,20 @@ public class DateUtil {
     public static String getMonthAndDateStr(Date date) {
         return mdFormat.format(date);
     }
+
+    static {
+        hourMap.put("10", "0___________");
+        hourMap.put("11", "_0__________");
+        hourMap.put("12", "__0_________");
+        hourMap.put("13", "___0________");
+        hourMap.put("14", "____0_______");
+        hourMap.put("15", "_____0______");
+        hourMap.put("16", "______0_____");
+        hourMap.put("17", "_______0____");
+        hourMap.put("18", "________0___");
+        hourMap.put("19", "_________0__");
+        hourMap.put("20", "__________0_");
+        hourMap.put("21", "___________0");
+    }
+
 }

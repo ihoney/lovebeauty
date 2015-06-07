@@ -3,7 +3,6 @@ package com.lb.controller;
 import com.lb.bean.Demo;
 import com.lb.service.DemoService;
 import com.lb.utils.Constant;
-import com.lb.utils.DateUtil;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -312,4 +310,27 @@ public class DemoController {
         }
         return jsonObject;
     }
+
+    /**
+     * 根据预约时间 和地点获取作品
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryDemosByTimeMobile")
+    @ResponseBody
+    public Map<String, Object> queryDemosByTimeMobile(HttpServletRequest request, String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> demos = demoService.queryDemosByTimeMobile(cityId, dateType, hour, orderType, page, pageSize);
+            jsonObject.put("demos", demos);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+
 }

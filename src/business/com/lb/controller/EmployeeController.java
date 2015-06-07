@@ -3,7 +3,6 @@ package com.lb.controller;
 import com.lb.bean.Employee;
 import com.lb.service.EmployeeService;
 import com.lb.utils.Constant;
-import com.lb.utils.DateUtil;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -21,7 +20,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -379,6 +377,27 @@ public class EmployeeController {
         try {
             Map<String, Object> bookInfo = employeeService.queryEmployeeBookInfoByIdMobile(empId).get(0);
             jsonObject.put("bookInfo", bookInfo);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 根据预约时间 和地点获取手艺人
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryEmployeesByTimeMobile")
+    @ResponseBody
+    public Map<String, Object> queryEmployeesByTimeMobile(HttpServletRequest request, String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> employees = employeeService.queryEmployeesByTimeMobile(cityId, dateType, hour, orderType, page, pageSize);
+            jsonObject.put("employees", employees);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
