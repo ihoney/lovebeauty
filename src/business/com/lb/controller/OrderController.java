@@ -66,8 +66,9 @@ public class OrderController {
     public ModelAndView queryAllOrders(HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
         Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
-        int orderCount = orderService.getOrderCount();
-        List<Map<String, Object>> orders = orderService.getOrderByPage(seller.get("id").toString(), 1, Constant.PAGENUM);
+        String sellerId = seller.get("id").toString();
+        int orderCount = orderService.getOrderCount(sellerId);
+        List<Map<String, Object>> orders = orderService.getOrderByPage(sellerId, 1, Constant.PAGENUM);
         modelAndView.addObject("orders", orders);
         int totalPage = orderCount / Constant.PAGENUM + (orderCount % Constant.PAGENUM == 0 ? 0 : 1);
         modelAndView.addObject("orderCount", orderCount);
@@ -89,7 +90,8 @@ public class OrderController {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         int pageIndex = Integer.parseInt(request.getParameter("curPage"));
         Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
-        List<Map<String, Object>> orders = orderService.getOrderByPage(seller.get("id").toString(), pageIndex, Constant.PAGENUM);
+        String sellerId = seller.get("id").toString();
+        List<Map<String, Object>> orders = orderService.getOrderByPage(sellerId, pageIndex, Constant.PAGENUM);
         jsonObject.put("orders", orders);
         return jsonObject;
     }

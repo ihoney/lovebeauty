@@ -20,8 +20,8 @@ public class OrderService {
     @Resource
     private OrderDao orderDao;
 
-    public int getOrderCount() {
-        return orderDao.getOrderCount();
+    public int getOrderCount(String sellerId) {
+        return orderDao.getOrderCount(sellerId);
     }
 
     public List<Map<String, Object>> getOrderByPage(String sellerId, int pageIndex, int pageSize) {

@@ -112,10 +112,12 @@
                     + '<td>' + orders[i].id + '</td>'
                     + '<td>' + orders[i].account + '</td>'
                     + '<td><a href="${rootPath}/demo/getDemoDetail.do?demoId=' + orders[i].demoId + '">' + orders[i].NAME + '</a></td>'
-                    + '<td>' + orders[i].NAME + '</td>'
+                    + '<td>' + orders[i].price + '</td>'
+                    + '<td>' + orders[i].bookTime + '</td>'
                     + '<td>' + orders[i].ordertime + '</td>'
                     + '<td>' + orders[i].paytime + '</td>'
-                    + '<td>' + orders[i].state + '</td>';
+                    + '<td>' + orders[i].state + '</td>'
+                    + '<td>' + orders[i].serverAddress + '</td>';
             if (orders[i].state == '未付款') {
                 trTag = trTag + '<td><a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="order_sure(this);">确认</a>'
                         + '  <a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="order_abort(this);">取消订单</a>' + ' </td> ';
@@ -137,9 +139,12 @@
             <td>订单号</td>
             <td>客户账号</td>
             <td>作品</td>
+            <td>订单价格</td>
+            <td>预约服务时间</td>
             <td>下单时间</td>
             <td>付款时间</td>
             <td>订单状态</td>
+            <td>服务地址</td>
             <td>操作</td>
         </tr>
         <c:forEach var="order" items="${orders}" varStatus="vst">
@@ -151,9 +156,12 @@
                 <td>
                     <a href="${rootPath}/demo/getDemoDetail.do?demoId=${order.demoId}">${order.NAME}</a>
                 </td>
+                <td>${order.price}</td>
+                <td>${order.bookTime}</td>
                 <td>${order.ordertime}</td>
                 <td>${order.paytime}</td>
                 <td>${order.state}</td>
+                <td>${order.serverAddress}</td>
                 <td>
                     <c:if test="${order.state == '未付款'}">
                         <a href="javascript:void(0);" orderId="${order.id}" onclick="order_sure(this);">确认</a>

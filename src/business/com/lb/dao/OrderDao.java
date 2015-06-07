@@ -23,8 +23,8 @@ public class OrderDao {
     @Resource
     private JdbcTemplate jdbcTemplate;
 
-    public int getOrderCount() {
-        String sql = "select count(*) from `order`";
+    public int getOrderCount(String sellerId) {
+        String sql = "SELECT COUNT(*) FROM `order` WHERE empId IN ( SELECT id FROM employee WHERE sellerId = " + sellerId + ")";
         return jdbcTemplate.queryForInt(sql);
     }
 
@@ -32,19 +32,31 @@ public class OrderDao {
         String sql = "SELECT " +
                 " o.id, " +
                 " c.account, " +
-                " d.id as demoId, " +
+                " d.id AS demoId, " +
                 " d. NAME, " +
                 " o.ordertime, " +
                 " o.paytime, " +
-                " o.state " +
-                " FROM " +
+                " o.state, " +
+                " o.price, " +
+                " o.bookTime, " +
+                " o.serverAddress " +
+                "FROM " +
                 " `order` AS o, " +
                 " customer AS c, " +
                 " demo AS d " +
-                " WHERE " +
-                " o.sellerid = " + sellerId +
-                " AND c.id = o.userid" +
-                " AND d.id = o.demoid order by state limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+                "WHERE " +
+                " o.empId IN ( " +
+                "  SELECT " +
+                "   id " +
+                "  FROM " +
+                "   employee " +
+                "  WHERE " +
+                "   sellerid =  " + sellerId +
+                "  ) " +
+                " AND c.id = o.userid " +
+                "AND d.id = o.demoid " +
+                "ORDER BY " +
+                " state desc  limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 

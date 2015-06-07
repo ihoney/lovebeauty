@@ -23,26 +23,6 @@ $(function () {
     })
 });
 
-function city_add() {
-    $("#add_city_div").dialog({
-        modal: true,
-        width: '480',
-        height: '250',
-        resizable: false,
-        title: '添加城市',
-        zIndex: 5,
-        buttons: {
-            "添 加": function () {
-                addCity();
-                $(this).dialog("close");
-            },
-            "取 消": function () {
-                $(this).dialog("close");
-            }
-        }
-    });
-}
-
 function change_city_serviceScope(node) {
     var cityId = $(node).attr("cityId");
     var serviceScope = $(node).parent("td").prev("td").text();
@@ -64,31 +44,6 @@ function change_city_serviceScope(node) {
             }
         }
     });
-}
-
-function addCity() {
-    var url = getRootPath() + "admin/addCity.do";
-    var cityName = $("#city").val();
-    var serviceScope = $.trim($("#serviceScope").val());
-    if (serviceScope == "") {
-        alert("服务范围不能为空！");
-        return;
-    }
-    $.ajax({
-        url: url,
-        type: "POST",
-        data: {"cityName": cityName, "serviceScope": serviceScope},
-        success: function (data) {
-            if (data.reqResult) {
-                location.reload();
-            } else {
-                alert(data.message);
-            }
-        },
-        error: function () {
-            alert("error");
-        }
-    })
 }
 
 function chgCityServiceScope(cityId) {
@@ -119,9 +74,9 @@ function city_reuse(node) {
         type: "POST",
         data: {"cityId": cityId, "state": "开通"},
         success: function () {
-            $(node).parent("td").prev("td").text("开通");
-            $(node).parent("td").prev("td").prev("td").prev("td").text(curDateTime);
-            $(node).parent("td").prev("td").prev("td").text("");
+            $(node).parent("td").prev("td").prev("td").text("开通");
+            $(node).parent("td").prev("td").prev("td").prev("td").prev("td").text(curDateTime);
+            $(node).parent("td").prev("td").prev("td").prev("td").text("");
             $(node).attr("onclick", "city_stop(this);").text("停用");
         }
     })
@@ -135,9 +90,9 @@ function city_stop(node) {
         type: "POST",
         data: {"cityId": cityId, "state": "停用"},
         success: function () {
-            $(node).parent("td").prev("td").text("停用");
-            $(node).parent("td").prev("td").prev("td").text(curDateTime);
-            $(node).parent("td").prev("td").prev("td").prev("td").text("");
+            $(node).parent("td").prev("td").prev("td").text("停用");
+            $(node).parent("td").prev("td").prev("td").prev("td").text(curDateTime);
+            $(node).parent("td").prev("td").prev("td").prev("td").prev("td").text("");
             $(node).attr("onclick", "city_reuse(this);").text("启用");
         }
     })
@@ -215,9 +170,6 @@ function page_callback(data) {
 </script>
 <div class="tab_header">
     <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[开通城市列表]
-      <span class="btn_pos">
-        <span class="btn_bg_img btn_add_img" onclick="city_add();">添加</span>
-    </span>
 </div>
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
@@ -270,27 +222,6 @@ function page_callback(data) {
             <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>
 </div>
-<div id="add_city_div" style="display: none">
-    <div style="margin-top: 5px; margin-left: 5px;">
-        <table class="city_tab">
-            <tr>
-                <td class="city_td_attr_title">开通城市：</td>
-                <td><select id="city" style="width: 120px; border: none;">
-                    <option>北京</option>
-                    <option>上海</option>
-                    <option>天津</option>
-                    <option>重庆</option>
-                    <option>青岛</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td class="city_td_attr_title">服务范围：</td>
-                <td><textarea id="serviceScope" rows="6" cols="40" style="border: none;"></textarea></td>
-            </tr>
-        </table>
-    </div>
-</div>
-
 
 <div id="chg_city_div" style="display: none">
     <div style="margin-top: 5px; margin-left: 5px;">
