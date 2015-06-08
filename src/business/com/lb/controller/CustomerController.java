@@ -6,9 +6,9 @@ import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -45,8 +45,8 @@ public class CustomerController {
      */
     @RequestMapping(value = "checkLogin")
     @ResponseBody
-    public Map<String,Object> checkLogin(HttpServletRequest request, String account, String password) throws JSONException {
-        Map<String,Object> jsonObject = new HashMap<String, Object>();
+    public Map<String, Object> checkLogin(HttpServletRequest request, String account, String password) throws JSONException {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
         String loginIp = request.getRemoteAddr();
         List<Map<String, Object>> customers = customerService.existsCustomer(account, password);
         if (customers != null && customers.size() > 0) {
@@ -56,7 +56,7 @@ public class CustomerController {
                 jsonObject.put(Constant.TIPMESSAGE, "账号已禁用，请联系管理员!");
             } else {
                 customerService.loginInfo(account, loginIp);
-                jsonObject.put("customer",customers.get(0));
+                jsonObject.put("customer", customers.get(0));
                 jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
             }
         } else {
@@ -217,14 +217,17 @@ public class CustomerController {
      */
     @RequestMapping(value = "changeHeadImgMobile")
     @ResponseBody
-    public JSONObject changeHeadImgMobile(HttpServletRequest request, String userId) throws JSONException {
+    public JSONObject changeHeadImgMobile(HttpServletRequest request, String userId, @RequestParam MultipartFile[] headImg) throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-        MultipartFile headImg = multipartRequest.getFile("headImg");
+        MultipartFile headImgTmp = null;
+        if (headImg != null && headImg.length > 0) {
+            headImgTmp = headImg[0];
+        }
+
         String fileEName = "";
         String fileName;
         if (headImg != null) {
-            fileName = headImg.getOriginalFilename();
+            fileName = headImgTmp.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."));
             fileEName = "pic_user_headImg_" + "_" + System.currentTimeMillis() + fileSuffix;
         }
@@ -232,7 +235,7 @@ public class CustomerController {
         try {
             customerService.changeHeadImgMobile(userId, fileEName);
             if (headImg != null) {
-                InputStream is = headImg.getInputStream();
+                InputStream is = headImgTmp.getInputStream();
                 String filePath = request.getRealPath("/fileUpload");
                 FileOutputStream fos = new FileOutputStream(filePath + "/" + fileEName);
                 byte[] buf = new byte[1024];
