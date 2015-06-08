@@ -255,4 +255,47 @@ public class PrivateOrderController {
         modelAndView.setViewName("business/privateOrderDetail");
         return modelAndView;
     }
+
+    /*-----------------------移动端---------------------*/
+
+    /**
+     * 确认订单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "addPrivateOrderMobile")
+    @ResponseBody
+    public JSONObject addPrivateOrderMobile(HttpServletRequest request, String userId, String cityId, String price, String bookTime, String serverAddress, String description, @RequestParam MultipartFile[] reqPicName) {
+        JSONObject jsonObject = new JSONObject();
+        MultipartFile reqPicNameTmp = null;
+        String fileEName = "";
+        String fileName;
+        if (reqPicName != null && reqPicName.length > 0) {
+            reqPicNameTmp = reqPicName[0];
+            fileName = reqPicNameTmp.getOriginalFilename();
+            String fileSuffix = fileName.substring(fileName.lastIndexOf("."));
+            fileEName = "pic_reqImg_" + System.currentTimeMillis() + fileSuffix;
+        }
+        try {
+            privateOrderService.addPrivateOrderMobile(userId, cityId, price, bookTime, serverAddress, description, fileEName);
+            if (reqPicNameTmp != null && !reqPicNameTmp.isEmpty()) {
+                InputStream is = reqPicNameTmp.getInputStream();
+                String filePath = request.getRealPath("/fileUpload");
+                FileOutputStream fos = new FileOutputStream(filePath + "/" + fileEName);
+                byte[] buf = new byte[1024];
+                int i;
+                while ((i = is.read(buf)) > 0) {
+                    fos.write(buf, 0, i);
+                }
+                fos.flush();
+                fos.close();
+            }
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

@@ -1,7 +1,5 @@
 package com.lb.service;
 
-import com.lb.bean.Order;
-import com.lb.dao.OrderDao;
 import com.lb.dao.PrivateOrderDao;
 import org.springframework.stereotype.Service;
 
@@ -71,5 +69,9 @@ public class PrivateOrderService {
 
     public List<Map<String, Object>> getOrderByPageAdmin(int pageIndex, int pageSize) {
         return privateOrderDao.getOrderByPageAdmin(pageIndex, pageSize);
+    }
+
+    public void addPrivateOrderMobile(String userId, String cityId, String price, String bookTime, String serverAddress, String description, String fileEName) {
+        privateOrderDao.addPrivateOrderMobile(userId, cityId, price, bookTime, serverAddress, description, fileEName);
     }
 }
