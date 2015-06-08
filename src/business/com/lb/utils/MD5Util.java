@@ -28,28 +28,34 @@ public class MD5Util {
         return str;
     }
 
-    public static String toHexString(MessageDigest md5, String key) {
-        char[] md = key.toCharArray();
-        byte[] arr = new byte[md.length];
-        for (int i = 0; i < md.length; i++)
-            arr[i] = (byte) md[i];
-        byte[] bs = md5.digest(arr);
-        StringBuilder sb = new StringBuilder();
-        int i;
-        char c;
-        byte b;
-        int max = 0;
-        for (i = 0; i < bs.length; i++) {
-            max++;
-            if (max >= Integer.MAX_VALUE) {
-                break;
+    public static String toHexString(String key) {
+        MessageDigest md5;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+            char[] md = key.toCharArray();
+            byte[] arr = new byte[md.length];
+            for (int i = 0; i < md.length; i++)
+                arr[i] = (byte) md[i];
+            byte[] bs = md5.digest(arr);
+            StringBuilder sb = new StringBuilder();
+            int i;
+            char c;
+            byte b;
+            int max = 0;
+            for (i = 0; i < bs.length; i++) {
+                max++;
+                if (max >= Integer.MAX_VALUE) {
+                    break;
+                }
+                b = bs[i];
+                c = Character.forDigit((b >>> 4) & 0x0F, 16);
+                sb.append(c);
+                c = Character.forDigit(b & 0x0F, 16);
+                sb.append(c);
             }
-            b = bs[i];
-            c = Character.forDigit((b >>> 4) & 0x0F, 16);
-            sb.append(c);
-            c = Character.forDigit(b & 0x0F, 16);
-            sb.append(c);
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            return "";
         }
-        return sb.toString();
     }
 }

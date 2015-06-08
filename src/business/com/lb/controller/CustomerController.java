@@ -2,6 +2,7 @@ package com.lb.controller;
 
 import com.lb.service.CustomerService;
 import com.lb.utils.Constant;
+import com.lb.utils.MD5Util;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -76,26 +77,32 @@ public class CustomerController {
      */
     @RequestMapping(value = "registerMobile")
     @ResponseBody
-    public JSONObject registerMobile(HttpServletRequest request, String account, String password) {
+    public JSONObject registerMobile(HttpServletRequest request, String account, String password, String time, String key) {
         JSONObject jsonObject = new JSONObject();
         String regIp = request.getRemoteAddr();
-        try {
-            if (account != null && account.matches("1\\d{10}")) {
-                if (password != null && password.matches("\\w{6,25}")) {
-                    customerService.register(account, password, regIp);
-                    jsonObject.put(Constant.TIPMESSAGE, "恭喜，注册成功！");
-                    jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        String keyTmp = MD5Util.toHexString(account + password + time);
+        if (!keyTmp.equals(key)) {
+            jsonObject.put(Constant.TIPMESSAGE, "禁止非法注册！");
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+        } else {
+            try {
+                if (account != null && account.matches("1\\d{10}")) {
+                    if (password != null && password.matches("\\w{6,25}")) {
+                        customerService.register(account, password, regIp);
+                        jsonObject.put(Constant.TIPMESSAGE, "恭喜，注册成功！");
+                        jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+                    } else {
+                        jsonObject.put(Constant.TIPMESSAGE, "密码不合法！");
+                        jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+                    }
                 } else {
-                    jsonObject.put(Constant.TIPMESSAGE, "密码不合法！");
-                    jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+                    jsonObject.put(Constant.TIPMESSAGE, "请输入正确手机号！");
+                    jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
                 }
-            } else {
-                jsonObject.put(Constant.TIPMESSAGE, "请输入正确手机号！");
+            } catch (Exception e) {
+                jsonObject.put(Constant.TIPMESSAGE, "注册失败！");
                 jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
             }
-        } catch (Exception e) {
-            jsonObject.put(Constant.TIPMESSAGE, "注册失败！");
-            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
         }
         return jsonObject;
     }
