@@ -266,7 +266,7 @@ public class PrivateOrderController {
      */
     @RequestMapping(value = "addPrivateOrderMobile")
     @ResponseBody
-    public JSONObject addPrivateOrderMobile(HttpServletRequest request, String userId, String cityId, String price, String bookTime, String serverAddress, String description, @RequestParam MultipartFile[] reqPicName) {
+    public JSONObject addPrivateOrderMobile(HttpServletRequest request, String userId, String cityId, String bookTime, String serverAddress, String description, @RequestParam MultipartFile[] reqPicName) {
         JSONObject jsonObject = new JSONObject();
         MultipartFile reqPicNameTmp = null;
         String fileEName = "";
@@ -278,7 +278,7 @@ public class PrivateOrderController {
             fileEName = "pic_reqImg_" + System.currentTimeMillis() + fileSuffix;
         }
         try {
-            privateOrderService.addPrivateOrderMobile(userId, cityId, price, bookTime, serverAddress, description, fileEName);
+            privateOrderService.addPrivateOrderMobile(userId, cityId, bookTime, serverAddress, description, fileEName);
             if (reqPicNameTmp != null && !reqPicNameTmp.isEmpty()) {
                 InputStream is = reqPicNameTmp.getInputStream();
                 String filePath = request.getRealPath("/fileUpload");
@@ -291,6 +291,27 @@ public class PrivateOrderController {
                 fos.flush();
                 fos.close();
             }
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 确认订单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryPrivateOrdersMobile")
+    @ResponseBody
+    public Map<String, Object> queryPrivateOrdersMobile(HttpServletRequest request, String userId) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            List<Map<String, Object>> privateOrders = privateOrderService.queryPrivateOrdersMobile(userId);
+            jsonObject.put("privateOrders", privateOrders);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);

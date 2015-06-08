@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ed2e34f-f3ad-4366-87d7-c93f18584043" name="Default" comment="">
+    <list default="true" id="6ed2e34f-f3ad-4366-87d7-c93f18584043" name="Default" comment="修改程序">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java" afterPath="$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" afterPath="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java" afterPath="$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java" />
@@ -9,7 +9,7 @@
     </list>
     <ignored path="lovebeauty.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433776072708" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433778903356" ignored="false" />
     <file path="/left.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433690362806" ignored="false" />
     <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433694303202" ignored="false" />
     <file path="/DemoController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433672953727" ignored="false" />
@@ -79,9 +79,9 @@
     <file path="/StringUtils.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433682064852" ignored="false" />
     <file path="/MyStringUtils.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433682065326" ignored="false" />
     <file path="/applicationContext.xml" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433682126950" ignored="false" />
-    <file path="/PrivateOrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433778395260" ignored="false" />
-    <file path="/PrivateOrderService.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433777886701" ignored="false" />
-    <file path="/PrivateOrderDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433778089440" ignored="false" />
+    <file path="/PrivateOrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433779036215" ignored="false" />
+    <file path="/PrivateOrderService.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433779066641" ignored="false" />
+    <file path="/PrivateOrderDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433779071547" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,10 +205,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivateOrderController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PrivateOrderController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="280" column="46" selection-start="10235" selection-end="10235" vertical-scroll-proportion="0.6957606">
+            <state line="312" column="80" selection-start="11499" selection-end="11499" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -228,16 +228,16 @@
       <file leaf-file-name="PrivateOrderService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="38" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.0">
+            <state line="78" column="48" selection-start="2402" selection-end="2402" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivateOrderDao.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PrivateOrderDao.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="16" selection-start="3968" selection-end="3968" vertical-scroll-proportion="-0.5">
+            <state line="123" column="20" selection-start="4710" selection-end="4710" vertical-scroll-proportion="0.56125355">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -249,24 +249,6 @@
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/OrderService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="76" column="17" selection-start="2043" selection-end="2043" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="404.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/errors/404.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="500.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/errors/500.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="123" selection-end="134" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -318,10 +300,10 @@
         <option value="$PROJECT_DIR$/src/business/com/lb/dao/OrderDao.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/service/OrderService.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java" />
-        <option value="$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java" />
-        <option value="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/utils/DateUtil.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java" />
+        <option value="$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java" />
+        <option value="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" />
       </list>
     </option>
   </component>
@@ -980,7 +962,11 @@
       <created>1433694367284</created>
       <updated>1433694367284</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="修改程序">
+      <created>1433778500953</created>
+      <updated>1433778500954</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1274,26 +1260,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="312" column="80" selection-start="11499" selection-end="11499" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="38" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.0">
+        <state line="78" column="48" selection-start="2402" selection-end="2402" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="16" selection-start="3968" selection-end="3968" vertical-scroll-proportion="-0.5">
+        <state line="123" column="20" selection-start="4710" selection-end="4710" vertical-scroll-proportion="0.56125355">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="280" column="46" selection-start="10235" selection-end="10235" vertical-scroll-proportion="0.6957606">
-          <folding />
         </state>
       </provider>
     </entry>

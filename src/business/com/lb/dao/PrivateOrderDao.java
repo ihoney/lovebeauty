@@ -105,19 +105,22 @@ public class PrivateOrderDao {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public void addPrivateOrderMobile(String userId, String cityId, String price, String bookTime, String serverAddress, String description, String fileEName) {
+    public void addPrivateOrderMobile(String userId, String cityId, String bookTime, String serverAddress, String description, String fileEName) {
         String sql = "INSERT INTO privateorder ( " +
                 " userid, " +
                 " cityId, " +
                 " reqPicName, " +
-                " price, " +
                 " bookTime, " +
                 " serverAddress, " +
                 " ordertime, " +
                 " description " +
                 ") " +
                 "VALUES " +
-                "(?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{userId, cityId, fileEName, price, bookTime, serverAddress, DateUtil.cruTimeStr(), description});
+                "(?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{userId, cityId, fileEName, bookTime, serverAddress, DateUtil.cruTimeStr(), description});
+    }
+
+    public List<Map<String, Object>> queryPrivateOrdersMobile(String userId) {
+        return null;
     }
 }

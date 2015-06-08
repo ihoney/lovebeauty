@@ -71,7 +71,11 @@ public class PrivateOrderService {
         return privateOrderDao.getOrderByPageAdmin(pageIndex, pageSize);
     }
 
-    public void addPrivateOrderMobile(String userId, String cityId, String price, String bookTime, String serverAddress, String description, String fileEName) {
-        privateOrderDao.addPrivateOrderMobile(userId, cityId, price, bookTime, serverAddress, description, fileEName);
+    public void addPrivateOrderMobile(String userId, String cityId, String bookTime, String serverAddress, String description, String fileEName) {
+        privateOrderDao.addPrivateOrderMobile(userId, cityId, bookTime, serverAddress, description, fileEName);
+    }
+
+    public List<Map<String, Object>> queryPrivateOrdersMobile(String userId) {
+        return privateOrderDao.queryPrivateOrdersMobile(userId);
     }
 }
