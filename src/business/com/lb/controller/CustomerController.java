@@ -223,7 +223,7 @@ public class CustomerController {
      */
     @RequestMapping(value = "changeHeadImgMobile")
     @ResponseBody
-    public JSONObject changeHeadImgMobile(HttpServletRequest request, String userId,MultipartFile headImg) throws JSONException {
+    public JSONObject changeHeadImgMobile(HttpServletRequest request, String userId, MultipartFile headImg) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         String fileEName = "";
         String fileName;

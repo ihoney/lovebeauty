@@ -7,7 +7,7 @@
     </list>
     <ignored path="lovebeauty.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434209625631" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434213778051" ignored="false" />
     <file path="/left.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433690362806" ignored="false" />
     <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433694303202" ignored="false" />
     <file path="/DemoController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433672953727" ignored="false" />
@@ -262,7 +262,7 @@
       <file leaf-file-name="CustomerController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/CustomerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="254" column="13" selection-start="9346" selection-end="9346" vertical-scroll-proportion="0.39053255">
+            <state line="229" column="52" selection-start="8253" selection-end="8253" vertical-scroll-proportion="0.32544377">
               <folding />
             </state>
           </provider>
@@ -915,7 +915,11 @@
       <created>1433779473104</created>
       <updated>1433779473104</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="修改程序">
+      <created>1434213780678</created>
+      <updated>1434213780678</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1215,7 +1219,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/CustomerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="254" column="13" selection-start="9346" selection-end="9346" vertical-scroll-proportion="0.39053255">
+        <state line="229" column="52" selection-start="8253" selection-end="8253" vertical-scroll-proportion="0.32544377">
           <folding />
         </state>
       </provider>
