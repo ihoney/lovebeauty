@@ -7,7 +7,6 @@ import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -224,25 +223,20 @@ public class CustomerController {
      */
     @RequestMapping(value = "changeHeadImgMobile")
     @ResponseBody
-    public JSONObject changeHeadImgMobile(HttpServletRequest request, String userId, @RequestParam MultipartFile[] headImg) throws JSONException {
+    public JSONObject changeHeadImgMobile(HttpServletRequest request, String userId,MultipartFile headImg) throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        MultipartFile headImgTmp = null;
-        if (headImg != null && headImg.length > 0) {
-            headImgTmp = headImg[0];
-        }
-
         String fileEName = "";
         String fileName;
-        if (headImg != null) {
-            fileName = headImgTmp.getOriginalFilename();
+        if (headImg != null && !headImg.isEmpty()) {
+            fileName = headImg.getOriginalFilename();
             String fileSuffix = fileName.substring(fileName.lastIndexOf("."));
             fileEName = "pic_user_headImg_" + "_" + System.currentTimeMillis() + fileSuffix;
         }
 
         try {
             customerService.changeHeadImgMobile(userId, fileEName);
-            if (headImg != null) {
-                InputStream is = headImgTmp.getInputStream();
+            if (headImg != null && !headImg.isEmpty()) {
+                InputStream is = headImg.getInputStream();
                 String filePath = request.getRealPath("/fileUpload");
                 FileOutputStream fos = new FileOutputStream(filePath + "/" + fileEName);
                 byte[] buf = new byte[1024];
