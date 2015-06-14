@@ -126,7 +126,7 @@
         var trTag;
         var stateTmp;
         for (var i = 0, j = ads.length; i < j; i++) {
-            trTag = ' <tr class="tr_header">'
+            trTag = ' <tr class="tr_body">'
                     + '<td><input class="select_inp2" type="checkbox" adId="' + ads[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + ads[i].type + '</td>'

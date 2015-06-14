@@ -168,7 +168,7 @@
         var checkTmp;
         var forbiddenTmp;
         for (var i = 0, j = sellers.length; i < j; i++) {
-            trTag = ' <tr class="tr_header">'
+            trTag = ' <tr class="tr_body">'
                     + '<td><input class="select_inp2" type="checkbox" sellerId="' + sellers[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + sellers[i].account + '</td>'

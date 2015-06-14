@@ -21,6 +21,7 @@
                     <li><a href="${rootPath}/employee/queryAllEmployees.do" target="rightFrame" class="STYLE3">技师列表</a></li>
                     <li><a href="${rootPath}/privateOrder/queryAllPrivateOrders.do" target="rightFrame" class="STYLE3">我的私人订制</a></li>
                     <li><a href="${rootPath}/privateOrder/queryPrivateOrderPool.do" target="rightFrame" class="STYLE3">私人订制池</a></li>
+                    <li><a href="${rootPath}/recruitment/queryAllRecruitment.do" target="rightFrame" class="STYLE3">招聘人列表</a></li>
                 </ul>
             </c:if>
             <c:if test="${checked == '否'}">

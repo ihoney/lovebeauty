@@ -12,8 +12,6 @@
 
 <script type="text/javascript">
     $(function () {
-        $(".tr_body:odd").css("background-color", "#D9EFFD");
-
         $(".tr_body").click(function () {
             if ($(this).find(".select_inp2").attr("checked") == undefined) {
                 $(this).find(".select_inp2").attr("checked", "checked");
@@ -26,7 +24,7 @@
     //第一页
     function firstPage() {
         if ($("#currentPage").text() != "1") {
-            var url = "queryPrivateOrderByPage.do";
+            var url = "queryRecruitmentByPage.do";
             pageing(1, url, page_callback);
         }
     }
@@ -35,7 +33,7 @@
     function prePage() {
         if ($("#currentPage").text() != "1") {
             var curPage = parseInt($("#currentPage").text()) - 1;
-            var url = "queryPrivateOrderByPage.do";
+            var url = "queryRecruitmentByPage.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -43,7 +41,7 @@
     function nextPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var curPage = parseInt($("#currentPage").text()) + 1;
-            var url = "queryPrivateOrderByPage.do";
+            var url = "queryRecruitmentByPage.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -52,7 +50,7 @@
     function lastPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var lastPage = $("#totalPage").text();
-            var url = "queryPrivateOrderByPage.do";
+            var url = "queryRecruitmentByPage.do";
             pageing(lastPage, url, page_callback);
         }
     }
@@ -63,7 +61,7 @@
         var totalPage = $("#totalPage").text();
         if (go_page != undefined && $.trim(go_page) != "" && totalPage != "") {
             if ((parseInt(go_page) <= parseInt(totalPage)) && parseInt(go_page) > 0) {
-                var url = "queryPrivateOrderByPage.do";
+                var url = "queryRecruitmentByPage.do";
                 pageing(go_page, url, page_callback);
             }
         }
@@ -72,69 +70,57 @@
     function page_callback(data) {
         $(".frame_table tr:gt(0)").remove();
         var tabTag = $(".frame_table");
-        var orders = data.orders;
+        var recruitments = data.recruitment;
         var trTag;
-        for (var i = 0, j = orders.length; i < j; i++) {
+        var forbiddenTmp;
+        for (var i = 0, j = recruitments.length; i < j; i++) {
             trTag = ' <tr class="tr_body">'
-                    + '<td><input class="select_inp2" type="checkbox" orderId="' + orders[i].id + '"/></td>'
+                    + '<td><input class="select_inp2" type="checkbox" recruitmentId="' + recruitments[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
-                    + '<td>' + orders[i].userAccount + '</td>'
-                    + '<td>' + orders[i].sellerAccount + '</td>'
-                    + '<td>' + orders[i].price + '</td>'
-                    + '<td>' + orders[i].ordertime + '</td>';
-
-            if (orders[i].state == 1) {
-                trTag += "<td>未付款</td>";
-            } else if (orders[i].state == 2) {
-                trTag += "<td>交易成功</td>";
-            } else if (orders[i].state == 0) {
-                trTag += "<td>私人订制池</td>";
-            }
-            trTag += "<td>" + orders[i].successtime + "</td><td>" + orders[i].description + "</td>";
-            trTag += '<td>' +
-                    '<a href="' + getRootPath() + 'privateOrder/privateOrderDetail.do?orderId=' + orders[i].id + '" target="rightFrame">详情</a>';
-            trTag += "</td>";
-            trTag += '</tr>';
+                    + '<td>' + recruitments[i].name + '</td>'
+                    + '<td>' + recruitments[i].telephone + '</td>'
+                    + '<td>' + recruitments[i].city + '</td>'
+                    + '<td>' + recruitments[i].workYear + '</td>'
+                    + '<td>' + recruitments[i].openShop + '</td>'
+                    + '<td>' + recruitments[i].hopeSalary + '</td>'
+                    + '<td>' + recruitments[i].comFocus + '</td>'
+                    + '<td>' + recruitments[i].releaseTime + '</td></tr>';
             tabTag.append($(trTag));
         }
     }
 </script>
 
 <div class="tab_header">
-    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[系统私人订制列表]
+    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[招聘列表]
 </div>
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
         <tr class="tr_header">
-            <td><input class="select_inp" type="checkbox"/></td>
+            <td>
+                <input class="select_inp" type="checkbox"/>
+            </td>
             <td>序号</td>
-            <td>客户账号</td>
-            <td>商铺账号</td>
-            <td>心理价格</td>
-            <td>预定时间</td>
-            <td>订单状态</td>
-            <td>成交时间</td>
-            <td>预定描述</td>
-            <td>操作</td>
+            <td>姓名</td>
+            <td>手机号</td>
+            <td>所在城市</td>
+            <td>工作年限</td>
+            <td>是否有开店经验</td>
+            <td>期望薪资</td>
+            <td>看中公司方面</td>
+            <td>发布时间</td>
         </tr>
-        <c:forEach var="order" items="${orders}" varStatus="vst">
+        <c:forEach var="recruit" items="${recruitment}" varStatus="vst">
             <tr class="tr_body">
-                <td><input class="select_inp2" type="checkbox" orderId="${order.id}"/></td>
+                <td><input class="select_inp2" type="checkbox" recruitmentId="${recruit.id}"/></td>
                 <td>${vst.index}</td>
-                <td>${order.userAccount}</td>
-                <td>${order.sellerAccount}</td>
-                <td>${order.price}</td>
-                <td>${order.ordertime}</td>
-                <td>
-                    <c:if test="${order.state == 1}">未付款</c:if>
-                    <c:if test="${order.state == 2}">交易成功</c:if>
-                    <c:if test="${order.state == 0}">私人订制池</c:if>
-                </td>
-                <td>${order.successtime}</td>
-                <td>${order.description}</td>
-                <td>
-                    <a href="${rootPath}/privateOrder/privateOrderDetail.do?orderId=${order.id}" target="rightFrame">详情</a>
-                </td>
+                <td>${recruit.name}</td>
+                <td>${recruit.telephone}</td>
+                <td>${recruit.city}</td>
+                <td>${recruit.workYear}</td>
+                <td>${recruit.openShop}</td>
+                <td>${recruit.hopeSalary}</td>
+                <td>${recruit.comFocus}</td>
+                <td>${recruit.releaseTime}</td>
             </tr>
         </c:forEach>
     </table>
@@ -142,13 +128,14 @@
 
 <div id="tb_body_footer">
         <span class="footer_text footer_text_align_one">
-            <span>共有 ${orderCount} 条记录，当前第 <span id="currentPage">${curPage}</span>/<span id="totalPage">${totalPage}</span> 页</span>
+            <span>共有 ${recruitmentCount} 条记录，当前第 <span id="currentPage">${curPage}</span>/<span id="totalPage">${totalPage}</span> 页</span>
         </span>
         <span class="footer_text_align_two">
             <button class="footer_text_two" onclick="firstPage();">首页</button>
             <button class="footer_text_two" onclick="prePage();">上一页</button>
             <button class="footer_text_two" onclick="nextPage();">下一页</button>
             <button class="footer_text_two" onclick="lastPage();">尾页</button>
+
             转到第<input id="go_page" type="text" size="8"/>页
             <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>

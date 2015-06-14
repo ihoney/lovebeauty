@@ -129,7 +129,7 @@
         var trTag;
         var forbiddenTmp;
         for (var i = 0, j = customers.length; i < j; i++) {
-            trTag = ' <tr class="tr_header">'
+            trTag = ' <tr class="tr_body">'
                     + '<td><input class="select_inp2" type="checkbox" customerId="' + customers[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + customers[i].account + '</td>'
