@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2015-06-08 12:41:58
+Date: 2015-06-14 10:12:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,9 +54,9 @@ CREATE TABLE `book_time` (
 -- ----------------------------
 -- Records of book_time
 -- ----------------------------
-INSERT INTO `book_time` VALUES ('1', '536', '111000000000', '000000000000', '000000000000', '000000000000');
-INSERT INTO `book_time` VALUES ('2', '537', '111000000000', '000000000000', '000000000000', '000000000000');
-INSERT INTO `book_time` VALUES ('3', '538', '111000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('1', '536', '100000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('2', '537', '100000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('3', '538', '100000000000', '000000000000', '000000000000', '000000000000');
 
 -- ----------------------------
 -- Table structure for `city`
@@ -142,11 +142,16 @@ CREATE TABLE `common_address` (
   PRIMARY KEY (`id`),
   KEY `fk_ca_userid` (`userid`),
   CONSTRAINT `fk_ca_userid` FOREIGN KEY (`userid`) REFERENCES `customer` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of common_address
 -- ----------------------------
+INSERT INTO `common_address` VALUES ('8', '26', 'gfffffff');
+INSERT INTO `common_address` VALUES ('10', '32', 'dsadsadsadsadasdsagfdfdsfdsfdsfs');
+INSERT INTO `common_address` VALUES ('19', '27', '测试地址测试地址测试地址测试地址测试地址测试地址');
+INSERT INTO `common_address` VALUES ('20', '27', 'qweqweqweqw');
+INSERT INTO `common_address` VALUES ('21', '32', '11111');
 
 -- ----------------------------
 -- Table structure for `customer`
@@ -164,18 +169,23 @@ CREATE TABLE `customer` (
   `regtime` varchar(20) COLLATE utf8_bin DEFAULT '' COMMENT '注册时间',
   `logintime` varchar(20) COLLATE utf8_bin DEFAULT '' COMMENT '最后登录时间',
   `nickName` varchar(50) COLLATE utf8_bin DEFAULT '' COMMENT '用户昵称',
+  `headImg` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_c_account` (`account`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES ('26', '13333333333', 'adminroot', '106.39.2.226', null, '否', null, '3', '2015-05-15 12:59:54', null, '南美鹰');
-INSERT INTO `customer` VALUES ('27', '13511111111', 'adminroot', '123.117.43.79', '182.18.100.86', '否', null, '0', '2015-06-04 12:42:32', '2015-06-07 22:05:20', '南美鹰');
-INSERT INTO `customer` VALUES ('28', '13336746733', 'adminroot', '58.56.176.46', null, '否', null, '0', '2015-06-04 18:51:24', '', '南美鹰');
-INSERT INTO `customer` VALUES ('31', '13336746833', 'adminroot', '58.56.176.46', null, '否', null, '0', '2015-06-07 19:05:05', '', '南美鹰');
-INSERT INTO `customer` VALUES ('32', '13021662367', 'wuzq123', '58.56.176.46', '58.56.176.46', '否', null, '0', '2015-06-07 20:09:43', '2015-06-08 04:30:17', '南美鹰');
+INSERT INTO `customer` VALUES ('26', '13333333333', 'adminroot', '106.39.2.226', '58.56.176.11', '否', null, '3', '2015-05-15 12:59:54', '2015-06-14 00:46:38', 'fsddsadas', null);
+INSERT INTO `customer` VALUES ('27', '13511111111', 'adminroot', '123.117.43.79', '49.4.178.2', '否', null, '0', '2015-06-04 12:42:32', '2015-06-13 21:59:58', '测试', null);
+INSERT INTO `customer` VALUES ('28', '13336746733', 'adminroot', '58.56.176.46', null, '否', null, '0', '2015-06-04 18:51:24', '', '南美鹰', null);
+INSERT INTO `customer` VALUES ('31', '13336746833', 'adminroot', '58.56.176.46', null, '否', null, '0', '2015-06-07 19:05:05', '', '南美鹰', null);
+INSERT INTO `customer` VALUES ('32', '13021662367', 'wuzq123', '58.56.176.46', '58.56.176.11', '否', null, '0', '2015-06-07 20:09:43', '2015-06-14 04:50:26', 'hello', null);
+INSERT INTO `customer` VALUES ('33', '13021662368', 'wuzq123', '58.56.176.12', '58.56.176.12', '否', null, '0', '2015-06-08 18:19:41', '2015-06-08 18:19:56', '', null);
+INSERT INTO `customer` VALUES ('34', '13021662369', 'wuzq123', '58.56.176.12', '58.56.176.12', '否', null, '0', '2015-06-08 18:22:38', '2015-06-08 18:38:56', '', null);
+INSERT INTO `customer` VALUES ('35', '13021662370', 'wuzq123', '58.56.176.12', null, '否', null, '0', '2015-06-08 19:07:48', '', '', null);
+INSERT INTO `customer` VALUES ('36', '13021662390', 'wuzq123', '58.56.176.12', null, '否', null, '0', '2015-06-08 19:18:43', '', '', null);
 
 -- ----------------------------
 -- Table structure for `demo`
@@ -367,34 +377,57 @@ DROP TABLE IF EXISTS `privateorder`;
 CREATE TABLE `privateorder` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `userid` int(11) NOT NULL COMMENT '客户id',
-  `sellerid` int(11) DEFAULT NULL COMMENT '商家id',
-  `filename` varchar(100) COLLATE utf8_bin DEFAULT '' COMMENT '模型图片',
-  `state` int(1) NOT NULL COMMENT '私人订制状态 0未指定 1已指定 2已成功',
-  `description` mediumtext COLLATE utf8_bin COMMENT '需求描述',
-  `price` decimal(13,2) DEFAULT NULL COMMENT '心理价格',
+  `cityId` int(11) DEFAULT NULL COMMENT '服务城市',
+  `reqPicName` varchar(100) COLLATE utf8_bin DEFAULT '' COMMENT '模型图片',
+  `bookTime` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '预约时间',
+  `serverAddress` mediumtext COLLATE utf8_bin COMMENT '服务地点',
+  `state` int(1) NOT NULL DEFAULT '0' COMMENT '私人订制状态 0未指定 1已指定 2已成功',
   `successtime` varchar(20) COLLATE utf8_bin DEFAULT '' COMMENT '交易成功实时间',
   `ordertime` varchar(20) COLLATE utf8_bin DEFAULT '' COMMENT '下单时间',
+  `description` mediumtext COLLATE utf8_bin COMMENT '需求描述',
   PRIMARY KEY (`id`),
   KEY `fk_pri_userid` (`userid`),
-  KEY `fk_pri_sellerid` (`sellerid`),
-  CONSTRAINT `fk_pri_sellerid` FOREIGN KEY (`sellerid`) REFERENCES `seller` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_pri_userid` FOREIGN KEY (`userid`) REFERENCES `customer` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of privateorder
 -- ----------------------------
-INSERT INTO `privateorder` VALUES ('1', '1', '13', '', '2', 0xE68891E8A681E79A84E69588E69E9CE4BDA0E5AE9EE78EB0E4B88DE4BA86, '12.00', '2015-05-26 12:25:19', '2015-05-26 12:25:19');
-INSERT INTO `privateorder` VALUES ('2', '1', '13', 'hbvf', '2', null, '1.00', '2', '2');
-INSERT INTO `privateorder` VALUES ('3', '1', '13', 'gfd', '2', null, '1.00', '2', '2');
-INSERT INTO `privateorder` VALUES ('4', '1', '13', 'f', '2', null, '1.00', '2', '2');
-INSERT INTO `privateorder` VALUES ('5', '1', '13', 'f', '2', null, '1.00', '2', '2');
-INSERT INTO `privateorder` VALUES ('6', '1', '13', 'f', '2', null, '1.00', '2', '2');
-INSERT INTO `privateorder` VALUES ('7', '1', '13', 'f', '2', null, '1.00', '2', '2');
-INSERT INTO `privateorder` VALUES ('8', '1', '13', 'f', '1', null, '1.00', '22', '2');
-INSERT INTO `privateorder` VALUES ('9', '1', '13', 'f', '1', null, '11.00', '2', '2');
-INSERT INTO `privateorder` VALUES ('10', '1', '13', 'f', '2', null, '1.00', '2015-05-26 13:47:32', '2');
-INSERT INTO `privateorder` VALUES ('11', '1', '13', 'tets.jpg', '1', null, '15.00', '', 'fds');
+INSERT INTO `privateorder` VALUES ('1', '1', null, '', null, null, '2', '2015-05-26 12:25:19', '2015-05-26 12:25:19', 0xE68891E8A681E79A84E69588E69E9CE4BDA0E5AE9EE78EB0E4B88DE4BA86);
+INSERT INTO `privateorder` VALUES ('2', '1', null, 'hbvf', null, null, '2', '2', '2', null);
+INSERT INTO `privateorder` VALUES ('3', '1', null, 'gfd', null, null, '2', '2', '2', null);
+INSERT INTO `privateorder` VALUES ('4', '1', null, 'f', null, null, '2', '2', '2', null);
+INSERT INTO `privateorder` VALUES ('5', '1', null, 'f', null, null, '2', '2', '2', null);
+INSERT INTO `privateorder` VALUES ('6', '1', null, 'f', null, null, '2', '2', '2', null);
+INSERT INTO `privateorder` VALUES ('7', '1', null, 'f', null, null, '2', '2', '2', null);
+INSERT INTO `privateorder` VALUES ('8', '1', null, 'f', null, null, '1', '22', '2', null);
+INSERT INTO `privateorder` VALUES ('9', '1', null, 'f', null, null, '1', '2', '2', null);
+INSERT INTO `privateorder` VALUES ('10', '1', null, 'f', null, null, '2', '2015-05-26 13:47:32', '2', null);
+INSERT INTO `privateorder` VALUES ('11', '1', null, 'tets.jpg', null, null, '1', '', 'fds', null);
+
+-- ----------------------------
+-- Table structure for `recruitment`
+-- ----------------------------
+DROP TABLE IF EXISTS `recruitment`;
+CREATE TABLE `recruitment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `city` varchar(11) COLLATE utf8_bin DEFAULT '北京',
+  `name` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `telephone` varchar(11) COLLATE utf8_bin DEFAULT '',
+  `workYear` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `openShop` varchar(2) COLLATE utf8_bin DEFAULT '否' COMMENT '是否  开店经验',
+  `hopeSalary` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `comFocus` varchar(20) COLLATE utf8_bin DEFAULT '' COMMENT '看中公司方面',
+  `releaseTime` varchar(20) COLLATE utf8_bin DEFAULT '' COMMENT '发布时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of recruitment
+-- ----------------------------
+INSERT INTO `recruitment` VALUES ('1', '北京', '南美鹰', '12222222222', '5', '否', '5000', '时间自由', '2015-06-14 09:42:00');
+INSERT INTO `recruitment` VALUES ('2', '北京', '南美鹰啊', '13333333333', '6', '是', '600000', '时间自由', '2015-06-13 09:42:00');
+INSERT INTO `recruitment` VALUES ('3', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 10:14:41');
 
 -- ----------------------------
 -- Table structure for `report_info`
@@ -443,7 +476,7 @@ CREATE TABLE `seller` (
 -- ----------------------------
 -- Records of seller
 -- ----------------------------
-INSERT INTO `seller` VALUES ('13', '127.0.0.1', '106.39.2.226', '2015-05-13 13:32:27', '2015-06-05 14:20:40', 'aaaaaa', 'aaaaaa', '是', '0', null, '是', null, '是');
+INSERT INTO `seller` VALUES ('13', '127.0.0.1', '106.39.2.226', '2015-05-13 13:32:27', '2015-06-14 10:14:12', 'aaaaaa', 'aaaaaa', '是', '0', null, '是', null, '是');
 INSERT INTO `seller` VALUES ('14', '127.0.0.1', '106.39.2.226', '2015-05-13 00:33:49', '2015-05-15 08:25:08', 'nanmeiying2', 'nanmeiying2', '是', '0', null, '否', null, '否');
 INSERT INTO `seller` VALUES ('15', '58.56.176.46', '58.56.176.46', '2015-05-13 15:18:48', '2015-05-13 15:18:57', 'wuzq', '123456', '是', '0', '2015-05-28 00:57:05', '否', null, '否');
 INSERT INTO `seller` VALUES ('16', '45.33.55.240', '45.33.55.240', '2015-05-14 22:14:44', '2015-05-14 22:14:50', 'nanmeiying88', 'nSGD6MkIyUenVRDVMf5FQ', '否', '0', null, '否', null, '否');
