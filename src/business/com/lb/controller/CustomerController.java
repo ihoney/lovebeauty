@@ -256,7 +256,7 @@ public class CustomerController {
     }
 
     /**
-     * 更换头像
+     * 更换昵称
      *
      * @param request
      * @return
@@ -276,4 +276,31 @@ public class CustomerController {
         }
         return jsonObject;
     }
+
+    /**
+     * 更换密码
+     *
+     * @param request
+     * @return
+     * @throws net.sf.json.JSONException
+     */
+    @RequestMapping(value = "changePasswordMobile")
+    @ResponseBody
+    public JSONObject changePasswordMobile(HttpServletRequest request, String userId, String oldPassword, String newPassword) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            boolean flag = customerService.changePasswordMobile(userId, oldPassword, newPassword);
+            if (flag) {
+                jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+            } else {
+                jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+                jsonObject.put(Constant.TIPMESSAGE, "当前密码不对！");
+            }
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
 }

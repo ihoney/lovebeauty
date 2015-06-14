@@ -70,4 +70,8 @@ public class CustomerService {
     public void changeNickNameMobile(String userId, String nickName) {
         customerDao.changeNickNameMobile(userId, nickName);
     }
+
+    public boolean changePasswordMobile(String userId, String oldPassword, String newPassword) {
+        return customerDao.changePasswordMobile(userId, oldPassword, newPassword);
+    }
 }

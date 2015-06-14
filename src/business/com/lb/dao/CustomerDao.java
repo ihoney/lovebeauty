@@ -83,4 +83,15 @@ public class CustomerDao {
         String sql = "update customer set nickName = '" + nickName + "' where id = " + userId;
         jdbcTemplate.update(sql);
     }
+
+    public boolean changePasswordMobile(String userId, String oldPassword, String newPassword) {
+        String sql = "select count(*) from customer where id = " + userId + " and password = '" + oldPassword + "'";
+        int num = jdbcTemplate.queryForInt(sql);
+        if (num == 0) {
+            return false;
+        }
+        sql = "update customer set password = '" + newPassword + "' where id = " + userId;
+        jdbcTemplate.update(sql);
+        return true;
+    }
 }
