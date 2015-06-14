@@ -77,4 +77,8 @@ public class OrderService {
     public String validateOrderMobile(String orderId) {
         return orderDao.validateOrderMobile(orderId);
     }
+
+    public List<Map<String, Object>> getPayInfo(String orderId) {
+        return orderDao.getPayInfo(orderId);
+    }
 }

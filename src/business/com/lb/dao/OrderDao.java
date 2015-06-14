@@ -159,4 +159,20 @@ public class OrderDao {
         String sql = "select state from `order` where id = " + orderId;
         return jdbcTemplate.queryForObject(sql, String.class);
     }
+
+    public List<Map<String, Object>> getPayInfo(String orderId) {
+        String sql = "SELECT " +
+                " svi.payaccount, " +
+                " svi.alipay_key, " +
+                " svi.alipay_pid " +
+                "FROM " +
+                " seller_validate_info svi, " +
+                " `order` o, " +
+                " employee e " +
+                "WHERE " +
+                " svi.sellerid = e.sellerId " +
+                "AND e.id = o.empId " +
+                "AND o.id = '" + orderId + "'";
+        return jdbcTemplate.queryForList(sql);
+    }
 }
