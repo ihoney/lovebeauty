@@ -217,6 +217,8 @@ public class OrderController {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         try {
             List<Map<String, Object>> orders = orderService.queryOrderDetailMobile(orderId);
+            List<Map<String, Object>> payInfo = orderService.getPayInfo(orderId);
+            jsonObject.put("payInfo", payInfo);
             jsonObject.put("order", orders.get(0));
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
@@ -238,10 +240,6 @@ public class OrderController {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         try {
             String orderState = orderService.validateOrderMobile(orderId);
-            if ("未付款".equals(orderState)) {
-                List<Map<String, Object>> payInfo = orderService.getPayInfo(orderId);
-                jsonObject.put("payInfo", payInfo);
-            }
             jsonObject.put("orderState", orderState);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
