@@ -133,8 +133,8 @@ public class OrderDao {
         String sql = "SELECT " +
                 " o.id AS orderId, " +
                 " o.state, " +
-                " o.userName, " +
-                " o.telephone, " +
+                " o.userName AS connectName, " +
+                " o.telephone AS connectPhone, " +
                 " o.price, " +
                 " o.bookTime, " +
                 " o.serverAddress, " +
@@ -142,7 +142,7 @@ public class OrderDao {
                 " d.`name` AS demoName, " +
                 " d.fileEName, " +
                 " e.id AS empId, " +
-                " e.nickName, " +
+                " e.nickName AS empName, " +
                 " c.id AS userId, " +
                 " c.account AS userAccount, " +
                 " c.nickName AS userNickName " +
