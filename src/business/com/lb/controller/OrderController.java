@@ -120,8 +120,10 @@ public class OrderController {
      */
     @RequestMapping(value = "submitOrderMobile")
     @ResponseBody
-    public Map<String, Object> submitOrderMobile(HttpServletRequest request, String orderId, String userId, String demoId, String empId, String price, String dateType, String hour, String serverAddress) {
+    public Map<String, Object> submitOrderMobile(HttpServletRequest request, String userId, String userName, String telephone, String demoId, String empId, String price, String dateType, String hour,
+                                                 String serverAddress) {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
+        String orderId = DateUtil.getPayNum() + (System.currentTimeMillis() + "").substring(5);
         try {
             Calendar calendar = Calendar.getInstance();
             if ("tomorrow".equals(dateType)) {
@@ -134,7 +136,7 @@ public class OrderController {
             calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
             calendar.set(Calendar.MINUTE, 0);
             String bookTime = DateUtil.getYmdhmFormat(calendar.getTime());
-            orderService.submitOrderMobile(orderId, userId, demoId, empId, price, bookTime, serverAddress);
+            orderService.submitOrderMobile(orderId, userId, userName, telephone, demoId, empId, price, bookTime, serverAddress);
             orderService.changeBookInfo(empId, dateType, hour);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {

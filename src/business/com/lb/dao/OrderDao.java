@@ -75,9 +75,9 @@ public class OrderDao {
         jdbcTemplate.update(sql);
     }
 
-    public void submitOrderMobile(String orderId, String userId, String demoId, String empId, String price, String bookTime, String serverAddress) {
-        String sql = "INSERT INTO `order` ( id, userid, demoid,empId, price, bookTime, serverAddress,ordertime ) VALUES (?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{orderId, userId, demoId, empId, price, bookTime, serverAddress, DateUtil.cruTimeStr()});
+    public void submitOrderMobile(String orderId, String userId, String userName, String telephone, String demoId, String empId, String price, String bookTime, String serverAddress) {
+        String sql = "INSERT INTO `order` ( id, userid, userName,telephone,demoid,empId, price, bookTime, serverAddress,ordertime ) VALUES (?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{orderId, userId, userName, telephone, demoId, empId, price, bookTime, serverAddress, DateUtil.cruTimeStr()});
     }
 
     public void changeBookInfo(String empId, String dateType, String hour) {
@@ -99,6 +99,8 @@ public class OrderDao {
     public List<Map<String, Object>> queryOrdersMobile(String userId, String orderState) {
         StringBuffer sb = new StringBuffer("SELECT " +
                 " o.id AS orderId, " +
+                " o.userName, " +
+                " o.telephone, " +
                 " o.state, " +
                 " o.price, " +
                 " o.bookTime, " +
@@ -131,6 +133,8 @@ public class OrderDao {
         String sql = "SELECT " +
                 " o.id AS orderId, " +
                 " o.state, " +
+                " o.userName, " +
+                " o.telephone, " +
                 " o.price, " +
                 " o.bookTime, " +
                 " o.serverAddress, " +

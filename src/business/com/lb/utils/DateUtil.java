@@ -18,6 +18,7 @@ public class DateUtil {
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private static SimpleDateFormat mdFormat = new SimpleDateFormat("M.d");
     private static SimpleDateFormat ymdhmFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    private static SimpleDateFormat payNum = new SimpleDateFormat("yyyyMMdd");
     public static Map<String, String> hourMap = new HashMap<String, String>();
 
     public static String cruDateStr() {
@@ -51,4 +52,7 @@ public class DateUtil {
         hourMap.put("21", "___________0");
     }
 
+    public static String getPayNum() {
+        return payNum.format(new Date());
+    }
 }

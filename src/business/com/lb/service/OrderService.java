@@ -50,8 +50,8 @@ public class OrderService {
         orderDao.orderSure(orderId);
     }
 
-    public void submitOrderMobile(String orderId, String userId, String demoId, String empId, String price, String bookTime, String serverAddress) {
-        orderDao.submitOrderMobile(orderId, userId, demoId, empId, price, bookTime, serverAddress);
+    public void submitOrderMobile(String orderId, String userId, String userName, String telephone, String demoId, String empId, String price, String bookTime, String serverAddress) {
+        orderDao.submitOrderMobile(orderId, userId, userName, telephone, demoId, empId, price, bookTime, serverAddress);
     }
 
     public void changeBookInfo(String empId, String dateType, String hour) {
