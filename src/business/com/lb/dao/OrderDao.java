@@ -76,7 +76,7 @@ public class OrderDao {
     }
 
     public void submitOrderMobile(String orderId, String userId, String userName, String telephone, String demoId, String empId, String price, String bookTime, String serverAddress) {
-        String sql = "INSERT INTO `order` ( id, userid, userName,telephone,demoid,empId, price, bookTime, serverAddress,ordertime ) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO `order` ( id, userid, userName,telephone,demoid,empId, price, bookTime, serverAddress,ordertime ) VALUES (?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, new Object[]{orderId, userId, userName, telephone, demoId, empId, price, bookTime, serverAddress, DateUtil.cruTimeStr()});
     }
 

@@ -138,6 +138,11 @@ public class OrderController {
             String bookTime = DateUtil.getYmdhmFormat(calendar.getTime());
             orderService.submitOrderMobile(orderId, userId, userName, telephone, demoId, empId, price, bookTime, serverAddress);
             orderService.changeBookInfo(empId, dateType, hour);
+
+            List<Map<String, Object>> orders = orderService.queryOrderDetailMobile(orderId);
+            List<Map<String, Object>> payInfo = orderService.getPayInfo(orderId);
+            jsonObject.put("payInfo", payInfo);
+            jsonObject.put("order", orders.get(0));
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
