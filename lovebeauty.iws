@@ -3,16 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6ed2e34f-f3ad-4366-87d7-c93f18584043" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/doc/url.xls" afterPath="$PROJECT_DIR$/web/doc/url.xls" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java" afterPath="$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" afterPath="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java" afterPath="$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java" afterPath="$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lovebeauty.iws" afterPath="$PROJECT_DIR$/lovebeauty.iws" />
     </list>
     <ignored path="lovebeauty.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434382840074" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434384185235" ignored="false" />
     <file path="/left.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433690362806" ignored="false" />
-    <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434378708445" ignored="false" />
+    <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434385093524" ignored="false" />
     <file path="/DemoController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433672953727" ignored="false" />
     <file path="/flexTest.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1432982200024" ignored="false" />
     <file path="/fragment.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433436615482" ignored="false" />
@@ -216,10 +214,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PrivateOrderController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PrivateOrderController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="268" column="202" selection-start="9666" selection-end="9676" vertical-scroll-proportion="0.19001919">
+            <state line="71" column="50" selection-start="2516" selection-end="2516" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="left.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/views/frame/left.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="67" selection-start="1364" selection-end="1364" vertical-scroll-proportion="-7.806452">
               <folding />
             </state>
           </provider>
@@ -228,7 +235,7 @@
       <file leaf-file-name="PrivateOrderService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="5" selection-start="2007" selection-end="2007" vertical-scroll-proportion="0.0">
+            <state line="26" column="36" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -237,7 +244,7 @@
       <file leaf-file-name="PrivateOrderDao.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="22" selection-start="4355" selection-end="4355" vertical-scroll-proportion="0.0">
+            <state line="18" column="13" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -246,16 +253,16 @@
       <file leaf-file-name="OrderDao.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/OrderDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="53" selection-start="5850" selection-end="5850" vertical-scroll-proportion="0.0">
+            <state line="23" column="23" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderController.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="OrderController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="225" column="69" selection-start="8094" selection-end="8094" vertical-scroll-proportion="0.0">
+            <state line="268" column="37" selection-start="9529" selection-end="9529" vertical-scroll-proportion="0.61147904">
               <folding>
                 <element signature="e#4174#4190#0" expanded="true" />
               </folding>
@@ -317,11 +324,11 @@
         <option value="$PROJECT_DIR$/src/business/com/lb/service/OrderService.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/dao/EmployeeDao.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/controller/CustomerController.java" />
-        <option value="$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/dao/OrderDao.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java" />
+        <option value="$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java" />
       </list>
     </option>
   </component>
@@ -414,7 +421,61 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="doc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -900,19 +961,23 @@
       <created>1434382842660</created>
       <updated>1434382842660</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="修改程序">
+      <created>1434384188298</created>
+      <updated>1434384188298</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23156089" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13379073" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11663808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -925,7 +990,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25378788" sideWeight="0.5728988" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25378788" sideWeight="0.88336194" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1007,11 +1072,6 @@
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/utils/MyStringUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="23" selection-start="1411" selection-end="1411" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/left.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="61" selection-start="851" selection-end="851" vertical-scroll-proportion="-4.2580647" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/frame/body/order_list.jsp">
@@ -1161,15 +1221,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="225" column="69" selection-start="8094" selection-end="8094" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#4174#4190#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/OrderService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="42" selection-start="2060" selection-end="2060" vertical-scroll-proportion="0.0">
@@ -1177,31 +1228,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/OrderDao.java">
+    <entry file="file://$PROJECT_DIR$/web/views/frame/left.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="53" selection-start="5850" selection-end="5850" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="22" selection-start="4355" selection-end="4355" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="5" selection-start="2007" selection-end="2007" vertical-scroll-proportion="0.0">
+        <state line="22" column="67" selection-start="1364" selection-end="1364" vertical-scroll-proportion="-7.806452">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="202" selection-start="9666" selection-end="9676" vertical-scroll-proportion="0.19001919">
+        <state line="71" column="50" selection-start="2516" selection-end="2516" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="36" selection-start="632" selection-end="632" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="13" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/OrderDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="23" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="268" column="37" selection-start="9529" selection-end="9529" vertical-scroll-proportion="0.61147904">
+          <folding>
+            <element signature="e#4174#4190#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

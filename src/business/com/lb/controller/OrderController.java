@@ -255,4 +255,20 @@ public class OrderController {
         }
         return jsonObject;
     }
+
+
+    /**
+     * 订单支付完成返回方法
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "callBackPayInfoMobile")
+    @ResponseBody
+    public void callBackPayInfoMobile(HttpServletRequest request) {
+        try {
+            System.out.println("支付返回成功！");
+        } catch (Exception e) {
+        }
+    }
 }
