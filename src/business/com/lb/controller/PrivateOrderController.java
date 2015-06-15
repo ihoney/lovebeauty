@@ -266,7 +266,7 @@ public class PrivateOrderController {
      */
     @RequestMapping(value = "addPrivateOrderMobile")
     @ResponseBody
-    public JSONObject addPrivateOrderMobile(HttpServletRequest request, String userId, String cityId, String bookTime, String serverAddress, String description, @RequestParam MultipartFile[] reqPicName) {
+    public JSONObject addPrivateOrderMobile(HttpServletRequest request, String userId, String cityId, String bookTime, String serverAddress, String description, @RequestParam(required = false) MultipartFile[] reqPicName) {
         JSONObject jsonObject = new JSONObject();
         MultipartFile reqPicNameTmp = null;
         String fileEName = "";

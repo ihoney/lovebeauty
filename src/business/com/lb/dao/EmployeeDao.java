@@ -139,7 +139,7 @@ public class EmployeeDao {
     public List<Map<String, Object>> queryEmployeeCommentByIdMobile(String empId, String page, String pageSize, String commentType) {
         int pageTmp = Integer.parseInt(page);
         int pageSizeTmp = Integer.parseInt(pageSize);
-        StringBuffer sb = new StringBuffer("SELECT ec.`comment`, ec.comTime, c.account FROM emp_comment ec, customer c WHERE ec.empId = " + empId + " AND c.id = ec.customerId ");
+        StringBuffer sb = new StringBuffer("SELECT ec.`comment`, ec.comTime, c.account,c.headImg FROM emp_comment ec, customer c WHERE ec.empId = " + empId + " AND c.id = ec.customerId ");
         if ("0".equals(commentType)) {
         } else {
             sb.append(" and ec.level = " + commentType);
