@@ -279,7 +279,7 @@ public class PrivateOrderController {
         }
         try {
             privateOrderService.addPrivateOrderMobile(userId, cityId, serverAddress, description, fileEName);
-            if (reqPicNameTmp != null && !reqPicNameTmp.isEmpty()) {
+            if (reqPicName != null) {
                 InputStream is = reqPicNameTmp.getInputStream();
                 String filePath = request.getRealPath("/fileUpload");
                 FileOutputStream fos = new FileOutputStream(filePath + "/" + fileEName);

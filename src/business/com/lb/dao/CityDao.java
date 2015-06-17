@@ -20,7 +20,7 @@ public class CityDao {
     private JdbcTemplate jdbcTemplate;
 
     public List<Map<String, Object>> queryCitiesMobile() {
-        String sql = "SELECT id, NAME FROM city WHERE state = '开通'";
+        String sql = "SELECT id, NAME,serviceScope FROM city WHERE state = '开通'";
         return jdbcTemplate.queryForList(sql);
     }
 
