@@ -266,7 +266,7 @@ public class PrivateOrderController {
      */
     @RequestMapping(value = "addPrivateOrderMobile")
     @ResponseBody
-    public JSONObject addPrivateOrderMobile(HttpServletRequest request, String userId, String cityId, String serverAddress, String description, @RequestParam(required = false) MultipartFile[] reqPicName) {
+    public JSONObject addPrivateOrderMobile(HttpServletRequest request, String userId, String cityId, String price, String serverAddress, String description, @RequestParam(required = false) MultipartFile[] reqPicName) {
         JSONObject jsonObject = new JSONObject();
         MultipartFile reqPicNameTmp = null;
         String fileEName = "";
@@ -278,7 +278,7 @@ public class PrivateOrderController {
             fileEName = "pic_reqImg_" + System.currentTimeMillis() + fileSuffix;
         }
         try {
-            privateOrderService.addPrivateOrderMobile(userId, cityId, serverAddress, description, fileEName);
+            privateOrderService.addPrivateOrderMobile(userId, cityId, price, serverAddress, description, fileEName);
             if (reqPicName != null) {
                 InputStream is = reqPicNameTmp.getInputStream();
                 String filePath = request.getRealPath("/fileUpload");

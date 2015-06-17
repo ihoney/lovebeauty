@@ -27,7 +27,7 @@ public class PrivateOrderDao {
     }
 
     public int getOrderCount() {
-        String sql = "select count(1) from `privateorder` where sellerid is null and state = 0";
+        String sql = "select count(*) from `privateorder` where state = 0";
         return jdbcTemplate.queryForInt(sql);
     }
 
@@ -39,7 +39,7 @@ public class PrivateOrderDao {
                 " customer c " +
                 " WHERE " +
                 " c.id = p.userid " +
-                " AND p.sellerid = " + sellerId + " order by state limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+                " AND p.sellerid = " + sellerId + " state = 0  order by state limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 
@@ -50,7 +50,7 @@ public class PrivateOrderDao {
                 " privateorder p, " +
                 " customer c " +
                 " WHERE " +
-                " c.id = p.userid and sellerid is null and state = 0 order by state " + " limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+                " c.id = p.userid and state = 0 order by state " + " limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 
@@ -105,18 +105,19 @@ public class PrivateOrderDao {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public void addPrivateOrderMobile(String userId, String cityId, String serverAddress, String description, String fileEName) {
+    public void addPrivateOrderMobile(String userId, String cityId, String price, String serverAddress, String description, String fileEName) {
         String sql = "INSERT INTO privateorder ( " +
                 " userid, " +
                 " cityId, " +
+                " price, " +
                 " reqPicName, " +
                 " serverAddress, " +
                 " ordertime, " +
                 " description " +
                 ") " +
                 "VALUES " +
-                "(?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{userId, cityId, fileEName, serverAddress, DateUtil.cruTimeStr(), description});
+                "(?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{userId, cityId, price, fileEName, serverAddress, DateUtil.cruTimeStr(), description});
     }
 
     public List<Map<String, Object>> queryPrivateOrdersMobile(String userId) {

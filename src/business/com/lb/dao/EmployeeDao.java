@@ -132,13 +132,13 @@ public class EmployeeDao {
     }
 
     public List<Map<String, Object>> queryCommentCountByType(String empId) {
-        String sql = "SELECT '1', COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId = " + empId + " and ec.`level`  = 1 " +
+        String sql = "SELECT ec.`level`, COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId = " + empId + " and ec.`level`  = 1 " +
                 "union  " +
-                "SELECT '2', COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId =  " + empId + " and ec.`level`  = 2 " +
+                "SELECT ec.`level`, COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId =  " + empId + " and ec.`level`  = 2 " +
                 "union  " +
-                "SELECT '3', COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId =  " + empId + " and ec.`level`  = 3 " +
+                "SELECT ec.`level`, COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId =  " + empId + " and ec.`level`  = 3 " +
                 "union  " +
-                "SELECT 'commentAllCount', COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId = " + empId;
+                "SELECT 'commentAllCount' as level, COUNT(ec.id) AS commentCount FROM emp_comment ec WHERE empId = " + empId;
         return jdbcTemplate.queryForList(sql);
     }
 
