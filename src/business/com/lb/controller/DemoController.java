@@ -2,6 +2,7 @@ package com.lb.controller;
 
 import com.lb.bean.Demo;
 import com.lb.service.DemoService;
+import com.lb.service.EmployeeService;
 import com.lb.utils.Constant;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
@@ -38,6 +39,9 @@ public class DemoController {
 
     @Resource
     private DemoService demoService;
+
+    @Resource
+    private EmployeeService employeeService;
 
     @RequestMapping("queryAllDemos")
     public ModelAndView queryAllDemos(HttpServletRequest request, HttpSession session, String showType) {
@@ -301,8 +305,10 @@ public class DemoController {
         try {
             List<Map<String, Object>> demos = demoService.queryDemoDetailByIdMobile(demoId, userId);
             List<Map<String, Object>> employees = demoService.queryEmployeeDetailByIdMobile(demoId);
+            List<Map<String, Object>> commentCounts = employeeService.queryCommentCountByType(employees.get(0).get("id").toString());
             jsonObject.put("demo", demos.get(0));
             jsonObject.put("employee", employees.get(0));
+            jsonObject.put("commentCounts", commentCounts);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);

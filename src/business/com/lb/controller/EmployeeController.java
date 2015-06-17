@@ -291,14 +291,6 @@ public class EmployeeController {
             List<Map<String, Object>> employees = employeeService.queryEmployeeDetailByIdMobile(empId, userId);
             List<Map<String, Object>> XYlevel = employeeService.queryEmployeeXYLevelByIdMobile(empId);
             List<Map<String, Object>> commentCounts = employeeService.queryCommentCountByType(empId);
-            Integer commentAllCount = 0;
-            for (Map<String, Object> commentCount : commentCounts) {
-                commentAllCount += Integer.parseInt(commentCount.get("commentCount") + "");
-            }
-
-            Map<String, Object> commentMap = new HashMap<String, Object>();
-            commentMap.put("commentAllCount", commentAllCount);
-            commentCounts.add(commentMap);
             jsonObject.put("XYlevel", XYlevel);
             jsonObject.put("commentCounts", commentCounts);
             jsonObject.put("employee", employees.get(0));
