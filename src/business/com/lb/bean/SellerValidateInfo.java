@@ -25,7 +25,8 @@ public class SellerValidateInfo {
     private String address;    //店铺地址
     private String cityId;    //所在城市
     private String payAccount; //支付宝账号
-    private String alipayKey; //支付宝账号
+    private String alipayPublicKey; //支付宝账号
+    private String alipayPrivateKey; //支付宝账号
     private String alipayPid; //支付宝账号
     private String serviceScope;//服务范围
     private String telephone;   //手机号
@@ -33,7 +34,9 @@ public class SellerValidateInfo {
     public SellerValidateInfo() {
     }
 
-    public SellerValidateInfo(int sellerId, String name, String sex, String birthday, String email, String identify, String shopName, String address, String cityId, String payAccount, String alipayKey, String alipayPid,
+    public SellerValidateInfo(int sellerId, String name, String sex, String birthday, String email, String identify, String shopName, String address, String cityId, String payAccount, String alipayPublicKey,
+                              String alipayPrivateKey,
+                              String alipayPid,
                               String serviceScope, String telephone) {
         this.sellerId = sellerId;
         this.name = name;
@@ -45,7 +48,8 @@ public class SellerValidateInfo {
         this.address = address;
         this.cityId = cityId;
         this.payAccount = payAccount;
-        this.alipayKey = alipayKey;
+        this.alipayPublicKey = alipayPublicKey;
+        this.alipayPrivateKey = alipayPrivateKey;
         this.alipayPid = alipayPid;
         this.serviceScope = serviceScope;
         this.telephone = telephone;
@@ -53,7 +57,7 @@ public class SellerValidateInfo {
 
     public SellerValidateInfo(int id, int sellerId, String headImgStr, String identifyImgStr, String name, String sex, String birthday, String email, String identify, String shopName, String address,
                               String cityId, String payAccount,
-                              String alipayKey,
+                              String alipayPublicKey, String alipayPrivateKey,
                               String alipayPid,
                               String serviceScope, String telephone) {
         this.id = id;
@@ -69,7 +73,8 @@ public class SellerValidateInfo {
         this.address = address;
         this.cityId = cityId;
         this.payAccount = payAccount;
-        this.alipayKey = alipayKey;
+        this.alipayPublicKey = alipayPublicKey;
+        this.alipayPrivateKey = alipayPrivateKey;
         this.alipayPid = alipayPid;
         this.serviceScope = serviceScope;
         this.telephone = telephone;
@@ -195,12 +200,20 @@ public class SellerValidateInfo {
         this.telephone = telephone;
     }
 
-    public String getAlipayKey() {
-        return alipayKey;
+    public String getAlipayPublicKey() {
+        return alipayPublicKey;
     }
 
-    public void setAlipayKey(String alipayKey) {
-        this.alipayKey = alipayKey;
+    public void setAlipayPublicKey(String alipayPublicKey) {
+        this.alipayPublicKey = alipayPublicKey;
+    }
+
+    public String getAlipayPrivateKey() {
+        return alipayPrivateKey;
+    }
+
+    public void setAlipayPrivateKey(String alipayPrivateKey) {
+        this.alipayPrivateKey = alipayPrivateKey;
     }
 
     public String getAlipayPid() {

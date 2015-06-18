@@ -19,7 +19,6 @@
                     <li><a href="${rootPath}/order/queryAllOrders.do" target="rightFrame" class="STYLE3">订单列表</a></li>
                     <li><a href="${rootPath}/demo/queryAllDemos.do?showType=1" target="rightFrame" class="STYLE3">作品列表</a></li>
                     <li><a href="${rootPath}/employee/queryAllEmployees.do" target="rightFrame" class="STYLE3">技师列表</a></li>
-                    <%--<li><a href="${rootPath}/privateOrder/queryAllPrivateOrders.do" target="rightFrame" class="STYLE3">我的私人订制</a></li>--%>
                     <li><a href="${rootPath}/privateOrder/queryPrivateOrderPool.do" target="rightFrame" class="STYLE3">私人订制池</a></li>
                     <li><a href="${rootPath}/recruitment/queryAllRecruitment.do" target="rightFrame" class="STYLE3">应聘手艺人列表</a></li>
                 </ul>

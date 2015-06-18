@@ -90,12 +90,6 @@
                 return false;
             }
 
-            var alipayKey = $.trim($("#alipayKey").val());
-            if (alipayKey == "") {
-                alert("支付宝秘钥不能为空！");
-                return false;
-            }
-
             var alipayPid = $.trim($("#alipayPid").val());
             if (alipayPid == "") {
                 alert("支付宝PID不能为空！");
@@ -186,14 +180,22 @@
             </td>
 
         </tr>
+
         <tr>
-            <td class="td_att_name">支付宝秘钥:</td>
-            <td>
-                <input type="text" name="alipayKey" id="alipayKey"/>
-            </td>
             <td class="td_att_name">支付宝PID:</td>
-            <td>
+            <td colspan="3">
                 <input type="text" name="alipayPid" id="alipayPid" size="65"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="td_att_name">支付宝公钥:</td>
+            <td>
+                <input readonly="true" type="text" name="alipayPublicKey" id="alipayPublicKey"/>
+            </td>
+            <td class="td_att_name">支付宝私钥:</td>
+            <td>
+                <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey"/>
             </td>
         </tr>
         <tr>
