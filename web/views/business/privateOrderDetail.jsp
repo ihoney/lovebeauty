@@ -20,7 +20,7 @@
 <body>
 <div id="privateOrder_info">
     <div style="float: left; ">
-        <img onerror="imgLoadError(this);" src="${rootPath}/fileUpload/${privateOrder.filename}" class="demo_img"/>
+        <img onerror="imgLoadError(this);" src="${rootPath}/fileUpload/${privateOrder.reqPicName}" class="demo_img"/>
     </div>
     <div style="width: 300px; height: 300px;">
         <table style="width: 100%;">

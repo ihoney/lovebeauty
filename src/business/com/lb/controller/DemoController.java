@@ -340,10 +340,13 @@ public class DemoController {
      */
     @RequestMapping(value = "queryDemosByTimeMobile")
     @ResponseBody
-    public Map<String, Object> queryDemosByTimeMobile(HttpServletRequest request, String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
+    public Map<String, Object> queryDemosByTimeMobile(HttpServletRequest request, String cityId, String demoType, String dateType, String hour, String orderType, String page, String pageSize) {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
+        if (demoType == null) {
+            demoType = "美甲";
+        }
         try {
-            List<Map<String, Object>> demos = demoService.queryDemosByTimeMobile(cityId, dateType, hour, orderType, page, pageSize);
+            List<Map<String, Object>> demos = demoService.queryDemosByTimeMobile(cityId, demoType, dateType, hour, orderType, page, pageSize);
             jsonObject.put("demos", demos);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {

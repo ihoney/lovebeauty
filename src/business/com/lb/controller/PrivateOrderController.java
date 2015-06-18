@@ -259,7 +259,7 @@ public class PrivateOrderController {
     /*-----------------------移动端---------------------*/
 
     /**
-     * 确认订单
+     * 添加订单
      *
      * @param request
      * @return
@@ -319,4 +319,6 @@ public class PrivateOrderController {
         }
         return jsonObject;
     }
+
+
 }

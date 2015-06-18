@@ -241,7 +241,7 @@ public class DemoDao {
         return jdbcTemplate.queryForList(sql);
     }
 
-    public List<Map<String, Object>> queryDemosByTimeMobile(String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
+    public List<Map<String, Object>> queryDemosByTimeMobile(String cityId, String demoType, String dateType, String hour, String orderType, String page, String pageSize) {
         int pageIndex = Integer.parseInt(page);
         int ps = Integer.parseInt(pageSize);
         StringBuffer sb = new StringBuffer("SELECT " +
@@ -255,6 +255,7 @@ public class DemoDao {
                 "LEFT JOIN `order` o ON o.demoid = d.id " +
                 "AND o.state = '交易成功' " +
                 "WHERE " +
+                " demoType = '" + demoType + "' AND " +
                 " d.employeeId IN ( " +
                 "  SELECT " +
                 "   e.id " +
