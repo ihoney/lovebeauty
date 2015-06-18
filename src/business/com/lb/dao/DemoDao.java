@@ -122,7 +122,9 @@ public class DemoDao {
     public List<Map<String, Object>> queryDemoByTypeMobile(String demoType, String orderType, String page, String pageSize) {
         int pageIndex = Integer.parseInt(page);
         int ps = Integer.parseInt(pageSize);
-        StringBuffer stringBuffer = new StringBuffer("SELECT d.id, d. NAME, d.price, COUNT(o.demoid) AS count, d.fileEName FROM demo d left join `order` o on o.demoid = d.id and o.state = '交易成功' where  d.demoType = '"
+        StringBuffer stringBuffer = new StringBuffer("SELECT d.id, d. NAME, d.price, COUNT(o.demoid) AS demoCount, d.fileEName FROM demo d left join `order` o on o.demoid = d.id and o.state = '交易成功' where  d.demoType " +
+                "" +
+                "= '"
                 + demoType + "' " +
                 "GROUP BY d.id  order " +
                 "by ");
@@ -279,5 +281,10 @@ public class DemoDao {
         }
         sb.append(" limit " + (pageIndex - 1) * ps + "," + ps);
         return jdbcTemplate.queryForList(sb.toString());
+    }
+
+    public List<Map<String, Object>> getAllDemos() {
+        String sql = "select id,name from demo ";
+        return jdbcTemplate.queryForList(sql);
     }
 }

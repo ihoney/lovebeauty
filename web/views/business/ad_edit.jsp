@@ -60,17 +60,23 @@
         <tr>
             <td class="ad_td_att_name">广告类型：</td>
             <td class="ad_td_attr_value">
-                <select name="type" style="border: none; width: 100px;">
-                    <option <c:if test="${ad.type =='内部链接'}">selected="true"</c:if>>内部链接</option>
-                    <option <c:if test="${ad.type =='外部链接'}">selected="true"</c:if>>外部链接</option>
-                </select>
+                ${ad.type}
             </td>
-
         </tr>
         <tr>
             <td class="ad_td_att_name">链接地址：</td>
             <td class="ad_td_attr_value">
-                <input name="url" value="${ad.url}" type="text"/>
+                <c:if test="${ad.type =='外部链接'}">
+                    <input name="url" value="${ad.url}" type="text"/>
+                </c:if>
+
+                <c:if test="${ad.type =='内部链接'}">
+                    '<select name="url" style="border: none; width: 100px;">
+                    <c:forEach items="${demos}" var="demo">
+                        <option value="${demo.id}" <c:if test="${demo.id == ad.url}">selected="selected" </c:if>>${demo.name}</option>
+                    </c:forEach>
+                    </select>
+                </c:if>
             </td>
         </tr>
         <tr>

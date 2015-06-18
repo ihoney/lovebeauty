@@ -91,4 +91,8 @@ public class DemoService {
     public List<Map<String, Object>> queryDemosByTimeMobile(String cityId, String dateType, String hour, String orderType, String page, String pageSize) {
         return demoDao.queryDemosByTimeMobile(cityId, dateType, hour, orderType, page, pageSize);
     }
+
+    public List<Map<String, Object>> getAllDemos() {
+        return demoDao.getAllDemos();
+    }
 }

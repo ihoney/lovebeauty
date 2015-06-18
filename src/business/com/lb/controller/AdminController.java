@@ -163,6 +163,9 @@ public class AdminController {
             if (serviceScopes != null && serviceScopes.size() > 0) {
                 jsonObject.put("serviceScope", serviceScopes.get(0));
                 jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+            } else {
+                jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+                jsonObject.put(Constant.TIPMESSAGE, "请检查输入参数是否正确！");
             }
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);

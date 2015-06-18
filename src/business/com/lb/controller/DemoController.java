@@ -270,6 +270,21 @@ public class DemoController {
         return jsonObject;
     }
 
+    /**
+     * 获取所有的作品信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "getAllDemos")
+    @ResponseBody
+    public Map<String, Object> getAllDemos(HttpServletRequest request) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        List<Map<String, Object>> demos = demoService.getAllDemos();
+        jsonObject.put("demos", demos);
+        return jsonObject;
+    }
+
     /**************************线面是手机端请求地址******************************/
     /**
      * 根据类型 和排序类型查询作品 移动端

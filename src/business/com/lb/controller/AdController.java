@@ -2,6 +2,7 @@ package com.lb.controller;
 
 import com.lb.bean.Ad;
 import com.lb.service.AdService;
+import com.lb.service.DemoService;
 import com.lb.utils.Constant;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
@@ -36,6 +37,9 @@ public class AdController {
 
     @Resource
     private AdService adService;
+
+    @Resource
+    private DemoService demoService;
 
     /**
      * 查看所有广告
@@ -150,6 +154,10 @@ public class AdController {
     public ModelAndView editAd(HttpServletRequest request, String adId) {
         ModelAndView modelAndView = new ModelAndView();
         Map<String, Object> ad = adService.getAdById(adId).get(0);
+        if ("内部链接".equals(ad.get("type").toString())) {
+            List<Map<String, Object>> demos = demoService.getAllDemos();
+            modelAndView.addObject("demos", demos);
+        }
         modelAndView.addObject("ad", ad);
         modelAndView.setViewName("business/ad_edit");
         return modelAndView;
