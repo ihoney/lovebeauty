@@ -28,7 +28,25 @@
     });
 
     function ad_add() {
-        location.href = getRootPath() + "ad/addAdInit.do";
+
+        $("#add_ad_type_div").dialog({
+            modal: true,
+            width: '200',
+            height: '80',
+            resizable: false,
+            title: '选择广告链接类型',
+            zIndex: 5,
+            buttons: {
+                "外部链接": function () {
+                    location.href = getRootPath() + "ad/addAdInit.do?type=1";
+                    $(this).dialog("close");
+                },
+                "内部链接": function () {
+                    location.href = getRootPath() + "ad/addAdInit.do?type=2";
+                    $(this).dialog("close");
+                }
+            }
+        });
     }
 
     function ad_reuse(node) {
@@ -131,7 +149,8 @@
                     + ' <td>' + i + '</td>'
                     + '<td>' + ads[i].type + '</td>'
                     + '<td>' + ads[i].url + '</td>'
-                    + '<td>' + ads[i].state + '</td><td>';
+                    + '<td>' + ads[i].state + '</td>'
+                    + '<td>' + ads[i].backup + '</td><td>';
             if (ads[i].state == '停用') {
                 stateTmp = '<a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_reuse(this);">启用</a>';
             } else {
@@ -139,7 +158,6 @@
             }
             trTag += '<a href="${rootPath}/fileUpload/' + ads[i].picName + '" class="img_class_a">预览</a>';
             trTag += stateTmp;
-            trTag += '<a href="javascript:void(0);" adId="' + ads[i].id + '" onclick="ad_edit(this);">编辑</a>';
             trTag += '<a href="javascript:void(0);" adId="' + ads[i].id + '" fileName="' + ads[i].picName + '" onclick="ad_delete(this);">删除</a>';
             trTag += '</td></tr>';
             $(trTag).appendTo(tabTag);
@@ -182,7 +200,6 @@
                     <c:if test="${ad.state == '启用'}">
                         <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_stop(this);">停用</a>
                     </c:if>
-                    <a href="javascript:void(0);" adId="${ad.id}" onclick="ad_edit(this);">编辑</a>
                     <a href="javascript:void(0);" adId="${ad.id}" fileName="${ad.picName}" onclick="ad_delete(this);">删除</a>
                 </td>
             </tr>
@@ -203,3 +220,5 @@
             <button class="footer_text_two" onclick="btnGo();">跳转</button>
         </span>
 </div>
+
+<div id="add_ad_type_div" style="display: none;"></div>

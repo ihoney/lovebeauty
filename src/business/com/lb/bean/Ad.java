@@ -14,6 +14,8 @@ public class Ad {
     private String url;
     private String backup;
     private String state;
+    private String cityId;
+    private String sellerId;
 
     public Ad() {
     }
@@ -30,6 +32,24 @@ public class Ad {
         this.picName = picName;
         this.url = url;
         this.backup = backup;
+    }
+
+    public Ad(String type, String url, String cityId, String sellerId, String backup) {
+        this.type = type;
+        this.url = url;
+        this.backup = backup;
+        this.cityId = cityId;
+        this.sellerId = sellerId;
+    }
+
+    public Ad(int id, String type, String cityId, String sellerId, String picName, String url, String backup) {
+        this.id = id;
+        this.type = type;
+        this.picName = picName;
+        this.url = url;
+        this.backup = backup;
+        this.cityId = cityId;
+        this.sellerId = sellerId;
     }
 
     public int getId() {
@@ -78,5 +98,21 @@ public class Ad {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
     }
 }

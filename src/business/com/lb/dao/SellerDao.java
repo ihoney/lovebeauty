@@ -136,4 +136,9 @@ public class SellerDao {
                 "LEFT JOIN seller_validate_info sv ON sv.sellerid = s.id and s.id = " + sellerId;
         return jdbcTemplate.queryForList(sql);
     }
+
+    public List<Map<String, Object>> queryAllSellers() {
+        String sql = "SELECT svi.cityId, s.id, svi.shopname as shopName FROM seller s, seller_validate_info svi WHERE s.forbidden = '否' AND svi.sellerid = s.id";
+        return jdbcTemplate.queryForList(sql);
+    }
 }

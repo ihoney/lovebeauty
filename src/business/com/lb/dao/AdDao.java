@@ -26,7 +26,39 @@ public class AdDao {
     }
 
     public List<Map<String, Object>> getAdByPage(int pageIndex, int pageSize) {
-        String sql = "select * from advertisement order by state desc limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+        String sql =
+                "SELECT " +
+                        " a.id, " +
+                        " a.type, " +
+                        " a.picName, " +
+                        " a.`backup`, " +
+                        " a.state, " +
+                        " CASE a.type " +
+                        "WHEN '外部链接' THEN " +
+                        " a.url " +
+                        "WHEN '内部链接' THEN " +
+                        " ( " +
+                        "  SELECT " +
+                        "   CONCAT( " +
+                        "    \"城市:\", " +
+                        "    c.`name`, " +
+                        "    \" 商铺:\", " +
+                        "    s. NAME, " +
+                        "    \" 作品:\", " +
+                        "    d. NAME " +
+                        "   ) " +
+                        "  FROM " +
+                        "   demo d, " +
+                        "   city c, " +
+                        "   seller_validate_info s " +
+                        "  WHERE " +
+                        "   d.id = a.url " +
+                        "  AND c.id = a.cityId " +
+                        "  AND s.sellerId = a.sellerId " +
+                        " ) " +
+                        "END AS url " +
+                        "FROM " +
+                        " advertisement a order by a.state desc limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 
@@ -36,8 +68,14 @@ public class AdDao {
     }
 
     public void addAd(Ad ad) {
-        String sql = "INSERT INTO advertisement (type, picName, url, BACKUP) VALUE (?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{ad.getType(), ad.getPicName(), ad.getUrl(), ad.getBackup()});
+        String sql;
+        if ("外部链接".equals(ad.getType())) {
+            sql = "INSERT INTO advertisement (type, picName, url, BACKUP) VALUE (?,?,?,?)";
+            jdbcTemplate.update(sql, new Object[]{ad.getType(), ad.getPicName(), ad.getUrl(), ad.getBackup()});
+        } else {
+            sql = "INSERT INTO advertisement (type, picName, url,cityId,sellerId, BACKUP) VALUE (?,?,?,?,?,?)";
+            jdbcTemplate.update(sql, new Object[]{ad.getType(), ad.getPicName(), ad.getUrl(), ad.getCityId(), ad.getSellerId(), ad.getBackup()});
+        }
     }
 
     public List<Map<String, Object>> getAdById(String adId) {

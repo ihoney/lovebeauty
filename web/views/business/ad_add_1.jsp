@@ -42,30 +42,6 @@
         function cancel() {
             location.href = getRootPath() + "ad/queryAllAds.do";
         }
-
-        function changeAddress(node) {
-            var tag = $(node);
-            var linkType = tag.val();
-            if (linkType == '外部链接') {
-                $("#linkAddress").html('<input name="url" type="text"/>');
-            } else {
-
-                var selectTag = '<select name="url" style="border: none; width: 100px;">'
-                $.ajax({
-                    url: getRootPath() + "demo/getAllDemos.do",
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        var demos = data.demos;
-                        for (var i = 0; i < demos.length; i++) {
-                            selectTag += '<option value="' + demos[i].id + '">' + demos[i].name + '</option> ';
-                        }
-                    }
-                })
-                selectTag += '</select>';
-                $("#linkAddress").html(selectTag);
-            }
-        }
     </script>
     <style type="text/css">
         .ad_table {
@@ -83,21 +59,12 @@
 </head>
 <body>
 <form id="form_custom" action="${rootPath}/ad/addAd.do" enctype="multipart/form-data" method="post">
+    <input type="hidden" name="type" value="1"/>
     <table class="ad_table" cellspadding=0 cellspacing=0>
-        <tr>
-            <td class="ad_td_att_name">广告类型：</td>
-            <td class="ad_td_attr_value">
-                <select name="type" onchange="changeAddress(this);" style="border: none; width: 100px;">
-                    <option>外部链接</option>
-                    <option>内部链接</option>
-                </select>
-            </td>
-
-        </tr>
         <tr>
             <td class="ad_td_att_name">链接地址：</td>
             <td class="ad_td_attr_value" id="linkAddress">
-                <input name="url" type="text"/>
+                <input name="url" type="text" size=""/>
             </td>
         </tr>
         <tr>

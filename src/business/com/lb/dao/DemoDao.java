@@ -292,4 +292,9 @@ public class DemoDao {
         String sql = "SELECT COUNT(id) FROM `order` WHERE userid = " + userId + " AND demoid = " + demoId + " AND state = '交易成功'";
         return jdbcTemplate.queryForInt(sql);
     }
+
+    public List<Map<String, Object>> queryAllDemos() {
+        String sql = "SELECT d.id, d. NAME, d.sellerid AS sellerId, svi.cityId FROM demo d, seller s, seller_validate_info svi WHERE d.sellerid = s.id AND svi.sellerid = s.id AND s.forbidden = '否'";
+        return jdbcTemplate.queryForList(sql);
+    }
 }

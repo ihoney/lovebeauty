@@ -101,4 +101,8 @@ public class SellerService {
     public List<Map<String,Object>> getSingleSellerById(String sellerId) {
         return sellerDao.getSingleSellerById(sellerId);
     }
+
+    public List<Map<String, Object>> queryAllSellers() {
+        return sellerDao.queryAllSellers();
+    }
 }

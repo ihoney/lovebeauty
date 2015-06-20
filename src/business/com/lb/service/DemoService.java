@@ -99,4 +99,8 @@ public class DemoService {
     public int queryFirstOrder(String demoId, String userId) {
         return demoDao.queryFirstOrder(demoId, userId);
     }
+
+    public List<Map<String, Object>> queryAllDemos() {
+        return demoDao.queryAllDemos();
+    }
 }

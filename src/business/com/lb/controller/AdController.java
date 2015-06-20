@@ -2,7 +2,9 @@ package com.lb.controller;
 
 import com.lb.bean.Ad;
 import com.lb.service.AdService;
+import com.lb.service.CityService;
 import com.lb.service.DemoService;
+import com.lb.service.SellerService;
 import com.lb.utils.Constant;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
@@ -37,6 +39,12 @@ public class AdController {
 
     @Resource
     private AdService adService;
+
+    @Resource
+    private CityService cityService;
+
+    @Resource
+    private SellerService sellerService;
 
     @Resource
     private DemoService demoService;
@@ -96,8 +104,22 @@ public class AdController {
      * @return
      */
     @RequestMapping("addAdInit")
-    public String addAdInit() {
-        return "business/ad_add";
+    public ModelAndView addAdInit(String type) {
+        ModelAndView modelAndView = new ModelAndView();
+        String page;
+        if (type == null || "1".equals(type)) {
+            page = "business/ad_add_1";
+        } else {
+            List<Map<String, Object>> cities = cityService.queryCitiesMobile();
+            List<Map<String, Object>> sellers = sellerService.queryAllSellers();
+            List<Map<String, Object>> demos = demoService.queryAllDemos();
+            modelAndView.addObject("cities", cities);
+            modelAndView.addObject("sellers", sellers);
+            modelAndView.addObject("demos", demos);
+            page = "business/ad_add_2";
+        }
+        modelAndView.setViewName(page);
+        return modelAndView;
     }
 
     /**
@@ -141,26 +163,6 @@ public class AdController {
             balkJson.put(Constant.REQRESULT, Constant.REQFAILED);
         }
         return balkJson.toString();
-    }
-
-    /**
-     * 编辑广告
-     *
-     * @param request
-     * @param adId
-     * @return
-     */
-    @RequestMapping(value = "editAd")
-    public ModelAndView editAd(HttpServletRequest request, String adId) {
-        ModelAndView modelAndView = new ModelAndView();
-        Map<String, Object> ad = adService.getAdById(adId).get(0);
-        if ("内部链接".equals(ad.get("type").toString())) {
-            List<Map<String, Object>> demos = demoService.getAllDemos();
-            modelAndView.addObject("demos", demos);
-        }
-        modelAndView.addObject("ad", ad);
-        modelAndView.setViewName("business/ad_edit");
-        return modelAndView;
     }
 
     /**
