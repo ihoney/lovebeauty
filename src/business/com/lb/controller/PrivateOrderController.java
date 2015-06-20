@@ -67,10 +67,12 @@ public class PrivateOrderController {
      * @return
      */
     @RequestMapping("queryPrivateOrderPool")
-    public ModelAndView queryPrivateOrderPool(HttpServletRequest request) {
+    public ModelAndView queryPrivateOrderPool(HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
-        int orderCount = privateOrderService.getOrderCount();
-        List<Map<String, Object>> orders = privateOrderService.getOrderByPage(1, Constant.PAGENUM);
+        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        String sellerId = seller.get("id").toString();
+        int orderCount = privateOrderService.getOrderCount(sellerId);
+        List<Map<String, Object>> orders = privateOrderService.getOrderByPage(sellerId, 1, Constant.PAGENUM);
         modelAndView.addObject("orders", orders);
         int totalPage = orderCount / Constant.PAGENUM + (orderCount % Constant.PAGENUM == 0 ? 0 : 1);
         modelAndView.addObject("orderCount", orderCount);

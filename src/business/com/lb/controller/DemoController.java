@@ -321,6 +321,12 @@ public class DemoController {
             List<Map<String, Object>> demos = demoService.queryDemoDetailByIdMobile(demoId, userId);
             List<Map<String, Object>> employees = demoService.queryEmployeeDetailByIdMobile(demoId);
             List<Map<String, Object>> commentCounts = employeeService.queryCommentCountByType(employees.get(0).get("id").toString());
+            int orderCount = demoService.queryFirstOrder(demoId, userId);
+            if (orderCount > 0) {
+                jsonObject.put("isFirstBuy", false);
+            } else {
+                jsonObject.put("isFirstBuy", true);
+            }
             jsonObject.put("demo", demos.get(0));
             jsonObject.put("employee", employees.get(0));
             jsonObject.put("commentCounts", commentCounts);
@@ -355,6 +361,4 @@ public class DemoController {
         }
         return jsonObject;
     }
-
-
 }

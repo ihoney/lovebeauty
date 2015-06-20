@@ -74,7 +74,8 @@
         function fileChange(node) {
             var fileName = $(node).val();
             var fileSuffix = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
-            if (fileSuffix != 'jpg' && fileSuffix != 'gif' && fileSuffix != 'png' && fileSuffix != 'jpeg') {
+            fileSuffix = fileSuffix.toUpperCase();
+            if (fileSuffix != 'JPG' && fileSuffix != 'PNG') {
                 alert("只能上传图片！");
                 $(node).val("");
             }
@@ -89,13 +90,13 @@
 <form id="form_custom" action="${rootPath}/demo/addDemo.do" enctype="multipart/form-data" method="post">
     <table id="add_tab" cellspacing=0 cellpadding=5>
         <tr>
-            <td class="td_att_name">名称:</td>
+            <td class="td_att_name">作品名称:</td>
             <td>
                 <input type="text" name="name" id="name" size="65"/>
             </td>
         </tr>
         <tr>
-            <td class="td_att_name">作品师:</td>
+            <td class="td_att_name">手艺人:</td>
             <td>
                 <select id="empId" name="empId" style="width: 120px;">
                     <c:forEach items="${employees}" var="employee">
@@ -118,7 +119,7 @@
             </td>
         </tr>
         <tr>
-            <td class="td_att_name">价格:</td>
+            <td class="td_att_name">价格(元):</td>
 
             <td>
                 <input type="text" name="price" onchange="valueChange(this);" id="price" size="65"/>
@@ -126,19 +127,13 @@
         </tr>
 
         <tr>
-            <td class="td_att_name">首次优惠价格:</td>
+            <td class="td_att_name">首次优惠价格(元):</td>
             <td>
                 <input type="text" name="preferentialPrice" onchange="valueChange(this);" id="preferentialPrice" size="65"/>
             </td>
         </tr>
         <tr>
 
-        <tr>
-            <td class="td_att_name">店面价格:</td>
-            <td>
-                <input type="text" name="shopPrice" onchange="valueChange(this);" id="shopPrice" size="65"/>
-            </td>
-        </tr>
         <tr>
             <td class="td_att_name">耗时(分钟):</td>
             <td>
@@ -155,12 +150,25 @@
             <td class="td_att_name">
                 可预约时间:
             </td>
-            <td>
-                <input type="text" name="bookTime" id="bookTime" size="65"/>
+            <td style="font-size: 12px;">
+                10-15点:
+                <input type="checkbox" name="bookTime" value="10"/>10点
+                <input type="checkbox" name="bookTime" value="11"/>11点
+                <input type="checkbox" name="bookTime" value="12"/>12点
+                <input type="checkbox" name="bookTime" value="13"/>13点
+                <input type="checkbox" name="bookTime" value="14"/>14点
+                <input type="checkbox" name="bookTime" value="15"/>15点 <br/>
+                16-21点:
+                <input type="checkbox" name="bookTime" value="16"/>16点
+                <input type="checkbox" name="bookTime" value="17"/>17点
+                <input type="checkbox" name="bookTime" value="18"/>18点
+                <input type="checkbox" name="bookTime" value="19"/>19点
+                <input type="checkbox" name="bookTime" value="20"/>20点
+                <input type="checkbox" name="bookTime" value="21"/>21点
             </td>
         </tr>
         <tr>
-            <td class="td_att_name">文件:</td>
+            <td class="td_att_name">作品效果图(png或jpg):</td>
             <td>
                 <input type="file" name="file" id="file" onchange="fileChange(this);"/>
             </td>

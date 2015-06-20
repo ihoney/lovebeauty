@@ -95,4 +95,8 @@ public class DemoService {
     public List<Map<String, Object>> getAllDemos() {
         return demoDao.getAllDemos();
     }
+
+    public int queryFirstOrder(String demoId, String userId) {
+        return demoDao.queryFirstOrder(demoId, userId);
+    }
 }

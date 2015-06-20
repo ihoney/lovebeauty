@@ -43,30 +43,29 @@ public class DemoDao {
                 " fileEName, " +
                 " price, " +
                 " preferentialPrice, " +
-                " shopPrice, " +
                 " timeConsuming, " +
                 " keepTime, " +
                 " booktime, " +
                 " demoType " +
                 ") " +
                 "VALUES " +
-                " (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                " (?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, new Object[]{demo.getSellerId(), demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPicName(), demo.getFileEName(), demo.getPrice(), demo.getPreferentialPrice(),
-                demo.getShopPrice(), demo.getTimeConsuming(), demo.getKeepTime(), demo.getBookTime(), demo.getDemoType()});
+                demo.getTimeConsuming(), demo.getKeepTime(), demo.getBookTime(), demo.getDemoType()});
     }
 
     public void updateDemo(Demo demo) {
-        StringBuffer sb = new StringBuffer("UPDATE demo SET NAME = ?,employeeId=?, description =?, price = ?, PreferentialPrice =?, shopPrice =?, timeConsuming=?,keepTime=?,booktime = ?, demoType = ? ");
+        StringBuffer sb = new StringBuffer("UPDATE demo SET NAME = ?,employeeId=?, description =?, price = ?, PreferentialPrice =?,timeConsuming=?,keepTime=?,booktime = ?, demoType = ? ");
         if (demo.getFileEName() != null) {
             sb.append(", picname = ?, fileEName = ? ");
         }
         sb.append(" where id = " + demo.getId());
 
         if (demo.getFileEName() != null) {
-            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getShopPrice(), demo.getTimeConsuming(),
+            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getTimeConsuming(),
                     demo.getKeepTime(), demo.getBookTime(), demo.getDemoType(), demo.getPicName(), demo.getFileEName()});
         } else {
-            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getShopPrice(), demo.getTimeConsuming(),
+            jdbcTemplate.update(sb.toString(), new Object[]{demo.getName(), demo.getEmpId(), demo.getDescription(), demo.getPrice(), demo.getPreferentialPrice(), demo.getTimeConsuming(),
                     demo.getKeepTime(), demo.getBookTime(), demo.getDemoType()});
         }
     }
@@ -142,7 +141,7 @@ public class DemoDao {
     }
 
     public List<Map<String, Object>> queryDemoDetailByIdMobile(String demoId, String userId) {
-        String sql = "SELECT d.id, d. NAME, d.fileEName, d.price, d.shopPrice, d.description, COUNT(o.id) AS demoCount, d.timeConsuming, d.keepTime, count(DISTINCT f.id) AS isFavorite FROM demo d LEFT JOIN favorite f " +
+        String sql = "SELECT d.id, d. NAME, d.fileEName, d.price,d.PreferentialPrice,d.description, COUNT(o.id) AS demoCount, d.timeConsuming, d.keepTime, count(DISTINCT f.id) AS isFavorite FROM demo d LEFT JOIN favorite f " +
                 "ON f.type = 0 AND f.userId = " + userId + " AND f.entityId = d.id LEFT JOIN `order` o ON o.demoid = d.id AND o.state = '交易成功' WHERE d.id = " + demoId;
         return jdbcTemplate.queryForList(sql);
     }
@@ -287,5 +286,10 @@ public class DemoDao {
     public List<Map<String, Object>> getAllDemos() {
         String sql = "select id,name from demo ";
         return jdbcTemplate.queryForList(sql);
+    }
+
+    public int queryFirstOrder(String demoId, String userId) {
+        String sql = "SELECT COUNT(id) FROM `order` WHERE userid = " + userId + " AND demoid = " + demoId + " AND state = '交易成功'";
+        return jdbcTemplate.queryForInt(sql);
     }
 }

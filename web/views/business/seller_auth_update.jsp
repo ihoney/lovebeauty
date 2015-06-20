@@ -118,7 +118,7 @@
     <input type="hidden" name="identifyImgStr" value="${sellerAuthInfo.identify_img}"/>
     <table id="add_tab" cellspacing=0 cellpadding=5>
         <tr>
-            <td class="td_att_name">名称:</td>
+            <td class="td_att_name">店主姓名:</td>
             <td>
                 <input type="text" name="name" id="name" value="${sellerAuthInfo.name}"/>
             </td>
@@ -145,7 +145,7 @@
             <td>
                 <input type="text" name="telephone" value="${sellerAuthInfo.telephone}" id="telephone"/>
             </td>
-            <td class="td_att_name">头像:</td>
+            <td class="td_att_name">店主照片:</td>
             <td>
                 <input type="file" name="headImg" onchange="fileChange(this);" id="headImg"/>
             </td>
@@ -162,16 +162,12 @@
         </tr>
         <tr>
             <td class="td_att_name">店铺名称:</td>
-            <td>
+            <td colspan="3">
                 <input type="text" name="shopName" value="${sellerAuthInfo.shopname}" id="shopName"/>
-            </td>
-            <td class="td_att_name">店铺地址:</td>
-            <td>
-                <input type="text" name="address" value="${sellerAuthInfo.address}" id="address"/>
             </td>
         </tr>
         <tr>
-            <td class="td_att_name">所在城市:</td>
+            <td class="td_att_name">店铺所在城市:</td>
             <td>
                 <select id="cityId" name="cityId">
                     <c:forEach items="${cities}" var="city">
@@ -180,16 +176,20 @@
                 </select>
             </td>
 
-            <td class="td_att_name">支付宝账号:</td>
+            <td class="td_att_name">店铺地址:</td>
             <td>
-                <input type="text" name="payAccount" value="${sellerAuthInfo.payaccount}" id="payAccount"/>
+                <input type="text" name="address" value="${sellerAuthInfo.address}" id="address"/>
             </td>
         </tr>
 
         <tr>
+            <td class="td_att_name">支付宝账号:</td>
+            <td>
+                <input type="text" name="payAccount" value="${sellerAuthInfo.payaccount}" id="payAccount"/>
+            </td>
             <td class="td_att_name">支付宝PID:</td>
-            <td colspan="3">
-                <input type="text" name="alipayPid" id="alipayPid" value="${sellerAuthInfo.alipay_pid}" size="65"/>
+            <td>
+                <input type="text" name="alipayPid" id="alipayPid" value="${sellerAuthInfo.alipay_pid}"/>
             </td>
         </tr>
 
@@ -200,7 +200,7 @@
             </td>
             <td class="td_att_name">支付宝私钥:</td>
             <td>
-                <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey" value="${sellerAuthInfo.alipay_private_key}" size="65"/>
+                <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey" value="${sellerAuthInfo.alipay_private_key}"/>
             </td>
         </tr>
         <tr>

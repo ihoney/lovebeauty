@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -354,10 +355,10 @@ public class EmployeeController {
      */
     @RequestMapping(value = "addEmployeeCommentByIdMobile")
     @ResponseBody
-    public Map<String, Object> addEmployeeCommentByIdMobile(HttpServletRequest request, String empId, String userId, String commentType, String comment) {
+    public Map<String, Object> addEmployeeCommentByIdMobile(HttpServletRequest request, String empId, String userId, String commentType, BigDecimal majorScore, BigDecimal comScore, BigDecimal punctualScore, String comment) {
         Map<String, Object> jsonObject = new HashMap<String, Object>();
         try {
-            employeeService.addEmployeeCommentByIdMobile(empId, userId, commentType, comment);
+            employeeService.addEmployeeCommentByIdMobile(empId, userId, commentType, majorScore, comScore, punctualScore, comment);
             jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
         } catch (Exception e) {
             jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);

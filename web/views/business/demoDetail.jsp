@@ -79,11 +79,11 @@
     <div style="float: left; margin-right: 10px;">
         <table class="dd_tb" cellspacing=0 cellpadding=0>
             <tr>
-                <td class="attr_title">名称：</td>
+                <td class="attr_title">作品名称：</td>
                 <td>${demo.name}</td>
             </tr>
             <tr>
-                <td class="attr_title">作品师：</td>
+                <td class="attr_title">手艺人：</td>
                 <td><a href="${rootPath}/employee/getEmployeeDetail.do?employeeId=${demo.employeeId}">${demo.nickName}</a></td>
             </tr>
             <tr>
@@ -91,20 +91,16 @@
                 <td>${demo.demoType} </td>
             </tr>
             <tr>
-                <td class="attr_title">得分：</td>
+                <td class="attr_title">作品得分：</td>
                 <td>${demo.avgScore} </td>
             </tr>
             <tr>
-                <td class="attr_title">价格：</td>
+                <td class="attr_title">价格(元)：</td>
                 <td>${demo.price}</td>
             </tr>
             <tr>
-                <td class="attr_title">首次优惠价格：</td>
+                <td class="attr_title">首次优惠价格(元)：</td>
                 <td>${demo.PreferentialPrice} </td>
-            </tr>
-            <tr>
-                <td class="attr_title">店面价格：</td>
-                <td>${demo.shopPrice} </td>
             </tr>
             <tr>
                 <td class="attr_title">耗时(分钟)：</td>
@@ -115,7 +111,7 @@
                 <td>${demo.keepTime} </td>
             </tr>
             <tr>
-                <td class="attr_title">可预约时间：</td>
+                <td class="attr_title">可预约时间(点)：</td>
                 <td>${demo.booktime} </td>
             </tr>
         </table>

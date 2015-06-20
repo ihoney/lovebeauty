@@ -25,18 +25,17 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String nickName, String sex, BigDecimal majorScore, BigDecimal comScore, BigDecimal punctualScore, BigDecimal avgPrice, String serverScope, String state) {
+    public Employee(String nickName, String sex, BigDecimal majorScore, BigDecimal comScore, BigDecimal punctualScore, String serverScope, String state) {
         this.nickName = nickName;
         this.sex = sex;
         this.majorScore = majorScore;
         this.comScore = comScore;
         this.punctualScore = punctualScore;
-        this.avgPrice = avgPrice;
         this.serverScope = serverScope;
         this.state = state;
     }
 
-    public Employee(int id, int sellerId, String nickName, String sex, BigDecimal majorScore, BigDecimal comScore, BigDecimal punctualScore, BigDecimal avgPrice, String serverScope, String headImg, String state) {
+    public Employee(int id, int sellerId, String nickName, String sex, BigDecimal majorScore, BigDecimal comScore, BigDecimal punctualScore, String serverScope, String headImg, String state) {
         this.id = id;
         this.sellerId = sellerId;
         this.nickName = nickName;
@@ -44,7 +43,6 @@ public class Employee {
         this.majorScore = majorScore;
         this.comScore = comScore;
         this.punctualScore = punctualScore;
-        this.avgPrice = avgPrice;
         this.serverScope = serverScope;
         this.headImg = headImg;
         this.state = state;

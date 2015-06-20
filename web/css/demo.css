@@ -9,7 +9,7 @@ a {
 }
 
 .demo_img {
-    width: 300px;
+    width: 200px;
     float: left;
     margin-right: 10px;
 }
@@ -22,6 +22,7 @@ a {
 
 #comment {
     width: 90%;
+    margin-top: 30px;
 }
 
 #comment_tb {

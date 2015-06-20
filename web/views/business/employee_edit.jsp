@@ -29,39 +29,6 @@
                 return false;
             }
 
-            var majorScore = parseFloat($("#majorScore").val());
-            if (isNaN(majorScore)) {
-                $("#majorScore").val("");
-                return false;
-            } else {
-                if (majorScore < 0 || majorScore > 5) {
-                    $("#majorScore").val("");
-                    return false;
-                }
-            }
-
-            var comScore = parseFloat($("#comScore").val());
-            if (isNaN(comScore)) {
-                $("#comScore").val("");
-                return false;
-            } else {
-                if (comScore < 0 || comScore > 5) {
-                    $("#comScore").val("");
-                    return false;
-                }
-            }
-
-            var punctualScore = parseFloat($("#punctualScore").val());
-            if (isNaN(punctualScore)) {
-                $("#punctualScore").val("");
-                return false;
-            } else {
-                if (punctualScore < 0 || punctualScore > 5) {
-                    $("#punctualScore").val("");
-                    return false;
-                }
-            }
-
             var avgPrice = parseFloat($("#avgPrice").val());
             if (isNaN(avgPrice)) {
                 $("#avgPrice").val("");
@@ -92,7 +59,8 @@
         function fileChange(node) {
             var fileName = $(node).val();
             var fileSuffix = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length);
-            if (fileSuffix != 'jpg' && fileSuffix != 'gif' && fileSuffix != 'png' && fileSuffix != 'jpeg') {
+            fileSuffix = fileSuffix.toUpperCase();
+            if (fileSuffix != 'JPG' && fileSuffix != 'PNG') {
                 alert("只能上传图片！");
                 $(node).val("");
             }
@@ -109,7 +77,7 @@
     <input type="hidden" name="sellerId" value="${employee.sellerId}"/>
     <table id="add_tab" cellspacing=0 cellpadding=5>
         <tr>
-            <td class="td_att_name">名称:</td>
+            <td class="td_att_name">手艺人名称:</td>
             <td>
                 <input type="text" placeholder="不能为空" name="nickName" id="nickName" value="${employee.nickName}" size="65"/>
             </td>
@@ -132,37 +100,9 @@
                 </select>
             </td>
         </tr>
-        <tr>
-            <td class="td_att_name">专业得分:</td>
-            <td>
-                <input value="${employee.majorScore}" type="text" placeholder="范围为0-5分，不得小于0" name="majorScore" onchange="valueChange(this);" id="majorScore" size="65"/>
-            </td>
-        </tr>
 
         <tr>
-            <td class="td_att_name">沟通得分:</td>
-            <td>
-                <input value="${employee.comScore}" type="text" placeholder="范围为0-5分，不得小于0" name="comScore" onchange="valueChange(this);" id="comScore" size="65"/>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="td_att_name">守时得分:</td>
-            <td>
-                <input value="${employee.punctualScore}" type="text" placeholder="范围为0-5分，不得小于0" name="punctualScore" onchange="valueChange(this);" id="punctualScore" size="65"/>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="td_att_name">均价:</td>
-            <td>
-                <input value="${employee.avgPrice}" type="text" name="avgPrice" placeholder="不得小于0" onchange="valueChange(this);" id="avgPrice" size="65"/>
-            </td>
-        </tr>
-
-
-        <tr>
-            <td class="td_att_name">头像:</td>
+            <td class="td_att_name">手艺人头像(png或jpg):</td>
             <td>
                 <input type="hidden" name="headImg" id="headImg" value="${employee.headImg}"/>
                 <input type="file" name="file" id="file" onchange="fileChange(this);"/>

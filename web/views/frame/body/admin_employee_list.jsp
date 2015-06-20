@@ -102,12 +102,12 @@
             <td><input class="select_inp" type="checkbox"/></td>
             <td>序号</td>
             <td>商家</td>
-            <td>名称</td>
+            <td>手艺人名称</td>
             <td>性别</td>
             <td>专业得分</td>
             <td>沟通得分</td>
             <td>守时得分</td>
-            <td>均价</td>
+            <td>均价(元)</td>
             <td>在职状态</td>
             <td>服务范围</td>
             <td>操作</td>

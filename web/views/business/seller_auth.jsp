@@ -112,7 +112,7 @@
     <input type="hidden" name="sellerId" value="${seller.id}"/>
     <table id="add_tab" cellspacing=0 cellpadding=5>
         <tr>
-            <td class="td_att_name">名称:</td>
+            <td class="td_att_name">店主姓名:</td>
             <td>
                 <input type="text" name="name" id="name"/>
             </td>
@@ -139,7 +139,7 @@
             <td>
                 <input type="text" name="telephone" id="telephone"/>
             </td>
-            <td class="td_att_name">头像:</td>
+            <td class="td_att_name">店主照片:</td>
             <td>
                 <input type="file" name="headImg" id="headImg"/>
             </td>
@@ -156,17 +156,13 @@
         </tr>
         <tr>
             <td class="td_att_name">店铺名称:</td>
-            <td>
+            <td colspan="3">
                 <input type="text" name="shopName" id="shopName"/>
             </td>
-            <td class="td_att_name">店铺地址:</td>
-            <td>
-                <input type="text" name="address" id="address"/>
-            </td>
+
         </tr>
         <tr>
-
-            <td class="td_att_name">所在城市:</td>
+            <td class="td_att_name">店铺所在城市:</td>
             <td>
                 <select id="cityId" name="cityId">
                     <c:forEach items="${cities}" var="city">
@@ -174,17 +170,20 @@
                     </c:forEach>
                 </select>
             </td>
+
+            <td class="td_att_name">店铺地址:</td>
+            <td>
+                <input type="text" name="address" id="address"/>
+            </td>
+        </tr>
+        <tr>
             <td class="td_att_name">支付宝账号:</td>
             <td>
                 <input type="text" name="payAccount" id="payAccount"/>
             </td>
-
-        </tr>
-
-        <tr>
             <td class="td_att_name">支付宝PID:</td>
-            <td colspan="3">
-                <input type="text" name="alipayPid" id="alipayPid" size="65"/>
+            <td>
+                <input type="text" name="alipayPid" id="alipayPid"/>
             </td>
         </tr>
 

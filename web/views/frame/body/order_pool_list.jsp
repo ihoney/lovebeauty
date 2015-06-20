@@ -92,8 +92,10 @@
                     + '<td><input class="select_inp2" type="checkbox" orderId="' + orders[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
                     + '<td>' + orders[i].account + '</td>'
+                    + '<td>' + orders[i].cityName + '</td>'
                     + '<td>' + orders[i].price + '</td>'
-                    + '<td>' + orders[i].ordertime + '</td>';
+                    + '<td>' + orders[i].ordertime + '</td>'
+                    + '<td>' + orders[i].serverAddress + '</td>';
             trTag += "<td>" + orders[i].description + "</td>";
             trTag += '<td>' +
                     '<a href="${rootPath}/privateOrder/privateOrderDetail.do?orderId=' + orders[i].id + '" target="rightFrame">详情</a>' +
@@ -113,9 +115,11 @@
             <td><input class="select_inp" type="checkbox"/></td>
             <td>序号</td>
             <td>客户账号</td>
+            <td>城市</td>
             <td>心理价格</td>
             <td>预定时间</td>
-            <td>预定描述</td>
+            <td>服务地址</td>
+            <td>附加备注</td>
             <td>操作</td>
         </tr>
         <c:forEach var="order" items="${orders}" varStatus="vst">
@@ -123,8 +127,10 @@
                 <td><input class="select_inp2" type="checkbox" orderId="${order.id}"/></td>
                 <td>${vst.index}</td>
                 <td>${order.account}</td>
+                <td>${order.cityName}</td>
                 <td>${order.price}</td>
                 <td>${order.ordertime}</td>
+                <td>${order.serverAddress}</td>
                 <td>${order.description}</td>
                 <td>
                     <a href="${rootPath}/privateOrder/privateOrderDetail.do?orderId=${order.id}" target="rightFrame">详情</a>

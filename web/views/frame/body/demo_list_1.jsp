@@ -101,7 +101,6 @@
                     + '<td>' + demos[i].demoType + '</td>'
                     + '<td>' + demos[i].price + '</td>'
                     + '<td>' + demos[i].PreferentialPrice + '</td>'
-                    + '<td>' + demos[i].shopPrice + '</td>'
                     + '<td>' + demos[i].timeConsuming + '</td>'
                     + '<td>' + demos[i].keepTime + '</td>'
                     + '<td>' + demos[i].booktime + '</td>'
@@ -132,15 +131,14 @@
         <tr class="tr_header">
             <td><input class="select_inp" type="checkbox"/></td>
             <td>序号</td>
-            <td>名称</td>
-            <td>作品师</td>
+            <td>作品名称</td>
+            <td>手艺人</td>
             <td>作品类型</td>
-            <td>价格</td>
-            <td>首次优惠价格</td>
-            <td>店面价格</td>
+            <td>价格(元)</td>
+            <td>首次优惠价格(元)</td>
             <td>耗时(分钟)</td>
             <td>保持(天)</td>
-            <td>可预约时间</td>
+            <td>可预约时间(点)</td>
             <td>操作</td>
         </tr>
         <c:forEach var="demo" items="${demos}" varStatus="vst">
@@ -152,7 +150,6 @@
                 <td>${demo.demoType}</td>
                 <td>${demo.price}</td>
                 <td>${demo.PreferentialPrice}</td>
-                <td>${demo.shopPrice}</td>
                 <td>${demo.timeConsuming}</td>
                 <td>${demo.keepTime}</td>
                 <td>${demo.booktime}</td>

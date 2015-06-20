@@ -22,7 +22,7 @@ public class PrivateOrderDao {
     private JdbcTemplate jdbcTemplate;
 
     public int getOrderCount(String sellerId) {
-        String sql = "select count(1) from `privateorder` where sellerid = " + sellerId;
+        String sql = "select count(p.id) from `privateorder` p,seller_validate_info svi  where  p.cityId = svi.cityId and svi.sellerid = " + sellerId;
         return jdbcTemplate.queryForInt(sql);
     }
 
@@ -33,24 +33,34 @@ public class PrivateOrderDao {
 
     public List<Map<String, Object>> getOrderByPage(String sellerId, int pageIndex, int pageSize) {
         String sql = "SELECT " +
-                " p.*, c.account " +
-                " FROM " +
+                " p.*, c.account, " +
+                " ct. NAME AS cityName " +
+                "FROM " +
                 " privateorder p, " +
-                " customer c " +
-                " WHERE " +
+                " customer c, " +
+                " city ct, " +
+                " seller_validate_info svi " +
+                "WHERE " +
                 " c.id = p.userid " +
-                " AND p.sellerid = " + sellerId + " state = 0  order by state limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+                "AND ct.id = p.cityId " +
+                "AND p.state = 0 " +
+                "AND p.cityId = svi.cityId " +
+                "AND svi.sellerid =  " + sellerId +
+                " ORDER BY " +
+                " p.state  limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 
     public List<Map<String, Object>> getOrderByPage(int pageIndex, int pageSize) {
         String sql = "SELECT " +
-                " p.*, c.account " +
+                " p.*, c.account, " +
+                " ct.NAME AS cityName " +
                 " FROM " +
                 " privateorder p, " +
-                " customer c " +
+                " customer c, " +
+                " city ct " +
                 " WHERE " +
-                " c.id = p.userid and state = 0 order by state " + " limit " + (pageIndex - 1) * pageSize + "," + pageSize;
+                " c.id = p.userid and ct.id = p.cityId and p.state = 0 order by p.state " + " limit " + (pageIndex - 1) * pageSize + "," + pageSize;
         return jdbcTemplate.queryForList(sql);
     }
 
