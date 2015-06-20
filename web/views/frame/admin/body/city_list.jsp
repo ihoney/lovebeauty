@@ -21,6 +21,13 @@ $(function () {
             $(this).find(".select_inp2").removeAttr("checked");
         }
     })
+
+    $("#cityName").keydown(function (e) {
+        e = e || event;
+        if (e.keyCode == 13) {
+            searchByName();
+        }
+    });
 });
 
 function change_city_serviceScope(node) {
@@ -169,9 +176,51 @@ function page_callback(data) {
         $(trTag).appendTo(tabTag);
     }
 }
+
+function searchByName() {
+    var cityName = $("#cityName").val().trim();
+    var url = getRootPath() + "city/searchByName.do?name=" + cityName;
+    $.ajax({
+        url: url,
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            if (!data.reqResult) {
+                return;
+            }
+            var cities = data.cities;
+            if (cities.length > 0) {
+                $(".tr_body").remove();
+            }
+            var tabTag = $(".frame_table");
+            var trTag;
+            for (var i = 0, j = cities.length; i < j; i++) {
+                trTag = ' <tr class="tr_body">'
+                        + '<td><input class="select_inp2" type="checkbox" cityId="' + cities[i].id + '"/></td>'
+                        + ' <td>' + i + '</td>'
+                        + '<td>' + cities[i].name + '</td>'
+                        + '<td>' + cities[i].opentime + '</td>'
+                        + '<td>' + cities[i].stoptime + '</td>'
+                        + '<td>' + cities[i].state + '</td>'
+                        + '<td>' + cities[i].serviceScope + '</td>';
+                if (cities[i].state == '停用') {
+                    trTag += ' <td> <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_reuse(this);">启用</a> <a href="javascript:void(0);" cityId="' + cities[i].id +
+                            '" onclick="change_city_serviceScope(this);">编辑</a></td>';
+                } else {
+                    trTag += '<td>  <a href="javascript:void(0);" cityId="' + cities[i].id + '" onclick="city_stop(this);">停用</a> <a href="javascript:void(0);" cityId="' + cities[i].id +
+                            '" onclick="change_city_serviceScope(this);">编辑</a></td>'
+                }
+                trTag += '</tr>';
+                $(trTag).appendTo(tabTag);
+            }
+        }
+    })
+}
 </script>
 <div class="tab_header">
     <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[开通城市列表]
+    <input id="cityName" type="text" style="margin-left: 20px; margin-top: 5px;border: 1px solid #b5d6e6; " placeholder="城市名称"/>
+    <a href="javascript:void(0);" onclick="searchByName();">点击搜索</a>
 </div>
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>

@@ -59,7 +59,7 @@ public class CustomerDao {
 
     public void jbCustomer(String sellerId, String customerId, String reason) {
         String sql = "insert into report_info (reportid,reportedid,reporttype,reason) values (?,?,?,?)";
-        String updateSql = "update customer set jubao = jubao +1";
+        String updateSql = "update customer set jubao = jubao + 1";
         jdbcTemplate.update(sql, new Object[]{sellerId, customerId, 1, reason});
         jdbcTemplate.update(updateSql);
     }

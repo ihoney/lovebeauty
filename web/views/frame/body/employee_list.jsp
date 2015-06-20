@@ -113,7 +113,7 @@
 </script>
 
 <div class="tab_header">
-    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[员工列表]
+    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[手艺人列表]
     <span class="btn_pos">
         <span class="btn_bg_img btn_add_img">添加</span>
     </span>

@@ -45,4 +45,25 @@ public class CityController {
         return jsonObject;
     }
 
+    /**
+     * 根据名称搜索城市
+     *
+     * @return
+     */
+    @RequestMapping(value = "searchByName")
+    @ResponseBody
+    public Map<String, Object> searchByName(String name) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        try {
+            List<Map<String, Object>> cities = cityService.searchByName(name);
+            jsonObject.put("cities", cities);
+            jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
+
+
 }

@@ -23,4 +23,7 @@ public class CityService {
         return cityDao.queryCitiesMobile();
     }
 
+    public List<Map<String, Object>> searchByName(String name) {
+        return cityDao.searchByName(name);
+    }
 }

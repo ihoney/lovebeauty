@@ -24,4 +24,8 @@ public class CityDao {
         return jdbcTemplate.queryForList(sql);
     }
 
+    public List<Map<String, Object>> searchByName(String name) {
+        String sql = "select * from city where NAME like '%" + name + "%'";
+        return jdbcTemplate.queryForList(sql);
+    }
 }

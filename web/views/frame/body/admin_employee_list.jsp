@@ -94,7 +94,7 @@
 </script>
 
 <div class="tab_header">
-    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[员工列表]
+    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[手艺人列表]
 </div>
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
