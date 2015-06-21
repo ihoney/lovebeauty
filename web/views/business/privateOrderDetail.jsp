@@ -29,7 +29,7 @@
                 <td class="td_attr_value"> ${privateOrder.account}</td>
             </tr>
             <tr>
-                <td class="td_attr_title">理想价格：</td>
+                <td class="td_attr_title">理想价格(元)：</td>
                 <td class="td_attr_value"> ${privateOrder.price}</td>
             </tr>
             <tr>

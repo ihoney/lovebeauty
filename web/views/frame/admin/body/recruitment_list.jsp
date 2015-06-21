@@ -24,7 +24,7 @@
     //第一页
     function firstPage() {
         if ($("#currentPage").text() != "1") {
-            var url = "queryRecruitmentByPage.do";
+            var url = "queryRecruitmentByPageAdmin.do";
             pageing(1, url, page_callback);
         }
     }
@@ -33,7 +33,7 @@
     function prePage() {
         if ($("#currentPage").text() != "1") {
             var curPage = parseInt($("#currentPage").text()) - 1;
-            var url = "queryRecruitmentByPage.do";
+            var url = "queryRecruitmentByPageAdmin.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -41,7 +41,7 @@
     function nextPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var curPage = parseInt($("#currentPage").text()) + 1;
-            var url = "queryRecruitmentByPage.do";
+            var url = "queryRecruitmentByPageAdmin.do";
             pageing(curPage, url, page_callback);
         }
     }
@@ -50,19 +50,32 @@
     function lastPage() {
         if ($("#currentPage").text() != $("#totalPage").text()) {
             var lastPage = $("#totalPage").text();
-            var url = "queryRecruitmentByPage.do";
+            var url = "queryRecruitmentByPageAdmin.do";
             pageing(lastPage, url, page_callback);
         }
     }
 
-    function applyRecruitment(node) {
+    function check_passed(node) {
         var recruitmentId = $(node).attr("recruitmentId");
         $.ajax({
-            url: getRootPath() + "recruitment/applyRecruitment.do?recruitmentId=" + recruitmentId,
+            url: getRootPath() + "recruitment/checkPassed.do?recruitmentId=" + recruitmentId,
             type: "GET",
             dataType: "json",
             success: function () {
-                alert("提交申请成功，请耐心等待！");
+                alert("操作成功！");
+                $(node).closest("tr").remove();
+            }
+        })
+    }
+
+    function check_refuse(node) {
+        var recruitmentId = $(node).attr("recruitmentId");
+        $.ajax({
+            url: getRootPath() + "recruitment/checkRefuse.do?recruitmentId=" + recruitmentId,
+            type: "GET",
+            dataType: "json",
+            success: function () {
+                alert("操作成功！");
                 $(node).closest("tr").remove();
             }
         })
@@ -73,7 +86,7 @@
         var totalPage = $("#totalPage").text();
         if (go_page != undefined && $.trim(go_page) != "" && totalPage != "") {
             if ((parseInt(go_page) <= parseInt(totalPage)) && parseInt(go_page) > 0) {
-                var url = "queryRecruitmentByPage.do";
+                var url = "queryRecruitmentByPageAdmin.do";
                 pageing(go_page, url, page_callback);
             }
         }
@@ -96,85 +109,21 @@
                     + '<td>' + recruitments[i].openShop + '</td>'
                     + '<td>' + recruitments[i].hopeSalary + '</td>'
                     + '<td>' + recruitments[i].comFocus + '</td>'
-                    + '<td>' + recruitments[i].releaseTime + '</td>'
-                    + '<td><a href="javascript:void(0);" recruitmentId="' + recruitments[i].id + '" onclick="applyRecruitment(this);" class="img_class_a">申请</a></td>'
+                    + '<td>' + recruitments[i].releaseTime + '</td>' +
+                    '<td><a href="${rootPath}/seller/getSellerDetail.do?sellerId=' + recruitments[i].applySellerId + '">' + recruitments[i].sellerName + '</a></td>'
+                    + '<td>' + recruitments[i].sellerTel + '</td>'
+                    + '<td>' + recruitments[i].applyTime + '</td>' +
+                    '<td>' +
+                    '<a href="javascript:void(0);" recruitmentId="' + recruitments[i].id + '" onclick="check_passed(this);" class="img_class_a">审核通过</a>' +
+                    '<a href="javascript:void(0);" recruitmentId="' + recruitments[i].id + '" onclick="check_refuse(this);" class="img_class_a">审核不通过</a>'
                     + '</tr>';
             tabTag.append($(trTag));
         }
     }
-
-    function onChecking() {
-        $.ajax({
-            url: getRootPath() + "recruitment/onChecking.do",
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                $(".tr_body").remove();
-                var recruitments = data.recruitment;
-                var tabTag = $(".frame_table");
-                var trTag;
-                if (recruitments.length > 0) {
-                    $(".operation").remove();
-                    for (var i = 0, j = recruitments.length; i < j; i++) {
-                        trTag = ' <tr class="tr_body">'
-                                + '<td><input class="select_inp2" type="checkbox" recruitmentId="' + recruitments[i].id + '"/></td>'
-                                + ' <td>' + i + '</td>'
-                                + '<td>' + recruitments[i].name + '</td>'
-                                + '<td>' + recruitments[i].telephone + '</td>'
-                                + '<td>' + recruitments[i].city + '</td>'
-                                + '<td>' + recruitments[i].workYear + '</td>'
-                                + '<td>' + recruitments[i].openShop + '</td>'
-                                + '<td>' + recruitments[i].hopeSalary + '</td>'
-                                + '<td>' + recruitments[i].comFocus + '</td>'
-                                + '<td>' + recruitments[i].releaseTime + '</td>'
-                                + '</tr>';
-                        tabTag.append($(trTag));
-                    }
-                }
-            }
-        })
-    }
-
-    function hasChecked() {
-        $.ajax({
-            url: getRootPath() + "recruitment/hasChecked.do",
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                $(".tr_body").remove();
-                var recruitments = data.recruitment;
-                var tabTag = $(".frame_table");
-                var trTag;
-                if (recruitments.length > 0) {
-                    $(".operation").remove();
-                    for (var i = 0, j = recruitments.length; i < j; i++) {
-                        trTag = ' <tr class="tr_body">'
-                                + '<td><input class="select_inp2" type="checkbox" recruitmentId="' + recruitments[i].id + '"/></td>'
-                                + ' <td>' + i + '</td>'
-                                + '<td>' + recruitments[i].name + '</td>'
-                                + '<td>' + recruitments[i].telephone + '</td>'
-                                + '<td>' + recruitments[i].city + '</td>'
-                                + '<td>' + recruitments[i].workYear + '</td>'
-                                + '<td>' + recruitments[i].openShop + '</td>'
-                                + '<td>' + recruitments[i].hopeSalary + '</td>'
-                                + '<td>' + recruitments[i].comFocus + '</td>'
-                                + '<td>' + recruitments[i].releaseTime + '</td>'
-                                + '</tr>';
-                        tabTag.append($(trTag));
-                    }
-                }
-            }
-        })
-    }
 </script>
 
 <div class="tab_header">
-    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[招聘列表]
-
-      <span class="btn_pos">
-        <span class="btn_bg_img_2 btn_list_mode_img" onclick="onChecking();">审核中</span>
-        <span class="btn_bg_img btn_add_img" onclick="hasChecked();">已招聘</span>
-    </span>
+    <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[应聘审核管理]
 </div>
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
@@ -189,9 +138,12 @@
             <td>工作年限</td>
             <td>是否有开店经验</td>
             <td>期望薪资(元)</td>
-            <td>看重公司方面</td>
+            <td>看中公司方面</td>
             <td>发布时间</td>
-            <td class="operation">操作</td>
+            <td>申请商铺</td>
+            <td>商铺联系方式</td>
+            <td>申请时间</td>
+            <td>操作</td>
         </tr>
         <c:forEach var="recruit" items="${recruitment}" varStatus="vst">
             <tr class="tr_body">
@@ -205,8 +157,12 @@
                 <td>${recruit.hopeSalary}</td>
                 <td>${recruit.comFocus}</td>
                 <td>${recruit.releaseTime}</td>
+                <td><a href="${rootPath}/seller/getSellerDetail.do?sellerId=${recruit.applySellerId}">${recruit.sellerName}</a></td>
+                <td>${recruit.sellerTel}</td>
+                <td>${recruit.applyTime}</td>
                 <td>
-                    <a href="javascript:void(0);" recruitmentId="${recruit.id}" onclick="applyRecruitment(this);" class="img_class_a">申请</a>
+                    <a href="javascript:void(0);" recruitmentId="${recruit.id}" onclick="check_passed(this);" class="img_class_a">审核通过</a>
+                    <a href="javascript:void(0);" recruitmentId="${recruit.id}" onclick="check_refuse(this);" class="img_class_a">审核不通过</a>
                 </td>
             </tr>
         </c:forEach>

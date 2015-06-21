@@ -30,4 +30,32 @@ public class RecruitmentService {
     public List<Map<String, Object>> getRecruitmentByPage(int pageIndex, int pageSize) {
         return recruitmentDao.getRecruitmentByPage(pageIndex, pageSize);
     }
+
+    public void applyRecruitment(String recruitmentId, String sellerId) {
+        recruitmentDao.applyRecruitment(recruitmentId, sellerId);
+    }
+
+    public int getRecruitmentCountAdmin() {
+        return recruitmentDao.getRecruitmentCountAdmin();
+    }
+
+    public List<Map<String, Object>> getRecruitmentByPageAdmin(int pageIndex, int pageSize) {
+        return recruitmentDao.getRecruitmentByPageAdmin(pageIndex, pageSize);
+    }
+
+    public void checkPassed(String recruitmentId) {
+        recruitmentDao.checkPassed(recruitmentId);
+    }
+
+    public void checkRefuse(String recruitmentId) {
+        recruitmentDao.checkRefuse(recruitmentId);
+    }
+
+    public List<Map<String, Object>> onChecking(String sellerId) {
+        return recruitmentDao.onChecking(sellerId);
+    }
+
+    public List<Map<String, Object>> hasChecked(String sellerId) {
+        return recruitmentDao.hasChecked(sellerId);
+    }
 }

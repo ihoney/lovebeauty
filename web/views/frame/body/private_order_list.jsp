@@ -139,7 +139,7 @@
             <td><input class="select_inp" type="checkbox"/></td>
             <td>序号</td>
             <td>客户账号</td>
-            <td>心理价格</td>
+            <td>心理价格(元)</td>
             <td>预定时间</td>
             <td>订单状态</td>
             <td>成交时间</td>

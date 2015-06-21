@@ -122,10 +122,10 @@
                     + '</span>'
                     + '</div>'
                     + '<div class="school_attr">'
-                    + '<span class="attr_title">价格</span> <span class="attr_value">' + demoTmp.price + '</span>'
+                    + '<span class="attr_title">价格(元)</span> <span class="attr_value">' + demoTmp.price + '</span>'
                     + '</div>'
                     + '<div class="school_attr">'
-                    + '<span class="attr_title">优惠价格</span> <span class="attr_value">' + demoTmp.PreferentialPrice + '</span>'
+                    + '<span class="attr_title">首次优惠价格(元)</span> <span class="attr_value">' + demoTmp.PreferentialPrice + '</span>'
                     + '</div>'
                     + '</div>'
                     + '</div>';
@@ -200,11 +200,11 @@
                     <span class="attr_value">${demo.demoType}</span>
                 </div>
                 <div class="school_attr">
-                    <span class="attr_title">价格</span> <span class="attr_value">${demo.price}</span>
+                    <span class="attr_title">价格(元)</span> <span class="attr_value">${demo.price}</span>
                 </div>
 
                 <div class="school_attr">
-                    <span class="attr_title">优惠价格</span> <span class="attr_value">${demo.PreferentialPrice}</span>
+                    <span class="attr_title">首次优惠价格(元)</span> <span class="attr_value">${demo.PreferentialPrice}</span>
                 </div>
             </div>
         </div>
