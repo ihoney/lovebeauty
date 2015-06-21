@@ -53,6 +53,7 @@
             word-wrap: break-word;
             word-break: break-all;
             border-bottom: 1px solid #1873AA;
+            margin-top: 10px;
         }
 
         .attr_title {
@@ -125,26 +126,8 @@
 <div class="comment" style="width: 90%;">
     <span>作品简介：</span>${demo.description}
 </div>
-<div id="comment">
-    <div class="custom_comment" style="">客户评论</div>
-    <table id="comment_tb">
-        <c:forEach items="${comments}" var="comment">
-            <tr>
-                <td>
-                    <div>
-                        <span>客户：${comment.account} 评分：${comment.score}</span>
-                        <span style="float: right;margin-right: 10px;"><a href="javascript:void(0);" style="font-size: 12px;" onclick="jubaoCustomer(${comment.customerid})">举报买家</a></span>
-                    </div>
-                    <div class="comment">
-                        评论：${comment.comment}
-                    </div>
-                </td>
-            </tr>
-        </c:forEach>
+</div>
 
-    </table>
-</div>
-</div>
 <div id="jubao_div" style="display: none;">
     <textarea style="border: none;" id="yuanyin" cols="50" rows="4"></textarea>
 </div>
