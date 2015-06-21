@@ -184,7 +184,7 @@ public class EmployeeDao {
                 "WHEN e.commentScore >= 1026 && e.commentScore <= 2990 THEN " +
                 " 4 " +
                 "WHEN e.commentScore >= 2991 && e.commentScore <= 7195 THEN " +
-                " 5 " +
+                " 5 ELSE 1 " +
                 "END AS picType, " +
                 " CASE " +
                 "WHEN e.commentScore = 1 THEN " +
@@ -236,7 +236,7 @@ public class EmployeeDao {
                 "WHEN e.commentScore >= 5178 && e.commentScore <= 6130 THEN " +
                 " 4 " +
                 "WHEN e.commentScore >= 6131 && e.commentScore <= 7195 THEN " +
-                " 5 " +
+                " 5 ELSE 0 " +
                 "END AS picCount " +
                 "FROM " +
                 " employee e " +
@@ -269,7 +269,7 @@ public class EmployeeDao {
                 " WHEN e.commentScore >= 1026 && e.commentScore <= 2990 THEN " +
                 " 4 " +
                 " WHEN e.commentScore >= 2991 && e.commentScore <= 7195 THEN " +
-                " 5 " +
+                " 5 ELSE 1 " +
                 " END AS picType, " +
                 " CASE " +
                 " WHEN e.commentScore = 1 THEN " +
@@ -321,7 +321,7 @@ public class EmployeeDao {
                 " WHEN e.commentScore >= 5178 && e.commentScore <= 6130 THEN " +
                 " 4 " +
                 " WHEN e.commentScore >= 6131 && e.commentScore <= 7195 THEN " +
-                " 5 " +
+                " 5 ELSE 0 " +
                 " END AS picCount " +
                 " FROM " +
                 " employee e " +
