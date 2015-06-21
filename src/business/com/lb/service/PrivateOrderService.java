@@ -78,4 +78,20 @@ public class PrivateOrderService {
     public List<Map<String, Object>> queryPrivateOrdersMobile(String userId) {
         return privateOrderDao.queryPrivateOrdersMobile(userId);
     }
+
+    public List<Map<String, Object>> onServicingOrder(String sellerId) {
+        return privateOrderDao.onServicingOrder(sellerId);
+    }
+
+    public List<Map<String, Object>> hasSuccessedOrder(String sellerId) {
+        return privateOrderDao.hasSuccessedOrder(sellerId);
+    }
+
+    public void discardOrder(String orderId) {
+        privateOrderDao.discardOrder(orderId);
+    }
+
+    public void successedOrder(String orderId) {
+        privateOrderDao.successedOrder(orderId);
+    }
 }

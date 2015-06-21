@@ -76,8 +76,8 @@
             data: {"orderId": order_id},
             dataType: "json",
             success: function (data) {
-                $(node).closest("tr").remove();
                 alert("抢单成功！");
+                $(node).closest("tr").remove();
             }
         });
     }
@@ -104,10 +104,105 @@
             tabTag.append($(trTag));
         }
     }
+
+    function discard_order(node) {
+        var orderId = $(node).attr("orderId");
+        $.ajax({
+            url: getRootPath() + "privateOrder/discardOrder.do?orderId=" + orderId,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                alert("操作成功！");
+                $(node).closest("tr").remove();
+            }
+        })
+    }
+
+    function successed_order(node) {
+        var orderId = $(node).attr("orderId");
+        $.ajax({
+            url: getRootPath() + "privateOrder/successedOrder.do?orderId=" + orderId,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                alert("操作成功！");
+                $(node).closest("tr").remove();
+            }
+        })
+    }
+
+    function onServicingOrder() {
+        $.ajax({
+            url: getRootPath() + "privateOrder/onServicingOrder.do",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                $(".tr_body").remove();
+                var tabTag = $(".frame_table");
+                var orders = data.orders;
+                var trTag;
+                for (var i = 0, j = orders.length; i < j; i++) {
+                    trTag = ' <tr class="tr_body">'
+                            + '<td><input class="select_inp2" type="checkbox" orderId="' + orders[i].id + '"/></td>'
+                            + ' <td>' + i + '</td>'
+                            + '<td>' + orders[i].account + '</td>'
+                            + '<td>' + orders[i].cityName + '</td>'
+                            + '<td>' + orders[i].price + '</td>'
+                            + '<td>' + orders[i].ordertime + '</td>'
+                            + '<td>' + orders[i].serverAddress + '</td>';
+                    trTag += "<td>" + orders[i].description + "</td>";
+                    trTag += '<td>' +
+                            '<a href="${rootPath}/privateOrder/privateOrderDetail.do?orderId=' + orders[i].id + '" target="rightFrame">详情</a> ' +
+                            '<a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="discard_order(this);">弃单</a> ' +
+                            '<a href="javascript:void(0);" orderId="' + orders[i].id + '" onclick="successed_order(this);">结束订单</a>' +
+                            '</td>';
+                    trTag += '</tr>';
+                    tabTag.append($(trTag));
+                }
+            }
+        })
+    }
+
+    function hasSuccessedOrder() {
+        $.ajax({
+            url: getRootPath() + "privateOrder/hasSuccessedOrder.do",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                $(".successTime").show();
+                $(".tr_body").remove();
+                var tabTag = $(".frame_table");
+                var orders = data.orders;
+                var trTag;
+                for (var i = 0, j = orders.length; i < j; i++) {
+                    trTag = ' <tr class="tr_body">'
+                            + '<td><input class="select_inp2" type="checkbox" orderId="' + orders[i].id + '"/></td>'
+                            + ' <td>' + i + '</td>'
+                            + '<td>' + orders[i].account + '</td>'
+                            + '<td>' + orders[i].cityName + '</td>'
+                            + '<td>' + orders[i].price + '</td>'
+                            + '<td>' + orders[i].ordertime + '</td>'
+                            + '<td>' + orders[i].successTime + '</td>'
+                            + '<td>' + orders[i].serverAddress + '</td>';
+                    trTag += "<td>" + orders[i].description + "</td>";
+                    trTag += '<td>' +
+                            '<a href="${rootPath}/privateOrder/privateOrderDetail.do?orderId=' + orders[i].id + '" target="rightFrame">详情</a>' +
+                            '</td>';
+                    trTag += '</tr>';
+                    tabTag.append($(trTag));
+                }
+            }
+        })
+    }
 </script>
 
 <div class="tab_header">
     <span class="fontStyle_bold cur_pos">你当前的位置：</span>[业务中心]-[私人订制池列表]
+
+    <span class="btn_pos">
+        <span class="btn_bg_img_2 btn_list_mode_img" onclick="onServicingOrder();">进行中</span>
+        <span class="btn_bg_img btn_add_img" onclick="hasSuccessedOrder();">已完成</span>
+    </span>
 </div>
 <div id="tb_body">
     <table class="frame_table" cellspadding=0 cellspacing=0>
@@ -118,6 +213,7 @@
             <td>城市</td>
             <td>心理价格(元)</td>
             <td>预定时间</td>
+            <td class="successTime" style="display: none;">完成时间</td>
             <td>服务地址</td>
             <td>附加备注</td>
             <td>操作</td>

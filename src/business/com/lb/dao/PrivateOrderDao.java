@@ -81,7 +81,7 @@ public class PrivateOrderDao {
     }
 
     public void grabOrder(String sellerId, String orderId) {
-        String sql = "update `privateorder` set state = 1,sellerid = " + sellerId + " where id = " + orderId;
+        String sql = "update `privateorder` set state = 1,grabOrderSellerId = " + sellerId + ",grabTime='" + DateUtil.cruTimeStr() + "' where id = " + orderId;
         jdbcTemplate.update(sql);
     }
 
@@ -132,5 +132,25 @@ public class PrivateOrderDao {
 
     public List<Map<String, Object>> queryPrivateOrdersMobile(String userId) {
         return null;
+    }
+
+    public List<Map<String, Object>> onServicingOrder(String sellerId) {
+        String sql = "select p.*,c.account,ct.NAME as cityName  from privateorder p,customer c,city ct where c.id = p.userid and ct.id = p.cityId and  p.state = 1 and p.grabOrderSellerId = " + sellerId;
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> hasSuccessedOrder(String sellerId) {
+        String sql = "select p.*,c.account,ct.NAME as cityName  from privateorder p,customer c,city ct where c.id = p.userid and ct.id = p.cityId and p.state = 2 and  p.grabOrderSellerId = " + sellerId;
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public void discardOrder(String orderId) {
+        String sql = "update privateorder set state = 0,grabOrderSellerId = null ,grabTime = null where id = " + orderId;
+        jdbcTemplate.update(sql);
+    }
+
+    public void successedOrder(String orderId) {
+        String sql = "update privateorder set state = 2,successTime='" + DateUtil.cruTimeStr() + "' where id = " + orderId;
+        jdbcTemplate.update(sql);
     }
 }

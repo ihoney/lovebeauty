@@ -258,6 +258,68 @@ public class PrivateOrderController {
         return modelAndView;
     }
 
+
+    /**
+     * 正在进行中的订单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "onServicingOrder")
+    @ResponseBody
+    public Map<String, Object> onServicingOrder(HttpServletRequest request, HttpSession session) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        String sellerId = seller.get("id").toString();
+        List<Map<String, Object>> orders = privateOrderService.onServicingOrder(sellerId);
+        jsonObject.put("orders", orders);
+        return jsonObject;
+    }
+
+    /**
+     * 已完成的订单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "hasSuccessedOrder")
+    @ResponseBody
+    public Map<String, Object> hasSuccessedOrder(HttpServletRequest request, HttpSession session) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        Map<String, Object> seller = (Map<String, Object>) session.getAttribute("seller");
+        String sellerId = seller.get("id").toString();
+        List<Map<String, Object>> orders = privateOrderService.hasSuccessedOrder(sellerId);
+        jsonObject.put("orders", orders);
+        return jsonObject;
+    }
+
+    /**
+     * 弃单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "discardOrder")
+    @ResponseBody
+    public Map<String, Object> discardOrder(HttpServletRequest request, String orderId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        privateOrderService.discardOrder(orderId);
+        return jsonObject;
+    }
+
+    /**
+     * 弃单
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "successedOrder")
+    @ResponseBody
+    public Map<String, Object> successedOrder(HttpServletRequest request, String orderId) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+        privateOrderService.successedOrder(orderId);
+        return jsonObject;
+    }
     /*-----------------------移动端---------------------*/
 
     /**
