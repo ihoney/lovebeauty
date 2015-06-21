@@ -19,6 +19,7 @@
                     alert("提交失败！");
                 }
             });
+            alert("kkkkkkkkkkkkkk")
             $("#form_custom").submit();
         }
 
@@ -27,17 +28,6 @@
             if (nickName == "") {
                 alert("名称不能为空!");
                 return false;
-            }
-
-            var avgPrice = parseFloat($("#avgPrice").val());
-            if (isNaN(avgPrice)) {
-                $("#avgPrice").val("");
-                return false;
-            } else {
-                if (avgPrice < 0) {
-                    $("#avgPrice").val("");
-                    return false;
-                }
             }
 
             var serverScope = $.trim($("#serverScope").val());

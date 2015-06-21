@@ -46,7 +46,7 @@ public class EmployeeDao {
                 " state, " +
                 " sellerId, " +
                 " serverScope " +
-                ") values (?,?,?,?,?,?,?) ";
+                ") values (?,?,?,?,?,?) ";
         jdbcTemplate.update(sql, new Object[]{employee.getNickName(), employee.getSex(), employee.getHeadImg(), employee.getState(), employee.getSellerId(), employee.getServerScope()});
     }
 

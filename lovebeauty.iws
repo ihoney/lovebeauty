@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ed2e34f-f3ad-4366-87d7-c93f18584043" name="Default" comment="">
+    <list default="true" id="6ed2e34f-f3ad-4366-87d7-c93f18584043" name="Default" comment="修改程序">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/bean/Employee.java" afterPath="$PROJECT_DIR$/src/business/com/lb/bean/Employee.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/business/com/lb/dao/EmployeeDao.java" afterPath="$PROJECT_DIR$/src/business/com/lb/dao/EmployeeDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/business/employee_add.jsp" afterPath="$PROJECT_DIR$/web/views/business/employee_add.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/frame/body/employee_list.jsp" afterPath="$PROJECT_DIR$/web/views/frame/body/employee_list.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lovebeauty.iws" afterPath="$PROJECT_DIR$/lovebeauty.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/db/lovebeauty.sql" afterPath="$PROJECT_DIR$/web/db/lovebeauty.sql" />
     </list>
     <ignored path="lovebeauty.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434878198216" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434891408998" ignored="false" />
     <file path="/left.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434874460922" ignored="false" />
     <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434385093524" ignored="false" />
     <file path="/DemoController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434763538517" ignored="false" />
@@ -17,10 +20,10 @@
     <file path="/EmployeeController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434767512111" ignored="false" />
     <file path="/EmployeeService.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434767544357" ignored="false" />
     <file path="/EmployeeDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434767589670" ignored="false" />
-    <file path="/employee_list.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434769188344" ignored="false" />
+    <file path="/employee_list.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434893309019" ignored="false" />
     <file path="/a.dummy" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434808933207" ignored="false" />
     <file path="/frame_table.css" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1433175693043" ignored="false" />
-    <file path="/employee_add.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434770476909" ignored="false" />
+    <file path="/employee_add.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434891051901" ignored="false" />
     <file path="/employee_edit.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434770548508" ignored="false" />
     <file path="/demo_list_1.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434766639924" ignored="false" />
     <file path="/demo_list_2.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1434874682835" ignored="false" />
@@ -209,42 +212,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="left.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/views/frame/left.jsp">
+      <file leaf-file-name="EmployeeController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/EmployeeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="75" selection-start="1219" selection-end="1240" vertical-scroll-proportion="-4.967742">
+            <state line="207" column="71" selection-start="7945" selection-end="7945" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivateOrderController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java">
+      <file leaf-file-name="EmployeeService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/EmployeeService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="71" selection-start="2774" selection-end="2774" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#9753#9769#0" expanded="true" />
-                <element signature="e#10379#10395#0" expanded="true" />
-                <element signature="e#10987#11003#0" expanded="true" />
-                <element signature="e#11370#11386#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrivateOrderService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/PrivateOrderService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="40" selection-start="791" selection-end="791" vertical-scroll-proportion="0.0">
+            <state line="28" column="34" selection-start="721" selection-end="721" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrivateOrderDao.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java">
+      <file leaf-file-name="employee_list.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/views/frame/body/employee_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="37" selection-start="942" selection-end="942" vertical-scroll-proportion="-0.031307552">
+            <state line="93" column="49" selection-start="3591" selection-end="3591" vertical-scroll-proportion="0.37714285">
               <folding />
             </state>
           </provider>
@@ -269,10 +258,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/business/com/lb/dao/CityDao.java" />
-        <option value="$PROJECT_DIR$/src/business/com/lb/controller/CityController.java" />
-        <option value="$PROJECT_DIR$/web/views/frame/admin/body/city_list.jsp" />
-        <option value="$PROJECT_DIR$/web/views/business/ad_edit_1.jsp" />
         <option value="$PROJECT_DIR$/src/business/com/lb/service/SellerService.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/service/DemoService.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/dao/DemoDao.java" />
@@ -300,6 +285,10 @@
         <option value="$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java" />
         <option value="$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java" />
         <option value="$PROJECT_DIR$/web/views/frame/body/order_pool_list.jsp" />
+        <option value="$PROJECT_DIR$/src/business/com/lb/bean/Employee.java" />
+        <option value="$PROJECT_DIR$/web/views/business/employee_add.jsp" />
+        <option value="$PROJECT_DIR$/src/business/com/lb/dao/EmployeeDao.java" />
+        <option value="$PROJECT_DIR$/web/views/frame/body/employee_list.jsp" />
       </list>
     </option>
   </component>
@@ -344,7 +333,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -391,7 +379,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -405,7 +397,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="body" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -419,47 +423,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="business" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lovebeauty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lovebeauty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="business" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -479,8 +458,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -515,19 +494,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -554,6 +520,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1012,7 +991,11 @@
       <created>1434878200228</created>
       <updated>1434878200228</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="修改程序">
+      <created>1434878583997</created>
+      <updated>1434878583997</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1024,20 +1007,20 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.07204117" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16809605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54373926" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13207547" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.60034305" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28560606" sideWeight="0.8679245" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28560606" sideWeight="0.83190393" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1111,62 +1094,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/views/frame/admin/body/seller_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="17" selection-start="2545" selection-end="2992" vertical-scroll-proportion="103.6129">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/admin_demo_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="23" selection-start="4462" selection-end="4462" vertical-scroll-proportion="-12.548388">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/admin_employee_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="20" selection-start="4348" selection-end="4348" vertical-scroll-proportion="-9.225806">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/demo_list_1.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="17" selection-start="5019" selection-end="5175" vertical-scroll-proportion="1.4193548">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/demo_list_2.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="47" selection-start="7217" selection-end="7217" vertical-scroll-proportion="-10.645162">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/employee_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="74.51613">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/order_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="23" selection-start="5517" selection-end="5517" vertical-scroll-proportion="-4.2580647">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/private_order_admin_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="23" selection-start="4392" selection-end="4392" vertical-scroll-proportion="-7.096774">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/frame/body/personInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1212,13 +1139,6 @@
     <entry file="file://$PROJECT_DIR$/web/views/business/demoDetail.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="72.3871">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/business/employee_add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="74.51613">
           <folding />
         </state>
       </provider>
@@ -1272,13 +1192,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-web-3.0.5.RELEASE.jar!/org/springframework/web/bind/annotation/support/HandlerMethodInvoker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="34" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.35042736">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/frame/body/recruitment_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="166" column="27" selection-start="5881" selection-end="7405" vertical-scroll-proportion="0.5996094">
@@ -1295,7 +1208,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/frame/left.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="75" selection-start="1219" selection-end="1240" vertical-scroll-proportion="-4.967742">
+        <state line="21" column="75" selection-start="1219" selection-end="1240" vertical-scroll-proportion="-0.7096774">
           <folding />
         </state>
       </provider>
@@ -1303,12 +1216,7 @@
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/PrivateOrderController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="74" column="71" selection-start="2774" selection-end="2774" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#9753#9769#0" expanded="true" />
-            <element signature="e#10379#10395#0" expanded="true" />
-            <element signature="e#10987#11003#0" expanded="true" />
-            <element signature="e#11370#11386#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1321,17 +1229,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/db/lovebeauty.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/bean/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="39" selection-start="1086" selection-end="1086" vertical-scroll-proportion="1.8063158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-webmvc-3.0.5.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="28" selection-start="5404" selection-end="5404" vertical-scroll-proportion="0.3318078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-webmvc-3.0.5.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="19" selection-start="6395" selection-end="6395" vertical-scroll-proportion="0.3318078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-webmvc-3.0.5.RELEASE.jar!/org/springframework/web/servlet/mvc/annotation/AnnotationMethodHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="59" selection-start="4677" selection-end="4677" vertical-scroll-proportion="0.3318078">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-web-3.0.5.RELEASE.jar!/org/springframework/web/bind/annotation/support/HandlerMethodInvoker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="34" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.33551198">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/business/employee_add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="12" selection-start="1268" selection-end="1268" vertical-scroll-proportion="-1.3870968">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/PrivateOrderDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="37" selection-start="942" selection-end="942" vertical-scroll-proportion="-0.031307552">
+        <state line="18" column="13" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/EmployeeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="207" column="71" selection-start="7945" selection-end="7945" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/EmployeeDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="37" selection-start="726" selection-end="726" vertical-scroll-proportion="0.33258426">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/EmployeeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="34" selection-start="721" selection-end="721" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/frame/body/employee_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="49" selection-start="3591" selection-end="3591" vertical-scroll-proportion="0.37714285">
           <folding />
         </state>
       </provider>

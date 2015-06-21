@@ -91,7 +91,7 @@
             trTag = ' <tr class="tr_body">'
                     + '<td><input class="select_inp2" type="checkbox" employeeId="' + employees[i].id + '"/></td>'
                     + ' <td>' + i + '</td>'
-                    + '<td>' + employees[i].nickname + '</td>'
+                    + '<td>' + employees[i].nickName + '</td>'
                     + '<td>' + employees[i].sex + '</td>'
                     + '<td>' + employees[i].majorScore + '</td>'
                     + '<td>' + employees[i].comScore + '</td>'
