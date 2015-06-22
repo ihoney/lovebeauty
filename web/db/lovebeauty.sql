@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2015-06-21 17:22:23
+Date: 2015-06-22 12:49:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,15 +29,13 @@ CREATE TABLE `advertisement` (
   `cityId` int(11) unsigned zerofill DEFAULT NULL COMMENT '内部链接的城市ID',
   `sellerId` int(11) unsigned zerofill DEFAULT NULL COMMENT '内部链接时的商铺Id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of advertisement
 -- ----------------------------
-INSERT INTO `advertisement` VALUES ('8', '内部链接', 'pic_ad_1434636616628.jpg', '39', 0xE58685E983A8E993BEE68EA5, '启用', null, null);
-INSERT INTO `advertisement` VALUES ('9', '外部链接', 'pic_ad_1434739728357.png', 'https://www.baidu.com/', 0x7A6169206A696120, '启用', null, null);
-INSERT INTO `advertisement` VALUES ('10', '外部链接', 'pic_ad_1434811801896.jpg', 'https://www.baidu.com/', 0x666473666473666473666473, '启用', null, null);
-INSERT INTO `advertisement` VALUES ('12', '内部链接', 'pic_ad_1434817826495.jpg', '50', 0x6664736673646164, '启用', '00000000003', '00000000027');
+INSERT INTO `advertisement` VALUES ('14', '内部链接', 'pic_ad_1434904477112.jpg', '54', 0xE6B58BE8AF95, '启用', '00000000001', '00000000013');
+INSERT INTO `advertisement` VALUES ('15', '外部链接', 'pic_ad_1434904573432.jpg', 'www.baidu.com', 0x63657320, '启用', null, null);
 
 -- ----------------------------
 -- Table structure for `book_time`
@@ -53,11 +51,35 @@ CREATE TABLE `book_time` (
   PRIMARY KEY (`id`),
   KEY `fk_bt_empId` (`empId`),
   CONSTRAINT `fk_bt_empId` FOREIGN KEY (`empId`) REFERENCES `employee` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of book_time
 -- ----------------------------
+INSERT INTO `book_time` VALUES ('2', '545', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('3', '546', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('4', '547', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('5', '548', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('6', '549', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('7', '550', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('8', '551', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('9', '552', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('10', '553', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('11', '554', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('12', '555', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('13', '556', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('14', '557', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('15', '558', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('16', '559', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('17', '560', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('18', '561', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('19', '562', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('20', '563', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('21', '564', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('22', '565', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('23', '566', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('24', '567', '000000000000', '000000000000', '000000000000', '000000000000');
+INSERT INTO `book_time` VALUES ('33', '568', '111111111111', '000000000000', '000000000000', '000000000000');
 
 -- ----------------------------
 -- Table structure for `city`
@@ -449,12 +471,12 @@ INSERT INTO `customer` VALUES ('26', '13333333333', 'rootadmin', '106.39.2.226',
 INSERT INTO `customer` VALUES ('27', '13511111111', 'adminroot', '123.117.43.79', '124.65.153.6', '否', null, '0', '2015-06-04 12:42:32', '2015-06-18 11:11:30', '测试', 'pic_user_headImg__1434606403227.jpg');
 INSERT INTO `customer` VALUES ('28', '13336746733', 'adminroot', '58.56.176.46', null, '否', null, '0', '2015-06-04 18:51:24', '', '南美鹰', null);
 INSERT INTO `customer` VALUES ('31', '13336746833', 'adminroot', '58.56.176.46', null, '否', null, '0', '2015-06-07 19:05:05', '', '南美鹰', null);
-INSERT INTO `customer` VALUES ('32', '13021662367', 'wuzq1234', '58.56.176.46', '58.56.176.45', '否', null, '0', '2015-06-07 20:09:43', '2015-06-21 16:39:52', '你好', 'pic_user_headImg__1434381318788.jpg');
+INSERT INTO `customer` VALUES ('32', '13021662367', 'wuzq1234', '58.56.176.46', '58.56.176.46', '否', null, '0', '2015-06-07 20:09:43', '2015-06-22 12:26:02', '我好', 'pic_user_headImg__1434943773992.jpg');
 INSERT INTO `customer` VALUES ('33', '13021662368', 'wuzq123', '58.56.176.12', '58.56.176.12', '否', null, '0', '2015-06-08 18:19:41', '2015-06-18 01:27:53', '', null);
 INSERT INTO `customer` VALUES ('34', '13021662369', 'wuzq123', '58.56.176.12', '58.56.176.12', '否', null, '0', '2015-06-08 18:22:38', '2015-06-08 18:38:56', '', null);
 INSERT INTO `customer` VALUES ('35', '13021662370', 'wuzq123', '58.56.176.12', null, '否', null, '0', '2015-06-08 19:07:48', '', '', null);
 INSERT INTO `customer` VALUES ('36', '13021662390', 'wuzq123', '58.56.176.12', null, '否', null, '0', '2015-06-08 19:18:43', '', '', null);
-INSERT INTO `customer` VALUES ('37', '13723998798', '13723998798', '60.210.58.192', '223.96.89.141', '否', null, '0', '2015-06-20 07:23:20', '2015-06-20 09:17:35', '风风光光', 'pic_user_headImg__1434756471376.jpg');
+INSERT INTO `customer` VALUES ('37', '13723998798', '13723998798', '60.210.58.192', '223.104.2.174', '否', null, '0', '2015-06-20 07:23:20', '2015-06-22 07:17:57', '风风光光', 'pic_user_headImg__1434756471376.jpg');
 
 -- ----------------------------
 -- Table structure for `demo`
@@ -480,48 +502,32 @@ CREATE TABLE `demo` (
   KEY `fk_d_empId` (`employeeId`),
   CONSTRAINT `fk_d_empId` FOREIGN KEY (`employeeId`) REFERENCES `employee` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_d_sellerid` FOREIGN KEY (`sellerid`) REFERENCES `seller` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of demo
 -- ----------------------------
-INSERT INTO `demo` VALUES ('45', '13', '修指甲', 0xE5A4A7E7BAA2E5A4A7E7B4AB, '包2.png', '500.00', '500.00', '9 11 12 15 22', 'pic_13_1434738972092.png', '美甲', '539', '300.00', '100', '10');
-INSERT INTO `demo` VALUES ('46', '13', '1111', 0xE68CBAE5A5BD, '饰品2.png', '11.00', '11.00', '10 12 14 16 18', 'pic_13_1434739023171.png', '美甲', '539', '112.00', '22', '34');
-INSERT INTO `demo` VALUES ('47', '13', '在家玩', 0xE58AA0E8BDBD, '长袖2.png', '100.00', '100.00', '10 12 18 ', 'pic_13_1434739075796.png', '美容', '539', '199.00', '100', '10');
-INSERT INTO `demo` VALUES ('48', '13', '测试1', 0xE6B58BE8AF95E8AF95E8AF95, '鞋子2.png', '1222.00', '111.00', '11', 'pic_13_1434739121618.png', '美足', '540', '222.00', '32', '14');
-INSERT INTO `demo` VALUES ('49', '13', '测试2', 0xE59CA8E5AEB6, '长袖1.png', '15.00', '11.00', '11 12 13 14', 'pic_13_1434739152721.png', '化妆造型', '540', '21.00', '11', '23');
-INSERT INTO `demo` VALUES ('50', '27', '没人', 0xE89790E8A786E4B88B, '包2.png', '100.00', '80.00', '10 12 15 16', 'pic_13_1434739192786.png', '美睫', '541', '10.00', '10', '10');
-INSERT INTO `demo` VALUES ('51', '27', '载试试', 0xE59CA8E593AAE584BFE5958A, '裙子2.png', '122.00', '122.00', '9 12 18', 'pic_13_1434739237220.png', '美睫', '541', '14.00', '111', '22');
-
--- ----------------------------
--- Table structure for `employee`
--- ----------------------------
-DROP TABLE IF EXISTS `employee`;
-CREATE TABLE `employee` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `nickName` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT '昵称',
-  `sex` varchar(2) COLLATE utf8_bin DEFAULT '',
-  `majorScore` decimal(5,1) DEFAULT '0.0' COMMENT '专业得分',
-  `comScore` decimal(5,1) DEFAULT '0.0' COMMENT '沟通得分',
-  `punctualScore` decimal(5,1) DEFAULT '0.0' COMMENT '守时得分',
-  `avgPrice` decimal(10,2) DEFAULT '0.00' COMMENT '均价',
-  `serverScope` mediumtext COLLATE utf8_bin COMMENT '服务范围',
-  `headImg` varchar(100) COLLATE utf8_bin DEFAULT '' COMMENT '头像',
-  `state` varchar(5) COLLATE utf8_bin DEFAULT '在职' COMMENT '在职状态 离职 在职',
-  `sellerId` int(11) DEFAULT NULL COMMENT '卖家id',
-  `commentScore` int(11) DEFAULT '0' COMMENT '评价得分',
-  PRIMARY KEY (`id`),
-  KEY `fk_emp_sellerId` (`sellerId`),
-  CONSTRAINT `fk_emp_sellerId` FOREIGN KEY (`sellerId`) REFERENCES `seller` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=543 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of employee
--- ----------------------------
-INSERT INTO `employee` VALUES ('539', '张三', '男', '3.5', '4.5', '3.5', '2222.00', 0xE59CA8E5AEB6E99984E8BF91, 'pic_13_empHeadImg_1434738837271.png', '在职', '13', '0');
-INSERT INTO `employee` VALUES ('540', '李四 ', '男', '4.0', '2.5', '5.0', '500.00', 0xE4BD93E882B2E4B8ADE5BF83, 'pic_13_empHeadImg_1434738879907.png', '在职', '13', '0');
-INSERT INTO `employee` VALUES ('541', '王五', '男', '3.0', '2.0', '4.0', '200.00', 0xE5B9BFE59CBAE591A8E59BB4, 'pic_13_empHeadImg_1434738906505.png', '在职', '13', '0');
-INSERT INTO `employee` VALUES ('542', 'fdfdsafdsfsad', '男', '0.0', '0.0', '0.0', '444.00', 0x66647366647361647361, 'pic_13_empHeadImg_1434769979993.jpg', '在职', '13', '0');
+INSERT INTO `demo` VALUES ('52', '13', '作品1', 0xE6B58BE8AF9531E79A84E68F8FE8BFB0, '1.jpg', '110.00', '110.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434895837307.jpg', '美甲', '545', '0.00', '100', '100');
+INSERT INTO `demo` VALUES ('53', '13', '测试2', 0xE6B58BE8AF9532E79A84E4BD9CE59381, '1.jpg', '120.00', '120.00', '10,11,12,13,14,15,16,17,18,20,21', 'pic_13_1434895892991.jpg', '美甲', '547', '0.00', '110', '110');
+INSERT INTO `demo` VALUES ('54', '13', '测试3', 0xE6B58BE8AF9533E79A84E68F8FE8BFB0, '54fe490e15fd8_mid.jpg', '110.00', '110.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434895941739.jpg', '美甲', '546', '0.00', '110', '110');
+INSERT INTO `demo` VALUES ('55', '13', '测试4', 0xE6B58BE8AF9534E79A84E68F8FE8BFB0, '9.jpg', '120.00', '780.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434895979531.jpg', '美甲', '548', '0.00', '11', '11');
+INSERT INTO `demo` VALUES ('56', '13', '测试5', 0xE6B58BE8AF9535E79A84E4BD9CE59381, '5209bdf20cabb_small.png', '200.00', '200.00', '10,11,12,16,17,18', 'pic_13_1434896156216.png', '美甲', '545', '0.00', '100', '100');
+INSERT INTO `demo` VALUES ('57', '13', '测试6', 0xE6B58BE8AF9536E79A84E4BD9CE59381, '5209bdf20cabb_small.png', '500.00', '500.00', '10,16', 'pic_13_1434896218130.png', '美甲', '550', '0.00', '100', '100');
+INSERT INTO `demo` VALUES ('58', '13', '测试7', 0xE6B58BE8AF9537E79A84E7BB93E69E9C, '5209bcd115308_small.png', '600.00', '600.00', '10,11,12,16,17,18', 'pic_13_1434896274474.png', '美甲', '551', '0.00', '10', '10');
+INSERT INTO `demo` VALUES ('59', '13', '测试8', 0xE6B58BE8AF9538E79A84E4BD9CE59381, '5209bdf20cabb_small.png', '20.00', '20.00', '10,11,12,16,17', 'pic_13_1434896343714.png', '美甲', '553', '0.00', '20', '20');
+INSERT INTO `demo` VALUES ('60', '13', '测试9', 0xE6B58BE8AF9539E79A84E5819A, '5209bdf20cabb_small.png', '115.00', '110.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434896757290.png', '美甲', '552', '0.00', '10', '10');
+INSERT INTO `demo` VALUES ('61', '13', '测试10', 0xE8BDA6E5B195E4B88AE683B3E5A4A7E5ADA6E697B6E4BBA3, '5209bcd115308_small.png', '10.00', '10.00', '10,11,12,13,14,15,16,17,18,20,21', 'pic_13_1434896811606.png', '化妆造型', '554', '0.00', '10', '10');
+INSERT INTO `demo` VALUES ('62', '13', '测试11', 0xE6B58BE8AF953131E79A84E68F8FE8BFB0, '5209bcfead41e_small.png', '11.00', '11.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434896850658.png', '美睫', '555', '0.00', '11', '11');
+INSERT INTO `demo` VALUES ('63', '13', '测试12', 0xE6B58BE8AF953132E79A84E68F8FE8BFB0, '5209bd4d88f44_small.png', '125.00', '125.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434896917281.png', '美睫', '556', '0.00', '110', '111');
+INSERT INTO `demo` VALUES ('64', '13', '测试13', 0xE6B58BE8AF953133E79A84E68F8FE8BFB0, 'trynav.png', '13.00', '12.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434897010139.png', '美睫', '557', '0.00', '12', '12');
+INSERT INTO `demo` VALUES ('65', '13', '测试14', 0xE6B58BE8AF953134E79A84E68F8FE8BFB0, '5209bc42871fd_small.png', '113.00', '11.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434897090430.png', '美容', '558', '0.00', '45', '45');
+INSERT INTO `demo` VALUES ('66', '13', '测试15', 0xE4BD9CE59381, '5209bce881b77_small.png', '115.00', '115.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434897381176.png', '美甲', '559', '0.00', '220', '220');
+INSERT INTO `demo` VALUES ('67', '13', '测试16', 0xE6B58BE8AF953136E79A84E4BD9CE59381, '5209bcfead41e_small.png', '112.00', '112.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434897489662.png', '美睫', '560', '0.00', '114', '110');
+INSERT INTO `demo` VALUES ('68', '13', '测试17', 0xE6B58BE8AF953137, '5.jpg', '170.00', '170.00', '10,11,12,16,17,18', 'pic_13_1434897515836.jpg', '美睫', '561', '0.00', '11', '11');
+INSERT INTO `demo` VALUES ('69', '13', '测试18', 0xE6B58BE8AF953138E79A84E68891, '3.jpg', '110.00', '112.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434897735376.jpg', '美睫', '562', '0.00', '110', '11');
+INSERT INTO `demo` VALUES ('70', '13', '测试19', 0xE6B58BE8AF953139E79A84E68F8FE8BFB0, '5209ba6f29e5d_small.png', '19.00', '19.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434898682334.png', '美睫', '563', '0.00', '19', '19');
+INSERT INTO `demo` VALUES ('71', '13', '测试20', 0xE6B58BE8AF953230, '54fe47c818880_mid.jpg', '20.00', '20.00', '10,11,12,13,14,15,16,17,18,19,20,21', 'pic_13_1434898709877.jpg', '美睫', '564', '0.00', '20', '20');
+INSERT INTO `demo` VALUES ('72', '13', '测试21', 0xE6B58BE8AF953231, '5209bc42871fd_small.png', '115.00', '115.00', '10,11,12,13,14,16,17,18,19,20', 'pic_13_1434898874642.png', '美睫', '558', '0.00', '115', '15');
 
 -- ----------------------------
 -- Table structure for `emp_comment`
@@ -547,10 +553,56 @@ CREATE TABLE `emp_comment` (
 -- ----------------------------
 -- Records of emp_comment
 -- ----------------------------
-INSERT INTO `emp_comment` VALUES ('13', '539', '26', 0x646464646464646464646464646464, '1', '2015-06-20 10:51:57', '0004.0', '0005.0', '0002.0');
-INSERT INTO `emp_comment` VALUES ('14', '539', '26', 0x646464646464646464646464646464, '1', '2015-06-20 10:52:22', '0003.0', '0004.0', '0005.0');
-INSERT INTO `emp_comment` VALUES ('15', '540', '26', 0x646464646464646464646464646464, '1', '2015-06-20 10:53:34', '0003.0', '0004.0', '0005.0');
-INSERT INTO `emp_comment` VALUES ('16', '540', '26', 0x646464646464646464646464646464, '1', '2015-06-20 10:53:44', '0005.0', '0001.0', '0005.0');
+
+-- ----------------------------
+-- Table structure for `employee`
+-- ----------------------------
+DROP TABLE IF EXISTS `employee`;
+CREATE TABLE `employee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `nickName` varchar(50) COLLATE utf8_bin NOT NULL DEFAULT '' COMMENT '昵称',
+  `sex` varchar(2) COLLATE utf8_bin DEFAULT '',
+  `majorScore` decimal(5,1) DEFAULT '0.0' COMMENT '专业得分',
+  `comScore` decimal(5,1) DEFAULT '0.0' COMMENT '沟通得分',
+  `punctualScore` decimal(5,1) DEFAULT '0.0' COMMENT '守时得分',
+  `avgPrice` decimal(10,2) DEFAULT '0.00' COMMENT '均价',
+  `serverScope` mediumtext COLLATE utf8_bin COMMENT '服务范围',
+  `headImg` varchar(100) COLLATE utf8_bin DEFAULT '' COMMENT '头像',
+  `state` varchar(5) COLLATE utf8_bin DEFAULT '在职' COMMENT '在职状态 离职 在职',
+  `sellerId` int(11) DEFAULT NULL COMMENT '卖家id',
+  `commentScore` int(11) DEFAULT '0' COMMENT '评价得分',
+  PRIMARY KEY (`id`),
+  KEY `fk_emp_sellerId` (`sellerId`),
+  CONSTRAINT `fk_emp_sellerId` FOREIGN KEY (`sellerId`) REFERENCES `seller` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=569 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of employee
+-- ----------------------------
+INSERT INTO `employee` VALUES ('545', '测试1', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9531E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434891990496.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('546', '测试2', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9532E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892016720.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('547', '测试3', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9533E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892034442.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('548', '测试4', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9534E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892054001.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('549', '测试5', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9535E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892069712.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('550', '测试6', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9536E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892084184.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('551', '测试7', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9537E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892099637.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('552', '测试9', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9539E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892124364.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('553', '测试8', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9538E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892149992.png', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('554', '测试10', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF9539E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892165182.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('555', '测试11', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953131E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892184165.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('556', '测试12', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953132E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892200628.png', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('557', '测试13', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953133E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892215994.png', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('558', '测试14', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953134E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892229449.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('559', '测试15', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953135E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892245876.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('560', '测试16', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953136E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892261846.png', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('561', '测试17', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953137E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892278710.png', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('562', '测试18', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953138E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434892295418.png', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('563', '测试19', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953139E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434893480001.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('564', '测试20', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953230E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434893496788.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('565', '测试21', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953231E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434893511974.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('566', '测试22', '男', '0.0', '0.0', '0.0', '0.00', 0xE6B58BE8AF953232E79A84E69C8DE58AA1E88C83E59BB4, 'pic_13_empHeadImg_1434893526043.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('567', 'fffff', '男', '0.0', '0.0', '0.0', '0.00', 0x66666666, 'pic_13_empHeadImg_1434943944340.jpg', '在职', '13', '0');
+INSERT INTO `employee` VALUES ('568', 'dddddddddd', '男', '0.0', '0.0', '0.0', '0.00', 0x646464646464646464, 'pic_13_empHeadImg_1434948411520.jpg', '在职', '13', '0');
 
 -- ----------------------------
 -- Table structure for `favorite`
@@ -564,7 +616,7 @@ CREATE TABLE `favorite` (
   PRIMARY KEY (`id`),
   KEY `fk_fa_userId` (`userId`),
   CONSTRAINT `fk_fa_userId` FOREIGN KEY (`userId`) REFERENCES `customer` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of favorite
@@ -581,6 +633,10 @@ INSERT INTO `favorite` VALUES ('60', '0', '32', '51');
 INSERT INTO `favorite` VALUES ('61', '0', '32', '50');
 INSERT INTO `favorite` VALUES ('62', '0', '32', '46');
 INSERT INTO `favorite` VALUES ('63', '0', '32', '46');
+INSERT INTO `favorite` VALUES ('66', '0', '26', '66');
+INSERT INTO `favorite` VALUES ('74', '0', '32', '59');
+INSERT INTO `favorite` VALUES ('75', '1', '32', '554');
+INSERT INTO `favorite` VALUES ('76', '1', '32', '545');
 
 -- ----------------------------
 -- Table structure for `grab_order`
@@ -671,6 +727,8 @@ INSERT INTO `order` VALUES ('2015061655897024', '27', '测试', '13511111111', '
 INSERT INTO `order` VALUES ('2015061655988063', '27', '测试', '13511111111', '交易成功', '39', '539', '2015-06-16 19:59:48', '', '0', '2222', '2015-06-17 14:00', 0xE58C97E4BAACE5B88220E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80);
 INSERT INTO `order` VALUES ('2015061656542436', '27', '测试11111', '13522222222', '交易成功', '39', '539', '2015-06-16 20:09:02', '', '0', '2222', '2015-06-17 15:00', 0xE9878DE5BA86E5B88220E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80);
 INSERT INTO `order` VALUES ('2015061744202261', '26', 'dddfds', '13333333333', '未付款', '39', '539', '2015-06-17 20:30:02', '', '0', '2443.4', '2015-06-18 10:00', 0xE58C97E4BAACE4B889E9878CE5B1AF);
+INSERT INTO `order` VALUES ('2015062208377090', '26', 'dddfds', '13333333333', '未付款', '39', '536', '2015-06-22 01:39:37', '', '0', '2443.4', '2015-06-23 10:00', 0xE58C97E4BAACE4B889E9878CE5B1AF);
+INSERT INTO `order` VALUES ('2015062208385489', '32', 'dddfds', '13333333333', '未付款', '39', '536', '2015-06-22 01:39:45', '', '0', '2443.4', '2015-06-23 10:00', 0xE58C97E4BAACE4B889E9878CE5B1AF);
 INSERT INTO `order` VALUES ('22222', '26', 'eeeeee', '22222222222', '取消订单', '39', '539', '2015-06-07 22:24:30', '', '0', '2443.4', '2015-06-08 10:00', 0xE58C97E4BAACE4B889E9878CE5B1AF);
 INSERT INTO `order` VALUES ('3333333', '26', 'eeeerrrrrr', '33333333333', '取消订单', '39', '539', '2015-06-07 22:24:33', '', '0', '2443.4', '2015-06-08 10:00', 0xE58C97E4BAACE4B889E9878CE5B1AF);
 
@@ -694,7 +752,7 @@ CREATE TABLE `privateorder` (
   PRIMARY KEY (`id`),
   KEY `fk_pri_userid` (`userid`),
   CONSTRAINT `fk_pri_userid` FOREIGN KEY (`userid`) REFERENCES `customer` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of privateorder
@@ -704,12 +762,13 @@ INSERT INTO `privateorder` VALUES ('13', '27', '3', 'pic_reqImg_1434470875425.jp
 INSERT INTO `privateorder` VALUES ('14', '27', '3', 'pic_reqImg_1434554542113.jpg', 0xE6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80E6B58BE8AF95E59CB0E59D80, '0', '', '2015-06-17 23:22:22', 0x313131, '12', null, null);
 INSERT INTO `privateorder` VALUES ('15', '32', '1', 'pic_reqImg_1434562833580.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '2', '2015-06-16 14:21:12', '2015-06-18 01:40:33', 0x313131313131, '12', '13', '2015-06-21 17:06:29');
 INSERT INTO `privateorder` VALUES ('16', '32', '3', 'pic_reqImg_1434562952316.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '0', '', '2015-06-18 01:42:32', 0xE4BDA0E5A5BDE4BDA0E5A5BD, '12', null, null);
-INSERT INTO `privateorder` VALUES ('17', '32', '1', 'pic_reqImg_1434642659941.JPEG', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '0', '', '2015-06-18 23:50:59', 0x3131313131E5958A, '7654', null, null);
-INSERT INTO `privateorder` VALUES ('18', '32', '1', 'pic_reqImg_1434643102934.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '0', '', '2015-06-18 23:58:22', 0x313131313131313131, '55543', null, null);
-INSERT INTO `privateorder` VALUES ('19', '32', '1', 'pic_reqImg_1434643209675.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '1', '', '2015-06-19 00:00:09', 0xE5958AE5958AE5958AE590A7, '33344', '13', '2015-06-21 17:07:51');
+INSERT INTO `privateorder` VALUES ('17', '32', '1', 'pic_reqImg_1434642659941.JPEG', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '2', '2015-06-22 00:57:17', '2015-06-18 23:50:59', 0x3131313131E5958A, '7654', '13', '2015-06-21 17:25:40');
+INSERT INTO `privateorder` VALUES ('18', '32', '1', 'pic_reqImg_1434643102934.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '2', '2015-06-22 00:57:23', '2015-06-18 23:58:22', 0x313131313131313131, '55543', '13', '2015-06-22 00:57:06');
+INSERT INTO `privateorder` VALUES ('19', '32', '1', 'pic_reqImg_1434643209675.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '2', '2015-06-21 17:25:30', '2015-06-19 00:00:09', 0xE5958AE5958AE5958AE590A7, '33344', '13', '2015-06-21 17:07:51');
 INSERT INTO `privateorder` VALUES ('20', '32', '1', 'pic_reqImg_1434643397039.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '0', '', '2015-06-19 00:03:17', 0xE5958AE5958AE5958AE590A7E68A8AE4BDA0, '333', null, null);
 INSERT INTO `privateorder` VALUES ('21', '32', '1', 'pic_reqImg_1434644812888.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '0', '', '2015-06-19 00:26:52', 0x31313131313131313131, '1111111', null, null);
 INSERT INTO `privateorder` VALUES ('22', '32', '1', 'pic_reqImg_1434742998238.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '0', '', '2015-06-20 03:43:18', 0x7177717171, '1111111', null, null);
+INSERT INTO `privateorder` VALUES ('23', '32', '1', 'pic_reqImg_1434909091326.jpg', 0xE5B1B1E4B89CE79C81E99D92E5B29BE5B882E69D8EE6B2A7E58CBAE5B885E6BDAEE8B7AF, '0', '', '2015-06-22 01:51:31', 0xE59CA8E982A3E584BFE6B58BE8AF95, '111', null, null);
 
 -- ----------------------------
 -- Table structure for `recruitment`
@@ -729,7 +788,7 @@ CREATE TABLE `recruitment` (
   `applySellerId` int(11) DEFAULT NULL COMMENT '申请商家Id',
   `applyTime` varchar(20) COLLATE utf8_bin DEFAULT NULL COMMENT '申请时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of recruitment
@@ -739,13 +798,14 @@ INSERT INTO `recruitment` VALUES ('2', '北京', '南美鹰啊', '13333333333', 
 INSERT INTO `recruitment` VALUES ('3', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 10:14:41', '0', null, null);
 INSERT INTO `recruitment` VALUES ('4', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 14:08:08', '0', null, null);
 INSERT INTO `recruitment` VALUES ('5', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 14:08:09', '0', null, null);
-INSERT INTO `recruitment` VALUES ('6', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 17:34:51', '0', '13', '2015-06-21 16:09:52');
+INSERT INTO `recruitment` VALUES ('6', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 17:34:51', '1', '13', '2015-06-21 16:09:52');
 INSERT INTO `recruitment` VALUES ('7', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 17:34:53', '0', null, null);
 INSERT INTO `recruitment` VALUES ('8', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 17:42:57', '1', '13', '2015-06-21 15:38:31');
 INSERT INTO `recruitment` VALUES ('9', '北京', '南美鹰', '18354495687', '5年', '是', '60000', '时间自由,赚钱多,未来有奔头', '2015-06-14 21:28:35', '0', null, null);
 INSERT INTO `recruitment` VALUES ('10', '北京市', 'dsdsad', '32132132132', 'dsada', '是', '434234', '时间自由', '2015-06-14 21:43:04', '1', '13', '2015-06-21 16:01:03');
-INSERT INTO `recruitment` VALUES ('11', '重庆市', '测试', '11111111111', '111111', '否', '1111', '时间自由,赚钱多,未来有奔头', '2015-06-14 21:44:21', '0', null, null);
+INSERT INTO `recruitment` VALUES ('11', '重庆市', '测试', '11111111111', '111111', '否', '1111', '时间自由,赚钱多,未来有奔头', '2015-06-14 21:44:21', '1', '13', '2015-06-22 00:57:37');
 INSERT INTO `recruitment` VALUES ('12', '北京市', '111', '13511111111', '1', '是', '10000', '时间自由,未来有奔头', '2015-06-18 13:28:46', '1', '13', '2015-06-21 15:38:28');
+INSERT INTO `recruitment` VALUES ('13', '北京市', '我自己', '13333333333', '5556426', '是', '1111111', '时间自由,赚钱多', '2015-06-22 00:58:39', '1', '13', '2015-06-22 00:58:58');
 
 -- ----------------------------
 -- Table structure for `report_info`
@@ -794,7 +854,7 @@ CREATE TABLE `seller` (
 -- ----------------------------
 -- Records of seller
 -- ----------------------------
-INSERT INTO `seller` VALUES ('13', '127.0.0.1', '182.48.107.2', '2015-05-13 13:32:27', '2015-06-21 17:20:12', 'aaaaaa', 'aaaaaa', '是', '0', null, '是', null, '否');
+INSERT INTO `seller` VALUES ('13', '127.0.0.1', '182.48.107.2', '2015-05-13 13:32:27', '2015-06-22 12:38:56', 'aaaaaa', 'aaaaaa', '是', '0', null, '是', null, '否');
 INSERT INTO `seller` VALUES ('14', '127.0.0.1', '106.39.2.226', '2015-05-13 00:33:49', '2015-05-15 08:25:08', 'nanmeiying2', 'nanmeiying2', '是', '0', null, '否', null, '否');
 INSERT INTO `seller` VALUES ('15', '58.56.176.46', '58.56.176.46', '2015-05-13 15:18:48', '2015-05-13 15:18:57', 'wuzq', '123456', '是', '0', '2015-05-28 00:57:05', '否', null, '否');
 INSERT INTO `seller` VALUES ('16', '45.33.55.240', '45.33.55.240', '2015-05-14 22:14:44', '2015-05-14 22:14:50', 'nanmeiying88', 'nSGD6MkIyUenVRDVMf5FQ', '否', '0', null, '否', null, '否');

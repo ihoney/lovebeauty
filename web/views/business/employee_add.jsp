@@ -62,6 +62,7 @@
 </head>
 <body>
 <form id="form_custom" action="${rootPath}/employee/addEmployee.do" enctype="multipart/form-data" method="post">
+    <div style="font-size: 12px; color: #ff0000;">注意：新增员工其作品次日可被预约</div>
     <table id="add_tab" cellspacing=0 cellpadding=5>
         <tr>
             <td class="td_att_name">手艺人名称:</td>
