@@ -19,7 +19,6 @@
                     alert("提交失败！");
                 }
             });
-            alert("kkkkkkkkkkkkkk")
             $("#form_custom").submit();
         }
 

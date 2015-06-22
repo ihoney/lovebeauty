@@ -94,7 +94,7 @@ public class AdDao {
     }
 
     public List<Map<String, Object>> queryAdsMobile() {
-        String sql = "SELECT * from advertisement a where a.state = '启用' and a.type = '内部链接' order by id desc limit 8 ";
+        String sql = "SELECT * from advertisement a where a.state = '启用' order by id desc ";
         return jdbcTemplate.queryForList(sql);
     }
 }
