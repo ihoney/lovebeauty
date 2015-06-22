@@ -59,7 +59,7 @@
 </head>
 <body>
 <form id="form_custom" action="${rootPath}/ad/addAd.do" enctype="multipart/form-data" method="post">
-    <input type="hidden" name="type" value="1"/>
+    <input type="hidden" name="type" value="外部链接"/>
     <table class="ad_table" cellspadding=0 cellspacing=0>
         <tr>
             <td class="ad_td_att_name">链接地址：</td>
