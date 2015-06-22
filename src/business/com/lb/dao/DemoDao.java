@@ -168,6 +168,8 @@ public class DemoDao {
                 " 4 " +
                 "WHEN e.commentScore >= 2991 && e.commentScore <= 7195 THEN " +
                 " 5 " +
+                "ELSE " +
+                " 1 " +
                 "END AS picType, " +
                 " CASE " +
                 "WHEN e.commentScore = 1 THEN " +
@@ -220,23 +222,24 @@ public class DemoDao {
                 " 4 " +
                 "WHEN e.commentScore >= 6131 && e.commentScore <= 7195 THEN " +
                 " 5 " +
+                "ELSE " +
+                " 0 " +
                 "END AS picCount " +
                 "FROM " +
                 " demo d, " +
-                " employee e, " +
-                " `order` o " +
+                " employee e " +
+                "LEFT JOIN `order` o ON o.demoid IN ( " +
+                " SELECT " +
+                "  id " +
+                " FROM " +
+                "  demo " +
+                " WHERE " +
+                "  employeeId = e.id " +
+                ") " +
+                "AND o.state = '交易成功' " +
                 "WHERE " +
                 " d.id =  " + demoId +
-                " AND e.id = d.employeeId " +
-                "AND o.demoid IN ( " +
-                " SELECT " +
-                " id " +
-                " FROM " +
-                " demo " +
-                " WHERE " +
-                " employeeId = e.id " +
-                ") " +
-                "AND o.state = '交易成功'";
+                " AND e.id = d.employeeId ";
         return jdbcTemplate.queryForList(sql);
     }
 
