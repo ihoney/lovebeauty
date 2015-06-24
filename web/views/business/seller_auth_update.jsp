@@ -6,6 +6,7 @@
     <title></title>
     <script type="text/javascript" src="${rootPath}/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="${rootPath}/js/jquery.form.js"></script>
+    <script type="text/javascript" src="${rootPath}/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="${rootPath}/js/rootPath.js"></script>
     <link type="text/css" href="${rootPath}/css/love.form.css" rel="stylesheet"/>
     <script type="text/javascript">
@@ -133,7 +134,7 @@
         <tr>
             <td class="td_att_name">出生日期:</td>
             <td>
-                <input type="text" name="birthday" id="birthday" value="${sellerAuthInfo.birthday}"/>
+                <input type="text" name="birthday" id="birthday" readonly="true" value="${sellerAuthInfo.birthday}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
             </td>
             <td class="td_att_name">电子邮件:</td>
             <td>
