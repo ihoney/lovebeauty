@@ -300,4 +300,27 @@ public class DemoDao {
         String sql = "SELECT d.id, d. NAME, d.sellerid AS sellerId, svi.cityId FROM demo d, seller s, seller_validate_info svi WHERE d.sellerid = s.id AND svi.sellerid = s.id AND s.forbidden = '否'";
         return jdbcTemplate.queryForList(sql);
     }
+
+    public List<Map<String, Object>> queryDemosByNameMobile(String name, String demoType) {
+        String sql = "SELECT " +
+                " d.id, " +
+                " d. NAME, " +
+                " d.price, " +
+                " COUNT(o.demoid) AS demoCount, " +
+                " d.fileEName " +
+                "FROM " +
+                " demo d " +
+                "LEFT JOIN `order` o ON o.demoid = d.id " +
+                "AND o.state = '交易成功' " +
+                "WHERE " +
+                " d.demoType = '美甲' " +
+                "AND d.`name` LIKE '%" + name + "%' " +
+                "AND d.demoType = '" + demoType + "' " +
+                "GROUP BY " +
+                " d.id " +
+                "ORDER BY " +
+                " COUNT(o.demoid), " +
+                " d.price ";
+        return jdbcTemplate.queryForList(sql);
+    }
 }

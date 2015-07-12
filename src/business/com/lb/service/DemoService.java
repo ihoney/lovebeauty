@@ -103,4 +103,8 @@ public class DemoService {
     public List<Map<String, Object>> queryAllDemos() {
         return demoDao.queryAllDemos();
     }
+
+    public List<Map<String, Object>> queryDemosByNameMobile(String name, String demoType) {
+        return demoDao.queryDemosByNameMobile(name, demoType);
+    }
 }

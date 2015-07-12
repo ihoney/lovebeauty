@@ -361,4 +361,35 @@ public class DemoController {
         }
         return jsonObject;
     }
+
+    /**
+     * 根据预约时间 和地点获取作品
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "queryDemoAndEmpByNameMobile")
+    @ResponseBody
+    public Map<String, Object> queryDemoAndEmpByNameMobile(HttpServletRequest request, String type, String name, String demoType) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
+
+        try {
+            if ("0".equals(type)) {
+                if (demoType == null) {
+                    demoType = "美甲";
+                }
+                List<Map<String, Object>> demos = demoService.queryDemosByNameMobile(name, demoType);
+                jsonObject.put("demos", demos);
+                jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+            } else if ("1".equals(type)) {
+                List<Map<String, Object>> employees = employeeService.queryEmployeesByName(name);
+                jsonObject.put("employees", employees);
+                jsonObject.put(Constant.REQRESULT, Constant.REQSUCCESS);
+            }
+        } catch (Exception e) {
+            jsonObject.put(Constant.REQRESULT, Constant.REQFAILED);
+            jsonObject.put(Constant.TIPMESSAGE, "请求失败！");
+        }
+        return jsonObject;
+    }
 }

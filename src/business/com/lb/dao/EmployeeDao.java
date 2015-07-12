@@ -355,4 +355,98 @@ public class EmployeeDao {
         sb.append(" limit " + (pageTmp - 1) * pageSizeTmp + " , " + pageSizeTmp);
         return jdbcTemplate.queryForList(sb.toString());
     }
+
+    public List<Map<String, Object>> queryEmployeesByName(String name) {
+        String sql = "SELECT " +
+                " e.id, " +
+                " e.nickName, " +
+                " e.headImg, " +
+                " e.avgPrice, " +
+                " COUNT(o.id) empCount, " +
+                " CASE " +
+                "WHEN e.commentScore >= 1 && e.commentScore <= 30 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 31 && e.commentScore <= 285 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 286 && e.commentScore <= 1025 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 1026 && e.commentScore <= 2990 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 2991 && e.commentScore <= 7195 THEN " +
+                " 5 " +
+                "ELSE " +
+                " 1 " +
+                "END AS picType, " +
+                " CASE " +
+                "WHEN e.commentScore = 1 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 2 && e.commentScore <= 3 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 4 && e.commentScore <= 8 THEN " +
+                " 3 " +
+                "WHEN e.commentScore && e.commentScore <= 14 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 15 && e.commentScore <= 30 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 31 && e.commentScore <= 57 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 58 && e.commentScore <= 93 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 94 && e.commentScore <= 146 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 147 && e.commentScore <= 210 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 211 && e.commentScore <= 285 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 286 && e.commentScore <= 384 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 385 && e.commentScore <= 507 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 508 && e.commentScore <= 655 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 656 && e.commentScore <= 828 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 829 && e.commentScore <= 1025 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 1026 && e.commentScore <= 1306 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 1307 && e.commentScore <= 1643 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 1644 && e.commentScore <= 2036 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 2037 && e.commentScore <= 2845 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 2846 && e.commentScore <= 2990 THEN " +
+                " 5 " +
+                "WHEN e.commentScore >= 2991 && e.commentScore <= 3607 THEN " +
+                " 1 " +
+                "WHEN e.commentScore >= 3608 && e.commentScore <= 4336 THEN " +
+                " 2 " +
+                "WHEN e.commentScore >= 4337 && e.commentScore <= 5177 THEN " +
+                " 3 " +
+                "WHEN e.commentScore >= 5178 && e.commentScore <= 6130 THEN " +
+                " 4 " +
+                "WHEN e.commentScore >= 6131 && e.commentScore <= 7195 THEN " +
+                " 5 " +
+                "ELSE " +
+                " 0 " +
+                "END AS picCount " +
+                "FROM " +
+                " employee e " +
+                "LEFT JOIN `order` o ON o.demoid IN ( " +
+                " SELECT " +
+                "  id " +
+                " FROM " +
+                "  demo " +
+                " WHERE " +
+                "  employeeId = e.id " +
+                ") " +
+                "AND o.state = '交易成功' " +
+                 " WHERE e.nickName LIKE '%" + name + "%' " +
+                "GROUP BY " +
+                " e.id " +
+                "ORDER BY " +
+                " e.avgPrice DESC ";
+        return jdbcTemplate.queryForList(sql);
+    }
 }
