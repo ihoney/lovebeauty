@@ -27,7 +27,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 6.0" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library name="lib">
         <CLASSES>
@@ -77,6 +76,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0" level="application_server_libraries" />
   </component>
 </module>
 

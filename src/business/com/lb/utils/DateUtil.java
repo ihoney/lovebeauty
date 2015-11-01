@@ -19,6 +19,7 @@ public class DateUtil {
     private static SimpleDateFormat mdFormat = new SimpleDateFormat("M.d");
     private static SimpleDateFormat ymdhmFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private static SimpleDateFormat payNum = new SimpleDateFormat("yyyyMMdd");
+    private static SimpleDateFormat yearMonth = new SimpleDateFormat("yyyyMM");
     public static Map<String, String> hourMap = new HashMap<String, String>();
 
     public static String cruDateStr() {
@@ -54,5 +55,9 @@ public class DateUtil {
 
     public static String getPayNum() {
         return payNum.format(new Date());
+    }
+
+    public static String getTradeCycle() {
+        return yearMonth.format(new Date());
     }
 }

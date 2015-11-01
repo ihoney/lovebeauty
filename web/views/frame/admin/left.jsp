@@ -19,6 +19,7 @@
                 <li><a href="${rootPath}/customer/queryAllCustomers.do" target="rightFrame" class="STYLE3">客户列表</a></li>
                 <li><a href="${rootPath}/employee/queryAllEmployeesAdmin.do" target="rightFrame" class="STYLE3">手艺人列表</a></li>
                 <li><a href="${rootPath}/recruitment/queryAllRecruitmentAdmin.do" target="rightFrame" class="STYLE3">应聘人审核管理</a></li>
+                <li><a href="${rootPath}/finance/queryCycleFinanceAdmin.do" target="rightFrame" class="STYLE3">财务</a></li>
                 <li><a href="${rootPath}/admin/queryAllCities.do" target="rightFrame" class="STYLE3">开通城市管理</a></li>
                 <li><a href="${rootPath}/ad/queryAllAds.do" target="rightFrame" class="STYLE3">广告管理</a></li>
             </ul>

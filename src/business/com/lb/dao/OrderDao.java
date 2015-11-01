@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -178,5 +179,23 @@ public class OrderDao {
                 "AND e.id = o.empId " +
                 "AND o.id = '" + orderId + "'";
         return jdbcTemplate.queryForList(sql);
+    }
+
+    public void updateTradeStatus(String orderId) {
+        String tradeCycle = DateUtil.getTradeCycle();
+        String hasTradeRecord = "SELECT t.sellerId,o.price FROM trade_record t, `order` o, employee e WHERE t.tradeCycle = '" + tradeCycle + "' AND t.sellerId = e.sellerId AND e.id = o.empId AND o.id = '" + orderId + "'";
+        List<Map<String, Object>> tradeCount = jdbcTemplate.queryForList(hasTradeRecord);
+        String sql;
+        if (tradeCount.size() == 0) {
+            sql = "INSERT INTO trade_record ( sellerId, tradeCycle, orderCount, orderPrice ) SELECT e.sellerId, '" + tradeCycle + "' as tradeCycle, 1 as orderCount, o.price FROM `order` o, " +
+                    "employee e WHERE o.id = '" + orderId + "' AND e.id = o.empId ";
+        } else {
+            Map<String, Object> trade = tradeCount.get(0);
+            Integer sellerId = (Integer) trade.get("sellerId");
+            BigDecimal priceTmp = new BigDecimal(trade.get("price").toString());
+            sql = "update trade_record set orderCount = orderCount+1,orderPrice=orderPrice+" + priceTmp + " where sellerId=" + sellerId + " and tradeCycle='" + tradeCycle + "'";
+        }
+        jdbcTemplate.update(sql);
+
     }
 }

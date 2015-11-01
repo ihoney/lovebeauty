@@ -60,6 +60,7 @@ public class OrderService {
 
     public void changeOrderStateMobile(String orderId) {
         orderDao.changeOrderStateMobile(orderId);
+        orderDao.updateTradeStatus(orderId);
     }
 
     public void deleteOrderMobile(String orderId) {
@@ -81,4 +82,5 @@ public class OrderService {
     public List<Map<String, Object>> getPayInfo(String orderId) {
         return orderDao.getPayInfo(orderId);
     }
+
 }
