@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 
@@ -70,6 +70,16 @@
 
     function applyTransfer(node) {
         var financeRecordId = $(node).attr("financeRecordId");
+		var tradeCycle = $(node).attr("tradeCycle");
+		var now = new Date();
+		var year = now.getFullYear();
+		var month = now.getMonth() + 1;
+		var dateStr = year + "" + month;
+		if(dateStr == tradeCycle){
+			alert("只能提取之前月份的款项！");
+			return;
+		}
+		
         $.ajax({
             url: getRootPath() + "finance/applyTransfer.do?financeRecordId=" + financeRecordId + "&code=1",
             type: "GET",
@@ -139,7 +149,7 @@
                 </td>
                 <td>
                     <c:if test="${financeRecord.transferStatus == 0}">
-                        <a href="javascript:void(0);" financeRecordId="${financeRecord.id}" onclick="applyTransfer(this);">申请转账</a>
+                        <a href="javascript:void(0);" tradeCycle="${financeRecord.tradeCycle}" financeRecordId="${financeRecord.id}" onclick="applyTransfer(this);">申请转账</a>
                     </c:if>
                 </td>
             </tr>

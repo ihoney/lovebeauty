@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ed2e34f-f3ad-4366-87d7-c93f18584043" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/frame/body/finance_seller_list.jsp" afterPath="$PROJECT_DIR$/web/views/frame/body/finance_seller_list.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lovebeauty.iws" afterPath="$PROJECT_DIR$/lovebeauty.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/db/lovebeauty.sql" afterPath="$PROJECT_DIR$/web/db/lovebeauty.sql" />
     </list>
     <ignored path="lovebeauty.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446368633355" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446471188059" ignored="false" />
     <file path="/left.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446355895416" ignored="false" />
     <file path="/OrderController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446359814462" ignored="false" />
     <file path="/DemoController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1436025121621" ignored="false" />
@@ -93,7 +93,6 @@
     <file path="$PROJECT_DIR$/../dfw/dfw.iws" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1436024472895" ignored="false" />
     <file path="$PROJECT_DIR$/../dfw/src/business/wmc/cn/dao/AdminDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1436023751976" ignored="false" />
     <file path="$PROJECT_DIR$/../dfw/web/views/showInfo.jsp" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1436023587720" ignored="false" />
-    <file path="$PROJECT_DIR$/web/WEB-INF/web.xml" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446350938005" ignored="false" />
     <file path="/FinanceService.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446359097089" ignored="false" />
     <file path="/FinanceDao.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446361576654" ignored="false" />
     <file path="/FinanceController.java" changelist="6ed2e34f-f3ad-4366-87d7-c93f18584043" time="1446359080559" ignored="false" />
@@ -117,7 +116,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -152,6 +150,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/src/business/com/lb/controller/AdminController.java" line="16" class="AdminController.java" package="">
         <option name="ENABLED" value="true" />
@@ -200,15 +199,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="finance_seller_list.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/views/frame/body/finance_seller_list.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="16" selection-start="5219" selection-end="5255" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OrderController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -236,10 +226,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="79" selection-start="544" selection-end="559" vertical-scroll-proportion="0.29558542">
+            <state line="27" column="51" selection-start="1626" selection-end="1636" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="9" selection-start="575" selection-end="688" vertical-scroll-proportion="-0.84615386">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+            <state />
+          </provider>
+          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finance_seller_list.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/views/frame/body/finance_seller_list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="36" selection-start="881" selection-end="881" vertical-scroll-proportion="-2.504065">
               <folding />
             </state>
           </provider>
@@ -258,15 +275,6 @@
         <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/FinanceService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="30" column="26" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="left.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/views/frame/admin/left.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="66" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -375,8 +383,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -405,11 +411,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -423,12 +425,84 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="body" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovebeauty" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -448,8 +522,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -465,6 +539,7 @@
       <recent name="E:\workspace\lovebeauty\src\business\com\lb\controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\workspace\lovebeauty\web\views\frame\body" />
       <recent name="E:\workspace\lovebeauty\web\db" />
       <recent name="E:\workspace\lovebeauty\web\WEB-INF\lib" />
     </key>
@@ -482,19 +557,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -523,6 +585,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1021,12 +1096,16 @@
       <created>1446363328357</created>
       <updated>1446363328357</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="添加日期控件">
+      <created>1446368650462</created>
+      <updated>1446368650463</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23156089" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1045,12 +1124,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24772727" sideWeight="0.4562607" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24772727" sideWeight="0.4562607" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.060034305" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.54373926" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54373926" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.67066896" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.864494" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1121,11 +1200,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/views/business/sellerDetail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/business/employeeDetail.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" />
@@ -1138,16 +1212,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/DemoService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="41" selection-start="3074" selection-end="3074" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="107" column="41" selection-start="3074" selection-end="3074" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/DemoDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="443" selection-end="443" vertical-scroll-proportion="0.065868266">
-          <folding />
-        </state>
+        <state line="19" column="13" selection-start="443" selection-end="443" vertical-scroll-proportion="0.065868266" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/EmployeeDao.java">
@@ -1164,16 +1234,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/service/EmployeeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="26" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13" column="26" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/dao/CustomerDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="13" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="18" column="13" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/common_operation.js">
@@ -1213,7 +1279,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/frame/admin/body/ad_list.jsp">
@@ -1223,9 +1291,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/frame/admin/left.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="66" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="21" column="66" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/business/com/lb/controller/FrameController.java">
@@ -1236,13 +1302,6 @@
     <entry file="file://$PROJECT_DIR$/web/views/frame/admin/body/finance_admin_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="82" column="115" selection-start="3205" selection-end="3209" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/frame/body/finance_seller_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="16" selection-start="5219" selection-end="5255" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1301,7 +1360,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="79" selection-start="544" selection-end="559" vertical-scroll-proportion="0.29558542">
+        <state line="27" column="51" selection-start="1626" selection-end="1636" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="9" selection-start="575" selection-end="688" vertical-scroll-proportion="-0.84615386">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/frame/body/finance_seller_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="36" selection-start="881" selection-end="881" vertical-scroll-proportion="-2.504065">
           <folding />
         </state>
       </provider>
