@@ -70,16 +70,16 @@
 
     function applyTransfer(node) {
         var financeRecordId = $(node).attr("financeRecordId");
-		var tradeCycle = $(node).attr("tradeCycle");
-		var now = new Date();
-		var year = now.getFullYear();
-		var month = now.getMonth() + 1;
-		var dateStr = year + "" + month;
-		if(dateStr == tradeCycle){
-			alert("只能提取之前月份的款项！");
-			return;
-		}
-		
+        var tradeCycle = $(node).attr("tradeCycle");
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var dateStr = year + "" + month;
+        if (dateStr == tradeCycle) {
+            alert("只能提取之前月份的款项！");
+            return;
+        }
+
         $.ajax({
             url: getRootPath() + "finance/applyTransfer.do?financeRecordId=" + financeRecordId + "&code=1",
             type: "GET",
