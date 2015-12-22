@@ -213,7 +213,7 @@ public class SellerController {
         modelAndView.addObject("seller", seller);
         List<Map<String, Object>> cities = cityService.queryCitiesMobile();
         modelAndView.addObject("cities", cities);
-        if ("0".equals(seller.get("authed").toString())) {
+        if ("否".equals(seller.get("authed").toString())) {
             modelAndView.setViewName("business/seller_auth");
         } else {
             Map<String, Object> sellerAuthInfo = sellerService.getSellerAuthInfo(seller.get("id").toString()).get(0);
