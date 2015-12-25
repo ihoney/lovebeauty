@@ -188,16 +188,16 @@
             </td>
         </tr>
 
-        <tr>
-            <td class="td_att_name">支付宝公钥:</td>
-            <td>
-                <input readonly="true" type="text" name="alipayPublicKey" id="alipayPublicKey"/>
-            </td>
-            <td class="td_att_name">支付宝私钥:</td>
-            <td>
-                <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey"/>
-            </td>
-        </tr>
+        <%--  <tr>
+              <td class="td_att_name">支付宝公钥:</td>
+              <td>
+                  <input readonly="true" type="text" name="alipayPublicKey" id="alipayPublicKey"/>
+              </td>
+              <td class="td_att_name">支付宝私钥:</td>
+              <td>
+                  <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey"/>
+              </td>
+          </tr>--%>
         <tr>
             <td class="td_att_name">服务范围:</td>
             <td colspan="3">

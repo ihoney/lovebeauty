@@ -194,7 +194,7 @@
             </td>
         </tr>
 
-        <tr>
+       <%-- <tr>
             <td class="td_att_name">支付宝公钥:</td>
             <td>
                 <input readonly="true" type="text" name="alipayPublicKey" id="alipayPublicKey" value="${sellerAuthInfo.alipay_public_key}"/>
@@ -203,7 +203,7 @@
             <td>
                 <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey" value="${sellerAuthInfo.alipay_private_key}"/>
             </td>
-        </tr>
+        </tr>--%>
         <tr>
 
         </tr>

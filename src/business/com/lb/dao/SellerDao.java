@@ -67,10 +67,10 @@ public class SellerDao {
 
     public void addAuth(SellerValidateInfo svi) {
         String sql = "insert into seller_validate_info (sellerid,name,sex,birthday,email,identify,shopname,address,cityId,payaccount,telephone," +
-                "servicescope,head_img,identify_img,alipay_public_key,alipay_private_key,alipay_pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "servicescope,head_img,identify_img,alipay_pid) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql, new Object[]{svi.getSellerId(), svi.getName(), svi.getSex(), svi.getBirthday(), svi.getEmail(), svi.getIdentify(), svi.getShopName(), svi.getAddress(), svi.getCityId(),
                 svi.getPayAccount(),
-                svi.getTelephone(), svi.getServiceScope(), svi.getHeadImgStr(), svi.getIdentifyImgStr(), svi.getAlipayPublicKey(), svi.getAlipayPrivateKey(), svi.getAlipayPid()});
+                svi.getTelephone(), svi.getServiceScope(), svi.getHeadImgStr(), svi.getIdentifyImgStr(), svi.getAlipayPid()});
     }
 
     public void setAuth(int sellerId) {
@@ -80,11 +80,11 @@ public class SellerDao {
 
     public void updateAuth(SellerValidateInfo svi) {
         String sql = "update seller_validate_info set name = ?,sex=?,birthday = ?,email = ?,identify = ?, shopname = ?, address = ? ,cityId = ?, payaccount = ?,telephone = ?, serviceScope = ?, " +
-                "  alipay_public_key=?,alipay_private_key=?,alipay_pid=?,head_img=?,identify_img=? where id=?";
+                " alipay_pid=?,head_img=?,identify_img=? where id=?";
 
         jdbcTemplate.update(sql, new Object[]{svi.getName(), svi.getSex(), svi.getBirthday(), svi.getEmail(), svi.getIdentify(), svi.getShopName(), svi.getAddress(), svi.getCityId(), svi.getPayAccount(),
                 svi.getTelephone(),
-                svi.getServiceScope(), svi.getAlipayPublicKey(), svi.getAlipayPrivateKey(), svi.getAlipayPid(), svi.getHeadImgStr(), svi.getIdentifyImgStr(), svi.getId()});
+                svi.getServiceScope(), svi.getAlipayPid(), svi.getHeadImgStr(), svi.getIdentifyImgStr(), svi.getId()});
     }
 
     public void deleteSeller(String sellerId) {

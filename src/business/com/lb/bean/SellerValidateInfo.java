@@ -55,6 +55,24 @@ public class SellerValidateInfo {
         this.telephone = telephone;
     }
 
+    public SellerValidateInfo(int sellerId, String name, String sex, String birthday, String email, String identify, String shopName, String address, String cityId, String payAccount,
+                              String alipayPid,
+                              String serviceScope, String telephone) {
+        this.sellerId = sellerId;
+        this.name = name;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.email = email;
+        this.identify = identify;
+        this.shopName = shopName;
+        this.address = address;
+        this.cityId = cityId;
+        this.payAccount = payAccount;
+        this.alipayPid = alipayPid;
+        this.serviceScope = serviceScope;
+        this.telephone = telephone;
+    }
+
     public SellerValidateInfo(int id, int sellerId, String headImgStr, String identifyImgStr, String name, String sex, String birthday, String email, String identify, String shopName, String address,
                               String cityId, String payAccount,
                               String alipayPublicKey, String alipayPrivateKey,
@@ -75,6 +93,28 @@ public class SellerValidateInfo {
         this.payAccount = payAccount;
         this.alipayPublicKey = alipayPublicKey;
         this.alipayPrivateKey = alipayPrivateKey;
+        this.alipayPid = alipayPid;
+        this.serviceScope = serviceScope;
+        this.telephone = telephone;
+    }
+
+    public SellerValidateInfo(int id, int sellerId, String headImgStr, String identifyImgStr, String name, String sex, String birthday, String email, String identify, String shopName, String address,
+                              String cityId, String payAccount,
+                              String alipayPid,
+                              String serviceScope, String telephone) {
+        this.id = id;
+        this.sellerId = sellerId;
+        this.headImgStr = headImgStr;
+        this.identifyImgStr = identifyImgStr;
+        this.name = name;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.email = email;
+        this.identify = identify;
+        this.shopName = shopName;
+        this.address = address;
+        this.cityId = cityId;
+        this.payAccount = payAccount;
         this.alipayPid = alipayPid;
         this.serviceScope = serviceScope;
         this.telephone = telephone;
