@@ -109,7 +109,7 @@
     </script>
 </head>
 <body>
-<form id="form_custom" action="${rootPath}/seller/addAuth.do" method="post">
+<form id="form_custom" action="${rootPath}/seller/addAuth.do" method="post" enctype="multipart/form-data">
     <input type="hidden" name="sellerId" value="${seller.id}"/>
     <table id="add_tab" cellspacing=0 cellpadding=5>
         <tr>

@@ -112,7 +112,7 @@
     </script>
 </head>
 <body>
-<form id="form_custom" action="${rootPath}/seller/updateAuth.do" method="post">
+<form id="form_custom" action="${rootPath}/seller/updateAuth.do" method="post" enctype="multipart/form-data">
     <input type="hidden" name="sellerId" value="${sellerAuthInfo.sellerid}"/>
     <input type="hidden" name="id" value="${sellerAuthInfo.id}"/>
     <input type="hidden" name="headImgStr" value="${sellerAuthInfo.head_img}"/>
@@ -194,16 +194,16 @@
             </td>
         </tr>
 
-       <%-- <tr>
-            <td class="td_att_name">支付宝公钥:</td>
-            <td>
-                <input readonly="true" type="text" name="alipayPublicKey" id="alipayPublicKey" value="${sellerAuthInfo.alipay_public_key}"/>
-            </td>
-            <td class="td_att_name">支付宝私钥:</td>
-            <td>
-                <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey" value="${sellerAuthInfo.alipay_private_key}"/>
-            </td>
-        </tr>--%>
+        <%-- <tr>
+             <td class="td_att_name">支付宝公钥:</td>
+             <td>
+                 <input readonly="true" type="text" name="alipayPublicKey" id="alipayPublicKey" value="${sellerAuthInfo.alipay_public_key}"/>
+             </td>
+             <td class="td_att_name">支付宝私钥:</td>
+             <td>
+                 <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey" value="${sellerAuthInfo.alipay_private_key}"/>
+             </td>
+         </tr>--%>
         <tr>
 
         </tr>

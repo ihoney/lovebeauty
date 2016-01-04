@@ -267,7 +267,7 @@ public class SellerController {
                 fos = new FileOutputStream(path + "/" + headImgStr);
                 byte[] buf = new byte[1024];
                 int len;
-                while ((len = is.read()) > 0) {
+                while ((len = is.read(buf)) > 0) {
                     fos.write(buf, 0, len);
                 }
                 fos.close();
@@ -275,10 +275,10 @@ public class SellerController {
 
             if (identifyImg != null) {
                 is2 = identifyImg.getInputStream();
-                fos2 = new FileOutputStream(path + "/" + headImgStr);
+                fos2 = new FileOutputStream(path + "/" + identifyImgStr);
                 byte[] buf = new byte[1024];
                 int len;
-                while ((len = is2.read()) > 0) {
+                while ((len = is2.read(buf)) > 0) {
                     fos2.write(buf, 0, len);
                 }
                 fos2.close();
