@@ -24,14 +24,18 @@ public class MainFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
         String reqUrl = request.getRequestURI();
-        if (!reqUrl.contains("Mobile.do") && !reqUrl.endsWith("checkLogin.do") && session.getAttribute("seller") == null) {
-            if (session.getAttribute("admin") != null) {
-                filterChain.doFilter(servletRequest, servletResponse);
-            } else {
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
-            }
-        } else {
+        if ("/seller/register.do".equals(reqUrl)) {
             filterChain.doFilter(servletRequest, servletResponse);
+        } else {
+            if (!reqUrl.contains("Mobile.do") && !reqUrl.endsWith("checkLogin.do") && session.getAttribute("seller") == null) {
+                if (session.getAttribute("admin") != null) {
+                    filterChain.doFilter(servletRequest, servletResponse);
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+                }
+            } else {
+                filterChain.doFilter(servletRequest, servletResponse);
+            }
         }
     }
 
