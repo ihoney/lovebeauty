@@ -1,1 +1,0 @@
-UPDATE `order` SET state = '取消订单' WHERE state = '未付款' AND DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i') > bookTime
