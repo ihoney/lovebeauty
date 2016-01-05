@@ -133,7 +133,7 @@ public class SellerDao {
                 " sv.alipay_pid " +
                 "FROM " +
                 " seller s " +
-                "LEFT JOIN seller_validate_info sv ON sv.sellerid = s.id and s.id = " + sellerId;
+                "LEFT JOIN seller_validate_info sv ON sv.sellerid = s.id WHERE s.id = " + sellerId;
         return jdbcTemplate.queryForList(sql);
     }
 

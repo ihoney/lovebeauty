@@ -78,8 +78,8 @@ public class SellerController {
      */
     @RequestMapping(value = "register")
     @ResponseBody
-    public JSONObject register(HttpServletRequest request, String account, String password) {
-        JSONObject jsonObject = new JSONObject();
+    public Map<String, Object> register(HttpServletRequest request, String account, String password) {
+        Map<String, Object> jsonObject = new HashMap<String, Object>();
         String regIp = request.getRemoteAddr();
         try {
             sellerService.register(account, password, regIp);
