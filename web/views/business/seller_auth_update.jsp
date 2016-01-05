@@ -80,17 +80,6 @@
                 return false;
             }
 
-            var payAccount = $.trim($("#payAccount").val());
-            if (!email_reg.test(payAccount) && !phone_reg.test(payAccount)) {
-                alert("支付宝账号格式错误！");
-                return false;
-            }
-
-            var alipayPid = $.trim($("#alipayPid").val());
-            if (alipayPid == "") {
-                alert("支付宝PID不能为空！");
-                return false;
-            }
             var serviceScope = $.trim($("#serviceScope").val());
             if (serviceScope == "") {
                 alert("服务范围不能为空！");
@@ -185,27 +174,12 @@
 
         <tr>
             <td class="td_att_name">支付宝账号:</td>
-            <td>
+            <td colspan="3">
                 <input type="text" name="payAccount" value="${sellerAuthInfo.payaccount}" id="payAccount"/>
-            </td>
-            <td class="td_att_name">支付宝PID:</td>
-            <td>
-                <input type="text" name="alipayPid" id="alipayPid" value="${sellerAuthInfo.alipay_pid}"/>
+                <input type="hidden" name="alipayPid" id="alipayPid" value=""/>
             </td>
         </tr>
-
-        <%-- <tr>
-             <td class="td_att_name">支付宝公钥:</td>
-             <td>
-                 <input readonly="true" type="text" name="alipayPublicKey" id="alipayPublicKey" value="${sellerAuthInfo.alipay_public_key}"/>
-             </td>
-             <td class="td_att_name">支付宝私钥:</td>
-             <td>
-                 <input readonly="true" type="text" name="alipayPrivateKey" id="alipayPrivateKey" value="${sellerAuthInfo.alipay_private_key}"/>
-             </td>
-         </tr>--%>
         <tr>
-
         </tr>
         <tr>
             <td class="td_att_name">服务范围:</td>

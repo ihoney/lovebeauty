@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 每小时检查一次是否有过期的订单 -->
+    <bean id="abortOrder" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="scheduleOperateService"/>
+        <property name="targetMethod" value="abortOrder"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <bean id="cronTriggerAbortOrder" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="abortOrder"/>
+        <property name="cronExpression" value="0 0 * * * ?"/>
+    </bean>
+
+    <!-- 每天修改一次预约情况 -->
+    <bean id="changeBookTime" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="scheduleOperateService"/>
+        <property name="targetMethod" value="changeBookTime"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <bean id="cronTriggerChangeBookTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="changeBookTime"/>
+        <property name="cronExpression" value="0 5 0 * * ?"/>
+    </bean>
+
+    <!-- 每小时修改预约情况 -->
+    <bean id="changeBookTimeHour" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="scheduleOperateService"/>
+        <property name="targetMethod" value="changeBookTimeHour"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <bean id="cronTriggerChangeBookTimeHour" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="changeBookTimeHour"/>
+        <property name="cronExpression" value="0 5 * * * ?"/>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTriggerAbortOrder"/>
+                <ref bean="cronTriggerChangeBookTime"/>
+                <ref bean="cronTriggerChangeBookTimeHour"/>
+            </list>
+        </property>
+    </bean>
+</beans>
