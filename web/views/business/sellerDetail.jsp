@@ -40,8 +40,8 @@
         <span>店铺地址：</span>${seller.address} <br/>
         <span>支付宝账号：</span>${seller.payaccount} <br/>
         <span>手机号：</span>${seller.telephone} <br/>
-        <span>支付宝秘钥：</span>${seller.alipay_key} <br/>
-        <span>支付宝PID：</span>${seller.alipay_pid} <br/>
+        <%--  <span>支付宝秘钥：</span>${seller.alipay_key} <br/>
+          <span>支付宝PID：</span>${seller.alipay_pid} <br/>--%>
     </div>
     <div>
         <img src="${rootPath}/fileUpload/${seller.head_img}" class="seller_head_img"/>
