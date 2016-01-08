@@ -124,7 +124,7 @@ public class OrderDao {
         } else if ("2".equals(orderState)) {
             sb.append(" and o.state = '未付款' ");
         } else if ("3".equals(orderState)) {
-            sb.append(" and o.hasComment = 0 and o.state != '取消订单' ");
+            sb.append(" and o.hasComment = 0 and o.state = '交易成功' ");
         }
         sb.append(" ORDER BY o.state desc ");
         return jdbcTemplate.queryForList(sb.toString());
@@ -167,9 +167,7 @@ public class OrderDao {
 
     public List<Map<String, Object>> getPayInfo(String orderId) {
         String sql = "SELECT " +
-                " svi.payaccount, " +
-                " svi.alipay_key, " +
-                " svi.alipay_pid " +
+                " svi.payaccount " +
                 "FROM " +
                 " seller_validate_info svi, " +
                 " `order` o, " +
